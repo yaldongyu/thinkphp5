@@ -1,0 +1,379 @@
+ 
+  <!--头部：开始-->
+  <script type="text/javascript">
+    $(".bot_menu").css("display","none");
+  </script>
+  <div class="header">
+    <div class="header_i"> <a href="index.html"><img src="/assets/img/logo1.png" alt="{$Think.config.site.name}" height="43"/></a> <span class="header_teltitle">24小时服务热线</span> <span class="header_tel">{$Think.config.site.tel}</span> </div>
+  </div> 
+  <!--头部：结束--> 
+  <div class="box">
+  <!--搜索：开始-->
+  <section id="header" class="homeSearch flexbox">
+    <div> <a href="javascript:void(0)" class="cityChoo"><span>{$areatext?$areatext:'全国'}</span></a><a href="/index/search/" class="input" style="color:#ccc;">请输入楼盘名称</a> </div>
+  </section> 
+
+    <div class="section_menu" style="padding-top:0;display:none;">
+           <a belongattr="sheng" href="javascript:void" onclick="gochina();">【全国】</a>
+                           <a href="">&nbsp;</a>
+                           <a href="">&nbsp; </a>
+                        {volist name='quyu' id='vo' }     
+                            
+                           <a belongattr="sheng" href="http://m{$vo.domain}">【{$vo.name}】</a>
+                           <a href="http://{$vo.domain}">&nbsp;</a>
+                           <a href="http://{$vo.domain}">&nbsp; </a>
+                             
+                              {volist name='vo.quyu' id='co' }
+
+                                    <a belong="【{$vo.name}】"" belongattr="shi" href="http://m{$co.domain}">{$co.name}</a>
+
+                              {/volist}        
+                        {/volist}
+         
+        </div>
+
+
+     <script type="text/javascript">
+                      
+                        function gochina( ) {
+                                var url="http://m" + location.host.substring(location.host.indexOf("."));
+                                location.href=url;
+                            } 
+                     
+    </script>
+  <!--搜索：结束--> 
+  <!--banner：开始-->
+  
+  <div class="swiper-container"> <em style="position:absolute; width:30px; height:20px; top:5; right:5px;background:url(/assets/img/mobile/gg.png); z-index:1000;"></em>
+    <div class="swiper-wrapper">
+    
+  {volist name='index["hdplist"]' id='vo' }    
+      <div class="swiper-slide"> <a href="{$vo.KP_Link}" target="_blank" title="{$vo.KP_Title}"><img src="{$vo.KP_PicUrl}" width="100%" /></a>
+        <div class="mySwipeceng">
+          <div>{$vo.KP_Title}</div>
+        </div>
+      </div>
+  {/volist}    
+ 
+       
+    </div>
+    <!-- Add Pagination --> 
+    
+    <!-- Add Arrows -->
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
+  <div class="blank10"></div>
+  
+  <!--banner：结束-->
+  <div class="wraper"> 
+    <!--导航：开始-->
+    <div class="bigNav">
+      <div class="icons chooseNav">
+        <div class="flexbox chooseNav1"> <a id="wapdsy_D02_01" href="/house/" class="n1" style="display:block"><i></i>
+          <p>楼盘</p>
+          </a> <a id="wapdsy_D02_02" href="/tuangou/" class="n2" style="display:block"><i></i>
+          <p>团购</p>
+          </a> <a id="wapdsy_D02_03" href="/news/" class="n3" style="display:block"><i></i>
+          <p>资讯</p>
+          </a> <a id="wapdsy_D02_04" href="/news/index/typeid/10" class="n4" style="display:block"><i></i>
+          <p>看房记</p>
+          </a> </div>
+        <div class="flexbox chooseNav2"> <a id="wapdsy_D02_05" href="/houseunion/" class="n5" style="display:block"><i></i>
+          <p>购房联盟</p>
+          </a> <a id="wapdsy_D02_06" href="/news/index/typeid/3" class="n6" style="display:block"><i></i>
+          <p>优惠信息</p>
+          </a> <a id="wapdsy_D02_07" href="/bieshu/" class="n7" style="display:block"><i></i>
+          <p>推荐楼盘</p>
+          </a> <a id="wapdsy_D02_08" href="/video/" class="n8" style="display:block"><i></i>
+          <p>视频看房</p>
+          </a> </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!--导航：结束-->
+    <div class="blank10"></div>
+    <!--区域检索：开始-->
+    <div class="CityPrice">
+      <dl class="Title">
+        <dd>区  域：</dd>
+        <dd>价  格：</dd>
+        <dd>物  业：</dd>
+        <dd>特  色：</dd>
+      </dl>  
+      <div id="boxscroll">
+        <div>
+          <ul class="clearfix">
+              
+             {volist name='index["sxqy"]' id='vo' }    
+            <a href="#" onclick="Yhz_SearchEncode('City','{$vo.areaid}')"  >{$vo.name}</a> 
+             {/volist}
+           
+          </ul>
+          <ul class="clearfix">
+              {volist name='index["sxjg"]' id='vo' }    
+                <a href="#" onclick="Yhz_SearchEncode('Price','{$vo.KP_Content}')" >{$vo.KP_Name}</a> 
+             {/volist}
+          </ul>
+          <ul class="clearfix">
+              {volist name='index["sxlx"]' id='vo' }    
+            <a href="#" onclick="Yhz_SearchEncode('Wy','{$vo.KP_Name}')">{$vo.KP_Name}</a> 
+             {/volist}
+             
+          </ul>
+          <ul class="clearfix">  
+             {volist name='index["sxts"]' id='vo' }    
+            <a href="#" onclick="Yhz_SearchEncode('Ts','{$vo.KP_Name}')">{$vo.KP_Name}</a> 
+             {/volist}
+           
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!--区域检索：结束--> 
+    <!--广告横幅：开始-->
+    
+    <div class="blank10"></div>
+    <div class="mainBanner">
+      <ul>
+        
+           <li><em style="position:absolute; width:30px; height:20px; top:5; right:5px;background:url(/assets/img/mobile/gg.png); z-index:1000;"></em>
+                {volist name='index["ggt"]' id='vo' }  
+                    <a href="{$vo.KP_Link}"><img src="{$vo.KP_PicUrl}" /></a> 
+                {/volist} 
+        </li> 
+      </ul>
+      <div class="clear"></div>
+    </div>
+    
+    <!--广告横幅：结束-->
+    <div class="blank10"></div>
+    <!--热销楼盘：开始-->
+    <div class="houseList w3 section">
+      <div class="mTitle">
+        <h2> 热销楼盘 </h2>
+      </div>
+      <ul>   
+        
+         {volist name='index["rxlp"]' id='vo' }  
+        <li class="caiNiXiHuanList"> <a href="/house/house_details/ids/{$vo.id}">
+          <div class="img"> <img class="likeLazyload" data-original="{$vo.KP_Wjt}" src="/assets/img/mobile/errorpic.jpg" style="display: inline;" alt="{$vo.KP_LpName}"> </div>
+          <div class="txt">
+            <h3>{$vo.KP_LpName}</h3>
+            <p><span class="new">
+              {$vo.KP_Qiprice==0 ? ($vo.KP_TaoJia==0 ? "待定" : $vo.KP_TaoJia."万元/套") : $vo.KP_Qiprice."元/m²"}
+               </span> <br><span>[{$vo.CNAME}]</span> <span style=" font-size:10px; color:#aaa;">
+                                    有效期:{$vo.KP_ValidityStart}-{$vo.KP_ValidityEnd}</span>
+            </p>
+            <p>{$vo.KP_Lpdz}</p>
+            <div class="stag">  
+             {volist name=":explode(',',$vo.KP_TsType)"   id="co"   }  
+              <span class="t{$i}">{$co} </span>
+              {/volist}
+            </div>
+          </div>
+          </a> <a class="tellx" href="tel:{$vo.KP_Tel}"></a> </li>
+         {/volist} 
+      </ul>
+      <div class="homeOption flexbox"> <a href="/house/?lx=1" title="更多热销楼盘" alt="更多热销楼盘"> 更多热销楼盘 </a> </div>
+    </div>
+    <!--热销楼盘：结束-->
+    
+    <div class="blank10"></div>
+    <!--幻灯：开始-->   
+    <div id="articleHot" class="ahUp">
+      <div class="bd">
+        <ul>  
+        {volist name='index["lbzx"]' id='vo' }  
+          <li> <a href="/news/detail/ids/{$vo.id}"> <span>{$vo.KP_Title}</span> <em>{$vo.KP_Name}</em> </a> </li>
+           {/volist}  
+        </ul>
+      </div>
+      <div class="hd">
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript">
+                TouchSlide({
+                    slideCell: "#articleHot",
+                    titCell: ".hd ul",
+                    mainCell: ".bd ul",
+                    effect: "leftLoop",
+                    interTime: 3500,
+                    autoPage: true,
+                    autoPlay: true
+                });
+            </script> 
+    <!--幻灯：结束-->
+    
+    <div class="blank10"></div>
+    <!--今日头条：开始-->
+    <div class="newm">
+      <section class="PWlist mt8 section" id="newsList">
+        <div class="mTitle">
+          <h2>今日头条</h2>  
+        </div>
+        <ul class="clear">  
+            {volist name='index["jrtt"]' id='vo' } 
+          <li class="firstli" style=""><a href="/news/detail/ids/{$vo.id}" title="{$vo.KP_Title}" id="wapdsy_D04_22">
+            <div class="bord">
+              <div class="lt"><img class="lazyload" data-original="{$vo.KP_PicUrl}"  src="/assets/img/mobile/errorpic.jpg" style="display: inline;" /></div>
+              <div class="rt">
+                <h3>{$vo.KP_Title}</h3>
+                <p>{$vo.KP_Name}</p>
+              </div>
+            </div>
+            </a></li>
+        {/volist}
+          
+        </ul>
+        <div class="homeOption flexbox"> <a href="/news/" title="更多快讯">更多快讯</a> </div>
+      </section>
+    </div>
+    <!--今日头条：结束-->
+    <div class="blank10"></div>
+    <!--推荐楼盘：开始-->
+    <div class="houseList w3 section">
+      <div class="mTitle">
+        <h2> 降价楼盘 </h2>
+      </div>
+      <ul> 
+          {volist name='index["jjlp"]' id='vo' }  
+        <li class="caiNiXiHuanList"> <a href="/house/house_details/ids/{$vo.id}">
+          <div class="img"> <img class="likeLazyload" data-original="{$vo.KP_Wjt}" src="/assets/img/mobile/errorpic.jpg" style="display: inline;" alt="{$vo.KP_LpName}"> </div>
+          <div class="txt">
+            <h3>{$vo.KP_LpName}</h3>
+            <p><span class="new">
+              {$vo.KP_Qiprice==0 ? ($vo.KP_TaoJia==0 ? "待定" : $vo.KP_TaoJia."万元/套") : $vo.KP_Qiprice."元/m²"}
+               </span><br> <span>[{$vo.CNAME}]</span> <span style=" font-size:10px; color:#aaa;">
+                                    有效期:{$vo.KP_ValidityStart}-{$vo.KP_ValidityEnd}</span>
+            </p>
+            <p>{$vo.KP_Lpdz}</p>
+            <div class="stag">  
+             {volist name=":explode(',',$vo.KP_TsType)"   id="co"   }  
+              <span class="t{$i}">{$co} </span>
+              {/volist}
+            </div>
+          </div>
+          </a> <a class="tellx" href="tel:{$vo.KP_Tel}"></a> </li>
+         {/volist} 
+          
+      </ul>
+      <div class="homeOption flexbox"> <a href="/house/?lx=2" title="更多降价楼盘">更多降价楼盘</a> </div>
+    </div>
+    <!--推荐楼盘：结束-->
+    <div class="blank10"></div>
+  </div>
+ 
+   
+  <!--优惠弹窗-->
+  
+  <div class="tanchuang" style="display: none">
+    <div class="tanchaungce"> <img src="/html/img/phonebig.png"  style="margin-bottom: 5%;">
+      <input type="hidden" name="Bm_Name3" id="Bm_Name3" value="游客"/>
+      <input type="hidden" value="新春惠购-优惠领取[Moblie]" id="Bm_Message3" name="Bm_Message3" />
+      <input type="hidden" value="3148" id="Bm_HouseID3" name="Bm_HouseID3" />
+      <input type="hidden" value="" id="Bm_Url3" name="Bm_Url3" />
+      <input type="hidden" value="新春惠购-优惠领取" id="Bm_Title3" name="Bm_Title3" />
+      <div class="dianhuas">
+        <input style="box-shadow:0 0 0 0;" name="Bm_Phone3" id="Bm_Phone3"  type="text"  placeholder="请输入您的手机号码">
+      </div>
+      <div class="youhui">
+        <input type="submit" value="领取优惠" onclick="Getperation('indexyh',3);return false;"  >
+      </div>
+      <div class="guan" onclick="$('.tanchuang').hide();"> <a><img src="/html/img/guanbi.png"></a> </div>
+      <!--<span style="font-size:12px;color:#fff;position:absolute;left:10px;top:0;z-index:9;text-shadow: 1px 1px 1px #505050;">广告</span>--> 
+    </div>
+  </div>
+  <div class="dianji"> <a> <img src="/html/img/phonesmall.png"> </a> </div>
+  
+  <!--end弹窗--> 
+  <!--底部 结束--> 
+  
+  <script type="text/javascript" src="/assets/js/frontend/mobile/swiper.min.js"></script> 
+  <script type="text/javascript" language="javascript">
+        jQuery(function ($) {
+            $(".cityChoo").click(function () {
+                if ($(".section_menu").css("display") === 'none') {
+                    $(".section_menu").attr("style", "padding-top:0;display:block;");
+                } else {
+                    $(".section_menu").attr("style", "padding-top:0;display:none;");
+                }
+                // location.href=location.protocol + "//m." + location.host.split(".")[1] + "." + location.host.split(".")[2] ;
+            });
+
+                      
+
+        });
+
+if((location.host.split(".")[0]==="m")){
+  //如果是m.xxx.com就默认展开选择区域。
+    jQuery(function ($) {
+     // $(".section_menu").attr("style", "padding-top:0;display:block;");
+      });
+}
+
+if( "全国"=="{$areatext?$areatext:'全国'}" && location.host.split(".")[0]!="m" ){
+  gochina();
+}
+
+
+        var swiper = new Swiper('.swiper-container', {
+            autoplay: 2500,
+            pagination: '.swiper-pagination',
+            paginationClickable: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30,
+            autoplayDisableOnInteraction: false
+        });
+
+
+        //补齐格式 区域 省市
+         $("[belongattr=sheng]").each(function(i,e){ 
+              
+               var len=$("[belong="+$(this).text()+"]").length;
+               maxi=(3-len%3)%3 ;
+               var str="";
+               for (var i=0;i<maxi;i++)
+                {
+                  str += "<a href=''>&nbsp; </a>"
+                }
+               $($("[belong="+$(this).text()+"]")[len-1]).after(str);  
+            }) 
+
+
+ 
+   
+ 
+ 
+function Yhz_SearchEncode(Yhz_SearchNane, Yhz_SearchText) {
+  //  var Yhz_SearchEncodeText = encodeURIComponent(Yhz_SearchText);
+     var Yhz_SearchEncodeText = Yhz_SearchText ;
+         var d = new Date();
+    d.setTime(d.getTime()+(10*1000));
+    document.cookie = Yhz_SearchNane + "=" + Yhz_SearchEncodeText + ";expires="+d.toGMTString()+";path=/";
+    setTimeout(function () { 
+      window.open("/house", "_blank");
+   }, 100);
+
+}
+function Yhz_SearchEncodejxlx(Yhz_SearchNane, Yhz_SearchText,Cityid) {
+  //  var Yhz_SearchEncodeText = encodeURIComponent(Yhz_SearchText);
+     var Yhz_SearchEncodeText = Yhz_SearchText ;
+          var d = new Date();
+    d.setTime(d.getTime()+(10*1000));
+    document.cookie = Yhz_SearchNane + "=" + Yhz_SearchEncodeText + ";expires="+d.toGMTString()+";path=/";
+    document.cookie = "City" + "=" + Cityid + ";expires="+d.toGMTString()+";path=/";
+
+    setTimeout(function () { 
+      window.open("/house", "_blank");
+   }, 100);
+
+}
+ </script> 
+
+ 
+ 

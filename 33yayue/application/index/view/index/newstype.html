@@ -1,0 +1,146 @@
+ <!--中间部分开始-->
+  <link href="__CDN__/assets/css/index/css/NewsIndex.css?v={$Think.config.site.version}" rel="stylesheet"> 
+  <!--面包屑-->
+  <div class="f_width_1200 Xyf_Bread"> <span><a href="/">首页</a></span>/ <span><a href="/news/">资讯</a></span>/ <span>楼盘热点</span> </div>
+  <!--内容主体-->
+  <input type="hidden" id="typeid" value="{$typeid}">
+  <div class="s_width_1200 NewsMain">
+    <div class="NewsMain_Left">
+      <div class="NewsMain_Head_type">
+        <ul>
+          <li {in name="$typeid" value="2"}class="Select"{/in} ><a href="/news/newstype/typeid/2">楼盘热点</a></li>
+          <li {in name="$typeid" value="5"}class="Select"{/in}><a href="/news/newstype/typeid/5">楼盘导购</a></li>
+          <li {in name="$typeid" value="7"}class="Select"{/in}><a href="/news/newstype/typeid/7">楼盘速递</a></li>
+          <li {in name="$typeid" value="10"}class="Select"{/in}><a href="/news/newstype/typeid/10">看房记</a></li>
+          <li {in name="$typeid" value="3"}class="Select"{/in}><a href="/news/newstype/typeid/3">优惠信息</a></li>
+          <li {in name="$typeid" value="1"}class="Select"{/in}><a href="/news/newstype/typeid/1">新闻资讯</a></li>
+          <li {in name="$typeid" value="11"}class="Select"{/in}><a href="/news/newstype/typeid/11">楼市</a></li>
+          <li {in name="$typeid" value="14"}class="Select"{/in}><a href="/news/newstype/typeid/14">购房联盟</a></li>
+        </ul>
+      </div>
+      <div align="center" id='loading'  style="margin-top: 20px;"><div><img src='/assets/img/throbber.gif' style="display:inline-flex;align-items: center;text-align: center;vertical-align:middle; " > 正在加载...</div></div>
+      <div class="NewsMain_Main" id="NewsMain_Mains" style="display: none;">
+        <div class="NewsMain_Item" v-for='item in data'>
+          <div class="NewsMain_Item_Left"> <a :href="detailurl(item.id)" target="_blank"><img :src="item.KP_PicUrl" alt="" /></a> </div>
+          <div class="NewsMain_Item_Right">
+            <div class="Title"> <a :href="detailurl(item.id)" target="_blank">{{item.KP_Title}}</a> </div>
+            <div class="Text"> {{item.KP_Description}} <a :href="detailurl(item.id)" target="_blank">查看详情>></a> </div>
+            <div class="Time"> {{item.KP_AddTime}} </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+    
+      </div>
+      <!--分页-->
+      <div id="Lpdata" style="display: none;"></div> 
+      <div id="total" style="display: none;"></div>
+      <div id="AspNetPager1" class="pagination" style="text-align:left;width:100%;">
+        <div class="pagination" align="right" style="width:10%;float:left;font-size:12px;"> </div>
+        <div align="left" class="pagination" style="width:90%;float:left;">
+          
+        </div>
+      </div>
+    </div>
+    <div class="NewsMain_Right">
+        <div class="TopHotApp">
+            <a class="Adviser" href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"  ><span>房产顾问</span>向Ta咨询</a>
+            <a class="Activity" href="/newsindex/2.html" target="_blank"><span>优惠活动</span>立即参与</a>
+            <a class="HouseInfo" href="javascript:void(0);" onclick='SendToPhone_Form("楼盘信息发送至手机", "PC端-资讯主页楼盘信息订阅", 0, "http://www.fangdianwang.com/news/")'><span>楼盘信息</span>发送至手机</a>
+            <div class="clear"></div>
+        </div>
+        <div class="HotNews">
+            <div class="HotNews_Head">
+                今日热点
+            </div>
+            <div class="HotNews_Main">
+              	  	{volist name="index['zxjrrd']" id="vo" key="k"   }	
+                     <a href="/news/detail/ids/{$vo['id']}" target="_blank"><span>{$k}</span>{$vo['KP_Title']}</a>
+ 					{/volist}
+                
+                
+            </div>
+        </div>
+        <!--我要看房-->
+        <div class="House_Bm">
+            <div class="House_Bm_Head">
+                我要看房
+            </div>
+            <div class="House_Bm_Main">
+                <div class="Info">全程免费接机，安排酒店住宿</div>
+                <div class="Name">
+                    您的姓名：<input type="text" id="Wykf_Name" placeholder="请输入您的姓名" />
+                </div>
+                <div class="Phone">
+                    手机号码：<input type="text" id="Wykf_Phone" placeholder="请输入手机号码" />
+                </div>
+                <div class="Area">
+                    意向楼盘：<input type="text" id="Wykf_Title" placeholder="意向楼盘或区域" />
+                </div>
+                <div class="Btn">
+                    <a href="javascript:void(0);" onclick="Wykf_Submit()">参与看房</a>
+                </div>
+            </div>
+        </div>
+        <!--优惠信息发送至手机-->
+        <div class="SendYouHui">
+            <a href="javascript:void(0);" onclick='SendToPhone_Form("海南房产的最新优惠活动信息发送至手机", "PC端-资讯主页优惠信息订阅", 0, "http://www.fangdianwang.com/news/")'>有海南房产的最新优惠活动信息，就发送到我的手机！</a>
+        </div>
+        <!--推荐团购-->
+        <div class="TjTuanGou">
+            <div class="TjTuanGou_Head">
+                团购优惠
+            </div>
+            <div class="TjTuanGou_Main">
+                  {volist name="index['tgyh']" id="vo" key="k"   }	
+                <div class="TjTuanGou_Item">
+                    <div class="TjTuanGou_Img">
+                        <a href="" target="_blank"><img src="{$vo['KP_PicUrl']}" alt="{$vo['KP_Title']}" /></a>
+                        <div class="Text">
+                            <p><a href="" target="_blank">{$vo['KP_Title']} </a></p>
+                            <p><a href="" target="_blank">【{$vo['KP_LpName']}  】-{$vo['CNAME']}  </a></p>
+                        </div>
+                    </div>
+                </div>
+               {/volist}  
+            </div>
+        </div>
+        <!--推荐楼盘-->
+        <div class="TjHouse">
+            <div class="TjHouse_Head">
+                推荐楼盘
+            </div>
+            <div class="TjHouse_Main">
+                 {volist name="index['tjlp']" id="vo" key="k"   }	
+                <a href="" target="_blank">
+                    <span>{$vo['KP_LpName']}  </span>
+                    <font>{$vo['CNAME']}</font>
+                    <small>
+
+                    		{empty name="$vo['KP_Qiprice']"}
+				              {empty name="$vo['KP_TaoJia']"}
+				               待定
+				              {else/} 
+				              	{$vo['KP_TaoJia']}<b>万元/套</b>
+				              {/empty}
+				          	{else/}
+				             {$vo['KP_Qiprice']}<b>元/m²</b>
+				          	{/empty}
+                    	 
+                    </small>
+                    <em class="clear"></em>
+                </a>
+                  {/volist}
+            </div>
+        </div>
+        <!--二维码-->
+        <div class="ScanEwm">
+            <div class="Img">
+                手机or微信扫一扫 海南楼盘信息随身带！
+            </div>
+            <div class="Text">
+                 {$Think.config.site.name}购房热线：<span>{$Think.config.site.tel}</span>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+  </div>

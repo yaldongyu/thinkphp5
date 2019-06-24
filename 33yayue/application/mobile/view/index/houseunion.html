@@ -1,0 +1,136 @@
+
+  <div style="height:42px;" class="h42"></div>
+ 
+  
+  <div class="wraper">
+    <div class="lmHead"> <img src="/assets/img/mobile/lmbg.jpg"> </div>
+  </div>
+  <!------------幻灯：开始------------>
+  <div id="lmIntro" class="lmIntro">
+    <div class="bd">
+      <div class="lmIntro1">
+        <h3>真诚服务每一位客户！</h3>
+        <p>购房联盟是阅房网携手房企推出的服务性活动，提供24小时接送机、全程接送看房、专业置业顾问答疑解惑等服务，是岛外人士在看房、买房的首选途径。报名购房联盟，购房者不仅能够更高效看房，还能够享受阅房网与开发商协议的独家优惠。</p>
+        <h4>免费咨询热线<ins class="icon-18"></ins> {$Think.config.site.tel} </h4>
+        <h5></h5>
+      </div>
+      <div class="lmIntro2">
+        <h2>省心省力得实惠</h2>
+        <h3>阅房网购房联盟24小时全程系列服务</h3>
+        <p>联盟成员可免费入住星级酒店两天</p>
+        <p>免费享受24小时专车机场接送、看房接送服务</p>
+        <p>专业置业顾问陪同看房，提供全程参谋式优质服务</p>
+        <p>购房选择余地更大，近千个优质楼盘供您甄选</p>
+        <p>联盟成员独享优惠团购折扣价格，大幅度降低购房成本</p>
+      </div>
+      <div class="lmIntro3">
+        <p><span>集结：让团购更有力量</span>报名购房联盟的会员越多，开发商给予的优惠就更大</p>
+        <p><span>便捷：看房不用满城跑</span>根据会员需求，置业顾问将为其提供有针对性的选择方案</p>
+        <p><span>看房：全程服务均免费</span>机场接送机、车接车送看房、专业置业顾问全程陪同</p>
+        <p><span>专业：让购房者更省心</span>专业置业顾问，为购房者提供一系列专业服务</p>
+      </div>
+    </div>
+    <div class="hd">
+      <ul>
+        <li><a>购房联盟简介</a></li>
+        <li><a>购房联盟服务</a></li>
+        <li><a>购房联盟优势</a></li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">TouchSlide({ slideCell: "#lmIntro", autoPlay: false });</script> 
+  <!------------幻灯：结束------------> 
+  <!------------联盟动态：开始------------>
+  <div class="liNews box">
+    <h3><cite><a href="/news/index/typeid/10">更多<ins class="icon-28"></ins></a></cite>联盟动态</h3>
+    <ul>  
+      {volist name="$index['lmdt']" id="vo"}
+      <li><a href="/news/detail/ids/{$vo.id}">{$vo.KP_Title}</a></li>
+      {/volist}
+    </ul>
+  </div>
+  <!------------联盟动态：结束------------> 
+  <!------------客服：开始------------>
+  <div class="lmClerk box">
+    <h3>购房联盟客服</h3>
+      
+      {volist name="$index['gflmkf']" id="vo"}
+      
+    <!--单元开始-->
+    <div class="lmClerkItem">
+      <div class="lmClerkPhoto"> <img data-original="{$vo.KP_Pic}" src="/assets/img/mobile/errorpic.jpg" style="display: inline;" alt="{$vo.KP_Name}" /> </div>
+      <dl>
+        <dd><strong>{$vo.KP_Name}</strong></dd>
+        <dd>籍贯：{$vo.KP_Area}</dd>
+        <dt><em>擅长区域：</em>{$vo.KP_Qy}</dt>
+      </dl>
+      <div class="lmClerkPhone"><a href="tel:{$vo.KP_Tel}"><ins class="icon-18"></ins></a></div>
+    </div>
+    <!--单元结束--> 
+     {/volist}
+    
+    
+  </div>
+  <!------------客服：结束------------> 
+  <!--联盟楼盘：开始-->
+  <div class="lmHouse box"> <span class="lmtitle">
+    <h3>购房联盟楼盘</h3>
+    </span> 
+    <!--复制楼盘：开始-->  
+    <div class="houseList w3 section">
+      <ul>
+        
+
+        {volist name="$index['lmlp']" id="vo"} 
+ 
+        <li class="caiNiXiHuanList"> <a href="/house/house_details/ids/{$vo.id}">
+          <div class="img"> <img class="likeLazyload" data-original="{$vo.KP_Wjt}" src="/assets/img/mobile/errorpic.jpg" style="display: inline;" alt="{$vo.KP_LpName}"> </div>
+          <div class="txt">
+            <h3>{$vo.KP_LpName}</h3>
+            <p><span class="new" >{$vo.KP_Qiprice },{$vo.KP_TaoJia } </span>[{$vo.CNAME}]</p>
+            <p>{$vo.KP_Lpdz}</p>
+            <div class="stag">             
+                                              
+               {$vo.KP_TsType } 
+             
+            </div>
+          </div>
+          </a> <a class="tellx" href="tel:{$vo.KP_Tel}"></a> </li>
+        {/volist}
+      </ul>
+      <div class="homeOption flexbox"> <a href="/house/" title="更多楼盘" alt="更多楼盘"> 更多联盟楼盘 </a> </div>
+    </div>
+  </div>
+  <!--联盟楼盘：结束--> 
+  
+
+  <script type="text/javascript">
+    
+    $(".stag").each(function (i,v) {
+      var a=function  (data){
+       var t="";
+       for (var i = 0, length = data.length; i < length; i ++) {
+
+        t+= "<span class=t"+i+">" + data[i]+ "</span> ";
+       }
+       return t;
+    }($(this).text().split(","));
+     this.innerHTML=a;
+    });
+
+
+$(".new").each(function (i,v) {
+      var a=function  (data){
+       var t="";
+       if(data[0]==0 && data[1]==""){        return "待定";       } 
+       if(data[0]!=0  ){        return data[0] + "元/m²";       } 
+       if(  data[1]!=""){        return data[1] + "万元/套";;       } 
+       
+    }($(this).text().split(","));
+     this.innerHTML=a;
+    });
+   
+    
+
+
+  </script>

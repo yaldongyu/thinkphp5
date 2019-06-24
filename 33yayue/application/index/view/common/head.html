@@ -1,0 +1,78 @@
+ <!--导航栏-->
+<div id="header">
+  <div class="g-wrap"> 
+   <a id="logo" href=""></a>
+   <div class="qiehuan Location"><img src="/html/images/location.png"><span>{$CityName}</span></div>
+
+      
+      <!--位置弹窗-->
+<div class="La_zhe">
+  <div class="La_container">
+      <div class="La_box">
+          <div class="hot-city">
+              <span>热门城市：</span>
+              {volist name='hotquyu' id='vo' }  
+                  <a href="http://{$vo.domain}/house">{$vo.name}</a> 
+              {/volist}
+          </div>
+         <h1>选择城市</h1>
+          <div class="city-list">
+              <ul>  <li style=" position: absolute;left: 100px;top: 82px;"> 
+                        <div class="f"><a href="http://www.{$domain}">全国</a></div>
+                        
+                      </li> 
+                      {volist name='quyu' id='vo' } 
+                      <li> 
+                        <div class="f"><a href="http://{$vo.domain}">{$vo.name}</a></div>
+                        <div class="f1">
+                            {volist name='vo.quyu' id='co'}    
+                                 <a href="http://{$co.domain}/house">{$co.name}</a>
+                            {/volist} 
+                        </div>
+                      </li>  
+                      {/volist}
+              </ul>
+          </div>
+      </div>
+    
+    <a href="#0" class="La_close"><img src="/html/images/la_close.png"></a> </div>
+</div>
+ 
+    <ul id="nav">
+      <li class="n1"><a href="/index" class="{$controllername=="index"?"on":""}"  ><span>首页</span><span class="bkg"></span></a></li>
+      <li class="n2"><a href="/house" class="{$controllername=="house"?"on":""}"><span>所有楼盘</span><span class="bkg"></span></a></li>
+      <li class="n3"><a href="/news" class="{$controllername=="news"?"on":""}"><span>楼市资讯</span><span class="bkg"></span></a></li>
+     <!--  <li class="n5"><a href="/video" class="{$controllername=="video"?"on":""}"><span>视频看房</span><span class="bkg"></span></a></li> -->
+      <li class="n4"><a href="/tuangou" class="{$controllername=="tuangou"?"on":""}"><span>特价专区</span><span class="bkg"></span></a></li>
+      <!-- <li class="n6"><a href="/zhuanti" class="{$controllername=="zhuanti"?"on":""}"><span>房产专题</span><span class="bkg"></span></a></li> -->
+       <li class="n5" style="display: none;"><a href="javascript:void(0);" class=""><span>海南房产</span><span class="bkg"></span></a></li>
+        <li class="n6" style="display: none;"><a href="javascript:void(0);" class=""><span>云南房产</span><span class="bkg"></span></a></li>
+         <li class="n7" style="display: none;"><a href="javascript:void(0);" class=""><span>广东房产</span><span class="bkg"></span></a></li>
+          <li class="n8" style="display: none;"><a href="javascript:void(0);" class=""><span>广西房产</span><span class="bkg"></span></a></li>
+      <li class="nav_telll"><span>咨询电话</span><em>{$Think.config.site.tel}</em></li>
+    </ul>
+  </div>
+</div>
+<!--end头部--> 
+<script type="text/javascript">
+      $(".n5 a").attr("href","http://hainan" +  location.hostname.substring(location.hostname.indexOf("."),100) +"/house");
+      $(".n6 a").attr("href","http://yunnan" +  location.hostname.substring(location.hostname.indexOf("."),100) +"/house");
+      $(".n7 a").attr("href","http://guangdong" +  location.hostname.substring(location.hostname.indexOf("."),100) +"/house");
+      $(".n8 a").attr("href","http://guangxi" +  location.hostname.substring(location.hostname.indexOf("."),100) +"/house");
+      $(".n1 a").attr("href","http://www" +  location.hostname.substring(location.hostname.indexOf("."),100) +"/");
+      var txt = location.hostname.substring(0,location.hostname.indexOf("."))  
+
+
+      $(".city-list a").each(function(i,t) {
+        if($(t).attr("href").indexOf(txt)>0){
+            if($(t).parent().attr("class")=="f1"){
+              $(".n5").css("display",""), $(".n6").css("display",""), 
+              $(".n7").css("display",""), $(".n8").css("display",""), 
+              $(".n3").css("display","none"), $(".n4").css("display","none");
+            }
+        }
+      })
+
+</script>
+
+

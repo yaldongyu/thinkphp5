@@ -1,0 +1,112 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/QA.js?v={$site.version}"></script> <!--全景--> <style type="text/css">
+        .dt_titlewd{margin-top: 50px;    margin-bottom: 100px;}
+        .dt_titlewd h3{float: left;font-size: 24px;color: #333;letter-spacing: 5px;font-weight: 500;}
+        .dt_titlewd h3 span{color: #ff4a00;}
+</style>
+ 
+<script type="text/javascript">
+
+    //问答提交
+    function Ask_Submit() {
+        var Ask_Phone = $.trim($("#Ask_Phone").val());
+        var Ask_Content = $.trim($("#Ask_Content").val());
+        var T_Title = ''; //标题
+
+        if (Ask_Phone == '' || !$.IsTelephone(Ask_Phone, 1)) {
+            Tip_Control("手机号码有误！", 1500);
+            return false;
+        }
+        if (Ask_Content == '') {
+            Tip_Control("请输入内容", 2000);
+            return false;
+        }
+ 
+        $.post("/house/wenda",
+            {
+                sType: 'Add',
+                T_LpID: '253',
+                Ask_Phone: Ask_Phone,
+                T_Title: T_Title,
+                Ask_Content: Ask_Content
+            },
+            function (data) {
+                if (data.info != 'Yes') {
+                    Tip_Control(data.info, 1500); 
+                    return false;
+                } else {
+                    Tip_Control('您已成功提问，我们会尽快帮您解答！', 1500); 
+
+                     
+                }
+            }, "json").error(function () {  return false; });
+    }
+
+</script>
+    
+ 
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+    
+<!--正文-->
+    <div class="w1200">
+        {include file='common/head_house' /}
+  
+     <!--我要提问-->
+      <div class="dt_titlewd">
+        <h3>我要<span>提问</span></h3>
+      </div>
+      <div class="tiwen">
+            <div class="tiwen_num">
+              <input type="text" id="Ask_Phone" placeholder="请输入手机号码" />
+            </div>
+            <div class="tiwen_center">
+              <textarea cols="60" rows="8" placeholder="请输入您的疑问" id="Ask_Content" ></textarea>
+            </div>
+
+            <div class="tiwen_tijiao"> <a href="javascript:;" onclick="Ask_Submit()"><i></i>提交我的问题</a> </div>
+        </div>
+
+        <div class="kftuan">
+            <div class="kftuan_c">
+                <h3>免费报名参团</h3>
+                <p>可享低折优惠+免费接机+安排行程+全程陪同看房</p>
+                <div class="kftuan_from">
+                <input type="text" id="lp_Name" placeholder="请输入您的姓名" />
+                <input type="text" id="lp_Phone" placeholder="请输入手机号码" />
+                <a href="javascript:void(0);" onclick="lp_Submit()" class="btn">我要报名</a> 
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <div class="dt_titlewd">
+        <h3><span>最新</span>问答</h3>
+      </div>
+        <div class="Ask_Main">
+            <ul>
+                {volist name="$index['lpwd']" id="vo" }
+                <li>
+                    <div class="Ask">
+                            <div class="AskLeft"><span>问</span></div>
+                            <div class="AskRight">{$vo.KP_Content}</div>
+                            <div class="clear"></div>
+                        <div class="Answer">
+                            <div class="AnswerLeft"><span>答</span></div>
+                            <div class="AnswerRight">{$vo.KP_HfContent}</div>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+        </div>      
+  
+</div><!--w1200 end-->
+
+ 
+
+  
+
+ 

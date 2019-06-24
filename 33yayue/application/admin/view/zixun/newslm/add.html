@@ -1,0 +1,65 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_name')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_Name" class="form-control " type='text' name="row[KP_Name]" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_cfml')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_Cfml" class="form-control " type='text' name="row[KP_Cfml]" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_title')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_Title" class="form-control " type='text' name="row[KP_Title]" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_keyword1')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_KeyWord1" class="form-control " type='text' name="row[KP_KeyWord1]" >
+        </div>
+        <label class="control-label" style="color:#888;">如：海南房价,三亚房产 (','号分开)</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_keyword2')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_KeyWord2" class="form-control " type='text' name="row[KP_KeyWord2]" >
+        </div>
+        <label class="control-label" style="color:#888;">如：海南房价,三亚房产 (','号分开)</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_description')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <textarea id="c-KP_Description" class="form-control " rows="5" name="row[KP_Description]" cols="50"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('状态')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <div class="radio">
+            <label for="row[KP_Stutas]-0"><input id="row[KP_Stutas]-0" name="row[KP_Stutas]" type="radio" value="0" /> 关闭</label> 
+            <label for="row[KP_Stutas]-1"><input id="row[KP_Stutas]-1" name="row[KP_Stutas]" type="radio" value="1" checked/> 开启</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input disabled="" class="form-control" type="text" value="{$admin.nickname}({:date('Y-m-d H:i:s')})">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

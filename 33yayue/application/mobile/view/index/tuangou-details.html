@@ -1,0 +1,86 @@
+ 
+    <div class="content">
+      <div class="wraper box"> 
+        <!--阅读：开始-->
+        <div class="newsViewBox" style="background:#fff">
+          <div class="viewHead">
+            <h2>{$index['content']['KP_Title']}</h2>
+          </div>
+          <div class="group_ms">{$index['Lpinfo']['KP_TsType']} </div>
+          <!--团购图片：开始-->
+          <div class="banner1">
+            <div id="mySwipe" style="margin: 0 auto" class="swipe">
+              <div class='swipe-wrap'>
+                <div> <a href="/house/house_details/ids/{$index['Lpinfo']['id']}" target="_blank" title="{$index['content']['KP_Title']}"><img src="{$index['content']['KP_PicUrl']}" width="100%" /></a> </div>
+              </div>
+            </div>
+          </div>
+          <!--团购图片：结束-->
+          <div class="group_name"> <a href="/house/house_details/ids/{$index['Lpinfo']['id']}"><span>{$index['Lpinfo']['KP_LpName']}<ins class="icon-28"></ins></span></a> </div>
+          <div class="group_txt">
+            <ul>
+              <li><ins class="icon-24"></ins>{$index['Lpinfo']['KP_Lpdz']}</li>
+              <li><ins class="icon-37"></ins>{$index['Lpinfo']['KP_TsType']}</li>
+            </ul>
+          </div>
+          <div class="group_bm">已有{$index['Lpinfo']['bmnum']}人报名</div>
+          <div class="group_time_bt">距离报名结束时间倒计时</div><!-- y] => 0 [m] => 8 [d] => 27 [h] => 0 [i] => 0 [s] =>  -->
+<?php
+$date1=date_create(date("Y-m-d",time())); 
+$diff=date_diff( $date1, date_create($index['content']['KP_EndTime'])   );
+$arr=collection($diff)->toArray(); 
+ 
+ ?>
+          
+          <div class="group_time"><ins class="icon-36"></ins><b id="day_show">12</b>天<b id="hour_show">5</b>时<b id="minute_show">45</b>分<b id="second_show">2</b>秒<span class="group_btn"><a href="javascript:void(0)" class="btn green" id="groupbmBtn">立即报名</a></span></div>
+          <script type="text/javascript">
+                        var intDiff = parseInt(<?php echo $arr['days']*24*3600?>); //倒计时总秒数量
+                        function timer(intDiff) {
+                        window.setInterval(function () {
+                        var day = 0,
+                        hour = 0,
+                        minute = 0,
+                        second = 0; //时间默认值        
+                        if (intDiff > 0) {
+                        day = Math.floor(intDiff / (60 * 60 * 24));
+                        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                        }
+                        if (minute <= 9) minute = '0' + minute;
+                        if (second <= 9) second = '0' + second;
+                        $('#day_show').html(day);
+                        $('#hour_show').html(hour);
+                        $('#minute_show').html(minute);
+                        $('#second_show').html(second);
+                        intDiff--;
+                        }, 1000);
+                        }
+                        $(function () {
+                        timer(intDiff);
+                        });
+                        </script>
+          <div class="group_zk">原无折扣<b>{$index['content']['KP_Yhby2']}</b></div>
+          <div class="groupbmBox sFix" id="groupbmBox">
+            <div class="groupbmForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+              <h3>团购报名</h3>
+              <span><ins class="icon-25"></ins>
+              <input name="Bm_Name" id="Bm_Name" required type="text" class="itext" placeholder="请填写姓名/称呼" />
+              </span> <span><ins class="icon-43"></ins>
+              <input name="Bm_Phone" id="Bm_Phone" required type="text" class="itext" placeholder="请填写联系方式" />
+              </span>
+              <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation('tgbm','');return false;">提交报名</a></p>
+            </div>
+            <div class="fixMask"></div>
+          </div>
+          <div class="groupBody">
+            <div class="groupBody_bt"> <span>活动详情</span> </div>
+            {$index['content']['KP_Htnr']}
+          </div>
+          <div style="BACKGROUND-COLOR: rgb(0,173,239);padding:5px 5px;COLOR: rgb(255,255,255); FONT-SIZE: 16px; FONT-WEIGHT: 700">好房不等人，赶快报名参加团购吧！(所涉及到面积均为建筑面积)</div>
+        </div>
+        
+        <!--阅读：结束--> 
+      </div>
+    </div>
+   

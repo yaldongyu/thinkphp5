@@ -1,0 +1,47 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_check')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <select id="c-KP_Check" data-rule="required" class="form-control selectpicker" name="row[KP_Check]">
+                <option value="0" {in name="0" value="$row.KP_Check"}selected{/in}>待审核</option>
+                <option value="1" {in name="1" value="$row.KP_Check"}selected{/in}>通过</option>
+                <option value="2" {in name="2" value="$row.KP_Check"}selected{/in}>不通过</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_reply')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Reply" class="form-control" rows="5" name="row[KP_Reply]" cols="50">{$row.KP_Reply}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_servicename')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_ServiceName" class="form-control " type="text" name="row[KP_ServiceName]" value="{$row.KP_ServiceName}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_servicetel')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_ServiceTel" class="form-control " type="text" name="row[KP_ServiceTel]" value="{$row.KP_ServiceTel}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">最后编辑人:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_EditUser" class="form-control" name="row[KP_EditUser]" type="text" value="{$row.KP_EditUser}">
+        </div>
+        <label class="control-label" style="color:#999;width: 120px;">
+            {$row.KP_EditTime}
+        </label>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

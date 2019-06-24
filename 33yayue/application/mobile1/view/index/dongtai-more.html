@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="tHead">
+<link rel="canonical" href="index.html" />
+<meta name="applicable-device" content="mobile" />
+<meta name="applicable-device" content="mobile" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no, email=no" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="screen-orientation" content="portrait" />
+<meta name="x5-orientation" content="portrait" />
+<meta name="full-screen" content="yes" />
+<meta name="x5-fullscreen" content="true" />
+<meta name="browsermode" content="application" />
+<meta name="x5-page-mode" content="app" />
+<meta name="msapplication-tap-highlight" content="no" />
+<link href="/assets/css/mobile/main.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/mobile/hn.css" rel="stylesheet" type="text/css" />
+<script src="/assets/js/frontend/mobile/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/assets/js/frontend/mobile/Kaipie.js%3Fskin=aero" type="text/javascript"></script>
+<script src="/assets/js/frontend/mobile/base.js" type="text/javascript"></script>
+<title>国瑞云龙湖咨询点评_阅房网</title>
+<meta name="keywords" content="国瑞云龙湖咨询点评" />
+<meta name="description" content="国瑞云龙湖咨询点评" />
+<script type="text/javascript" language="javascript">
+    var WWWURL = "/";
+    var deviceHeight = $(window).height(); //浏览器当前窗口可视区域高度
+    $(document).ready(function () {
+        $("img").bind("error", function () {
+            this.src = "/images/errorpic.jpg";
+        });
+    });
+
+    function goZycs() {
+        $.post(window.location.pathname,
+	{
+	    sType: 'zy',
+	    oLpID: '3152'
+	},
+	function (data) {
+	    if (data.info != 'Yes') {
+	        kp.dialog.alert(data.info);
+	        return false;
+	    } else {
+	        kp.dialog.tips('<span style="color:#090">感谢您的支持</span>', 1.5);
+	        setTimeout(function () {
+	            window.location = window.location;
+	        }, 1200);
+	    }
+	}, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+
+    function Getperation2() {
+        var Bm_Name = $.trim($("#Bm_Name2").val());
+        var Bm_Phone = $.trim($("#Bm_Phone2").val());
+        var Bm_Message = $.trim($("#Bm_Message2").val());
+        var Bm_HouseID = $.trim($("#Bm_HouseID2").val());
+        var Bm_Url = $.trim($("#Bm_Url2").val());
+        var Bm_Title = $.trim($("#Bm_Title2").val());
+        if (Bm_Phone == '' || !$.IsTelephone(Bm_Phone, 1)) {
+            kp.dialog.alert("请填写正确的手机号码");
+            return false;
+        }
+
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'Add',
+	        Bm_Name: Bm_Name,
+	        Bm_Phone: Bm_Phone,
+	        Bm_Message: Bm_Message,
+	        Bm_HouseID: Bm_HouseID,
+	        Bm_Url: Bm_Url,
+	        Bm_Title: Bm_Title
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            kp.dialog.alert(data.info);
+	            return false;
+	        } else {
+	            kp.dialog.tips('您已成功提交，最新降价、优惠活动信息第一时间通知您！', 1.5);
+	            setTimeout(function () {
+	                window.location = window.location;
+	            }, 1200);
+	        }
+	    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+	}
+
+	function Getperation4() {
+	    var Bm_Name = $.trim($("#Bm_Name4").val());
+	    var Bm_Phone = $.trim($("#Bm_Phone4").val());
+	    var Bm_Message = $.trim($("#Bm_Message4").val());
+	    var Bm_HouseID = $.trim($("#Bm_HouseID4").val());
+	    var Bm_Url = $.trim($("#Bm_Url4").val());
+	    var Bm_Title = $.trim($("#Bm_Title4").val());
+	    if (Bm_Phone == '' || !$.IsTelephone(Bm_Phone, 1)) {
+	        kp.dialog.alert("请填写正确的手机号码");
+	        return false;
+	    }
+
+	    $.post('/Baoming.aspx',
+	    {
+	        sType: 'Add',
+	        Bm_Name: Bm_Name,
+	        Bm_Phone: Bm_Phone,
+	        Bm_Message: Bm_Message,
+	        Bm_HouseID: Bm_HouseID,
+	        Bm_Url: Bm_Url,
+	        Bm_Title: Bm_Title
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            kp.dialog.alert(data.info);
+	            return false;
+	        } else {
+	            kp.dialog.tips('您已成功提交，我们尽快致电给您！', 1.5);
+	            setTimeout(function () {
+	                window.location = window.location;
+	            }, 1200);
+	        }
+	    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+	}
+</script>
+<style type="text/css"></style>
+</head>
+<body class="page">
+<form name="form1" method="post" action="/house/3152/dongtai/?id=3152" id="form1">
+  
+  <div class="oldhouse">
+    <header class="bot_menu">
+      <div class="hLeft"> <a href="javascript:window.history.back();" class="ico_back"></a> </div>
+      <div class="hCenter"> <a href="/house/3152.html"><span id="jqTitle">国瑞云龙湖</span></a> </div>
+      <script type="text/javascript" language="javascript">
+                    $(function () {
+                        var jqTitle = $("#jqTitle").text();
+                        if (jqTitle == "[" + "title" + "]") {
+                            $("#jqTitle").text("");
+                        }
+                    });
+                </script>
+      <div class="hIcon"> <a href="/navlist/1/" id="show_redrict"><i class="ico-nav"></i></a> </div>
+    </header>
+    <div class="content"> 
+      <!--楼盘详情页头：开始-->
+      <div class="pageHead">
+        <div class="phPic"> <span><a href="/house/3152.html"><img src="/assets/img/mobile/Max_201902101600269951.jpg" alt="国瑞云龙湖" /></a></span> </div>
+        <div class="phData"> <span>起价：<b>8600</b>元/㎡&nbsp;&nbsp;<em class="t0">在售</em></span> <span><ins class="icon-37"></ins>公寓、别墅</span> <span><ins class="icon-24"></ins>海南省海口市琼山区云龙镇海榆南路168号</span> </div>
+        <div class="phSide"> <span><a href="/house/3152/ditu/" ><ins class="icon-7"></ins>地图</a></span> <span><a href="/tools/"  ><ins class="icon-55"></ins>算房贷</a></span> <span><a href="javascript:void(0);" id="tjBtn"><ins class="icon-31"></ins>降价通知</a></span> </div>
+      </div>
+      
+   
+      <div class="pageStat"> <span><a href="javascript:void(0)" id="tjBtn1"><ins class="icon-63"></ins> 降价通知</a></span> <span><a href="javascript:void(0);" id="tjBtn2"><ins class="icon-60"></ins> 认筹通知</a></span> 
+       
+      </div>
+      <!--楼盘详情统计：结束--> 
+      
+      <!--楼盘详情页头：结束--> 
+      <!--楼盘详情页头：结束-->
+      <div class="pagePanel"> 
+        <!--楼盘动态：开始-->
+        <div id="pageNews" class="pageNews" style="padding-bottom:45px;">
+          <h3 class="mt">楼盘动态</h3>
+          <a href="/news/29716.html" class="pnItem">
+          <dl>
+            <dt>国瑞云龙湖公寓、别墅在售 均价约9000-17000元/平</dt>
+            <dd><em>来源∶</em><em>时间∶2019/2/10 16:49:03</em></dd>
+            <dd><span>国瑞云龙湖项目公寓、别墅在售，户型建面有61-81-103㎡高层度假公寓，均价约9000元/平。</span></dd>
+          </dl>
+          </a> 
+          
+          <!--翻页：开始---------------------->
+          <div style="margin-bottom:40px;"> </div>
+          <!--翻页：结束----------------------> 
+        </div>
+        <!--楼盘动态：结束--> 
+      </div>
+    </div>
+  </div>
+  <!--降价通知：开始-->
+  <div class="tjBox sFix" id="tjBox">
+    <div class="tjForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+      <h3>降价通知</h3>
+      <em>将楼盘最新数据信息以及最新降价、优惠活动信息第一时间通知您！</em> <span><ins class="icon-43"></ins>
+      <input name="Bm_Phone2" id="Bm_Phone2" required type="text" class="itext" placeholder="请填写联系方式" />
+      </span>
+      <input type="hidden" name="Bm_Name2" id="Bm_Name2" value="游客"/>
+      <input type="hidden" value="国瑞云龙湖楼盘动态-降价通知[Moblie]" id="Bm_Message2" name="Bm_Message2" />
+      <input type="hidden" value="3152" id="Bm_HouseID2" name="Bm_HouseID2" />
+      <input type="hidden" value="/house/3152/dongtai/" id="Bm_Url2" name="Bm_Url2" />
+      <input type="hidden" value="国瑞云龙湖楼盘动态-降价通知" id="Bm_Title2" name="Bm_Title2" />
+      <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation2();return false;">提交</a></p>
+    </div>
+    <div class="fixMask"></div>
+  </div>
+  <!--降价通知：结束--> 
+  <!--领取优惠：开始-->
+  <div class="lqyhBox sFix" id="lqyhBox">
+    <div class="lqyhForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+      <h3>领取优惠</h3>
+      <em>专人致电，领取优惠</em> <span><ins class="icon-43"></ins>
+      <input name="Bm_Phone4" id="Bm_Phone4" required type="text" class="itext" placeholder="请填写联系方式" />
+      </span>
+      <input type="hidden" name="Bm_Name4" id="Bm_Name4" value="游客"/>
+      <input type="hidden" value="国瑞云龙湖楼盘动态-领取优惠[Moblie]" id="Bm_Message4" name="Bm_Message4" />
+      <input type="hidden" value="3152" id="Bm_HouseID4" name="Bm_HouseID4" />
+      <input type="hidden" value="/house/3152/dongtai/" id="Bm_Url4" name="Bm_Url4" />
+      <input type="hidden" value="国瑞云龙湖楼盘动态-领取优惠" id="Bm_Title4" name="Bm_Title4" />
+      <div class="subscribe-protocol" style="display: block;">报名即表示您同意<a href="/subscribe.html">《阅房网用户服务协议》</a></div>
+      <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation4();return false;">提交</a></p>
+    </div>
+    <div class="fixMask"></div>
+  </div>
+  <!--领取优惠：结束--> 
+  <!--底部导航：开始-->
+  <div class="photoNav" style="position:fixed ;left:0;right:0; bottom:46px; width:100%; margin:0 auto; z-index:888;"> <span class="menuItem"><a href="/house/3152.html">返回详情页</a></span> <span class="menuItem"><a href="javascript:void(0);" id="lmbmBtn">预约看房</a></span> <span class="menuItem"><a href="javascript:void(0);" id="lqyhBtn"><ins class="icon-34"></ins>领取优惠</a></span>
+    <div class="lmbmBox sFix" id="lmbmBox">
+      <div class="lmbmForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+        <h3>预约看房</h3>
+        <span><ins class="icon-25"></ins>
+        <input name="Yy_Name" id="Yy_Name" required type="text" class="itext" placeholder="请填写姓名/称呼" />
+        </span> <span><ins class="icon-43"></ins>
+        <input name="Yy_Pone" id="Yy_Phone" required type="text" class="itext" placeholder="请填写手机" />
+        </span>
+        <textarea class="itext" placeholder="其他备注或说明" name="Yy_Message" id="Yy_Message"></textarea>
+        <p><a href="javascript:void(0);" class="btn blue" onclick="Yybm();return false;">提交报名</a></p>
+      </div>
+      <div class="fixMask"></div>
+    </div>
+  </div>
+  <!--底部导航：结束-->
+  <div id="footer" class="pageMemu">
+    <ul>
+      <li style="width:20%"><a href="/house/3152/huxing/"><ins class="icon-9"></ins>户&nbsp;型&nbsp;图</a></li>
+      <li style="width:20%"><a href="/house/3152/xiangce/"><ins class="icon-17"></ins>楼盘相册</a></li>
+      <li style="width:30%"><a href="tel:{$Think.config.site.tel}" class="pageTel"><ins class="icon-18"></ins>免费通话</a></li>
+      <li style="width:30%"><a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="pageWeixin"><ins class="icon-53"></ins>在线客服</a></li>
+    </ul>
+  </div>
+  <div id="fade" class="black_overlay"></div>
+</form>
+<!--商务通201709--> 
+<script language="javascript" src="http://swt.0898yue.com/JS/LsJS.aspx?siteid=MLD43635825&float=1&lng=cn"></script> 
+<!--离线宝--> 
+<script>    var _hmt = _hmt || []; (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?8320cf5ea91dc597f833e64f86642787"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script> 
+<script type="text/javascript" charset="utf-8" async src="../../../../lxbjs.baidu.com/lxb.js%3Fsid=6315208"></script>
+</body>
+</html>
+<script type="text/javascript">
+    function hide() {
+        document.getElementById("lmbmBox").style.display = 'none';
+        document.getElementById("tjBox").style.display = 'none';
+        document.getElementById("lqyhBox").style.display = 'none';
+    }
+    function Yybm() {
+        var Yy_Name = $.trim($("#Yy_Name").val());
+        var Yy_Phone = $.trim($("#Yy_Phone").val());
+        var Yy_Message = $.trim($("#Yy_Message").val());
+        if (Yy_Name == '') {
+            kp.dialog.alert("请填写姓名/称呼");
+            return false;
+        }
+        if (Yy_Phone == '' || !$.IsTelephone(Yy_Phone, 1)) {
+            kp.dialog.alert("请输入正确的手机号码");
+            return false;
+        }
+
+        kp.dialog.confirm('你确定要报名吗？', function () {
+            $.post('/Yybaoming.aspx',
+			    {
+			        sType: 'Add',
+			        Yy_Name: Yy_Name,
+			        Yy_Phone: Yy_Phone,
+			        Yy_Message: Yy_Message
+			    },
+			    function (data) {
+			        if (data.info != 'Yes') {
+			            kp.dialog.alert(data.info);
+			            return false;
+			        } else {
+			            kp.dialog.tips('您已预约成功，我们会尽快联系您！请您等待！', 1.5);
+			            setTimeout(function () {
+			                kp.dialog.opener.window.location = kp.dialog.opener.window.location;
+			                kp.dialog.close();
+			            }, 1200);
+			        }
+			    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+        }, function () { });
+    }
+</script>

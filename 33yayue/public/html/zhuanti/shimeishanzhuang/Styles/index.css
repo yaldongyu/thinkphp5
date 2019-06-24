@@ -1,0 +1,77 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #950d13; border-bottom: solid 1px #950d13;}
+/*banner*/
+.banner{ position: relative; background: url(../img/banner01.jpg) no-repeat center center; width: 100%; height: 685px;}
+.banner a{ width: 290px; position: absolute; left: 50%; margin-top: 570px; margin-left: -145px; background: #950d13; color: #fff; text-align: center; line-height: 64px; font-size: 24px;}
+.banner a:hover{ color: #FBAF32;}
+/*正文*/
+.center{ width: 100%;}
+.center .tab_bg{ margin-bottom: 56px;}
+.tab_img{ width:1200px; margin: 0 auto;}
+.tab01{ background: url(../img/tab01.jpg) no-repeat; width: 1200px; height: 179px;}
+.tab02{ background: url(../img/tab02.jpg) no-repeat; width: 1200px; height: 203px;}
+.text01{ background: url(../img/img01.jpg) no-repeat; width: 1200px; height: 558px;}
+.tab03{ background: url(../img/tab03.jpg) no-repeat; width: 1200px; height: 220px;}
+.text02{ background: url(../img/img02.jpg) no-repeat; width: 1200px; height: 565px;}
+.tab04{ background: url(../img/tab04.jpg) no-repeat; width: 1200px; height: 233px;}
+.text03{ background: url(../img/img03.jpg) no-repeat; width: 1200px; height: 340px;}
+
+/*洋房*/
+.tab05{ background: url(../img/tab05.jpg) no-repeat; width: 400px; height: 530px; float: right;}
+.huxing_box{ width: 1200px; height: 530px; margin: 0 auto; margin-bottom: 56px; position: relative;}
+.huxing{ width: 800px; height: 530px; float: left; overflow: hidden; position: relative;}
+.huxing_img{ height: 1076px; width: 4800px; position: relative; left: -800px;}
+.huxing_img .img{ float: left;}
+.arrow{ background: url(../img/arrow_r.png) no-repeat 100%; width: 80px; height: 80px; position: absolute; right: 0; top: 50%; margin-top: -40px; cursor: pointer;}
+.huxing_box .arrow_l{ left: 0; background: url(../img/arrow_l.png) no-repeat;}
+.huxing_box a{ width: 150px; background: #fff; position: absolute; right: 120px; bottom: 30px; color: #950d13; font-size: 16px; text-align: center; line-height: 34px;}
+.huxing_box a:hover{ background: #E1E1E1; color: #950d13;}
+/*别墅*/
+.tab06{ background: url(../img/tab06.jpg) no-repeat; width: 400px; height: 530px; float: left;}
+.bieshu a{ width: 150px; background: #950d13; position: absolute; left: 120px; bottom: 30px; color: #fff; font-size: 16px; text-align: center; line-height: 34px;}
+.bieshu a:hover{ background: #ac242a; color: #fff;}
+
+/*底部*/
+.bottom{ width: 100%; height: 260px; background: #950d13; margin-bottom: 80px;}
+.bottom_text{ text-align: center; position: relative;}
+.bottom_text h1{ color: #fff; font-size: 30px; letter-spacing:5px; padding-top: 30px;}
+.bottom_text h2{ color: #fff; font-size: 16px; letter-spacing:3px; line-height: 30px;}
+.bottom_text a{ background: #fff; color: #950d13; font-size: 18px; line-height: 50px; width: 324px; position: absolute; margin-left: -162px; margin-top: 20px;}
+.bottom_text a:hover{ color: #00209E;}
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

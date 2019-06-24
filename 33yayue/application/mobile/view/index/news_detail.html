@@ -1,0 +1,102 @@
+<div class="content">
+             
+             <!--动态阅读：开始-->
+  
+   {if condition="$index['content']['KP_LpID']>0"}
+       <div class="pageHead">
+         <div class="phPic"> 
+          <span><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><img src="{$index["LpInfo"]["KP_Logo"]}" alt="{$index["LpInfo"]["KP_LpName"]}" /></a>
+          </span> 
+        </div>
+
+        <div class="phData">  
+          <span>{$index["LpInfo"]["KP_Juprice"]==0 ? ($index["LpInfo"]["KP_TaoJia"]==0 ? "<b>待定</b>" : "总价：<b>".$index["LpInfo"]["KP_TaoJia"]."</b>万元/套") : "均价：<b>".$index["LpInfo"]["KP_Juprice"]."</b>元/m²"}&nbsp;&nbsp; <em class="t0">{$index["LpInfo"]["KP_Xszt"]==0?"在售":($index["LpInfo"]["KP_Xszt"]==1?"待售":"售罄")}</em></span>   <span><ins class="icon-37"></ins>{$index["LpInfo"]["KP_Wylx"]} </span> <span><ins class="icon-24"></ins> {$index["LpInfo"]["KP_Lpdz"]} </span> 
+        </div>
+        <div class="phSide"> 
+          <span> </span> 
+        </div>
+      </div>
+      <!--楼盘详情统计：开始-->
+      <div class="pageStat"> <span><a href="javascript:void(0)" id="tjBtn1"><ins class="icon-63"></ins> 降价通知</a></span> <span><a href="javascript:void(0);"  id="tjBtn2"><ins class="icon-60"></ins> 认筹通知</a></span> 
+     </div>
+
+      <div class="lpitem"> <a data-tag="1" href="tel:{$index["LpInfo"]["KP_Tel"]}" class="lptel pad10" id="lptel">
+        <p class="telinfo"> <span class="num">{$index["LpInfo"]["KP_Tel"]}</span>最新政策，更多优惠详情，请致电售楼处 </p>
+        <p class="phone"></p>
+        </a> 
+      </div>
+
+  {/if}
+   <div class="wraper box">
+
+                        <div class="newsViewBox" style="background:#fff;margin-top:10px;">
+                          <div class="viewHead">
+                            <h2>{$index['content']['KP_Title']}</h2>
+                            <p>
+                             <!--  <em>编辑：{$index['content']['KP_AddUser']}</em>       -->
+                              <em>时间：{$index['content']['KP_AddTime']}</em>
+                             <!--  <em>{$index['content']['KP_Ly']==""?"来源:".$index['content']['KP_Ly']:""}</em>   -->    
+                              <em></em>
+                              <em class="dongt">        <a href="javascript:void(0)" id="tjBtn33">          <i>
+                                    <img src="/assets/img/mobile/dt.gif"></i>有新动态通知我</a>      </em>    </p>
+                          </div>
+                          <div class="viewBody">  {$index['content']['KP_Nr']}  </div>
+                          <div class="view-rrs" style="background: url(/assets/img/mobile/tx-bg.png) no-repeat;width: 100%;height: auto; background-size:100% 100%; text-align: center;margin-top: 35px;margin-bottom: 20px;">
+                            {if condition="$index['content']['KP_LpID']>0"}
+                            <div class="tx-img">  <img src="{$index["LpInfo"]["KP_Logo"]}"></div>    <div class="tx-title"></div>
+                            {/if}
+                            <h5>订阅最新购房优惠信息</h5>
+                            <div>
+                              <input type="text" name="Bm_Phone3" id="Bm_Phone33" placeholder="请输入您的手机号" class="inp">
+                              <input type="button" value="优惠信息" class="btn blue" onclick="Getperation('newsyh',33);return false;" style="font-size: 1.0rem;border: 0.5px solid #fff;background-color: #23acfd">
+                              <input type="hidden" name="Bm_Name3" id="Bm_Name33" value="游客">
+                              <input type="hidden" value="{$index['content']['KP_Title']}-订阅[Moblie]" id="Bm_Message33" name="Bm_Message3">
+                              <input type="hidden" value="" id="Bm_HouseID33" name="Bm_HouseID3">
+                              <input type="hidden" value="" id="Bm_Url33" name="Bm_Url3">
+                              <input type="hidden" value="{$index['content']['KP_Title']}-订阅" id="Bm_Title33" name="Bm_Title3"></div>
+                            <div class="tx-hd">———————— 互动 ————————</div>
+                             {if condition="$index['content']['KP_LpID']>0"}
+                            <div class="tx-button">      
+                                  <a data-tag="1" href="tel:{$index['LpInfo']['KP_Tel']}" class="lptel pad10" id="A2">
+                                    <i style="top: -1px"><img src="/assets/img/mobile/tx-qd.png"></i>售楼处</a>&nbsp;&nbsp;or&nbsp;&nbsp;
+                                  <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="pageWeixin">
+                                    <i>          <img src="/assets/img/mobile/tx-yh.png"></i>在线咨询</a>
+                              </div>
+                               {/if}
+                          </div>
+                        <div class="viewNext">
+                            {if condition="$index['prev']"}
+                            	<span><a href="/news/detail/ids/{$index['prev']['id']}" class="btn"><ins class="icon-29"></ins>上一篇：{$index['prev']['KP_Title']}</a></span>
+							             {/if}
+                            {if condition="$index['next']"}
+                            <span><a href="/news/detail/ids/{$index['next']['id']}" class="btn"><ins class="icon-28"></ins>下一篇：{$index['next']['KP_Title']}</a></span>
+                       		{/if}
+                        </div>
+                        <div class="fx"> 声明：<br>
+                        ●凡注明为其他媒体来源的信息，均为转载自其他媒体，其目的在于促进信息交流，并不代表本网赞同其观点或对其内容真实性负责，如涉及到面积均为建筑面积。<br>
+                        ●本站转载时会标明出处，版权归原载媒体和作者所有。如所载内容涉及版权问题，请及时和本站联系。<br>
+                        </div>
+                    </div>
+                    <!--动态阅读：结束-->
+                </div>
+            </div>
+
+
+
+
+ 
+            <div class="tjBox sFix" id="tjBox" style="display: none;">
+              <div class="tjForm">
+                <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+                <h3>动态通知</h3>
+                <em>将楼盘最新数据信息以及最新降价、优惠活动信息第一时间通知您！</em>
+                <span><ins class="icon-43"></ins><input name="Bm_Phone2" id="Bm_Phone2" required="" type="text" class="itext" placeholder="请填写联系方式"></span>
+                <input type="hidden" name="Bm_Name2" id="Bm_Name2" value="游客">
+                <input type="hidden" value="{$index['content']['KP_Title']}-降价通知[Moblie]" id="Bm_Message2" name="Bm_Message2">
+                <input type="hidden" value="" id="Bm_HouseID2" name="Bm_HouseID2">
+                <input type="hidden" value="/news/detail/ids/" id="Bm_Url2" name="Bm_Url2">
+                <input type="hidden" value="{$index['content']['KP_Title']}-降价通知" id="Bm_Title2" name="Bm_Title2">
+                <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation('',2)">提交</a></p>
+              </div>
+              <div class="fixMask"></div>
+            </div>

@@ -1,0 +1,209 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<!--户型-->
+<link href="__CDN__/assets/css/index/baguettebox.min.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/baguettebox.min.js?v={$site.version}"></script> 
+ 
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+  
+<!--正文-->
+  <div class="w1200">
+  {include file='common/head_house' /}
+  
+  <!--正文-->
+ 
+    <div class="find_tab">
+  
+      <div class="product-wrap" style="width: 880px;float: left;">  
+       <!--全部-->
+        <div class="product show">
+          <ul>
+            <li>
+        <div class="hx_list">
+          <ul class="baguetteBoxOne">
+              {volist name="$index['rows']" id="vo"}
+                  <li class="xc_tu" style="display: {$i<12?"block":"none"}">   
+                      <a href="/house/huxing_detail/ids/{$vo['KP_LpID']}/hxid/{$vo['id']}" target="_blank" ><img srcdata="{$vo.KP_PicUrl}" src="" 
+                        datacaption="{$vo['KP_Hxbh']}"> </a>
+                      <p>{$vo.KP_Hx}</p><div class="tu_fu_title">{$vo.KP_Hxbh}</div>
+                  </li> 
+              {/volist} 
+          </ul>
+        </div>
+            </li>
+          </ul>
+        </div>
+    {volist name="$index['Tyeps']" id="vo"}
+     
+        <div class="product">
+          <ul>
+                <li>
+                    <div class="hx_list">
+                      <ul class="baguetteBoxOne">
+                        {volist name="$index['rows']" id="co"}
+                         {if condition="$co.KP_Type == $vo.KP_Type"}
+                              <li class="xc_tu" style="display: none">   
+                                  <a href="/house/huxing_detail/ids/{$co['KP_LpID']}/hxid/{$co['id']}" target="_blank" > <img srcdata="{$co.KP_PicUrl}" src="" datacaption="{$co['KP_Hxbh']}"> </a>
+                                  <p>{$co.KP_Hx}</p> <div class="tu_fu_title">{$co.KP_Hxbh}</div>
+                              </li>  
+                           {/if}
+                        {/volist}
+                      </ul>
+                    </div>
+                </li>
+          </ul>
+        </div>
+
+    {/volist}
+ 
+
+
+       <!--分页-->
+        <ul class="page" maxshowpageitem="10" pagelistcount="1"  maxitemperpage="12" id="page">
+        </ul>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="f_right_nav">
+        <div class="f_title">
+          <ul class="f_title-list">
+            <li class="on"><span>全部</span><span>{$index['total']}</span></li>
+            {volist name="$index['Tyeps']" id="vo"}
+                <li><span>{$vo.name}</span><span>{$vo.num}</span></li>
+             {/volist}
+          </ul>
+        </div>
+        
+        <div class="nav_qj"><a href="javascript:void(0);">720°VR全景看房</a></div> 
+        <div class="dt_dingy" style="width: 300px;margin-right: 0;height: 200px;">
+          <h3 style="background: -webkit-linear-gradient(left, #598cf1 , #F7E008);background: -o-linear-gradient(right, #598cf1 , #F7E008);background: -moz-linear-gradient(right, #598cf1 , #F7E008);background: linear-gradient(to right, #598cf1 , #F7E008);">更多图片获取</h3>
+            <!--<p>担心错过楼盘开盘？</p>
+            <p>担心不能第一时间获取楼盘新动态?</p>
+            <p>立即订阅，楼盘一手情报抢先知道！</p>-->
+          <div class="dt_input">
+            <input type="text" id="SendPhone" placeholder="请输入手机号码">
+              <input type="hidden" id="Send_Title" value="户型主页订阅" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-订阅" >
+                
+            <a href="javascript:;" onclick="SendToPhone_Submitdivname('dt_input')" style="border-radius: 0;margin-left: -17px;width: 260px;height: 40px;line-height: 40px">一键订阅</a> 
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  
+    </div><!--w1200 end-->
+  
+  
+   <script type="text/javascript">
+     $(function(argument) {
+      lazeloadpic();
+     })
+
+      // var totalpage = parseInt(data.total)/Lpdata.pagesize ;
+      //           totalpage =  parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+
+                // js动态异步加载js
+      var scripts = [  "__CDN__/assets/js/frontend/index/page.js" ];
+      var GG = {"kk":function(pageno){
+        if(GG.ff!=0){ gotopage(pageno) ; }
+        GG.ff=1;
+      },"ff":0}  
+      showpagexc(0);
+  
+      function lazeloadpic() {
+        xcli = $(".xc_tu") ;
+        for (var i = 0; i < xcli.length; i++) {
+         if(xcli.eq(i).css("display")!="none"){
+          xcli.eq(i).find("img").attr("src",xcli.eq(i).find("img").attr("srcdata").replace("Max","Min"));
+          }
+        }
+      }
+      function gotopage(pageno) {
+        // console.log(pageno);
+        var maxitemperpage = $(".page").attr("maxitemperpage");
+        var index = $('.f_title-list li').index($('.f_title-list').find(".on"))  ;
+        var myli = $(".baguetteBoxOne").eq(index).find("li") ;
+        for (var i = 0; i < myli.length; i++) {
+          $(myli[i]).attr("style","display:none");
+          if(i>=(pageno-1)*maxitemperpage && i<pageno*maxitemperpage){ $(myli[i]).attr("style","display:block");}
+        }
+        lazeloadpic();
+      }
+
+      function showpagexc(index) {
+          parallelLoadScripts(scripts,function(){ 
+              setTimeout(function() { 
+                  var maxitemperpage = $(".page").attr("maxitemperpage");
+                  var total=$(".baguetteBoxOne").eq(index).find("li").length ;
+                  var  totalpage = total/maxitemperpage ;
+                  totalpage = parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+                  GG.ff=1;
+                  $("#page").initPage(totalpage,1,GG.kk); 
+                  lazeloadpic();
+                  // var myli = $(".baguetteBoxOne").eq(index).find("li") ;
+                  // for (var i = 0; i < myli.length; i++) {
+                  //   if(i>5){ $(myli[i]).attr("style","display:none");}
+                  // }
+
+              },0);  
+          }); 
+      }
+            
+   </script>
+ 
+ 
+
+<!-- //遮罩 -->
+ 
+<!-- //图片 -->
+<style type="text/css">
+#fs-loader,#fs-prev,#fs-next,#fs-close{background-color:black;color:white;font-weight:bold;cursor:pointer;line-height:1em;}
+#fs-close{top:1em;right:1em;padding:35px !important;font-size:32px !important;background-color:rgba(0,0,0,0.5);}
+#fs-prev{left:1em;}#fs-next{right:1em;}
+#fs-prev:hover,#fs-next:hover,#fs-close:hover{color:#000;background-color: rgba(255,255,255,0.3);}
+ 
+#fs-caption{position: absolute;bottom:30px;text-align:center;width:100%;left:0;line-height:1em;display:none; font-size:22px !important;}
+#fs-caption span{ padding:5px 15px;background-color:#FFF; font-size:22px; font-family:'Microsoft YaHei',Arial, sans-serif;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px; }
+#fs-loader,#fs-prev,#fs-next,#fs-close{padding:10px;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px; }
+#fs-prev,#fs-next{z-index: 92; position: absolute;padding:60px 35px;top:50%;margin-top:-55px; font-size:30px !important;}
+#fs-prev .icon11{clear:both;position:absolute;left:20px;top:50%;margin-top:-20px;width:26px;height:40px;background:url(/assets/img/index/Prev.png) no-repeat center center;}
+#fs-next .icon12{clear:both;position:absolute;left:23px;top:50%;margin-top:-20px;width:26px;height:40px;background:url(/assets/img/index/Next.png) no-repeat center center;}
+#fs-close .icon13{clear:both;position:absolute;right:23px;top:0%;margin-top:20px;width:26px;height:26px;background:url(/assets/img/index/Close.png) no-repeat center center;} 
+
+</style>
+
+ <script type="text/javascript">
+    /*楼盘相册页*/
+
+$(function () {
+ //切换
+ $('.f_title-list li').click(function () {
+   var liindex = $('.f_title-list li').index(this);
+   $(this).addClass('on').siblings().removeClass('on');
+   $('.product-wrap div.product').eq(liindex).fadeIn(150).siblings('div.product').hide();
+   var liWidth = $('.f_title-list li').width();
+   $('.find_tab .f_title-list p').stop(false, true).animate({
+     'left': liindex * liWidth + 'px'
+   }, 300);
+   showpagexc(liindex);
+ });
+});
+  
+ </script>
+  
+ 
+  
+ 

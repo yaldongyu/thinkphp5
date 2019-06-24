@@ -1,0 +1,135 @@
+﻿/*别墅主页*/
+.BannerCont{ width:100%; position:relative;}
+/*.Banner{ width:100%; height:100%; position: relative; overflow:hidden;}*/
+.BannerCont img{ width:100%; height: auto;}
+.Banner ul{ width:100%; height:100%;}
+.Banner ul li { float: left; width:100%; height:100%; }
+.Banner ul li a{ display:block; width:100%; height:100%;}
+.Banner ul li a img{ width:100%; height:100%;}
+.Banner .arrow { position: absolute; top: 270px;}
+.Banner #al { left: 15px;}
+.Banner #ar { right: 15px;}
+.Banner .dots { position: absolute; left: 48%; bottom: 10px;}
+.Banner .dots li { display: inline-block; width: 10px; height: 10px; margin: 0 4px; text-indent: -999em; border: 2px solid #fff; border-radius: 6px; cursor: pointer; opacity: .4; -webkit-transition: background .5s, opacity .5s; -moz-transition: background .5s, opacity .5s; transition: background .5s, opacity .5s;}
+.Banner .dots li.active { background: #fff; opacity: 1;}
+
+/*购房流程*/
+.BuyProcess_Cont{ background:#f9f9f9; width:100%; padding:10px 0;}
+.BuyProcess{ height:120px; background:#f9f9f9;}
+.BuyProcess a{ display:block; float:left; width:262px; height:120px; padding:0 15px; padding-left:72px;}
+.BuyProcess font{ display:block; float:left; width:50px; height:120px; background:url(../Images/icon-right.png)no-repeat; background-size:30px 30px; background-position:center center;}
+.BuyProcess .process1{ background:url(../Images/icon-baoming.png)no-repeat; background-size:60px 60px; background-position:5px center;}
+.BuyProcess .process2{ background:url(../Images/icon-jieji.png)no-repeat; background-size:60px 60px; background-position:5px center;}
+.BuyProcess .process3{ background:url(../Images/icon-car.png)no-repeat; background-size:60px 60px; background-position:5px center;}
+.BuyProcess .process4{ background:url(../Images/icon-vip.png)no-repeat; background-size:60px 60px; background-position:5px center;}
+.BuyProcess a span{ display:block; font-size:18px; margin-top:30px; color:#666;}
+.BuyProcess a small{ display:block; margin-top:10px; font-size:14px; color:#666;}
+
+.BuyProcess .process1:hover{ border:1px solid #f69900; border-bottom:4px solid #f69900;}
+.BuyProcess .process2:hover{ border:1px solid #82d02e; border-bottom:4px solid #82d02e;}
+.BuyProcess .process3:hover{ border:1px solid #dd84c5; border-bottom:4px solid #dd84c5;}
+.BuyProcess .process4:hover{ border:1px solid #eb6876; border-bottom:4px solid #eb6876;}
+
+/*品牌项目*/
+.BrandMain .company{ padding:40px 0; text-align:center; font-size:28px; font-weight:bold;}
+.BrandTop_Img{ width:100%; height:431px; position:relative;}
+.BrandTop_Img img{ width:100%; height:100%;}
+.BrandInfo{ position:absolute; top:0; left:0; width:250px; height:100%; background:rgba(0,0,0,0.5); padding:10px;}
+.HouseLogo{ width:100%; height:120px;}
+.HouseLogo img{width:100%; height:100%;}
+.HouseText{ margin-top:30px;}
+.HouseText .name{}
+.HouseText .name a{ font-size:22px; color:#feffbc;}
+.HouseText .count{ font-size:18px; margin-top:10px; color:#fff;}
+.HouseText .info{ font-size:16px; margin-top:10px; color:#fff;}
+
+.BrandTop_Text{ padding:10px; background:#f9f9f9; line-height:25px; color:#666; font-size:16px;}
+
+/*楼盘滚动展示*/
+.BrandBottom{ margin-top:20px; position:relative;}
+.BrandBottom .bd ul{overflow:hidden;}
+.BrandBottom .bd ul li{ float:left; margin:0 10px; width:580px; position:relative;}
+
+.BrandBottom .hd .prev{ display:block; position:absolute; left:-70px; top:280px; background:url(../Images/icon-left.png)no-repeat; background-size:60px 60px; width:60px; height:60px;}
+.BrandBottom .hd .next{ display:block; position:absolute; right:-70px; top:280px; background:url(../Images/icon-right2.png)no-repeat; background-size:60px 60px; width:60px; height:60px;}
+
+.HouseItem{ width:100%;}
+.HouseItem .Images{ width:580px; height:320px; position:relative;}
+.HouseItem .Images img{ width:100%; height:100%;}
+.HouseItem .Images .Title{ display:block; position:absolute; width:100%; height:50px; bottom:0; left:0; line-height:50px; text-align:right; padding-right:40px; background:rgba(0,0,0,.5); color:#fff; font-size:20px;}
+.HouseItem .Images .Title small{ margin-left:5px; color:#fff;}
+.HouseItem .Images .Title font{ margin-left:15px; font-size:18px; color:#fdff43;}
+
+.HouseItem .Detail{ border:1px solid #ddd;}
+.HouseItem .Detail .Text{ padding-left:150px; padding-top:15px; padding-right:10px; position:relative;}
+.HouseItem .Detail .Text .TextTitle{ font-size:18px; font-weight:bold;}
+.HouseItem .Detail .Text .TextDesc{ margin-top:15px;}
+.HouseItem .Detail .Text .portrait{ position:absolute; left:20px; top:10px; width:90px;}
+.HouseItem .Detail .Text .portrait img{ width:100%; height:90px;}
+.HouseItem .Detail .Text .portrait p{ font-size:16px; text-align:center; margin-top:15px;}
+.HouseItem .Detail .Text .portrait a{ display:block; height:25px; line-height:22px; text-align:center; margin-top:10px; border:1px solid #ff5555; color:#ff5555; border-radius:15px;}
+
+.HouseItem .Detail .Img{ margin-top:20px; padding-bottom:20px;}
+.HouseItem .Detail .Img a{ float:left; margin-left:15px; width:173px; height:100px; }
+.HouseItem .Detail .Img a img{ width:100%; height:100%;}
+
+/*更多品牌别墅*/
+.bieshu_more{ height:25px; border-bottom:2px solid #ddd; position:relative;}
+.bieshu_more p{ display:block; width:200px; height:50px; position:absolute; top:0; left:50%; margin-left:-100px; background:#fff; text-align:center; line-height:50px;}
+.bieshu_more a{ padding:12px 30px; border:1px solid #999; color:#999; border-radius:25px; background:#fff; font-size:16px;}
+.bieshu_more a:hover{ background:#ff6600; color:#fff; border-color:#ff6600;}
+
+/*精品别墅*/
+.Jp_Bieshu_Cont{ padding-top:20px; padding-bottom:50px; margin-top:50px; background:#f9f9f9;}
+.Jp_Bieshu_Head{ height:80px; margin-top:30px; background:url(../Images/bieshu-head1.jpg)no-repeat; background-position:center center;}
+.Jp_Bieshu_Main{}
+.Jp_Bieshu_Main .AreaList{ height:60px;}
+.Jp_Bieshu_Main .AreaList a{ display:block; width:150px; height:60px; float:left; text-align:center; line-height:60px; border:1px solid #eee; background:#fff; font-size:16px; color:#666;}
+.Jp_Bieshu_Main .AreaList a:hover{ background:#ff6600; color:#fff;}
+.Jp_Bieshu_Main .AreaList .Select{ background:#ff6600; color:#fff;}
+
+.BieshuItem_Main{ margin-top:5px;}
+.BieshuItem_Cont{ display:none;}
+.BieshuItem_Cont:first-child{ display:block;}
+.BieshuItem{ float:left; margin-left:20px; width:386px; margin-top:20px;}
+.BieshuItem:first-child,.BieshuItem:nth-child(4){ margin-left:0;}
+.BieshuItem .Img{ width:100%; height:250px;}
+.BieshuItem .Img img{ width:100%; height:100%;}
+
+.BieshuItem .Text{ height:75px; background:#fff; border:1px solid #eee; line-height:70px; padding:0 10px;}
+.BieshuItem .Text a{ font-size:18px; font-weight:bold;}
+.BieshuItem .Text a small{ margin-left:5px; font-size:14px; font-weight:normal; color:#666;}
+.BieshuItem .Text span{ float:right; color:#666;}
+.BieshuItem .Text span font{ font-size:22px; color:#ff3535; font-weight:bold; margin-right:5px;}
+
+.bieshu_more2{ height:25px; border-bottom:2px solid #ddd; position:relative;}
+.bieshu_more2 p{ display:block; width:200px; height:50px; position:absolute; top:0; left:50%; margin-left:-100px; background:#f8f8f8; text-align:center; line-height:50px;}
+.bieshu_more2 a{ padding:12px 30px; border:1px solid #999; color:#999; border-radius:25px; background:#fff; font-size:16px;}
+.bieshu_more2 a:hover{ background:#ff6600; color:#fff; border-color:#ff6600;}
+
+/*报名看房*/
+.Bieshu_BmCont{ width:100%; height:305px; background:url(../Images/bieshu-bmbg.jpg)no-repeat; background-position:center center; background-color:#f8f8f8;}
+.Bieshu_Bm{}
+.Bieshu_Bm_Left{ float:left; width:300px; padding-top:100px; padding-left:50px; background:url(../Images/bieshu-logo.png)no-repeat; background-position:80px 20px;}
+.Bieshu_Bm_Mid{ float:left; width:600px; height:300px; background:url(../Images/lishi.png)no-repeat; background-size:600px auto; background-position:10px 80px;}
+.Bieshu_Bm_Right{ float:right; width:300px; padding:30px;}
+
+.Bieshu_Bm_Left .MaxText{ font-size:28px; font-weight:bold; color:#ff6600;}
+.Bieshu_Bm_Left .MinText{ margin-top:10px; font-size:16px; color:#666;}
+.Bieshu_Bm_Left .Btn{ margin-top:40px;}
+.Bieshu_Bm_Left .Btn a{ padding:10px 35px; background:#fff; border:1px solid #6bb600; color:#6bb600; font-size:16px; border-radius:10px;}
+.Bieshu_Bm_Left .Btn a:hover{ background:#6bb600; color:#fff; border:1px solid #5fa101;}
+
+.Bieshu_Bm_Right .Title{ font-size:22px; font-weight:bold; text-align:center;}
+.Bieshu_Bm_Right input{ outline:none; padding-left:10px;}
+.Bieshu_Bm_Right .Name{ margin-top:30px;}
+.Bieshu_Bm_Right .Name input{ width:190px; height:40px; border:1px solid #f1f1f1;}
+.Bieshu_Bm_Right .Phone{ margin-top:15px;}
+.Bieshu_Bm_Right .Phone input{ width:190px; height:40px; border:1px solid #f1f1f1;}
+.Bieshu_Bm_Right .Btn{ margin-top:20px; }
+.Bieshu_Bm_Right .Btn a{ display:block; height:100%; height:40px; text-align:center; line-height:40px; background:#ffa42f; color:#fff; font-size:16px;}
+.Bieshu_Bm_Right .Btn a:hover{ background:#ffb24e;}
+
+/*声明*/
+.Announce_Cont{ width:100%; background:#ecf5e9;}
+.Announce{ height:60px; background:#ecf5e9; color:#999; line-height:60px;}

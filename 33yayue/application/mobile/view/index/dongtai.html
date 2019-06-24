@@ -1,0 +1,75 @@
+<script type="text/javascript">
+  
+    setTimeout(function () {
+      $("#jqTitle").text("{$index["LpInfo"]["KP_LpName"]}");
+      $($(".bot_menu")[1]).css("display","none");
+      $(".footer").css("display","none");
+      
+    },10);
+   
+</script>
+    <div class="content" style="margin-bottom:30px;"> 
+      <!--楼盘详情页头：开始-->
+         <div class="pageHead">
+              <div class="phPic"> 
+                <span><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><img src="{$index["LpInfo"]["KP_Logo"]}" alt="{$index["LpInfo"]["KP_LpName"]}" /></a>
+                </span> 
+              </div>
+
+              <div class="phData">  
+                <span> 
+            <b>
+            {$index['LpInfo']['KP_Juprice']?"均价：".$index['LpInfo']['KP_Juprice'] ."</b>元/㎡" 
+            :($index['LpInfo']['KP_TaoJia']?"总价：".$index['LpInfo']['KP_TaoJia']."</b>万元/套":"</b>待定")}  
+          &nbsp;&nbsp; <em class="t0">{$index["LpInfo"]["KP_Xszt"]==0?"在售":($index["LpInfo"]["KP_Xszt"]==1?"待售":"售罄")}</em></span>   <span><ins class="icon-37"></ins>{$index["LpInfo"]["KP_Wylx"]} </span> <span><ins class="icon-24"></ins> {$index["LpInfo"]["KP_Lpdz"]} </span> 
+              </div>
+              <div class="phSide"> 
+                <span> </span> 
+              </div>
+          </div>
+            <!--楼盘详情统计：开始-->
+            <div class="pageStat"> <span><a href="javascript:void(0)" id="tjBtn1"><ins class="icon-63"></ins> 降价通知</a></span> <span><a href="javascript:void(0);"  id="tjBtn2"><ins class="icon-60"></ins> 认筹通知</a></span> 
+             
+        </div>
+
+      <!--楼盘详情统计：结束--> 
+      
+      <!--楼盘详情页头：结束--> 
+      <!--楼盘详情页头：结束-->
+        <div class="wraper">
+        <div class="newm mn2"  >
+ 
+        {volist name="index['lpdt']" id="vo"}
+          <div class="news_list">
+            <div> <a href="/news/detail/ids/{$vo.id}" title="{$vo.KP_Title}">
+              <div class="picx"><img data-original="{$vo.KP_PicUrl}" src="/assets/img/mobile/errorpic.jpg" width="100" height="70"/></div>
+              <div class="txtx">
+                <div class="t"> {$vo.KP_Title} </div>
+                <p>{:mb_substr($vo.KP_Description,0,30)    }...<i class="remen">{$vo.KP_AddTime}</i></p>
+              </div>
+              </a> </div>
+            <div class="clear"></div>
+          </div>
+         {/volist}
+
+          <div class="wf-page">
+            <div id="AspNetPager1" class="pagination" align="left">
+              <div class="pagination" align="right" style="font-size:12px;"> </div>
+              <div align="left" class="pagination">
+                 
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+ 
+ <div id="footer" class="pageMemu">
+    <ul>
+      <li style="width:20%"><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}"><ins class="icon-9"></ins>户&nbsp;型&nbsp;图</a></li>
+      <li style="width:20%"><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}"><ins class="icon-17"></ins>楼盘相册</a></li>
+      <li style="width:30%"><a href="tel:{$Think.config.site.beian}" class="pageTel"><ins class="icon-18"></ins>免费通话</a></li>
+      <li style="width:30%"><a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="pageWeixin"><ins class="icon-53"></ins>在线客服</a></li>
+    </ul>
+  </div>
+  <div id="fade" class="black_overlay"></div>

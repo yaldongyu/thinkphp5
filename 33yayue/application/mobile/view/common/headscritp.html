@@ -1,0 +1,116 @@
+<script type="text/javascript" language="javascript">
+    var WWWURL = "/";
+    var deviceHeight = $(window).height(); //浏览器当前窗口可视区域高度
+
+    $(document).ready(function() {
+        $("img").bind("error", function() {
+            this.src = window.location.origin + "/assets/img/mobile/errorpic.jpg";
+        });
+
+        $(function () {
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="house"){ $("#jqTitle").text("新房");}
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="news"){ $("#jqTitle").text("资讯");}
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="bieshu"){ $("#jqTitle").text("推荐楼盘");}
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="houseunion"){ $("#jqTitle").text("联盟");}
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="tuangou"){ $("#jqTitle").text("团购");}
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="video"){ $("#jqTitle").text("视频看房");}
+                if(location.pathname.substring(1).split("/")[0].toLocaleLowerCase()=="zhuanti"){ $("#jqTitle").text("专题");}
+                    
+        });
+
+        
+        $(".guan").click(function() {
+            $(".tanchuang").hide();
+        });
+        $(".dianji").click(function() {
+            $(".tanchuang").show();
+        });
+    });
+
+ function hide() {
+  if(!!document.getElementById("lmbmBox")){document.getElementById("lmbmBox").style.display = 'none';}
+  if(!!document.getElementById("tjBox")){document.getElementById("tjBox").style.display = 'none';}
+  if(!!document.getElementById("lqyhBox")){document.getElementById("lqyhBox").style.display = 'none';}
+  if(!!document.getElementById("groupbmBox")){document.getElementById("groupbmBox").style.display = 'none';}
+   
+
+}
+ 
+
+
+    function Getperation(type,index) {
+        var Bm_Name = $.trim($("#Bm_Name"+ index).val());
+        var Bm_Phone = $.trim($("#Bm_Phone"+ index).val());
+        var Bm_Message = $.trim($("#Bm_Message"+ index).val());
+        var Bm_HouseID = $.trim($("#Bm_HouseID"+ index).val());
+        var Bm_Url = $.trim($("#Bm_Url"+ index).val());
+        var Bm_Title = $.trim($("#Bm_Title"+ index).val());
+        var T_Url = document.location.href; //页面地址
+        // if (Bm_Name == '') {
+        //     alert("请填写姓名");
+        //     return false;
+        // }
+        if (Bm_Phone == ''   ) {
+             alert("请填写正确的手机号码");
+            return false;
+        }
+
+        $.post('/ajax/LpBaoming',
+        {
+            sType: type,
+              T_KftName: Bm_Name,
+          T_KftPhone: Bm_Phone,
+          T_Message: Bm_Message,
+          T_LpID: Bm_HouseID,
+          T_PageUrl: T_Url,
+          T_Title: Bm_Title
+        },
+        function (data) {
+            if (data.info != 'Yes') {
+                Tip_Control(data.info,1500);  
+                return false;
+            } else {
+                Tip_Control('您已成功提交，业务员会尽快联系您！',1500);
+                setTimeout(function () {
+                   $("#Bm_Message"+ index).val("") ;
+                   $("#Bm_Phone"+ index).val("")
+                   $("#Bm_Name"+ index).val("")
+                }, 200);
+            }
+        }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+
+    
+      //分页条
+function PageStr(pagesize,total,currentpage) {
+       //5是中间显示页码的个数 默认PC10，手机5 
+      var   pagecount=Math.ceil(total/pagesize);   //总页数
+      var   startpage=Math.ceil(currentpage/pagesize-1)*pagesize+1 ; //开始页1，11，21，31，261 
+      var   tn=(pagecount-startpage >5)?5:(pagecount-startpage +1) ;   //5是中间显示页码的个数 默认PC10，手机5 
+      var   firstpage=(currentpage==1)?"disabled='disabled'":"href='javascript:void'  onclick=\"setParmsValue('page','1')\"  value='page=1'" ;
+      var   morebeforepage=(startpage == 1)?"style='display:none'":"href='javascript:void'  onclick=\"setParmsValue('page','" +( startpage-pagesize) + "')\"  value='page=" +(startpage-pagesize) + "'" ;
+      var   moreendpage=(pagecount-startpage<pagesize)?"style='display:none'":"href='javascript:void'  onclick=\"setParmsValue('page','" +( parseInt(startpage)+parseInt(pagesize)) + "')\"  value='page=" +(parseInt(startpage)+parseInt(pagesize)) + "'" ;
+      var   uppage=(currentpage==1)?"disabled='disabled'":"href='javascript:void'  onclick=\"setParmsValue('page','" +(parseInt(currentpage)-1) + "')\"  value='page=" +(parseInt(currentpage)-1) + "'" ;
+      var   downpage=(pagecount==currentpage)?"disabled='disabled'":"href='javascript:void'  onclick=\"setParmsValue('page','" +(parseInt(currentpage)+1) + "')\"  value='page=" +(parseInt(currentpage)+1) + "'" ;
+      var   lastpage=(pagecount==currentpage)?"disabled='disabled'":"href='javascript:void'  onclick=\"setParmsValue('page','" + pagecount + "')\"  value='page=" + pagecount + "'" ;
+
+    
+      var str="";
+         // str+="<li><a  "+ firstpage +">首页</a></li>" ;
+          str+="<li><a  "+    uppage +"><</a></li>" ;
+          str+="<li><a  "+ morebeforepage +">...</a></li>" ;
+      
+      for (var i=0;i<tn;i++)
+      {
+          str+="<li><a href='javascript:void'  onclick=\"setParmsValue('page','" + (startpage+i) + "')\"  value='page=" +((startpage+i)) + "'>"+(startpage+i)+"</a></li>";
+
+      }
+          str+="<li><a  "+ moreendpage +">...</a></li>" ;
+          str+="<li><a  "+ downpage +">></a></li>" ;
+        //  str+="<li><a  "+  lastpage +">尾页</a></li>" ;
+ 
+      return str;
+} //end function PageStr
+
+    
+</script>

@@ -1,0 +1,96 @@
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div class="commonsearch-table">
+                    <form  role="form" class="form-horizontal form-commonsearch" method="post">
+                        <div class="row">
+
+                            <div class="form-group col-xs-12 col-lg-4">
+                                <label for="area_id" class="control-label col-xs-2">所在地区</label>
+                                <div class="col-xs-9">
+                                    <input type="hidden" id="cityid">
+                                    <input id='kp_city' data-toggle="city-picker" id="city" type="text" class="form-control" >
+                                </div>
+                                    <label class="control-label col-xs-12 col-sm-3"></label>
+                                    <div class="col-xs-12 col-sm-12">
+                                        
+                                        <div class="checkbox">
+                                        <label ><input id="flag1" type="checkbox" value="0" /> 热销</label> 
+                                        <label ><input id="flag2" type="checkbox" value="1" /> 降价</label> 
+                                        <label ><input id="flag3" type="checkbox" value="0"  /> 联盟</label>
+                                        <label ><input id="flag4" type="checkbox" value="0" /> 推荐</label> 
+                                        <label ><input id="flag5" type="checkbox" value="0"  /> 下架</label> 
+                                        <label ><input id="flag6" type="checkbox" value="0"  /> 置顶</label> 
+                                        </div>
+
+                                    </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-lg-1">
+                                <div class="col-xs-12 col-xs-12">
+                                     <!-- {:build_select('SiteID', $typeList, null, ['class'=>'form-control', 'required'=>''])} -->
+                                     <select id="xsstatus" data-rule="required" class="form-control">
+                                        <option value="-1" >销售状态</option>
+                                        <option value="0" >在售</option>
+                                        <option value="1" >待售</option>
+                                        <option value="2" >售罄</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-xs-12 col-lg-1">
+                                <div class="col-xs-12 col-xs-12">
+                                     <!-- {:build_select('SiteID', $typeList, null, ['class'=>'form-control', 'required'=>''])} -->
+                                     <select id="jgupdate" data-rule="required" class="form-control">
+                                        <option value="-1" >价格更新</option>
+                                        <option value="0" >新到旧</option>
+                                        <option value="1" >旧到新</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-lg-3">
+                                <div class="col-xs-12 col-xs-8" style="padding-right: 0px;margin-right: 0px; ">
+                                     <input type="text" id="keyword" class="form-control" placeholder="请输入楼盘名称">
+                                </div>
+                                <div class="col-xs-12 col-xs-4" style="padding-left: 0px;margin-left: 0px; margin-left: -2px;">
+                                     <!-- {:build_select('SiteID', $typeList, null, ['class'=>'form-control', 'required'=>''])} -->
+                                     <select id="tiaojian" data-rule="required" class="form-control">
+                                        <option value="0" >楼盘名称</option>
+                                        <option value="1" >电话</option>
+                                        <option value="2" >起价</option>
+                                        <option value="3" >均价</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-lg-2">
+                                <div class="col-sm-8">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> 查找</button>
+                                    <button type="reset" class="btn btn-default">重置</button>
+                                </div>
+                            </div>
+                        </div>
+ 
+                    </form>
+                    </div>
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('housing/lp/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('housing/lp/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('housing/lp/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+                        <a href="housing/Lpreview/index" class="btn btn-primary btn-addtabs" title="所有楼盘问答" ><i class="fa fa-circle"></i> 所有楼盘问答</a>
+                        <a href="housing/Lpcomment/index" class="btn btn-primary btn-addtabs" title="所有楼盘点评" ><i class="fa fa-circle"></i> 所有楼盘点评</a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('housing/lp/edit')}" 
+                           data-operate-del="{:$auth->check('housing/lp/del')}" 
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

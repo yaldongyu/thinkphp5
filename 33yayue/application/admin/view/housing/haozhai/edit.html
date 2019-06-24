@@ -1,0 +1,118 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_areas')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-KP_City" data-rule="required" class="form-control" data-toggle="city-picker" type="text" value="{$row.area_text}">
+            <input id="c-prov" class="form-control"name="row[KP_Provice]" type="hidden" value="{$row.KP_Provice}">
+            <input id="c-city" class="form-control"name="row[KP_Citys]" type="hidden" value="{$row.KP_Citys}">
+            <input id="c-dist" class="form-control"name="row[KP_District]" type="hidden" value="{$row.KP_District}">
+            <input id="c-county" class="form-control"name="row[KP_County]" type="hidden" value="{$row.KP_County}">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">楼盘名称:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-KP_LpID" data-source="housing/lp/selectpage" data-field="KP_LpName" data-primary-key="id" class="form-control selectpage" name="row[KP_LpID]" type="text" value="{$row.KP_LpID}">
+        </div>
+        <label class="control-label col-xs-12" style="width: 80px;">楼盘ID:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="lpid" class="form-control" disabled="" type="type" value="{$row.KP_LpID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_ms')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Ms" class="form-control " data-rule="required" rows="5" name="row[KP_Ms]" cols="50">{$row.KP_Ms}</textarea>
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">*</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_picurl')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <div class="input-group">
+                <input id="c-KP_PicUrl" data-rule="required" class="form-control" size="50" name="row[KP_PicUrl]" type="text" value="{$row.KP_PicUrl}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_PicUrl" class="btn btn-danger plupload" data-input-id="c-KP_PicUrl" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-KP_PicUrl"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_PicUrl" class="btn btn-primary fachoose" data-input-id="c-KP_PicUrl" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_PicUrl"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_PicUrl"></ul>
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">*规格：460×280</label> 
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_name')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Name" class="form-control " type="text" name="row[KP_Name]" value="{$row.KP_Name}">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">*</label>
+        <label class="control-label col-xs-12" style="width: 100px;">{:__('Kp_fcyear')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Fcyear" class="form-control " name="row[KP_Fcyear]" type="number" value="{$row.KP_Fcyear}">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">年*</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_logo')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <div class="input-group">
+                <input id="c-KP_Logo" data-rule="required" class="form-control" size="50" name="row[KP_Logo]" type="text" value="{$row.KP_Logo}"> 
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_Logo" class="btn btn-danger plupload" data-input-id="c-KP_Logo" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-url="ajax/uploadnosy"  data-preview-id="p-KP_Logo"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_Logo" class="btn btn-primary fachoose" data-input-id="c-KP_Logo" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_Logo"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_Logo"></ul>
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">*规格：460×280</label> 
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[KP_Type]', [ '1'=>'咨询电话'], 1)}
+        </div>
+    </div>
+    <div class="form-group" style="display: none">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_url')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_Url" class="form-control " data-rule='url' name="row[KP_Url]" type="text" value="{$row.KP_Url}">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">*必须http：//开头</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_tel')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="c-KP_Tel" class="form-control " data-rule='tel' name="row[KP_Tel]" type="text" value="{$row.KP_Tel}">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">*</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">排序:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-weigh" class="form-control" name="row[weigh]" value="{$row.weigh}" type="number">
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input disabled="" class="form-control" type="text" value="{$row.KP_AddUser}({$row.KP_AddTime})">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">最后编辑:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input  disabled="" class="form-control" type="text" value="{$row.KP_EditUser}({$row.KP_EditTime})">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

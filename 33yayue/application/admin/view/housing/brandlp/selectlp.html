@@ -1,0 +1,52 @@
+<div class="panel panel-default panel-intro">
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div class="commonsearch-table">
+                    <form  role="form" class="form-horizontal form-commonsearch" method="post">
+                        <div class="row">
+
+                            <div class="form-group col-xs-12 col-lg-3" style="width:45%;">
+                                <label for="area_id" class="control-label col-xs-3">所在地区</label>
+                                <div class="col-xs-9">
+                                    <input type="hidden" id="cityid">
+                                    <input id='kp_city' data-toggle="city-picker" id="city" type="text" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-lg-3" style="width:35%;">
+                                <div class="col-xs-12 col-xs-8" style="padding-right: 0px;margin-right: 0px; ">
+                                     <input type="text" id="keyword" class="form-control" placeholder="请输入楼盘名称">
+                                </div>
+                                <div class="col-xs-12 col-xs-4" style="padding-left: 0px;margin-left: 0px; margin-left: -2px;">
+                                     <select id="tiaojian" data-rule="required" class="form-control">
+                                        <option value="0" >楼盘名称</option>
+                                        <option value="1" >电话</option>
+                                        <option value="2" >起价</option>
+                                        <option value="3" >均价</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-lg-2" style="width:28%;">
+                                <div class="col-sm-8">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> 查找</button>
+                                    <button type="reset" class="btn btn-default">重置</button>
+                                </div>
+                            </div>
+                        </div>
+ 
+                    </form>
+                    </div>
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" class="btn btn-success" id="sure" title="确认" ><i class="fa fa-plus"></i> 确认</a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

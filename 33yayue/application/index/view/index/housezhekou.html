@@ -1,0 +1,182 @@
+ {layout name="layout/default" /}
+{css href="__CDN__/assets/css/index/zhekou.css" /}
+<!--面包屑-->
+<div class="f_width_1200 Xyf_Bread">
+    <span><a href="/">首页</a></span>/
+    <span><a href="/house/">新房</a></span>/
+    <span>折扣降价楼盘</span>
+</div>
+<!--主块-->
+<div class="f_width_1200 ModuleMain">
+    <div class="Module_Left">
+        <!--筛选-->
+        <div class="House_Filter">
+            <a href="/house/" class="AllHouse">全部楼盘</a>
+            <a href="/house/zhekou/" class="ZkHouse">折扣或降价</a>
+            <div class="CityFilter">
+                <a href="javascript:void(0);" class="CityFilterTitle" onmousemove="CityFilter_Off()">区域不限</a>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="setParmsValue('City','')"   {""==$index['city']?"class=Select":""}  >不限</a></li>
+                   
+                    {volist name="$index['qy']" id="vo"}
+                    <li><a href="javascript:void(0)"  {$vo.areaid==$index['city']?"class=Select":""} onclick="setParmsValue('City','{$vo.areaid}')" value="City={$vo.areaid}">{$vo.name}</a></li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--楼盘列表-->
+        <div class="ZkHouseList">
+           {volist name=" $index['zklp'] " id="vo"}
+            <a class="ZkHouseList_Item" href="/house/house_details/ids/{$vo.id}" target="_blank">
+                <span class="ZkHouseInfo">
+                    <span class="HouseName">{$vo.KP_LpName}</span>
+                    <span class="Price">
+                           {$vo.KP_Qiprice==0?($vo.KP_TaoJia==""?"待定":$vo.KP_TaoJia."万元/套"):$vo.KP_Qiprice."元/平米"}
+                        </span>
+                    <span class="Tel">{$vo.KP_Tel}{$vo.KP_Fjh  == "" ? "" : "&nbsp;转&nbsp;" .$vo.KP_Fjh} </span>
+                    <span class="Address">{$vo.KP_Lpdz}</span>
+                </span>
+                <span class="HouseDt">
+                    {$vo.KP_Description}
+                </span>
+            </a>
+            {/volist}           
+             
+            <div class="clear"></div>
+        </div>
+        
+    </div>
+    <div class="Module_Right">
+    <!--微信二维码-->
+        <div class="WeixinScan">
+            <div class="Head">
+                手机or微信扫一扫
+            </div>
+            <div class="Info">
+                随时了解海南房产信息
+            </div>
+            <div class="Images">
+                <img src="wx_dyh.jpg" alt="房典网" />
+            </div>
+            <div class="Tel_Title">
+                {$Think.config.site.name}咨询热线：
+            </div>
+            <div class="Number">
+                400-1668-200
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+     function CityFilter_Off() {
+
+        $(".CityFilter ul").css("display", "block");
+
+        var Dzs_City_Btn_W = $('.CityFilter').width();
+        var Dzs_City_Btn_H = $('.CityFilter').height();
+
+        var Dzs_City_Btn_X = $('.CityFilter').offset().left;
+        var Dzs_City_Btn_Y = $('.CityFilter').offset().top;
+
+        var Dzs_City_Select_X = $('.CityFilter ul').offset().left;
+        var Dzs_City_Select_Y = $('.CityFilter ul').offset().top;
+        var Dzs_City_Select_W = $('.CityFilter').width();
+        var Dzs_City_Select_H = $('.CityFilter ul').height();
+
+        $(window).mousemove(function (e) {
+            var Dzs_Mouse_X = e.pageX;
+            var Dzs_Mouse_Y = e.pageY;
+            if (!(Dzs_Mouse_X - Dzs_City_Btn_X >= 0 && Dzs_Mouse_X - Dzs_City_Btn_X <= Dzs_City_Btn_W && Dzs_Mouse_Y - Dzs_City_Btn_Y >= 0 && Dzs_Mouse_Y - Dzs_City_Btn_Y <= Dzs_City_Btn_H)
+         && !(Dzs_Mouse_X - Dzs_City_Select_X >= 0 && Dzs_Mouse_X - Dzs_City_Select_X <= Dzs_City_Select_W && Dzs_Mouse_Y - Dzs_City_Select_Y >= 0 && Dzs_Mouse_Y - Dzs_City_Select_Y <= Dzs_City_Select_H)) {
+                $(".CityFilter ul").css("display", "none");
+                return;
+            }
+        });
+    }
+
+    $(function () {
+        var Count = $(".CityFilter ul li").size();
+        for (var i = 1; i < Count; i++) {
+            var CityName = $(".CityFilter ul li").eq(i).children("a").text();
+            var CityValue = $(".CityFilter ul li").eq(i).children("a").attr("value");
+            if ('City=' == CityValue) {
+                $(".CityFilterTitle").text(CityName);
+                return;
+            }
+        }
+    })
+
+
+     function setParmsValue(parms, parmsValue) {
+        //var urlstrings = document.URL;
+        var urlstrings = updateParms(parms, parmsValue);
+        var args = GetUrlParms();
+        var values = args[parms];
+        //如果参数不存在，则添加参数
+        if (values == undefined) {
+            //var query = location.search.substring(1); //获取查询串
+            var query = urlstrings.indexOf('?');
+            //如果Url中已经有参数，则附加参数
+            if (query != -1) {
+                if (urlstrings.indexOf('=') != -1) {
+                    urlstrings += ("&" + parms + "=" + encodeURIComponent(parmsValue));
+                } else {
+                    urlstrings += (parms + "=" + encodeURIComponent(parmsValue));
+                }
+            }
+            else {
+                urlstrings += ("?" + parms + "=" + encodeURIComponent(parmsValue));  //向Url中添加第一个参数  
+            }
+            window.location = urlstrings;
+        }
+        else {
+            window.location = updateParms(parms, parmsValue);  //修改参数  
+        }
+    }
+    //修改URL参数，parms：参数名，parmsValue：参数值，return：修改后的URL  
+    function updateParms(parms, parmsValue) {
+        var newUrlParms = "";
+        var newUrlBase = location.href.substring(0, location.href.indexOf("?") + 1); //截取查询字符串前面的url  
+        var query = location.search.substring(1); //获取查询串     
+        var pairs = query.split("&"); //在逗号处断开     
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('='); //查找name=value     
+            if (pos == -1) continue; //如果没有找到就跳过     
+            var argname = pairs[i].substring(0, pos); //提取name  
+            var value = pairs[i].substring(pos + 1); //提取value   
+            //如果找到了要修改的参数
+            if (!findText(argname, 'page') && !findText(argname, 'Sokey')) {
+                if (findText(argname, parms)) {
+                    newUrlParms = newUrlParms + (argname + "=" + encodeURIComponent(parmsValue) + "&");
+                }
+                else {
+                    newUrlParms += (argname + "=" + value + "&");
+                }
+            }
+        }
+        return newUrlBase + newUrlParms.substring(0, newUrlParms.length - 1);
+    }
+
+    //辅助方法  
+    function findText(urlString, keyWord) {
+        return urlString.toLowerCase().indexOf(keyWord.toLowerCase()) != -1 ? true : false;
+    }
+
+    //得到查询字符串参数集合  
+    function GetUrlParms() {
+        var args = new Object();
+        var query = location.search.substring(1); //获取查询串     
+        var pairs = query.split("&"); //在逗号处断开     
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('='); //查找name=value     
+            if (pos == -1) continue; //如果没有找到就跳过     
+            var argname = pairs[i].substring(0, pos); //提取name     
+            var value = pairs[i].substring(pos + 1); //提取value
+            args[argname] = unescape(value); //存为属性   
+        }
+        return args;
+    } 
+</script>

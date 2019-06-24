@@ -1,0 +1,55 @@
+<link href="__CDN__/html/css/mobile/house.css" rel="stylesheet" type="text/css" />   
+<script src="__CDN__/html/js/mobile/house.js" type="text/javascript"></script>   
+<script type="text/javascript">
+    $(function () {  //设置标题
+      $(".header_logo2 a").html("项目动态").attr("href","javascript:void(0);");  
+    })  
+</script> 
+ 
+    <!-- header -->
+    <header class="favor-header-bar">
+        <ul class="tabs">
+            <li><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}">首页</a></li>
+            <li><a href="/house/lpdetail/ids/{$index["LpInfo"]["id"]}">详情</a></li>
+            <li class="default"><a href="/house/lpdt/ids/{$index["LpInfo"]["id"]}">动态</a></li>
+            <li><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}">相册</a></li>
+            <li><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}">户型</a></li>
+            <li><a href="/house/lpdp/ids/{$index["LpInfo"]["id"]}">问答</a></li>
+        </ul>
+    </header>  
+     <!--导航条--> 
+ <div class="fix_bg">
+        <div class="y_lpindexnav_main">
+            <ul>
+                <li><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><span>楼盘首页</span><i></i></a></li>
+                <li><a href="/house/lpdetail/ids/{$index["LpInfo"]["id"]}"><span>详情</span><i></i></a></li>     
+                <li class="on"><a href="/house/lpdt/ids/{$index["LpInfo"]["id"]}"><span>动态</span><i></i></a></li>    
+                <li><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}"><span>相册</span><i></i></a></li>
+                <li><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}"><span>户型</span><i></i></a></li>
+                <li><a href="/house/lpdp/ids/{$index["LpInfo"]["id"]}"><span>点评</span><i></i></a></li>
+            </ul>
+        </div>
+    </div>  
+    
+
+  <div class="w100_2">
+    <div class="w94_2">
+       <div class="dt-new">
+      <ul>
+      
+        {volist name="$index['lpdt']" id="vo"}
+        <li>
+          <div class="dt_time">{$vo.KP_AddTime}<span class="i2">{$vo.KP_Typename}</span></div>
+          <div class="rtxt"> <a href="/news/detail/ids/{$vo.id}">
+            <h4>{$vo.KP_Title}</h4>
+            <p>{$vo.KP_Description}</p>
+            </a> </div>
+        </li>
+        {/volist}
+       
+      </ul>
+    </div>
+    </div>
+  </div>
+  
+ 

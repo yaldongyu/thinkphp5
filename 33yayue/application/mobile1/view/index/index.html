@@ -1,0 +1,342 @@
+<script src="__CDN__/html/js/mobile/swiper-3.4.2.min.js" type="text/javascript"></script>
+<link href="__CDN__/html/css/mobile/swiper-3.4.2.min.css" rel="stylesheet" type="text/css" />
+<link href="__CDN__/html/css/mobile/index.css" rel="stylesheet" type="text/css" />
+ 
+<script type="text/javascript">
+  //隐藏头菜单
+  $(".y_header").css("display","none");
+</script>
+
+<div class="header_logo">
+  <i class="hlogo_size"><img src="__CDN__/html/img/mobile/hlogo.png"></i>
+  <i class="hlogo_tel"><a href="tel:{$Think.config.site.tel}">一键看房</a></i>
+</div>
+       <!--头部-->
+      <div class="w100_2">
+      <div class="m_head_mian">
+        <div class="index_info">
+          <div class="top_call">
+            <i><img src="__CDN__/html/img/mobile/top_call.png"></i>
+            {$Think.config.site.tel}
+          </div>
+          <div class="top_txt">{$Think.config.site.name}，让购房轻而易举</div>
+          <div class="top_city">
+            <a href="/index/selectqy">
+              <i><img src="__CDN__/html/img/mobile/dw.png"></i>全国
+            </a>
+          </div>
+        </div>
+        <div class="seach">
+          <div class="inputbox">
+            <a href="/index/search">
+                <i><img src="__CDN__/html/img/mobile/seach.png"></i>
+                <span>请输入楼盘名称</span>
+              </a>
+          </div>
+        </div>
+      </div>
+      <div class="w94_2">
+        <div class="m_navlist clearfix">
+          <a href="/house"><img src="__CDN__/html/img/mobile/nav_house.png"><span>新房查询</span></a>
+          <a href="/news"><img src="__CDN__/html/img/mobile/nav_news.png"><span>楼市快讯</span></a>
+          <a href="/tuangou"><img src="__CDN__/html/img/mobile/nav_tejia.png"><span>特价好房</span></a>
+          <a href="javascript:void(0);" onclick="gonews(5);"><img src="__CDN__/html/img/mobile/nav_shangy.png"><span>楼盘导购</span></a>
+        </div>
+        <div class="m_navlisr2">
+          <!--<span>商业地产</span>-->
+          <a href="/index/video"><span>视频看房</span></a>
+          <a href="/index/userdz"><span>私人订制</span></a>
+          <a href="/house"><span>房价走势</span></a>
+          <a href="/index/map"><span>地图找房</span></a>
+        </div>
+      </div>
+  </div>
+  <div class="clear"></div>
+            <!--头条快报-->
+      <div class="top_news">
+        <div class="top_news_n">
+          <div class="t_news_left"><img src="__CDN__/html/img/mobile/t_news.png"></div>
+          <div class="t_news_center">
+            <div class="scrolldiv">
+                            <ul style="margin-top: 0px;">
+                              {volist name="$index['ttkb']" id="vo"}
+                              <li><a href="/news/detail/ids/{$vo.id}" title="{$vo.KP_Title}">{$vo.KP_Title}</a></li> 
+                              {/volist}               
+                           </ul>
+                    </div>
+          </div>
+          <div class="t_news_right"><a class="popup" data-name="动态订阅" data-id="0" data-module="mobile_index_dtdy" data-text="第一时间获取楼盘新动态,掌握楼盘一手情报！" href="javascript:;"><span>订阅动态</span></a></div>
+        </div>
+      </div>
+      
+      <!--轮播图-->
+      <div class="w100">
+        <div class="m_banner">
+        <div class="banner">
+        <div class="banner_img swiper-container1">
+          <ul class="swiper-wrapper">
+               {volist name="$index['hdplist']" id="vo"}
+                  <li class="swiper-slide">
+                    <a target="_blank" href="{$vo.KP_Link}"><img src="{$vo.KP_PicUrl}" alt="{$vo.KP_Title}" title="{$vo.KP_Title}"/></a>
+                  </li>
+               {/volist}  
+          </ul>
+          <div class="swiper-pagination" id="swiper-pagination1"></div>
+        </div>
+      </div>
+      </div>
+    
+     
+    
+    <div class="m_banner">
+      <div class="m_title">
+        <h3>特色<span>精选</span></h3>
+        <p></p>
+      </div>
+      <div class="m_tese">
+        <div class="m_tese_l"><a href="javascript:void(0);" onclick="gohouse('lx',1)">
+          <div class="tese_list_title">
+            <h3>热销新盘</h3>
+            <p>品质好房</p>
+          </div>
+          <div class="tese_list_tu"><img src="__CDN__/html/img/mobile/tese.png"></div></a>
+        </div>
+        <div class="m_tese_r">
+          <div class="tese_r_kuang"><a href="javascript:void(0);" onclick="gohouse('ts','海景房')"  >
+            <div class="tese_r_title">
+              <h3>海景豪宅</h3>
+              <p>度假首选</p>
+            </div>
+            <div class="tese_r_tu"><img src="__CDN__/html/img/mobile/tese2.jpg"></div></a>
+          </div>
+          <div class="tese_r_kuang" style="border-bottom: none;margin-top: .3rem">
+            <a href="javascript:void(0);" onclick="gohouse('ts','养生')">
+            <div class="tese_r_title">
+              <h3>养生宜居</h3>
+              <p>释放您的身心</p>
+            </div>
+            <div class="tese_r_tu"><img src="__CDN__/html/img/mobile/tese3.jpg"></div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--w100% end-->
+  <div class="clear"></div>
+  <!--快捷找房-->
+    <div class="w100">
+      <div class="m_title2">
+        <h3>快捷<span>找房</span></h3>
+        <p></p>
+      </div>
+      <div class="w94_2">
+        <div class="tiaojian">
+          <div class="tj_title">地区：</div>
+          <ul class="tj_list">
+             {volist name='index["sxqy"]' id='vo' }    
+                <li><a href="javascript:void(0);" onclick="gohouse('City','{$vo.areaid}')"  >{$vo.name}</a></li>
+             {/volist}  
+          </ul>
+        </div>
+        <div class="tiaojian tj2">
+          <div class="tj_title">价格：</div>
+          <ul class="tj_list">
+            {volist name='index["sxjg"]' id='vo' }    
+                <li><a href="javascript:void(0);" onclick="gohouse('Price','{$vo.KP_Content}')"  >{$vo.KP_Name}</a></li>
+             {/volist}  
+          </ul>
+        </div>
+        <div class="te_mokuai">
+          
+            {volist name='index["sxts"]' id='vo' }    
+               <a href="javascript:void(0);" onclick="gohouse('Ts','{$vo.KP_Name}')" >{$vo.KP_Name}</a>
+            {/volist}
+           
+        </div>
+      </div>
+    </div><!--w100% end-->
+    
+    <!--新房推荐-->
+    <div class="w100">
+      <div class="m_title2">
+        <h3>新房<span>推荐</span></h3>
+        <p></p>
+      </div>
+      <div class="w94">
+        <ul class="Lplist">
+           {volist name='index["xftj"]' id='vo' }    
+          <li>
+            <a href="/house/house_details/ids/{$vo.id}">
+              <div class="Lp_pic"><img src="{$vo.KP_Wjt}"><i style="display: none;">免费专车</i></div>
+              <div class="Lp_con">
+                <p class="Lp_title">{$vo.KP_LpName}<span> | {$vo.KP_Xszt==0?"在售":($vo.KP_Xszt==1?"待售":"售罄")}</span></p>
+                <p class="Lp_add">{$vo.CNAME}</p>
+                <p class="Lp_jiage"><em>{$vo.KP_Price}</em>{$vo.KP_Price_unit}</p>
+                <p class="Lp_tese">
+                  {volist name=":explode(',',$vo.KP_TsType)"   id="co"  length="3" }  
+                    <span>{$co}</span>
+                  {/volist}
+                   </p>
+              </div>
+            </a>
+              <div class="tel_phone"><a href="tel:{$vo.KP_Tel}" class="tel_num"><img src="__CDN__/html/img/mobile/footer.png"></a></div>
+          </li>
+          {/volist}
+        </ul>
+        <div class="More"><a href="/house">查看更多</a></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(function(argument) {
+          $(".Lp_pic").eq(parseInt(5*Math.random())).find("i").css("display","block");
+           $(".Lp_pic").eq(parseInt(5*Math.random())).find("i").css("display","block");
+      })
+    
+    </script>
+    <!--房产资讯-->
+    <div class="w100">
+         <div class="m_title2">
+        <h3>楼市<span>快讯</span></h3>
+        <p></p>
+      </div>
+      
+      <div class="w94">
+        <ul class="News_list"> 
+           
+            {volist name='index["lskx"]' id='vo'  length="2"}    
+          <li>
+            <a href="/news/detail/ids/{$vo.id}">
+              <div class="News_pic"><img src="{$vo.KP_PicUrl}"></div>
+              <div class="News_con">
+                <p class="News_title">{$vo.KP_Title}</p>
+                <p class="News_time">
+                  <span class="News_see"><i><img src="__CDN__/html/img/mobile/see.png"></i>{$vo.KP_Cs}</span>
+                  <span class="News_data"><i><img src="__CDN__/html/img/mobile/data.png"></i>{$vo.KP_AddTime}</span>
+                </p>
+              </div>
+            </a>
+          </li>  
+          {/volist}
+          {volist name='index["lskx"]' id='vo'  length="5"} 
+          {if condition="$i>2"}   
+          <li>
+            <a href="/news/detail/ids/{$vo.id}">
+              <div class="News_con2">
+                <p class="News_title1">{$vo.KP_Title}</p>
+                <p class="News_ftile">{$vo.KP_Description}</p>
+                <p class="News_time">
+                  <span class="News_see"><i><img src="__CDN__/html/img/mobile/see.png"></i>{$vo.KP_Cs}</span>
+                  <span class="News_data"><i><img src="__CDN__/html/img/mobile/data.png"></i>{$vo.KP_AddTime}</span>
+                </p>
+              </div>
+            </a>
+          </li>
+          {/if}
+          {/volist}
+          
+        </ul>
+        <div class="More"><a href="/news">查看更多</a></div>
+      </div>
+    </div>
+    <!--流程-->
+    <div class="w100_2">
+      <div class="w94_2">
+        <ul class="DL">
+                <li>
+                    <a class="popup" data-name="报名看房" data-id="0" data-module="mobile_index_bmkf" data-text="立即报名看房，24小时服务，尽享优惠。" href="javascript:;">
+                        <p class="img"><img src="__CDN__/html/img/mobile/baoming.png" alt=""></p>
+                        <p class="txt">
+                            <span>报名看房</span>
+                        </p>
+                    </a>
+                </li>
+                <img src="__CDN__/html/img/mobile/icon-right1.png" class="process_main_icon">
+                <li>
+                    <a class="c" href="tel:{$Think.config.site.tel}">
+                        <p class="img"><img src="__CDN__/html/img/mobile/jieji.png" alt=""></p>
+                        <p class="txt">
+                            <span>24H接送机</span>
+                        </p>
+                    </a>
+                </li>
+                <img src="__CDN__/html/img/mobile/icon-right1.png" class="process_main_icon">
+                <li>
+                    <a class="c popup" data-name="看房专车" data-id="0" data-module="mobile_index_kfzc" data-text="预约看房专车，立享免费专车接送服务。" href="javascript:;">
+                        <p class="img"><img src="__CDN__/html/img/mobile/kanfang.png" alt=""></p>
+                        <p class="txt">
+                            <span>看房专车</span>
+                        </p>
+                    </a>
+                </li>
+                <img src="__CDN__/html/img/mobile/icon-right1.png" class="process_main_icon">
+                <li>
+                    <a class="c" href="javascript:;" onclick="openZoosUrl('bchatwin');">
+                        <p class="img"><img src="__CDN__/html/img/mobile/vip.png" alt=""></p>
+                        <p class="txt">
+                            <span>一对一服务</span>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+      </div>
+    </div>
+    
+   
+
+
+
+
+
+
+  <script>  
+    //轮播图
+    var mySwiper1= new Swiper(".swiper-container1",{
+        loop : true,
+        loopedSlides:4,
+        autoplay:4000,
+        autoplayDisableOnInteraction : false,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        slidesPerView :"auto"
+    });
+    
+    
+    //资讯单行文字滚动
+function AutoScroll(obj) {
+    $(obj).find("ul:first").animate({
+        marginTop: "-.5rem"
+    }, 2000, function() {
+        $(this).css({ marginTop: "0" }).find("li:first").appendTo(this);
+        setTimeout('AutoScroll(".scrolldiv")', 2000)
+    });
+}
+$(function() {
+    // 判断一张的的时候不调用函数
+    var $scr_Li = $('.scrolldiv').find("li");
+    if ($scr_Li.length != 1) {
+        setTimeout('AutoScroll(".scrolldiv")', 2000);
+    }
+    // adjust();
+
+});
+
+function gohouse(t,v){  
+    var d = new Date();
+    d.setTime(d.getTime()+(10*1000));
+    document.cookie = t + "=" + v + ";expires="+d.toGMTString()+";path=/";
+    setTimeout(function () { 
+    window.open("/house", "_blank");
+    }, 100);
+}
+
+function gonews(x){
+    var d = new Date();
+    d.setTime(d.getTime()+(10*1000));
+    document.cookie = "newstype" + "=" + x + ";expires="+d.toGMTString()+";path=/";
+    
+    setTimeout(function () { 
+      location.href="/news";
+    }, 100);
+}
+  </script>
+  
+ 

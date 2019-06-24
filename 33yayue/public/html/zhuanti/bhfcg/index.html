@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>北海防城港专题页</title>
+<link rel="stylesheet" href="Styles/index.css" type="text/css">
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "北海防城港专题页-帮你找房报名";
+        var T_Message = "PC端-北海防城港专题页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房网置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+
+</head>
+
+<body>
+
+<!--导航-->
+<div class="head" style="background: #fff">
+	<a href="http://www.3yayue.com"><img src="img/logo.png" alt=""></a>
+	<ul>
+		<li><a href="http://www.3yayue.com/" target="_blank">阅房网首页</a></li>
+		<li><a href="http://www.3yayue.com/house/" target="_blank">新房</a></li>
+		<li><a href="http://www.3yayue.com/news/" target="_blank">资讯</a></li>
+		<li><a href="http://www.3yayue.com/tuangou/" target="_blank">团购</a></li>
+		<li><a href="http://www.3yayue.com/houseunion/" target="_blank">购房联盟</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<!--正文-->
+<div class="center" style="background: #f7f7f7">
+	<ul>
+		<li class="banner">
+			<a href="#beihai"><img class="d1" src="img/b1.gif" alt=""></a>
+			<a href="#fangchenggang"><img class="d2" src="img/b2.gif" alt=""></a>
+		</li>
+		<li class="tab01" id="beihai"></li>
+		<li class="ad1 ad9">
+			<a href="http://www.3yayue.com/house/1028.html" target="_blank"><img src="img/a1.png" alt=""></a>
+			<div class="aa">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1028.html" target="_blank">碧桂园北纬21°</a>
+				</div>
+				
+				<p>均价：9500元/㎡</p>
+				<p>户型：73-93㎡ 两房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">碧桂园·北纬21°位于北海银滩西区。项目可享2.3公里银滩海岸线、紧邻国家4A景区冠头岭森林公园，交通配套有高铁站、国际客运码头等。2009年，碧桂园进驻广西，碧桂园·北纬21将打造成智能化社区，东南亚风情别墅、瞰海洋房。碧桂园践行“用心关怀每一位住户，细心做好每一件小事”服务宗旨，坚持“睦邻友好，相互关爱”社区理念。</p>
+			</div>
+		</li>
+		<li class="ad2 ad0">
+			<a href="http://www.3yayue.com/house/1147.html" target="_blank"><img src="img/a2.png" alt=""></a>
+			<div class="aa aa2">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1147.html" target="_blank">金昌皇家海湾公馆</a>
+				</div>
+				
+				<p>均价：12000元/㎡</p>
+				<p>户型：76-125㎡ 两至三房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">金昌·皇家海湾项目由浙江金昌集团开发，金昌·皇家海湾公馆项目位于北海市新城区上海路交金海岸大道交界处东南角，西临上海路，北靠金海岸大道，交通便利；东侧为国家红树林生态保护区及冯家江主题公园，南面为规划中的湿地公园，且毗邻银滩和一线海景，景观资源得天独厚。</p>
+			</div>
+		</li>
+		<li class="ad3 ad9">
+			<a href="http://www.3yayue.com/house/1245.html" target="_blank"><img src="img/a3.png" alt="" style="top: 440px"></a>
+			<div class="aa" style="top: 440px">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1245.html" target="_blank">和居壹海江山</a>
+				</div>
+				
+				<p>均价：12000元/㎡</p>
+				<p>户型：67-140㎡ 两房至四房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">和居·壹海江山项目总占地面积321亩，总建筑面积为84万平米，容积率为3.5，绿化率60%。 
+ 除了拥有得天独厚的海景和地理优势外也十分注重社区园林景观打造，为了给业主营造一个休闲养生空间，营造出一个具有海滨度假风情的园林。
+以“五洲国际”为主题，打造一个滨海风情园林。</p>
+			</div>
+		</li>
+		<li class="ad4 ad0">
+			<a href="http://www.3yayue.com/house/1071.html" target="_blank"><img src="img/a4.png" alt=""  style="top: 390px"></a>
+			<div class="aa aa2" style="top: 390px">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1071.html" target="_blank">天隆三千海</a>
+				</div>
+				
+				<p>均价：14000元/㎡</p>
+				<p>户型：75-155㎡ 一至三房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">天隆地产首盘杰作——三千海项目雄踞北海银滩西区，占地3000亩；地块右傍冠头岭，南邻北部湾；集数公里银色沙滩，一线精华海景、18洞高尔夫球场、五星级酒店、奢华游艇会、保健养生会所等。
+在景观上，项目拥有海景、高尔夫景、园林景、山景，四景叠加。</p>
+			</div>
+		</li>
+		<li class="tab02" id="fangchenggang"></li>
+		<li class="ad5 ad9">
+			<a href="http://www.3yayue.com/house/1232.html" target="_blank"><img src="img/a5.png" alt=""  style="top: 380px"></a>
+			<div class="aa" style="top: 380px">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1232.html" target="_blank">春江嘉园</a>
+				</div>
+				
+				<p>均价：3680元/㎡</p>
+				<p>户型：88-146㎡ 两房至三房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">春江嘉园位于城南新区，防城港城市文化绿轴之上，是集江岸别墅、瞰江洋房、商务公寓、风情商业于一体的千亩多元大城。
+项目紧邻300多亩市政绿化广场，舒享城市鲜氧。坐拥4公里一线江景。社区内拥有一条商业景观带、一条景观主轴、两条景观副轴、七大景观点。</p>
+			</div>
+		</li>
+		<li class="ad6 ad0">
+			<a href="http://www.3yayue.com/house/1123.html" target="_blank"><img src="img/a6.png" alt=""  style="top: 480px"></a>
+			<div class="aa aa2" style="top: 480px">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1123.html" target="_blank">粤同江滨雅轩</a>
+				</div>
+				
+				<p>均价：4680元/㎡</p>
+				<p>户型：80-120㎡ 两至四房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">项目建成后将提高防城港城市品位和人居环境，树立城市良好形象，汇聚商业财富，引领城市发展潮流。 粤同江滨雅轩具备强大的交通网络。高铁站、新客运站距项目一步之遥。通往企沙工业园区、东兴的城市大道经过于此，让您畅享北部湾中心1小时生活圈，交通便捷。 </p>
+			</div>
+		</li>
+		<li class="ad7 ad9">
+			<a href="http://www.3yayue.com/house/1075.html" target="_blank"><img src="img/a7.png" alt=""  style="top: 480px"></a>
+			<div class="aa" style="top: 480px">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1075.html" target="_blank">龙光阳光海岸</a>
+				</div>
+				
+				<p>均价：5600元/㎡</p>
+				<p>户型：64-126㎡ 两房至四房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">“龙光·阳光海岸”位于广西防城港市港口区兴港大道。项目东临约2700亩桃花湖公园，西临西海湾，有约2公里的海岸线。是泛北部湾区域拥有海景和湖景双重景观资源的项目。
+社区即可欣赏到优美怡人的景观，从而真正实现了“山、水、城一色”的人居理想。</p>
+			</div>
+		</li>
+		<li class="ad8 ad0">
+			<a href="http://www.3yayue.com/house/1531.html" target="_blank"><img src="img/a8.png" alt=""  style="top: 440px"></a>
+			<div class="aa aa2" style="top: 440px">
+				<div class="bb">
+					<a href="http://www.3yayue.com/house/1531.html" target="_blank">四通八达国际广场</a>
+				</div>
+				
+				<p>均价：6200元/㎡</p>
+				<p>户型：58-120㎡ 一至四房</p>
+				<p class="p1">项目简介：</p>
+				<p class="p2">四通八达国际广场是防城港三生房地产有限公司联合北京四通集团强力打造的现代大型项目，总用地面积为391218㎡，总建筑面积约为1402067㎡。项目位于金花茶大道东面，近邻防城港高铁站北站和规划中的长途客运中心、公交总站，周边路网发达，交通极为便利，是集住宅、商务写字楼、高档酒店以及商业等功能于一体的大型复合商业金融地标性建筑群。</p>
+			</div>
+		</li>
+		
+	</ul>
+	<div class="clear"></div>
+	
+</div>
+
+<!--报名-->
+<div class="Bieshu_BmCont">
+    <div class="width_1200 Bieshu_Bm">
+        <div class="Bieshu_Bm_Left">
+            <div class="MaxText">
+               
+            </div>
+            <div class="MinText">
+             
+            </div>
+            <div class="Btn">
+               
+            </div>
+        </div>
+        <div class="Bieshu_Bm_Mid">
+        </div>
+        <div class="Bieshu_Bm_Right">
+            <div class="Title">
+            </div>
+            <div class="Name">
+                <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+            </div>
+            <div class="Phone">
+                <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick="Bs_Submit()">
+                    预约看房
+                </a>
+            </div>
+            <h1>品鉴热线：400-1552-899</h1>
+            <!--返回顶部-->
+			<div class="top">
+				<img src="img/top.png" alt="">
+			</div>
+        </div>
+        <div class="claer"></div>
+    </div>
+</div>
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+
+
+
+
+		<!--返回顶部-->
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+
+
+
+
+
+</body>
+</html>

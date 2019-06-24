@@ -1,0 +1,29 @@
+<link href="__CDN__/assets/css/index/video.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<div class="top_tu"></div>
+<div class="about_tab">
+      <ul class="about_tab_hd">
+        <li class="active">关于我们</li>
+        <li>联系我们</li>
+        <li>版权声明</li>
+        <li>服务协议</li>
+      </ul>
+      <ul class="about_tab_bd">
+      
+            {volist name="$info" id="vo"}
+               <li class="{$i==1?"thisclass":""}"> 
+                  {$vo.KP_Content}
+               </li>
+            {/volist}
+       
+      
+      </ul>
+</div>
+
+<script type="text/javascript">
+  $(function(argument) {
+    $(".about_tab_bd p img").css("display","unset");
+  })
+</script>
+
+ 

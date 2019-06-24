@@ -1,0 +1,252 @@
+<link href="__CDN__/assets/css/index/news.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>房产资讯</span></div>
+     
+<!--热点头条-->
+    <div class="news_hot">
+        <div class="news_hot_k">
+            <h3>热点<span>头条</span></h3>
+            <div class="news_hot_left"> 
+                {volist name="$index['rdtt']" id="vo" length="1"} 
+                    <a href="/news/detail/ids/{$vo.id}"><img src="{$vo.KP_PicUrl}">
+                    <div class="hot_img_zhe">{$vo.KP_Title}</div>
+                    </a>
+                {/volist}
+            </div>
+            <div class="news_hot_right" id="ellipsis">
+                <ul>
+                    {volist name="$index['rdtt']" id="vo"  } 
+                    {if condition="$i>1"}
+                    <li>
+                        <img src="{$vo.KP_PicUrl}">
+                        <div class="right_list">
+                            <a href="/news/detail/ids/{$vo.id}"   target="_blank"><h2>{$vo.KP_Title}</h2></a>
+                            <span>{$vo.KP_Description}</span>
+                        </div>
+                    </li>
+                    {/if}
+                   {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+<!--资讯导航条--> 
+    <div class="news_nav"   >
+        <ul>
+            <li class="on"><a href="/news"  >所有资讯</a></li>
+            <li><a href="/news/index/ids/2">楼盘热点</a></li>
+            <li><a href="/news/index/ids/3">优惠信息</a></li>
+            <li><a href="/news/index/ids/5">楼盘导购</a></li>
+            <li><a href="/news/index/ids/1">新闻资讯</a></li>
+            <li><a href="/news/index/ids/11">楼市动态</a></li>
+            <li><a href="/news/index/ids/14">购房攻略</a></li>
+            <li><a href="/news/index/ids/10">看房记</a></li>
+            <li><a href="/news/index/ids/9">户型/样板间鉴赏</a></li>
+        </ul>
+    </div>
+  
+
+  
+  
+<!--资讯列表-->
+    <div class="news_center">
+    <div class="news_list_main">
+        <ul>
+            {volist name="$index['allnews']" id="vo"}
+            <li>
+                <div class="news_list_main_k">
+                    <div class="news_tu"><a href="/news/detail/ids/{$vo.id}"   target="_blank"><img src="{$vo.KP_PicUrl}"></a></div>
+                    <div class="news_txt">
+                        <a href="/news/detail/ids/{$vo.id}"   target="_blank"><span>{$vo.KP_City?"#".$vo.KP_City."#":""}</span>{$vo.KP_Title}</a>
+                        <p>{$vo.KP_Description}</p>
+                        <p class="news_time"><i></i><span>{$vo.KP_AddTime}</span></p>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    <!--分页-->
+    <div class="page" maxshowpageitem="10" pagelistcount="10"  id="page"></div>
+        
+    </div>
+        
+    <!--右侧-->
+    <div class="right_news">
+        <div class="rw-tj">
+        <h3>每日热文推荐</h3>
+            <ul>
+                 
+                {volist name="$index['mrrwtj']" id="vo"}
+                    <li><a href="/news/detail/ids/{$vo.id}" target="_blank"><i class="{:explode(',','four,one,two,three,four,four,four,four,four,four,four,four,four,four')[$i]}">{$i}</i>{$vo.KP_Title}</a></li>
+                {/volist}
+            </ul>
+        </div>
+        
+        <div class="chengjiao">
+        <h3>热门成交数据</h3>
+        <div class="news_shuju">
+          <p>成交项目</p>
+          <p>成交价</p>
+          <p>日期</p>
+        </div>
+        
+        <div class="shuju_center">
+            <ul>
+                 {volist name="$index['rmcjsh']" id="vo"}
+                    <li>
+                    <a href="/house/house_details/ids/{$vo.KP_LpID}" target="_blank">{$vo.KP_LpName}</a>
+                    <p>{$vo.KP_Price}</p>
+                    <p>{$vo.KP_Time}</p>
+                    </li>
+                 {/volist}
+            </ul>
+        </div>
+        </div>
+        <!--订阅动态-->
+        <div class="bm_dingyue">
+            <div class="bm_k">
+            <input type="hidden" id="lp_Name" value="资讯页右下" />
+            <input type="text" id="lp_Phone" placeholder="请输入您的手机号码" />
+                <a href="javascript:void(0);" onclick="lp_Submit()">订阅</a>
+            </div>
+            
+        </div>
+    </div>
+        
+    </div>
+ 
+    
+  <!--提示框弹层-->
+  <div class="Tip_Info"> </div>
+   
+   
+    <script>
+// (function () {
+//                 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+//                 ga.src = '__CDN__/assets/js/frontend/index/house/QA.js?v=' + (new Date()).getTime();
+//                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+//                 })();
+        //提示框弹层
+function Tip_Control(info, time) {
+    $(".Tip_Info").css("display", "block");
+    $(".Tip_Info").text(info);
+    setTimeout(function () { $(".Tip_Info").css("display", "none"); }, time);
+};
+
+
+   if(location.pathname!="/news"){
+      $('html, body').animate({
+                    scrollTop: $(".news_nav").offset().top - 20
+                }, 100);
+   }
+  
+
+
+    $(function(argument) {
+        $(".news_nav").find("li").attr("class","");
+        $(".news_nav").find("a[href='"+ location.pathname +"']").eq(0).parent().attr("class","on");
+     })
+
+    // window.scrollTo(0,700);
+ 
+    </script>
+
+
+    <script type="text/javascript">
+   var Ndata = {
+                  "page":"1", 
+                  "pagesize":"10",  
+                  "type":"{$index['type']}" 
+                };       
+  var GG = {"kk":function(pageno){
+       if(GG.ff!=0){  
+           Ndata.page=pageno;
+           getajaxdata(Ndata);
+        }
+        GG.ff=1;
+      },"ff":0
+    }
+
+
+
+     
+
+  setTimeout(function() {
+            $("#page").initPage({$index['total']},1,GG.kk); // body...
+          },0);
+
+
+
+
+
+ 
+   
+  function getajaxdata(Ndata) {
+     $.post("/news/classnews", Ndata, function(data,status){
+        if(status=="success"){
+          // <li>
+          //       <div class="news_list_main_k">
+          //           <div class="news_tu"><a href="/news/detail/ids/27250" target="_blank"><img src="/SubPublic/Upload/UploadFile/image/2019/04/08/Max_201904081755021099.jpg"></a></div>
+          //           <div class="news_txt">
+          //               <a href="/news/detail/ids/27250" target="_blank"><span></span>万紫花苑项目目前开盘时间待定</a>
+          //               <p>开盘时间待定</p>
+          //               <p class="news_time"><i></i><span>2019-04-08 17:55:09</span></p>
+          //           </div>
+          //       </div>
+          //   </li>
+          //   KP_AddTime: "2019-04-03 15:38:31"
+// KP_Description: "公寓在售"
+// KP_PicUrl: "/SubPublic/Upload/UploadFile/image/2019/04/03/Cen_201904031538302389.jpg"
+// KP_Title: "石梅春墅公寓在售户型建筑面积有51-91平"
+// id: 27222
+          for (var i = 0; i < data.list.length; i++) {
+            // console.log(data.list[i]);
+            var da=data.list[i];
+            var dt = $(".news_list_main >ul >li").eq(i);
+            dt.find("a").attr("href","/news/detail/ids/"+da.id) ;
+            dt.find("img").attr("src", da.KP_PicUrl) ;
+            // dt.find("span").eq(0).attr("src", da.KP_PicUrl) ; $vo.KP_City?"#".$vo.KP_City."#":""}
+            dt.find("span").eq(1).html(  da.KP_AddTime) ;
+            var ct="";
+            if(da.KP_City==null){ 
+              ct="<span> </span>"  ;  
+            }else{
+             ct="<span>#" + da.KP_City + "#</span>"  ;  
+            }
+
+            dt.find(".news_txt a").html( ct + da.KP_Title ) ;
+            dt.find(".news_txt p").eq(0).html(   da.KP_Description ) ;
+           
+            }
+            $('html, body').animate({
+                    scrollTop: $(".news_nav").offset().top - 20
+               }, 100); 
+        }
+     
+            
+      });
+    
+  }
+
+</script>
+
+   <!--超出多行隐藏兼容-->
+<!--<script type="text/javascript">
+    function mitulineHide(num,con){
+        var contain = document.getElementById(con);
+        console.log(con);
+        var maxSize = num;
+        var txt = contain.innerHTML;
+        if(txt.length>num){
+            console.log('1');
+            txt = txt.substring(0,num-1)+"...";
+            contain.innerHTML = txt;
+        }else{
+            console.log("error")
+        }
+    };
+    mitulineHide(10,'ellipsis');
+</script>-->
+
+ 

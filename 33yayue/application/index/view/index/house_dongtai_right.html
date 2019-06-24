@@ -1,0 +1,105 @@
+
+ <div class="SiteHouse">
+            <div class="HouseName">
+            	{$index['lpinfo']['KP_LpName']}
+            	 
+            </div><div class="apilpid" style="display: none;">{$index['lpinfo']['id']}</div>
+            <div class="Pic">
+                <div class="PicLeft">
+                    <a href="/house/house_details/ids/{$index['lpinfo']['id']}"><img src="{$index['lpinfo']['KP_Wjt']}" alt="" /></a>
+                </div>
+                <div class="PicRight">
+                    <a href="/house/lpwd/ids/{$index['lpinfo']['id']}" class="Ask">楼盘问答（共<font> {$index['wdts']} </font>条）</a>
+                    <a href="/house/lpdp/ids/{$index['lpinfo']['id']}" class="Ping">楼盘点评（共<font>{$index['dpts']}</font>条）</a>
+                    <a href="javascript:void(0);" class="Tuan">团购报名（<font>{$index['bmrs']}</font>人）</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="ItemList">
+                <div class="Item">
+                    <font>起售价格：</font>
+                    <span> 
+              {empty name="$index['lpinfo']['KP_Qiprice']"}
+	              {empty name="$index['lpinfo']['KP_TaoJia']"}
+	               			<small>待定</small>
+	              {else/}
+	                     	<small>{$index['lpinfo']['KP_TaoJia']}</small>万元/套 
+	              {/empty}
+	          {else/}
+	              		<small>{$index['lpinfo']['KP_Qiprice']} </small>元/m²
+	          {/empty}
+           
+
+                    	 
+                </div>
+                <div class="Item">
+                    <font>项目类型：</font>
+                    <span>{$index['lpinfo']['KP_Wylx']} </span>
+                </div>
+                <div class="Item">
+                    <font>所属商圈：</font>
+                    <span>{$index['lpinfo']['CNAME']} </span>
+                </div>
+                <div class="Item">
+                    <font>楼盘地址：</font>
+                    <span>{$index['lpinfo']['KP_Lpdz']}</span>
+                </div>
+                <div class="Item">
+                    <font>联系电话：</font>
+                    <span><small>{$index['lpinfo']['KP_Tel']} &nbsp;转&nbsp;{$index['lpinfo']['KP_Fjh']} 
+                    </small></span>
+                </div>
+            </div>
+        </div>
+        <!--周边楼盘-->
+        <div class="AroundHouse">
+            <div class="AroundHouse_Head">
+            周边楼盘 
+            </div>
+            <div class="AroundHouse_Main">
+                {volist name="index['zblp']" id="vo" key="k"  }
+                <a href="/house/house_details/ids/{$vo.id}" target="_blank">
+                    <span>{$vo['KP_LpName']}</span>
+                    <font>{$vo['CNAME']} </font>
+                    <small>
+                    	 {empty name="$vo['KP_Qiprice']"}
+				              {empty name="$vo['KP_TaoJia']"}
+				               			 待定 
+				              {else/}
+				                     	{$vo['KP_TaoJia']}<b>万元/套</b>
+				              {/empty}
+				          {else/}
+				              		 {$vo['KP_Qiprice']} <b>元/m²</b>
+				          {/empty}	
+                     </small>
+                    <em class="clear"></em>
+                </a>
+               {/volist}
+            </div>
+        </div>
+        <!--网友们关注(中意次数倒序)-->
+        <div class="AroundHouse">
+            <div class="AroundHouse_Head">
+            网友们关注
+            </div>
+            <div class="AroundHouse_Main">
+                 {volist name="index['wygz']" id="vo" key="k"  }
+	                <a href="/house/house_details/ids/{$vo.id}" target="_blank">
+	                    <span>{$vo['KP_LpName']} </span>
+	                    <font>{$vo['CNAME']} </font>
+	                    <small> 
+	                    		{empty name="$vo['KP_Qiprice']"}
+					              {empty name="$vo['KP_TaoJia']"}
+					               			 待定 
+					              {else/}
+					                     	{$vo['KP_TaoJia']}<b>万元/套</b>
+					              {/empty}
+					          {else/}
+					              		{$vo['KP_Qiprice']} <b>元/m²</b>
+					          {/empty}	
+				      </small>
+	                    <em class="clear"></em>
+	                </a>
+                 {/volist}
+            </div>
+        </div>

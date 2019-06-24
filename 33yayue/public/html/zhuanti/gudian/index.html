@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云南-七彩云南古滇名城专题页</title>
+<link rel="stylesheet" href="css/index.css">
+<link href="css/global.css" rel="Stylesheet" type="text/css" />
+<link href="css/layer.css" rel="stylesheet" />
+<link href="css/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<!--<script src="js/jquery-1.9.1.js"></script>-->
+
+
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "云南-七彩云南古滇名城专题页-帮你找房报名";
+        var T_Message = "PC端-云南-七彩云南古滇名城专题页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房旅居置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script> 
+</head>
+
+<body>
+
+<!--导航-->
+<div class="daohang">
+  <div class="head" style="background: #fff"> <a href="http://www.3yayue.com/" target="_blank"><img src="images/Logo.png"></a>
+    <ul>
+      <li><a href="http://www.3yayue.com/" target="_blank">首页</a></li>
+      <li><a href="http://www.3yayue.com/house/" target="_blank">新房</a></li>
+      <li><a href="http://www.3yayue.com/news/" target="_blank">资讯</a></li>
+      <li><a href="http://www.3yayue.com/tuangou/" target="_blank">团购</a></li>
+      <li><a href="http://www.3yayue.com/html/zhuanti/" target="_blank">专题</a></li>
+    </ul>
+  </div>
+</div>
+
+<!--正文-->
+<div class="diyi">
+ <div class="banner"><img src="images/01.jpg"></div>
+ <div class="fr imgAnimation"><img  src="images/wz.png"></div>
+</div>
+
+<div class="tedian"><img src="images/02.jpg"></div>
+<div class="tedian"><img src="images/03.jpg"></div>	
+<div class="er">
+  <ul>
+    <li><img src="images/04.jpg" alt=""></li>
+    <li><img src="images/05.jpg" alt=""></li>
+    <li><img src="images/06.jpg" alt=""></li>
+    <li><img src="images/07.jpg" alt=""></li>
+    <li><img src="images/08.jpg" alt=""></li>
+    <!--户型轮播-->
+    <li>
+      <div class="luenbo"> 
+        <!--箭头-->
+        <div class="jiantou">
+          <div class="jianto jiantou_left jiantou1"></div>
+          <div class="jianto jiantou_right jiantou1"></div>
+        </div>
+        <!--图片-->
+        <div class="img_box b">
+          <ul class="box-img">
+            <li class="img"><img src="images/l-1.jpg" alt="A2奢享墅"></li>
+            <li class="img"><img src="images/l-2.jpg" alt="A3逸境墅"></li>
+            <li class="img"><img src="images/l-3.jpg" alt="B1微岚墅"></li>
+            <li class="img"><img src="images/l-4.jpg" alt="c1微岚墅"></li>
+          </ul>
+          <div class="location swiper-pagination"></div>
+        </div>
+        <div class="huxing_box"> <a href="http://www.3yayue.com/househuxing/1974.html" target="_blank">查看更多户型</a> </div>
+      </div>
+    </li>
+    <!--轮播end-->
+    
+    <li><img src="images/10.jpg" alt=""></li>
+    <li><img src="images/11.jpg" alt=""></li>
+    <li><img src="images/12.jpg" alt=""></li>
+    <li><img src="images/13.jpg" alt=""></li>
+  </ul>
+  <!--滚动-->
+  <div id="demo" class="gd">
+    <table border="0" align="center" cellpadding="1" cellspacing="1" cellspace="0" >
+      <tr>
+        <td valign="top" bgcolor="#fff" id="marquePic1">
+           <table width="100%" border="0" cellspacing="0">
+            <tr>
+              <td><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank"><img src="images/gd-1.jpg" width="356" height="200" border="0"></a></td>
+              <td><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank"><img src="images/gd-2.jpg"  width="356" height="200" border="0"></a></td>
+              <td><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank"><img src="images/gd-3.jpg"  width="356" height="200" border="0"></a></td>
+              <td><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank"><img src="images/gd-4.jpg"  width="356" height="200" border="0"></a></td>
+              <td><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank"><img src="images/gd-5.jpg"  width="356" height="200" border="0"></a></td>
+              <td><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank"><img src="images/gd-6.jpg"  width="356" height="200" border="0"></a></td>
+            </tr>
+          </table>
+          </td>
+        <td id="marquePic2" valign="top"></td>
+      </tr>
+    </table>
+  </div>
+  <script type="text/javascript">
+var speed=15
+marquePic2.innerHTML=marquePic1.innerHTML 
+function Marquee(){ 
+if(demo.scrollLeft>=marquePic1.scrollWidth){ 
+demo.scrollLeft=0 
+}else{ 
+demo.scrollLeft++ 
+} 
+} 
+var MyMar=setInterval(Marquee,speed) 
+demo.onmouseover=function() {clearInterval(MyMar)} 
+demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)} 
+</script>  
+  <!--end 滚动--> 
+	<div class="ybj"> <div class="ybj-b"><a href="http://www.3yayue.com/Housealbum/1974-8284.html" target="_blank">查看更多样板间</a></div></div>
+</div>
+
+<div class="di">
+  <div class="di-nr">
+    <ul>
+      <li><a href="http://www.3yayue.com/house/1974.html" target="_blank">七彩云南古滇名城详情页>></a></li>
+      <li>预售许可证：预许晋房字（2016003）号</li>
+      <li>楼盘地址：云南省昆明市·环湖南路·滇池南岸</li>
+    </ul>
+  </div>
+</div>
+<div class="clear"></div>
+
+<!--报名-->
+<div class="Bieshu_BmCont">
+  <div class="width_1200 Bieshu_Bm">
+    <div class="Bieshu_Bm_Left">
+      <div class="MaxText"> </div>
+      <div class="MinText"> </div>
+      <div class="Btn"> </div>
+    </div>
+    <div class="Bieshu_Bm_Mid"> </div>
+    <div class="Bieshu_Bm_Right">
+      <div class="Title"> </div>
+      <div class="Name">
+        <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+      </div>
+      <div class="Phone">
+        <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+      </div>
+      <div class="Btn"> <a href="javascript:;" onclick="Bs_Submit()"> 预约看房 </a> </div>
+      <h1>品鉴热线：400-1552899</h1>
+      <!--返回顶部-->
+      <div class="top"> <img src="images/top.png" alt=""> </div>
+    </div>
+    <div class="claer"></div>
+  </div>
+</div>
+<script src="js/layer.js" type="text/javascript"></script> 
+<script type="text/javascript" src="js/bm_form.js"></script> 
+<script type="text/javascript">
+		var n=1;
+		// 初始化方便换不同尺寸的图
+		//设置无线轮播
+		var  shul = $(".box-img .img").length;
+		var is_node = $(".box-img .img").eq(shul-1).clone();
+		$(".box-img").prepend(is_node);
+		var node = $(".box-img .img").eq(1).clone();
+		$(".box-img").append(node);
+		//----------------------------------------------------
+		var number=$(".box-img .img").length+2;
+		var imgwidth = $(".box-img .img").width();
+		$(".box-img").css({
+			"width":number*imgwidth
+		});
+		//设置检查多少个圆点
+		for (var i = 0; i <=shul-1; i++) {
+			$(".location").append('<span class="circular"></span>');
+			if(i==0){
+				$(".location .circular").addClass('color');
+			}
+		}
+		//向右移动
+		function right(){
+			n++;
+			if(n<=shul+1){
+				$(".box-img").animate({"left":-imgwidth*n});
+				//设置圆点的位置
+				$(".location .circular").eq(n-1).addClass('color').siblings().removeClass('color');
+				if(n==shul+1){
+					$(".location .circular").eq(n-(shul+1)).addClass('color').siblings().removeClass('color');
+				}
+			}else if(n==shul+2) {
+				$(".box-img").css({"left":-imgwidth})
+				$(".box-img").animate({"left":-imgwidth*2});
+				//设置圆点的位置
+				$(".location .circular").eq(n-(shul+1)).addClass('color').siblings().removeClass('color');
+			var xiabia=	$(".location .circular").eq(n-(shul+1)).index();
+				n=2;
+			}	
+		}
+		//向左移动
+		function left(){
+			if(1<n){
+				n--;
+				$(".box-img").animate({"left":-imgwidth*n});
+				//设置圆点的位置
+				$(".location .circular").eq(n-1).addClass('color').siblings().removeClass('color');
+
+				if(n==shul+1){
+					$(".location .circular").eq(n-(shul+1)).addClass('color').siblings().removeClass('color');
+
+				}
+			}else if (n==1) {
+				$(".box-img").css({"left":-imgwidth*(shul+1)})
+				$(".box-img").animate({"left":-imgwidth*shul});
+				//设置圆点的位置
+				$(".location .circular").eq(n+(shul-2)).addClass('color').siblings().removeClass('color');
+				n=shul;
+			}
+		}
+		//点击圆点切换
+		$(".location .circular").click(function(event) {
+			/* Act on the event */
+			var danqian = $(this).index()+1;
+			n=danqian;
+			$(".box-img").animate({"left":-imgwidth*n});
+			$(this).addClass('color').siblings().removeClass('color');
+		});
+		//点击移动
+		$(".jiantou1").click(function(){
+			var index=$(this).index();
+			if(index==1){
+				right();	
+			}else if (index==0) {
+				left();
+			}
+		});
+		var  timing=setInterval("right()",2000);
+		//鼠标经过停止定时器
+		$(".luenbo").mouseenter(function(event) {
+			/* Act on the event */
+			clearInterval(timing);
+		}).mouseleave(function(event) {
+			/* Act on the event */
+			timing=setInterval("right()",2000)
+		});
+
+	
+	
+	</script> 
+<!--返回顶部--> 
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+</body>
+</html>

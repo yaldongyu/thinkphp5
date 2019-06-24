@@ -1,0 +1,14 @@
+﻿/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+.close_btn{ width:30px; height:30px; position:absolute; top:3px; right:10px; background:url(../Images/form_close.png);}
+.close_btn a{ display:block; width:100%; height:100%;}
+

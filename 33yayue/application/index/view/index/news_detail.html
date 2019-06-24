@@ -1,0 +1,186 @@
+<link href="__CDN__/assets/css/index/news.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+ 
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>楼盘动态</span> > <span>动态详情</span></div>
+
+<!--主体-->
+<div class="w1200">
+  <div class="dongtai_left">
+
+    <!-- house_dt_show -->
+
+{if condition="$index['content']['KP_LpID']>0"}
+
+    <div class="dtLeft_head"> {$index['content']['newslp']['KP_LpName']}<i></i></div>
+    <div class="dtLeft_xuan">
+      <ul>
+        <li> <a href="/house/house_details/ids/{$index['content']['KP_LpID']}" target="_blank">楼盘主页</a> </li>
+        <li> <a href="/house/lpdetail/ids/{$index['content']['KP_LpID']}" target="_blank">项目参数</a> </li>
+        <li> <a href="/house/lphx/ids/{$index['content']['KP_LpID']}" target="_blank">项目户型</a> </li>
+        <li> <a href="/house/lpxc/ids/{$index['content']['KP_LpID']}" target="_blank">项目相册</a> </li>
+      </ul>
+    </div>
+{else /}
+    <!-- news_dt_show -->
+    <div class="dtLeft_head">特色楼盘<i></i></div>
+    <div class="dtLeft_xuan">
+      <ul>    
+        <li> <a href="javascript:void(0);"  class="nolpid"  target="_blank">投资房产</a> </li>
+        <li> <a href="javascript:void(0);"  class="nolpid"  target="_blank">旅游地产</a> </li>
+        <li> <a href="javascript:void(0);"  class="nolpid"  target="_blank">海景房</a> </li>
+        <li> <a href="javascript:void(0);"  class="nolpid"  target="_blank">养老房</a> </li>
+      </ul>
+    </div>  
+{/if}
+    <div class="dt_dingy">
+      <h3>楼盘<span>动态订阅</span></h3>
+      <p>担心错过楼盘开盘？</p>
+      <p>担心不能第一时间获取楼盘新动态?</p>
+      <p>立即订阅，楼盘一手情报抢先知道！</p>
+      <div class="dt_input">
+        <input type="hidden" id="lp_Name" 
+        {if condition="$index['content']['KP_LpID']>0"}
+          value="{$index['content']['newslp']['KP_LpName']}"
+        {else /}
+          value="新闻详细"
+        {/if}
+        />
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码">
+        <a href="javascript:;" onclick="lp_Submit()">一键订阅</a> </div>
+    
+
+    </div>
+    <div class="clear"></div>
+    <div class="dtLeft_tel">咨询热线：
+      {if condition="$index['content']['KP_LpID']>0"}
+        {$index['content']['newslp']['KP_Tel']}
+      {else /}
+        {$Think.config.site.tel}
+      {/if}
+    </div>
+  </div>
+  
+
+ 
+  <!--右侧内容-->
+  <div class="dongtai_right">
+    <div class="dtRight_title">{$index['content']['KP_Title']}</div>
+    <div class="dtRight_source">
+      <span>来源：{$Think.config.site.name}</span>
+      <span>作者：{$index['content']['KP_AddUser']}</span>
+      <span>发布时间：    
+        {volist name=":explode(' ',$index['content']['KP_AddTime'])"   id="co"   }  
+                                   {if condition="$i==1"}      
+                                    {$co} 
+                                   {/if}
+                                      {/volist}
+                                   
+                          </span>                 
+      <div class="share">
+        <div class="bdsharebuttonbox" ><a href="#" class="bds_more" data-cmd="more">分享</a></div>
+      </div>
+    </div>
+    <!--文章内容-->
+    <div class="dtRight_center">
+        {$index['content']['KP_Nr']}
+    </div>
+    <!--文章底部-->
+    <div class="dtRight_foot">
+      <p><img src="/html/images/wz_d.png"></p>
+      <p>关注官方微信，提供房产资讯，掌握楼市动态，实时了解市场走势，尽享各大房产优惠信息，致力打造优质购房置业平台。</p>
+      <p><img src="/html/images/er.png"></p>
+    </div>
+    <div class="dtRight_tishi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重要提示：本页面内容旨在为满足广大用户的信息需求而采集提供，非广告服务性信息。发布的内容不代表本网站之观点或意见，仅供用户参考，最终以开发商实际公布为准。商品房预售须取 得《商品房预售许可证》，用户在购房时需慎重查验开发商的证件信息。本页面所提到房屋面积如无特别标示，均指建筑面积，所涉装修状况、标准以最终合同为准。</div>
+    
+    <!--相关资讯-->
+    <div class="about_news">
+      <h3>相关<span>资讯</span></h3>
+      <ul class="about_news_list"> 
+        {volist name="$index['xgzx']" id="vo"}
+          <li><a href="/news/detail/ids/{$vo.id}" target="_blank"><i></i>{$vo.KP_Title}</a></li>
+        {/volist} 
+      </ul>
+    </div>
+    
+    <!--看房团-->
+    <div class="BaomingAd">
+      <div class="BaomingAd_Main">
+        <div class="Name"> <span style="font-size: 16px;color: 666px;">姓名：</span>
+          <input type="text" id="lp_Name" placeholder="请输入您的姓名" />
+        </div>
+        <div class="Phone"> <span style="font-size: 16px;color: 666px;">手机：</span>
+          <input type="text" id="lp_Phone" placeholder="您的手机号码" />
+        </div>
+        <div class="Btn"> <a href="javascript:;" onclick="lp_Submit()">立即报名</a> </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  
+  <!--猜你喜欢-->
+  <div class="dt_title">
+    <h3>为您<span>推荐</span></h3>
+    <a href="/house"  target="_blank">更多+</a> </div>
+  <div class="tu_zhanshi">
+    <ul>
+      {volist name="$index['tjlp']" id="vo"} 
+      <li> <a href="/house/house_details/ids/{$vo.id}" target="_blank"> <img src="<?php  echo(  str_replace("Min","Cen",$vo["KP_Wjt"]) ) ?>"> <span>{$vo.KP_LpName}</span></a>
+        <div class="hx_txt">
+          <p class="cn_jia">{$vo.KP_Price}</p>
+          <p>{$vo.CNAME}</p>
+        </div>
+      </li>
+      {/volist}
+    </ul>
+  </div>
+</div>
+<div class="clear"></div>
+
+ 
+<script>
+        /*分享*/
+window._bd_share_config = {
+    "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": ["mshare", "qzone", "tsina", "weixin", "tieba", "sqq", "mail", "ty", "copy", "print"],
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16"
+    },
+    "share": {
+        "bdSize": 16
+    }
+};
+with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+
+$(function(argument) {
+  $(".nolpid").click(function(argument) {
+     Yhz_SearchEncode('Ts',$(this).html());
+
+  })
+
+  var elm = $('.dongtai_left');
+  var dtt = $('.dt_title');
+  var startPos = $(elm).offset().top;
+  var endPos = $(dtt).offset().top;
+  $.event.add(window, "scroll", function () {
+    var p = $(window).scrollTop();
+    $(elm).css('position', ((p) > startPos) ? 'fixed' : 'static');
+    $(elm).css('top', ((p) > startPos) ? '0px' : '');
+    if ($(window).scrollTop()>endPos-700) {
+      $(elm).css('position','static');
+      $(elm).css('top', '');
+    }
+  });
+});
+
+
+
+    </script> 
+ 
+

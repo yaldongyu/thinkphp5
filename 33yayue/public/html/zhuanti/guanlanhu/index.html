@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>观澜湖专题页</title>
+<link rel="stylesheet" href="Styles/index.css" type="text/css">
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "观澜湖专题页-帮你找房报名";
+        var T_Message = "PC端-观澜湖专题页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房网置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+
+
+
+</head>
+<body>
+<!--导航-->
+<div class="head" style="background: #fff">
+	<a href="http://www.0898yue.com"><img src="img/logo.png" alt=""></a>
+	<ul>
+		<li><a href="http://www.0898yue.com/" target="_blank">阅房网首页</a></li>
+		<li><a href="http://www.0898yue.com/house/" target="_blank">新房</a></li>
+		<li><a href="http://www.0898yue.com/news/" target="_blank">资讯</a></li>
+		<li><a href="http://www.0898yue.com/tuangou/" target="_blank">团购</a></li>
+		<li><a href="http://www.0898yue.com/houseunion/" target="_blank">购房联盟</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+<!--正文-->
+<div class="center" style="background: #ede2c2">
+	<ul>
+		<li class="banner"><img src="img/banner01.jpg" alt=""></li>
+		<li class="ad1"></li>
+		<li class="tab1"></li>
+		<li class="ad2">
+			<div class="loupan">
+				<a class="link1" href="http://www.0898yue.com/house/559.html" target="_blank">海口观澜湖新城</a>
+				<p>由纽约曼哈顿上东区为大家呈现的精致生活获得灵感，观澜湖新城精心打造“上东区”和“中央公园”两大住宅产品，城内配以缤纷时尚的餐厅、酒吧、咖啡馆和会所的“兰桂坊娱乐街区”，户外主题购物娱乐长廊“东方汇”，集国际高端品牌的“时尚大道”、每晚呈献光影表演的“石矿湖”等配套，都为您打造了一个与世界接轨的居住区...</p>
+				<a href="http://www.0898yue.com/house/559.html" target="_blank"><img src="img/img01.jpg" alt=""></a>
+			</div>
+			<div class="loupan loupan1">
+				<a class="link1" href="http://www.0898yue.com/house/221.html" target="_blank">观澜湖中央公园</a>
+				<p>观澜湖中央公园区，享海口湿地资源、万亩古荔枝林簇拥，从容展现城市与生态间的平衡；怀抱海南罕见3.5万㎡围合式热带园林景观；紧邻百年名校海南华侨中学，坐享观澜湖新城商业繁华配套。户型传承观澜湖独有的高尚品质，从98㎡大两房至249㎡的复式，阔绰舒适...</p>
+				<a href="http://www.0898yue.com/house/221.html" target="_blank"><img src="img/img02.jpg" alt=""></a>
+			</div>
+			<div class="loupan">
+				<a class="link1" href="http://www.0898yue.com/house/491.html" target="_blank">观澜湖观墅</a>
+				<p>三栋独门独院的二层小别墅，可分可合，既能让现代都市人重回温暖的家族生活，又能保持独立的私密空间。前接入户花园，后有室外泳池，前庭后院，鸟语花香。灵动格局，因需而变，合理规划中央独院和侧院...</p>
+				<a href="http://www.0898yue.com/house/491.html" target="_blank"><img src="img/img03.jpg" alt=""></a>
+			</div>
+			<div class="loupan loupan1">
+				<a class="link1" href="http://www.0898yue.com/house/1813.html" target="_blank">观澜湖观邸</a>
+				<p>让窗口选择世界杯球场的风景，感受360°全景高尔夫无限风光；高尔夫世界杯球场中央，家门口见证荣耀；SPA泳池入户，体验尊悦私家养生世界，享受天人合一的境地；空中花园与泳池结合，用五彩缤纷的悠然生活装点度假心情；奢想3.5/5.6/6.5米层高，创变灵活随心空间，营造上下融合、举家齐乐的纷享生活...</p>
+				<a href="http://www.0898yue.com/house/1813.html" target="_blank"><img src="img/img04.jpg" alt=""></a>
+			</div>
+			<div class="clear"></div>
+		</li>
+		<li class="tab2"></li>
+		<li class="ad3"></li>
+		<li class="tab3"></li>
+		<li class="ad4"></li>
+		<li class="tab4"></li>
+		<li class="ad5"></li>
+		<li class="tab5"></li>
+		<li class="ad6">
+			<div class="peitao peitao1">
+				<img src="img/img05.jpg" alt="">
+				<p>观澜湖•海口ＳＰＡ水疗中心，由ＳＰＡ主楼，ＳＰＡ别墅和大宅、静修花园、瑜伽亭等组成，提供全球时尚和经典的水疗项目，为每一位宾客拂去心中的凡尘喧嚣，领悟生命的空灵自在。
+<br>主体建筑同样以被列入联合国世界遗产的客家土楼为灵感，并以竹子为穹顶，以黑色火山石为墙体，朴实自然又不失宏伟气势。</p>
+			</div>
+			<div class="peitao">
+				<img src="img/img06.jpg" alt="">
+				<p>海口观澜湖 10个18洞的火山岩球场，火山岩球场群。</p>
+			</div>
+			<div class="peitao peitao1">
+				<img src="img/img07.jpg" alt="">
+				<p>观澜湖矿温泉取自地下800米，因万年前火山喷发酝酿而成的纯净矿泉。这里的热矿泉，被誉为“矿温泉中的珍品”。由于富含高浓度的氟成分和偏硅酸成分，以及丰富的矿物质和微量元素。按照日本、俄罗斯、以及中国的中国的医疗热矿水的水质标准，是可命名为医疗热矿水的珍贵矿温泉，具有医疗、保健、养生等多种功效。</p>
+			</div>
+			<div class="peitao">
+				<img src="img/img08.jpg" alt="">
+				<p>10万平米国际购物中心<br>
+家门口的国际化时尚购物体验<br>
+海口观澜湖国际购物中心，总投资逾百亿元，总面积近100,000平方米，其中一期商业面积将达30,000平方米，销售超过21类免税商品，带来全方位国际化的免税购物体验。</p>
+			</div>
+			<div class="peitao peitao2">
+				<img src="img/img09.jpg" alt="">
+				<p>海口观澜湖华谊冯小刚电影公社是由观澜湖集团携手华谊兄弟公司、著名导演冯小刚，巨资打造的中国独具特色的电影主题旅游胜地。<br>
+电影公社包括1942民国街、社会主义老北京街和南洋街三条主街，集合冯氏贺岁电影经典场景的电影园林景观区，影人星光大道，以及包含全球最大的8000㎡摄影棚在内的摄影棚及配套服务区。在集纳电影场景的各个区里，还聚集了不同品牌和特色的餐饮、娱乐、购物、电影院、咖啡屋、酒吧、精品酒店……</p>
+			</div>
+			<div class="peitao peitao2">
+				<img src="img/img10.jpg" alt="">
+				<p>观澜湖集团与娱乐品牌兰桂坊强强联手，打造海口时尚主题娱乐街区——观澜湖·兰桂坊，建筑面积达24万平方米，集休闲、购物、美食与娱乐为一体，呈现出“东方汇”、“时尚大道”、“文旅坊”、石矿湖等六大精彩亮点，为海口揭开一场永不落幕的时尚嘉年华。<br>
+目前观澜湖·海口已吸引了宾士域保龄球、冰堡国际花样溜冰训练中心、eXcape娱乐集团RFC赛车中心、橙田嘉禾影城四大国际娱乐运动品牌率先加盟。</p>
+			</div>
+			<div class="peitao peitao2">
+				<img src="img/img11.jpg" alt="">
+				<p class="p1">2月24日，世界足球豪门西班牙巴塞罗那足球俱乐部与中国观澜湖集团在海口签订合作协议，双方将合资共建中国首家巴塞罗那足球学校和足球互动体验区。这是巴萨118年历史来首次在中国建立直管的国际级足球学校，该足球学校将引入培育出梅西、哈维、伊涅斯塔等足球巨星的拉玛西亚青训模式，由巴塞罗那足球俱乐部教练亲自执教，旨在为中国培养出更多未来的足球明星。巴塞罗那足球俱乐部主席巴托梅乌、CEO格劳以及巴萨全球大使、两届世界足球先生获得者罗纳尔迪尼奥专程飞抵海口，出席签约仪式。</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</ul>
+	<div class="clear"></div>
+	
+</div>
+
+<!--报名看房-->
+<div class="Bieshu_BmCont">
+    <div class="width_1200 Bieshu_Bm">
+        <div class="Bieshu_Bm_Left">
+            <div class="MaxText">
+               
+            </div>
+            <div class="MinText">
+             
+            </div>
+            <div class="Btn">
+               
+            </div>
+        </div>
+        <div class="Bieshu_Bm_Mid">
+        </div>
+        <div class="Bieshu_Bm_Right">
+            <div class="Title">
+            </div>
+            <div class="Name">
+                <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+            </div>
+            <div class="Phone">
+                <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick="Bs_Submit()">
+                    预约看房
+                </a>
+            </div>
+                <h1>品鉴热线：400-0898-930</h1>
+            <!--返回顶部-->
+			<div class="top">
+				<img src="img/top.png" alt="">
+			</div>
+        </div>
+        <div class="claer"></div>
+    </div>
+</div>
+
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+<script>
+	$(".peitao").mouseenter(
+			function(){
+		$(this).children().fadeIn(300)
+		}
+)	
+$(".peitao").mouseleave(
+	function(){
+		$(".peitao p").hide().fadeOut(300)
+	}
+)	
+
+
+	</script>
+
+
+		<!--返回顶部-->
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+		
+</body>
+</html>

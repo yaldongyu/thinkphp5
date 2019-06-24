@@ -1,0 +1,339 @@
+<link href="__CDN__/assets/css/index/map.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+ 
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/map/msgbox.js?v={$site.version}"></script>  
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/map/template.js?v={$site.version}"></script>  
+ 
+ 
+ 
+
+<!--主体-->
+<!--地图左侧：开始-->
+<div id="mapLeft" class="mapLeft" style="top:80px;"> 
+  <!--搜索：开始-->
+  <div class="mapSearch">
+    <div class="mapSearchtext">
+      <input type="text" id="sokey"  name="sokey"  value="请输入楼盘名" onblur='if (value == ""){value = "请输入楼盘名"}' onfocus='if (value == "请输入楼盘名"){value = ""}' onkeydown="enterSearch(event);"/>
+      <a href="javascript:void(0);" class="btnss orange flat" onClick="Housesajax()">搜索</a> </div>
+    <!--下拉：开始-->
+    <div class="dropdownBox2"> <span>
+      <select id="map1">
+        <option value="">区域</option>
+        
+        {volist name="$index['sxqy']" id="vo"}
+            {if condition="$vo.areapid==0"}  
+                <option value="{$vo.areaid}">{$vo.name}</option>
+                {volist name="$index['sxqy']" id="co"}
+                {if condition="$co.areapid==$vo.areaid"}
+                    <option value="{$co.areaid}">&nbsp;&nbsp;&nbsp;{$co.name}</option>
+                {/if}
+                {/volist}
+            {/if}
+        {/volist}  
+        
+      </select>
+      </span> <span>
+      <select id="map2">
+        <option value="">户型</option>
+        {volist name="$index['sxhx']" id="vo"}
+            <option value="{$vo.KP_Content}">{$vo.KP_Name}</option>
+        {/volist} 
+         
+      </select>
+      </span> <span>
+      <select id="map3">
+        <option value="">价格</option>
+        {volist name="$index['sxjg']" id="vo"}
+            <option value="{$vo.KP_Content}">{$vo.KP_Name}</option>
+        {/volist} 
+         
+      </select>
+      </span> <span>
+      <select id="map4">
+        <option value="">特色类型</option>
+        {volist name="$index['sxts']" id="vo"}
+            <option value="{$vo.KP_Name}">{$vo.KP_Name}</option>
+        {/volist} 
+      </select>
+      </span> </div>
+    <!--下拉：结束--> 
+  </div>
+  <!--搜索：结束--> 
+  <!--列表：开始-->
+  <div class="mapListBox">
+    <div class="mapListHead">
+      <dl>
+        <dt>共找到<b id="HousesCount">0</b>个楼盘</dt>
+      </dl>
+    </div>
+    <div style="height:541px" class="mapList">
+      <ul id="ulcontent">
+        <li style="margin: 130px; text-align: center; border: 0"> <img src="images/load_01.gif"/> </li>
+      </ul>
+    </div>
+  </div>
+  <!--列表：结束--> 
+</div>
+<!--地图左侧：结束--> 
+<!--地图右侧：开始-->
+<div  id="mapRight" class="mapRight"> </div>
+<!--地图右侧：结束--> 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=7f7IZbYQVcMH9R4Sa32vViU5"></script> 
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ClGw75W5zcB87GjQWkW7qurW"></script>--> 
+<script id="test" type="text/html">
+    {{each d as value i}}
+    <li onclick="map_oncilck_new_r({{value.h_mapx}}, {{value.h_mapy}}, {{value.id}}, '{{value.title}}', '{{value.thumb}}', '{{value.h_address}}', '{{value.h_phone}}', '{{value.s_price}}', '{{value.h_price}}', '{{value.h_pf}}')">
+        <a href="javascript:void(0)">
+            <h2>{{value.title}}</h2>
+            <dl>
+                <dt style='width: 345px; height: 25px; overflow: hidden;'>位置：{{value.h_address}}</dt>
+                <dd><span>起价：<b>{{value.s_price}}{{value.h_pf}}</b></span><span>均价：{{value.h_price}} {{value.h_pf}}</span></dd>
+            </dl>
+        </a>
+    </li>
+    {{/each}}
+</script> 
+<script type="text/javascript">
+    //javascript的数组扩展方法
+    Array.prototype.contains = function (obj) {
+        var i = this.length;
+        while (i--) {
+            if (this[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+</script> 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#mapWrap").height($(window).height());
+        $(window).resize(function () {
+            $("#mapWrap").height($(window).height());
+        })
+        $('#mapLeft,#mapRight').css('height', $(window).height() - 74);
+        $(window).resize(function () {
+            $('#mapLeft,#mapRight').css('height', $(window).height() - 74);
+        })
+        $('.mapList').css('height', $(window).height() - 260);
+        $(window).resize(function () {
+            $('.mapList').css('height', $(window).height() - 260);
+        })
+    });
+</script> 
+<script type="text/javascript">
+    var houseID = ""; //缓存已经加载过的楼盘ID，以字符串形式，ID间用逗号相隔
+    var mp = new BMap.Map("mapRight", { enableMapClick: false });
+    mp.centerAndZoom(new BMap.Point(109.499415, 18.302051), 15);
+    mp.addControl(new BMap.NavigationControl()); // 添加平移缩放控件
+    mp.addControl(new BMap.ScaleControl()); // 添加比例尺控件
+    mp.addControl(new BMap.OverviewMapControl()); // 添加缩略地图控件
+    mp.enableScrollWheelZoom(); // 启用滚轮放大缩小
+
+    var positions = new Array("0", "-20", "-10", "-30");
+    var backgroundColors = new Array("#60BFF5", "#fc5172", "#FF6600", "#9e9e9e");
+    var borders = new Array("#0089E2", "#CC0066", "#FF6600", "#4B4B4B");
+
+    function ComplexCustomOverlay(point_lng, point_lat, text, mouseoverText, type, bid, address, path, phone1) {
+        this._point = new BMap.Point(point_lng, point_lat);
+        this._text = text;
+        this._overText = mouseoverText;
+        this._type = getType(type);
+        this._y_type = type;
+        this._bid = bid;
+        this._point_lng = point_lng;
+        this._point_lat = point_lat;
+        this._address = address;
+        this._path = path;
+        this._phone1 = phone1;
+    }
+    ComplexCustomOverlay.prototype = new BMap.Overlay();
+    ComplexCustomOverlay.prototype.initialize = function (map) {
+        this._map = map;
+        var div = this._div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
+        div.style.backgroundColor = backgroundColors[this._type];
+        div.style.border = "1px solid " + borders[this._type];
+        div.style.color = "white";
+        div.style.height = "30px";
+        div.style.padding = "2px";
+        div.style.cursor = "pointer";
+        div.style.lineHeight = "30px";
+        div.style.whiteSpace = "nowrap";
+        div.style.MozUserSelect = "none";
+        div.style.fontSize = "14px"
+        var span = this._span = document.createElement("span");
+        div.appendChild(span);
+        //调整地图楼盘初始显示价格
+        span.appendChild(document.createTextNode(this._overText));
+        var that = this;
+        var arrow = this._arrow = document.createElement("div");
+        arrow.style.backgroundPosition = "0px " + positions[this._type] + "px";
+        arrow.style.position = "absolute";
+        arrow.style.width = "11px";
+        arrow.style.height = "10px";
+        arrow.style.top = "22px";
+        arrow.style.left = "10px";
+        arrow.style.overflow = "hidden";
+        div.appendChild(arrow);
+        div.onmouseover = function () {
+            map_mouseover(div, arrow, that);
+        }
+        div.onmouseout = function () {
+            map_mouseout(div, arrow, that);
+        }
+        div.onclick = function () {
+            select_point = new BMap.Point(that._point_lng, that._point_lat)
+            select_bid = that._bid;
+            select_bname = that._text;
+            select_path = that._path;
+            select_address = that._address;
+            select_type = that._y_type;
+            select_overText = that._overText;
+            select_phone1 = that._phone1;
+            select_price = select_overText.replace(select_bname, "");
+            map_oncilck_traffic();
+        }
+        mp.getPanes().labelPane.appendChild(div);
+        return div;
+    }
+
+    ComplexCustomOverlay.prototype.draw = function () {
+        var map = this._map;
+        var pixel = map.pointToOverlayPixel(this._point);
+        this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+        this._div.style.top = pixel.y - 30 + "px";
+    }
+
+    function getType(type) {
+        if (type == 2 || type == 21) {
+            return 1;
+        } else if (type == -1) {
+            return 3;
+        } else {
+            return 0;
+        }
+    }
+
+    function map_mouseover(div, arrow, that) {
+        div.style.backgroundColor = backgroundColors[2];
+        $(div).css("z-index", "9999");
+        div.style.borderColor = borders[2];
+        div.getElementsByTagName("span")[0].innerHTML = that._overText;
+        arrow.style.backgroundPosition = "0px " + positions[2] + "px";
+    }
+
+    function map_mouseout(div, arrow, that) {
+        div.style.backgroundColor = backgroundColors[that._type];
+        $(div).css("z-index", "1");
+        div.style.borderColor = borders[that._type];
+        //鼠标移出后楼盘显示内容不变
+        div.getElementsByTagName("span")[0].innerHTML = that._overText;
+        arrow.style.backgroundPosition = "0px " + positions[that._type] + "px";
+    }
+
+    function map_oncilck_traffic() {
+        msgwindow = 1;
+        var phone = "<span style='color:#FF6400'><strong>" + select_phone1 + "</strong></span>";
+        var sContent = "<div style='width:400px;'>";
+        sContent += "<div style='float:left;width:100px;padding:30px 10px 0px 0px;overflow:hidden;'><a href='" + '/house/house_details/ids/' + select_bid + "' target='_blank' style='color:#0089E2;'><img src=\"" + select_path + "\" style='width:100px;height:71px;'></a></div>";
+        sContent += "<div style='width:290px;overflow:hidden;'>";
+        sContent += "<h4>";
+        sContent += "<a href='" + '/house/house_details/ids/' + select_bid + "' target='_blank' style='color:#0089E2;'>" + select_bname + "</a></h4>";
+        sContent += "<p style='margin:0;line-height:22px;color:#999;'>起价：<span style='color:#FF6600;'><strong>" + (select_price == '' ? '  预登记' : select_price + "") + "</strong></span></p>";
+        if (select_phone1 != "") sContent += "<p style='margin:0;line-height:22px;color:#999;'>免费电话：<span id='phone' style='color:#333;'>" + phone + "</span></p>";
+        sContent += "<p style='margin:0;line-height:22px;color:#999;'>楼盘地址：<span id='address_" + select_bid + "' style='color:#333;'>" + select_address + "</span></p>";
+        sContent += "<p style='color:#006699;'></p>";
+
+        sContent += "</div>";
+        sContent += "</div>";
+        // 为调用后台sendMsg方法添加的bid属性
+        sContent += "<input type='hidden' name='bid' id='bid' value='" + select_bid + "'/>";
+        var infoWindow = new BMap.InfoWindow(sContent); // 创建信息窗口对象
+        mp.openInfoWindow(infoWindow, select_point); // 打开信息窗口
+    }
+
+    //点击选中楼盘，地图自动移到楼盘处（待修改）
+    function map_oncilck_new_r(lnt, lat, bid, bname, path, address, phone1, price) {
+        select_point = new BMap.Point(lnt, lat);
+        select_bid = bid;
+        select_bname = bname;
+        select_path = path;
+        select_address = address;
+        select_phone1 = phone1;
+        select_price = price + "元/㎡";
+        mp.panTo(select_point);
+        map_oncilck_traffic();
+    }
+</script> 
+<script type="text/javascript">
+    //初始化，页面都加载完后，获取已经加载好的默认第一个城市下的子区域的楼盘和移动到该区域，并且获取地图上的标签。
+    $(function () {
+        //隐藏水滴
+        document.getElementById('trusted_hide_image').style.display = 'none';
+        document.getElementById('trusted_show_image').style.display = '';
+        document.getElementById('trusted_container').style.display = 'none';
+        Housesajax();
+        $("#map1").change(function () {
+            ZENG.msgbox.show('请稍候。。。', 6);
+            $.post(window.location.pathname,
+            {
+                sType: 'loading',
+                city: $("#map1").val()
+            },
+            function (data) {
+                Housesajax();
+            }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+        });
+        $("#map2,#map3,#map4").change(
+            function () {
+                ZENG.msgbox.show('请稍候。。。', 6);
+                Housesajax();
+            }
+        );
+    });
+    function Housesajax() {
+        var city = $("#map1").val();
+        var hx = $("#map2").val();
+        var price = $("#map3").val();
+        var sokey = $("#sokey").val();
+        var ts = $("#map4").val();
+        if(sokey=="请输入楼盘名"){sokey="";}
+        $.post('/index/mapapi',
+        {
+            sType: 'loading',
+            city: city,
+            hx: hx,
+            price: price,
+            sokey: sokey,     
+            ts: ts
+        },
+        function (data) {
+            var html = template('test', data);
+            document.getElementById('ulcontent').innerHTML = html;
+            var arrHouseID = houseID.substring(0, houseID.length - 1).split(','); //将已经加载的楼盘的ID字符串转成数组
+
+            $(data.d).each(function (i, ite) {
+                if (!arrHouseID.contains(ite.id.toString())) {
+                    var txt = ite.title, mouseoverTxt = txt + " " + ite.s_price + ite.h_pf;
+                    var myCompOverlay = new ComplexCustomOverlay(ite.h_mapx, ite.h_mapy, ite.title, mouseoverTxt, 1, ite.id, ite.h_address, ite.thumb, ite.h_phone);
+                    mp.addOverlay(myCompOverlay);
+                    houseID += ite.id.toString() + ","; //保存已经加载的楼盘ID
+                }
+            })
+            if (data.d.length > 0) {
+                map_oncilck_new_r(data.d[0].h_mapx, data.d[0].h_mapy, data.d[0].id, data.d[0].title, data.d[0].thumb, data.d[0].h_address, data.d[0].h_phone, data.d[0].s_price, data.d[0].h_price);
+            }
+            $(".mapList").scrollTop(0);
+            $("#HousesCount").html(data.d.length);
+            ZENG.msgbox._hide();
+        }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+    function enterSearch(event) {
+        if (event.keyCode == 13) {
+            //在文本框中敲回车可以进行搜索
+            Housesajax();
+        }
+    }
+</script> 
+ 

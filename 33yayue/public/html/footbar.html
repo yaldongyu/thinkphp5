@@ -1,0 +1,215 @@
+<style type="text/css">
+    
+   /*网页底部浮动广告*/
+
+
+
+
+   
+.zhongqiu {width: 100%;height: 100px;position: fixed;bottom: 0;background: url(/html/img/tt.jpg) no-repeat;z-index: 4;min-width: 1200px;left: 0px; }
+.zhongqiuce {width: 1200px;height: 100px;margin: 0 auto;position: relative;}
+.zhongqiucefl{float: left;margin: 1px 0px 0 0px;   }
+.zhongqiucefr {float: left;margin: 2px 0 0 45px;overflow: hidden;}
+.zhongqiucefr p {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;color: #fff;line-height: 27px;}
+.zhongqiucefr .text {font-size: 20px;font-weight: 800;}
+.zhongqiucefrce {overflow: hidden;}
+.zhongqiucefrce input {float: left;width: 350px;height: 40px;line-height: 40px;margin: 0 6px 2px 0;font-size: 16px;color: #898989;padding-left: 10px;}
+.zhongqiucefrce .lingqu {float: left;width: 100px;height: 40px;line-height: 38px;font-size: 20px;color: #fff;text-align: center;background: linear-gradient(to bottom,#ff4a00,#ff4a00);font-weight: 600;cursor: pointer;}
+.zhongqiucefr .mianfei {font-size: 16px;color: #f42201;font-weight: 600;margin-top: 0px;}
+.zhongqiucefr .mianfei span {font-weight: 600;font-size: 18px;color:#ff4a00;}
+.zhongqiucefrce i {color: #ff4a00;font-size: 16px;display: block;font-weight: 600;margin-bottom: -6px;height: 30px;}
+.closes {width: 22px;height: 22px;position: absolute;top: 20px;right: 68px;}
+.bt {width: 200px;height: 22px;position: fixed;bottom: 130px;left: 2px;cursor: pointer;z-index: 9;}
+
+ 
+ 
+ /*网页底部浮动广告 结束*/
+
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="/html/js/footbar.js"></script>
+<div class="zhongqiu" style="left:0px;">
+    <div class="zhongqiuce">
+        <div class="zhongqiucefl">
+             
+             <div style="width: 420px; height: 125px"></div>
+       
+        </div>
+
+        <div class="zhongqiucefr">
+            <div class="zhongqiucefrce">   
+             <i>购房津贴+折扣优惠</i>
+                
+                <input type="text" id="DingYue_Phone" placeholder="请输入您的手机号码" />
+
+                
+                <a href="javascript:;" onclick="DingYue_Submit()" class="lingqu" >领取优惠</a>
+
+            </div>
+            <p class="mianfei">免费咨询热线：<span  ></span></p>
+        </div>
+        <div class="closes"> <a><img src="/html/img/ss.png"></a></div>
+    </div>
+</div>
+<div class="bt" style="left: -200px;">
+    <a > <img src="/html/img/xiaotu.png"></a>
+</div>
+
+
+
+<script type="text/javascript">
+      function app_show_hide() {
+        var zhongqiu = $(".zhongqiu");
+        var bt = $(".bt");
+        var bt_width = bt.width();
+        zhongqiu.find(".closes").on("click", function() {
+            zhongqiu.animate({ "left": "-100%" }, 1000, function() {
+                bt.animate({ "left": "0" }, 500)
+            });
+        });
+        bt.on("click", function() {
+            bt.animate({ "left": -bt_width }, 500, function() {
+                zhongqiu.animate({ "left": "0" }, 1000)
+            });
+        });
+    }
+    app_show_hide();
+ 
+    function DingYue_Submit() {
+
+        var T_Title = '领取优惠，新春购房优惠！';
+        var T_PageUrl = document.location.href;
+        var T_KftName = '游客';
+        var T_KftPhone = $.trim($("#DingYue_Phone").val());
+        var T_Message = 'PC端-优惠领取'; //来源
+        var T_LpID = '1724'; //楼盘ID
+
+        if (!all_tel_validate(T_KftPhone)) {
+            parent.window.Tip_Control("手机号码有误!", 1500);
+            return false;
+        }
+        
+        
+      
+        
+        if (location.host == "www.xunfang66.com" || location.host == "www.xunfang123.com") {
+                         $.post('/Baotiwennew.asp',
+                          {
+                              sType: '20190501BM',
+                              T_Title: T_Title,
+                              T_PageUrl: T_PageUrl,
+                              T_KftName: T_KftName,
+                              T_KftPhone: T_KftPhone,
+                              T_Message: T_Message,
+                              T_LpID: T_LpID 
+                              },
+                                  function(data) {
+                                      if (data.info != 'Yes') {
+
+                                          return false;
+                                      } else {
+                                          clear_form("#DingYue_Phone");
+                                          setTimeout(function() {
+                                              Tuangou_Close();
+                                              TuangouSuccessTip("恭喜领取成功！阅房网置业顾问将会与您联系！", 2000);
+                                              return false;
+                                          }, 100);
+                                      }
+                                  }, "json");
+
+
+        } else {
+
+
+
+
+            $.post('../ajax/LpBaoming',
+                              {
+                                  sType: 'KftBm',
+                                  T_Title: T_Title,
+                                  T_PageUrl: T_PageUrl,
+                                  T_KftName: T_KftName,
+                                  T_KftPhone: T_KftPhone,
+                                  T_Message: T_Message,
+                                  T_LpID: T_LpID
+                              },
+                              function(data) {
+                                  if (data.info != 'Yes') {
+
+                                      return false;
+                                  } else {
+                                      clear_form("#DingYue_Phone");
+                                      setTimeout(function() {
+                                          Tuangou_Close();
+                                          TuangouSuccessTip("恭喜领取成功！阅房网置业顾问将会与您联系！", 2000);
+                                          return false;
+                                      }, 100);
+                                  }
+                              }, "json");
+
+
+        }
+    }
+
+    function clear_form(the) {
+      $(the).val('');
+      return;
+    } 
+    function app_show_hide() {
+        var zhongqiu = $(".zhongqiu");
+        var bt = $(".bt");
+        var bt_width = bt.width();
+        zhongqiu.find(".closes").on("click",function () {
+            
+            zhongqiu.animate({"left":"-1920px"},1000,function () {
+                bt.animate({"left":"0"},500);
+                $(window.parent.document).find("#footifm").css("width","150px");
+                zhongqiu.css("display","none");
+            });
+        });
+        bt.on("click",function () {
+           
+            bt.animate({"left":-bt_width},500,function () {
+                zhongqiu.animate({"left":"0"},1000);
+                $(window.parent.document).find("#footifm").css("width","100%");
+                 zhongqiu.css("display","");
+                 
+            });
+        });
+    }
+    app_show_hide();
+
+    function TuangouSuccessTip(info, time) {
+        $(window.parent.document).find(".Tuangou_Success").css("display", "block");
+        $(window.parent.document).find(".Tuangou_Success").text(info);
+        setTimeout(function() { $(window.parent.document).find(".Tuangou_Success").css("display", "none"); }, time);
+    };
+
+    function Tuangou_Close() {
+        $(".Kftbm_Form").fadeOut(100);
+        $(".All_Shadow").fadeOut(100);
+    }
+  function GetQueryString(name) {
+                var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]);
+                }
+                return null;
+            }
+ 
+    $(function() {
+
+        $(".mianfei span").html(GetQueryString("tel"));
+        $(".All_Shadow").click(function() {
+            Tuangou_Close();
+            return;
+        });
+    }) 
+
+  
+ 
+</script>

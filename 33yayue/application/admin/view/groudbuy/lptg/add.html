@@ -1,0 +1,139 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+     <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_areas')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-KP_City" data-rule="required" class="form-control" data-toggle="city-picker" type="text" value="">
+            <input id="c-prov" class="form-control"name="row[KP_Provice]" type="hidden" value="">
+            <input id="c-city" class="form-control"name="row[KP_Citys]" type="hidden" value="">
+            <input id="c-dist" class="form-control"name="row[KP_District]" type="hidden" value="">
+            <input id="c-county" class="form-control"name="row[KP_County]" type="hidden" value="">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-1"></label>
+        <div class="col-xs-12 col-sm-8">
+                 <table><tr> <td >
+                                </td><td>
+                                  <label class="control-label col-xs-12 col-sm-2" style="width: 131px">{:__('Kp_lpid')}:</label>
+                           </td><td>
+                                   <input id="c-KP_LpID" data-source="housing/lp/selectpage" data-field="KP_LpName" data-primary-key="id" class="form-control selectpage" name="row[KP_LpID]" type="text">
+                                 
+                           </td> <td>
+                                  &nbsp;
+                           </td> <td>
+                               <input id="lpid" class="form-control" disabled="" style="width: 100px" type="type">     
+                           </td> </tr></table>
+                        
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Title" class="form-control " rows="1" name="row[KP_Title]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_yhby')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Yhby" class="form-control " rows="1" name="row[KP_Yhby]" cols="50"></textarea>
+            <span  >例如：全款85折，按揭88折</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_yhby2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Yhby2" class="form-control " rows="1" name="row[KP_Yhby2]" cols="50"></textarea>
+            <span>例如：团购全款82折</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">团购优惠详情:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Yhxq" class="form-control " rows="3" name="row[KP_Yhxq]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_endtime')}:</label>
+         <div class="col-xs-12 col-sm-8">
+              <table><tr>
+                <td>  <input id="c-KP_EndTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_EndTime]" type="text" value="{:date('Y-m-d H:i:s')}">
+                </td>
+                 <td width="100">
+                   <div> <label class="control-label col-xs-12 col-sm-2" style="width: 131px">{:__('Kp_htzt')}:</label> </div>
+
+                </td>
+                 <td>
+                       <select id="c-KP_Htzt" data-rule="required" class="form-control selectpicker" name="row[KP_Htzt]">
+                            {foreach name="lptgztList" item="vo"}
+                            <option value="{$key}"  >{$vo}</option>
+                            {/foreach} 
+                        </select>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">活动详情:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Htnr" class="form-control editor" rows="5" name="row[KP_Htnr]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_picurl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <!-- <textarea id="c-KP_PicUrl" class="form-control " rows="5" name="row[KP_PicUrl]" cols="50"></textarea> -->
+             <div class="input-group">
+                <input id="c-KP_PicUrl" data-rule="required" class="form-control" size="50" name="row[KP_PicUrl]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_PicUrl" class="btn btn-danger plupload" data-input-id="c-KP_PicUrl" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-url="ajax/uploadnosy" data-multiple="false" data-preview-id="p-KP_PicUrl"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_PicUrl" class="btn btn-primary fachoose" data-input-id="c-KP_PicUrl" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_PicUrl"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_PicUrl"></ul>
+        </div>
+    </div>
+    <div class="form-group"  style="display: none;">
+        <label class="control-label col-xs-12 col-sm-2" >首页图:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-KP_PicUrl2" class="form-control" size="50" name="row[KP_PicUrl2]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_PicUrl2" class="btn btn-danger plupload" data-input-id="c-KP_PicUrl2" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-KP_PicUrl2"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_PicUrl2" class="btn btn-primary fachoose" data-input-id="c-KP_PicUrl2" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_PicUrl2"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_PicUrl2"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">排序:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-weigh" class="form-control" name="row[weigh]" value="{$weigh}" type="number">
+        </div>
+        
+    </div> 
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">录入人:</label>
+        <div class="col-xs-12 col-sm-8">
+             <input disabled="" class="form-control" type="text" value="{$admin.nickname}({:date('Y-m-d H:i:s')})">
+
+        </div>
+    </div>
+  
+    
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

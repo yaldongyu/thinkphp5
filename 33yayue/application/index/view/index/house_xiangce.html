@@ -1,0 +1,1308 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<!--户型-->
+<link href="__CDN__/assets/css/index/baguettebox.min.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/baguettebox.min.js?v={$site.version}"></script> 
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/jquery.qrcode.min.js" ></script>
+
+<style type="text/css">
+#imgbox{    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    vertical-align: baseline;
+    overflow-y: scroll;
+    font-family: "微软雅黑",Arial,Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    line-height: 1.3;
+    background: rgba(76, 76, 76, 1);
+    position: fixed; 
+    bottom: 0px;
+    left: 0px;
+    z-index: 10000;
+    display: none;}
+.clearfix:after{content:"";display:block;clear:both;}
+.clearfix{zoom:1;}
+#gallery {padding: 30px;background: #e1eef5;}
+.chimage1{width: 112px;height: 70px; }
+.ad-gallery {width: 945px;margin-left: 30px;padding-top:30px;}
+.ad-gallery .ad-image-wrapper {width: 100%;height: 530px;position: relative; overflow: hidden;}
+.ad-gallery .ad-image-wrapper .ad-loader {position: absolute;z-index: 10;top: 48%;left: 48%;border: 1px solid #CCC;}
+.ad-gallery .ad-image-wrapper .ad-next { position: absolute;right: 0;top: 0; width: 60px;height: 100%; cursor: pointer; display: block; z-index: 100;}
+.ad-gallery .ad-image-wrapper .ad-prev { position: absolute; left: 0;top: 0;width: 60px;height: 100%;cursor: pointer;display: block;z-index: 100;}
+.ad-gallery .ad-image-wrapper .ad-prev, .ad-gallery .ad-image-wrapper .ad-next {}
+.ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {background: url(/assets/img/index/icon/ad_prev.png) no-repeat center center;width: 100%;height:100%; display: none; position: absolute;top: 0;left: 0;z-index: 101;}
+.ad-gallery .ad-image-wrapper .ad-next .ad-next-image {background: url(/assets/img/index/icon/ad_next.png)  no-repeat center center;width: 100%;height: 100%;top:0;right: 0;left: auto;}
+.ad-gallery .ad-image-wrapper .ad-image {position: absolute;overflow: hidden;top: 0;left: 0;/*width: 900px;*/}
+.ad-gallery .ad-image-wrapper .ad-image a img {border: 0;/*width: 900px;*/}
+.ad-gallery .ad-image-wrapper .ad-image .ad-image-description {position: absolute;bottom: 0px;left: 0px;padding:10px 7px;text-align: left;width: 100%;z-index: 2;background:rgba(0,0,0,0.6); color: #fff;}
+ 
+.ad-gallery .ad-image-wrapper .ad-image .ad-image-description .ad-description-title { display: block; }
+.ad-gallery .ad-controls {height: 20px;display: none;}
+.ad-gallery .ad-info {float: left;}
+.ad-gallery .ad-slideshow-controls { float: right;}
+.ad-gallery .ad-slideshow-controls .ad-slideshow-start, .ad-gallery .ad-slideshow-controls .ad-slideshow-stop {padding-left: 5px;cursor: pointer;}
+.ad-gallery .ad-slideshow-controls .ad-slideshow-countdown { padding-left: 5px;}
+.ad-gallery .ad-slideshow-running .ad-slideshow-start {cursor: default;font-style: italic;}
+.ad-gallery .ad-nav {width: 91%;position: relative;margin: 0 auto;}
+.ad-gallery .ad-forward, .ad-gallery .ad-back {position: absolute;top: 0;height: 100%;z-index: 10;}
+/* IE 6 doesn't like height: 100% */
+* html .ad-gallery .ad-forward, .ad-gallery .ad-back {height: 100px;}
+.ad-gallery .ad-back {cursor: pointer;left: -20px; width:20px; display: block; background: url(/assets/img/index/icon/ad_scroll_back.png) center center no-repeat #333;height:76px;top:30px;}
+.ad-gallery .ad-forward {cursor: pointer; display: block; right: -20px;width: 20px;background: url(/assets/img/index/icon/ad_scroll_forward.png) center center no-repeat #333;height:76px;top:30px;}
+.ad-gallery .ad-nav .ad-thumbs { overflow: hidden;width: 100%;}
+.ad-gallery .ad-thumbs .ad-thumb-list {float: left; width: 9000px;margin-top: 30px; }
+.ad-gallery .ad-thumbs li {float: left;padding-right: 5px;}
+.ad-gallery .ad-thumbs li a { display: block;}
+.ad-gallery .ad-thumbs li a img {border:3px solid #CCC; display: block;}
+.ad-gallery .ad-thumbs li a.ad-active img {border: 3px solid #ff5454;}
+.ad-preloads {position: absolute;left: -9000px;top: -9000px;}
+.chtab {  width: 1200px; position: relative; margin: 0 auto; height: 700px; margin-top:80px;}
+.chtab .chClick { width: 150px; height: 660px;  background:#fff;  float: right;padding:20px;}
+.chtab .chClick ul>li {border-radius: 5px; width: 150px; height: 40px; font-size: 14px; color: #686868;text-align: center; border: 1px solid #e3e3e3; line-height: 40px;margin-top: 15px;cursor: pointer;}
+.chtab .chBg {border: 1px solid #ff5454!important; color:#ff5454!important;}
+.chtab .chleft { float: left; width: 1010px; height: 700px; overflow: hidden;}
+.chtab .chtabBox {width: 1010px; height: 700px;color: #fff;  text-align: center;background:#000; position:relative;}
+.chtab .chtabBox>img {width: 100%; position: absolute; top: 50%; transform: translateY(-50%); left: 0;}
+.chClick h3{color:#666;font-size:24px;border-bottom: 1px dashed #e3e3e3;line-height: 32px;}
+.chClick b{  color: #ff5454;font-size: 20px;line-height: 40px;font-weight: normal;border-bottom: 1px dashed #e3e3e3;display: block;text-align: center;cursor: pointer;}
+	
+.smbh{font-size: 16px; color:#999;position: relative;}
+.smbh span{vertical-align: middle}
+.smbh img{display: inline-block;vertical-align: middle;margin-right: 10px;}
+.chClick b:hover + .smbo_cx2{display: block}
+.smbo_cx2{display: none;position: absolute;width: 130px;border: 1px solid #ddd;background: #FFF;padding: 7px 0;line-height: 18px;text-align: center;/*top: 135px;*/right: 24px;;z-index: 99;margin: 0 auto;-moz-box-shadow: 0px 3px 5px #e1e1e1;box-shadow: 0px 3px 5px #e1e1e1;border-radius: 3px;height: 150px}
+.smbo_cx2 img{width: 110px;height: 110px;margin: 0 auto;position: absolute;top: 55px;left: -53px;}
+.sm_span2{font-size: 15px;vertical-align: middle;}
+.smbo_cx2 span{font-size: 14px;color: #999;display: block;margin-bottom: 7px;}
+.smbo_tb2{position: absolute; top: -9px;right: 55px;width: 10px;height: 9px;margin-left: 4px;background: url(/html/img/icon-top2.png) no-repeat;z-index: 100;} 
+.zaixian_zx a{width: 150px;height: 35px; margin: 0 auto;background: #598cf1;line-height: 35px;margin-top: 30px;text-align: center;display: inline-block; font-size: 16px;color: #fff;}
+.zaixian_zx a:hover{border-radius: 5px;}
+
+
+
+</style>
+ 
+<script type="text/javascript" src="/assets/js/frontend/index/jquery.ad-gallery.js"></script>
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+  
+<!--正文-->
+  <div class="w1200">
+  {include file='common/head_house' /}
+  
+  <!--正文-->
+ 
+    <div class="find_tab">
+  
+      <div class="product-wrap" style="width: 880px;float: left;">  
+       <!--全部-->
+        <div class="product show">
+          <ul>
+            <li>
+        <div class="xc_list">
+          <ul class="baguetteBoxOne">
+              {volist name="$index['rows']" id="vo"}
+                  <li class="xc_tu" style="display: {$i<12?"block":"none"}">   
+                      <a href="javascript:void(0);" ><img srcdata="{$vo.KP_PicUrl}" src="" datacaption="{$vo['KP_PicTitle']}"> </a>
+                      <p>{$vo.KP_PicTitle}</p>
+                  </li>
+              {/volist} 
+          </ul>
+        </div>
+            </li>
+          </ul>
+        </div>
+    {volist name="$index['Types']" id="vo"}
+        
+        <div class="product">
+          <ul>
+                <li>
+                    <div class="xc_list">
+                      <ul class="baguetteBoxOne">
+                        {volist name="$index['rows']" id="co"}
+                          {if condition="$co.KP_HcName == $vo.KP_HcName"}
+                              <li class="xc_tu" style="display: none">   
+                                  <a href="javascript:void(0);" > <img srcdata="{$co.KP_PicUrl}" src="" datacaption="{$co['KP_PicTitle']}"> </a>
+                                  <p>{$co.KP_PicTitle}</p>
+                              </li>
+                              {/if}
+                        {/volist}
+                      </ul>
+                    </div>
+                </li>
+          </ul>
+        </div>
+
+    {/volist}
+ 
+
+
+       <!--分页-->
+        <ul class="page" maxshowpageitem="10" pagelistcount="1"  maxitemperpage="12" id="page">
+        </ul>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="f_right_nav">
+        <div class="f_title">
+          <ul class="f_title-list">
+            <li class="on"><span>全部</span><span>{$index['total']}</span></li>
+            
+             {volist name="$index['Types']" id="vo"}
+                <li><span>{$vo.KP_PicTitle}</span><span>{$vo.num}</span></li>
+             {/volist}
+          </ul>
+        </div>
+        
+        <div class="nav_qj"><a href="javascript:void(0);">720°VR全景看房</a></div> 
+        <div class="dt_dingy" style="width: 300px;margin-right: 0;height: 200px;">
+          <h3 style="background: -webkit-linear-gradient(left, #598cf1 , #F7E008);background: -o-linear-gradient(right, #598cf1 , #F7E008);background: -moz-linear-gradient(right, #598cf1 , #F7E008);background: linear-gradient(to right, #598cf1 , #F7E008);">更多图片获取</h3>
+            <!--<p>担心错过楼盘开盘？</p>
+            <p>担心不能第一时间获取楼盘新动态?</p>
+            <p>立即订阅，楼盘一手情报抢先知道！</p>-->
+          <div class="dt_input">
+            <input type="text" id="SendPhone" placeholder="请输入手机号码">
+              <input type="hidden" id="Send_Title" value="相册页一键订阅" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-订阅" >
+                
+            <a href="javascript:;" onclick="SendToPhone_Submitdivname('dt_input')" style="border-radius: 0;margin-left: -17px;width: 260px;height: 40px;line-height: 40px">一键订阅</a> 
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  
+    </div><!--w1200 end-->
+<div class="dds" style="display: none"></div>
+  
+   <script type="text/javascript">
+	   
+	   
+     $(function(argument) {
+		   jQuery('.dds').qrcode({ width: 90, height: 90, text:  "http://m" + location.hostname.replace("www","") + "/index/bohao/ids/" + "{$index['lpinfo']['id']}" }); 
+      lazeloadpic();
+     })
+
+      // var totalpage = parseInt(data.total)/Lpdata.pagesize ;
+      //           totalpage =  parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+
+                // js动态异步加载js
+      var scripts = [  "__CDN__/assets/js/frontend/index/page.js" ];
+      var GG = {"kk":function(pageno){
+        if(GG.ff!=0){ gotopage(pageno) ; }
+        GG.ff=1;
+      },"ff":0}  
+      showpagexc(0);
+  
+      function lazeloadpic() {
+        xcli = $(".xc_tu") ;
+        for (var i = 0; i < xcli.length; i++) {
+         if(xcli.eq(i).css("display")!="none"){
+          xcli.eq(i).find("img").attr("src",xcli.eq(i).find("img").attr("srcdata").replace("Max","Min"));
+          }
+        }
+      }
+      function gotopage(pageno) {
+        // console.log(pageno);
+        var maxitemperpage = $(".page").attr("maxitemperpage");
+        var index = $('.f_title-list li').index($('.f_title-list').find(".on"))  ;
+        var myli = $(".baguetteBoxOne").eq(index).find("li") ;
+        for (var i = 0; i < myli.length; i++) {
+          $(myli[i]).attr("style","display:none");
+          if(i>=(pageno-1)*maxitemperpage && i<pageno*maxitemperpage){ $(myli[i]).attr("style","display:block");}
+        }
+        lazeloadpic();
+      }
+
+      function showpagexc(index) {
+          parallelLoadScripts(scripts,function(){ 
+              setTimeout(function() { 
+                  var maxitemperpage = $(".page").attr("maxitemperpage");
+                  var total=$(".baguetteBoxOne").eq(index).find("li").length ;
+                  var  totalpage = total/maxitemperpage ;
+                  totalpage = parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+                  GG.ff=1;
+                  $("#page").initPage(totalpage,1,GG.kk); 
+                  lazeloadpic();
+                  // var myli = $(".baguetteBoxOne").eq(index).find("li") ;
+                  // for (var i = 0; i < myli.length; i++) {
+                  //   if(i>5){ $(myli[i]).attr("style","display:none");}
+                  // }
+
+              },0);  
+          }); 
+      }
+            
+   </script>
+ 
+ 
+
+<!-- //遮罩 -->
+ 
+<!-- //图片 -->
+<style type="text/css">
+#fs-loader,#fs-prev,#fs-next,#fs-close{background-color:black;color:white;font-weight:bold;cursor:pointer;line-height:1em;}
+#fs-close{top:1em;right:1em;padding:35px !important;font-size:32px !important;background-color:rgba(0,0,0,0.5);}
+#fs-prev{left:1em;}#fs-next{right:1em;}
+#fs-prev:hover,#fs-next:hover,#fs-close:hover{color:#000;background-color: rgba(255,255,255,0.3);}
+ 
+#fs-caption{position: absolute;bottom:30px;text-align:center;width:100%;left:0;line-height:1em;display:none; font-size:22px !important;}
+#fs-caption span{ padding:5px 15px;background-color:#FFF; font-size:22px; font-family:'Microsoft YaHei',Arial, sans-serif;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px; }
+#fs-loader,#fs-prev,#fs-next,#fs-close{padding:10px;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px; }
+#fs-prev,#fs-next{z-index: 1102; position: absolute;padding:60px 35px;top:50%;margin-top:-55px; font-size:30px !important;}
+#fs-prev .icon11{clear:both;position:absolute;left:20px;top:50%;margin-top:-20px;width:26px;height:40px;background:url(/assets/img/index/Prev.png) no-repeat center center;}
+#fs-next .icon12{clear:both;position:absolute;left:23px;top:50%;margin-top:-20px;width:26px;height:40px;background:url(/assets/img/index/Next.png) no-repeat center center;}
+#fs-close .icon13{clear:both;position:absolute;right:23px;top:0%;margin-top:20px;width:26px;height:26px;background:url(/assets/img/index/Close.png) no-repeat center center;} 
+
+</style>
+
+ 
+  
+
+<div id="imgbox"></div>
+     
+
+ 
+<script type="text/javascript">
+  //新相册数据收集
+  var fenlei_txt = [],fenlei_count = [];
+  $(".f_title-list").find("span").each(function(i,t){
+     if(parseInt(i/2) == (i/2)){
+        fenlei_txt.push($(t).text())
+     }else{
+        fenlei_count.push($(t).text())
+     }  
+  }) 
+  var lpname  = "" ,    lpname  =  $(".house_title span").text() ; 
+  var lptel   = "" ,    lptel   =  $(".lp_head_tel span").text().replace("售楼电话：","") ;
+  var show_imgs = [] ,thumbnail_imgs = []  ,show_imgdesc=[] ; 
+  $(".xc_list").each(function(i,t) {
+      var imgsrc = [];
+      var thumbimgsrc = [];
+      var imgdesc = [];
+      $(t).find("img").each(function(j,o) {
+        imgsrc.push($(o).attr("srcdata"));
+        thumbimgsrc.push($(o).attr("srcdata").replace("Max","Min"));
+        imgdesc.push($(o).attr("datacaption"));
+      });
+      show_imgs.push(imgsrc),thumbnail_imgs.push(thumbimgsrc),show_imgdesc.push(imgdesc); 
+  })
+  var imgs={  current_img:"",
+              thumbnail_imgs:thumbnail_imgs,
+              show_imgs:show_imgs,
+              show_imgdesc:show_imgdesc,
+              current_list:0,
+              right_list:fenlei_txt,
+              right_count:fenlei_count, 
+              lpname:lpname,
+              lptel:lptel
+            };
+ 
+
+  $(function(argument) {
+     $(".xc_tu").click(function(argument){
+        imgs.current_img = $(this).find("img").attr("src"); 
+        imgs.current_list = $(".f_title-list").find(".on").index();
+        showimgbox(imgs);
+     });
+   });
+
+  function showimgbox(imgs){
+        //j建立HTML
+        var chtab = '<div class="chtab clearfix"><div class="chleft"><div class="scroll">';
+            for (var i = 0; i < imgs.right_list.length; i++) {
+                  var chtabBox = '<div class="chtabBox"><div class="ad-gallery"><div class="ad-image-wrapper"></div><div class="ad-controls"></div><div class="ad-nav"><div class="ad-thumbs"><ul class="ad-thumb-list">';
+                              for (var j = 0; j < imgs.show_imgs[i].length; j++) {
+                                    // if(i==imgs.current_list){ 
+                                        
+                                        chtabBox +='<li><a href="'+imgs.show_imgs[i][j]+'" class="chimg0"><img src="'+imgs.thumbnail_imgs[i][j]+'" class="chimage1" title="'+imgs.show_imgdesc[i][j]+'"></a></li>';
+                                    // }else{
+                                    //     chtabBox + ='<li><a href="images/10.jpg" class="chimg0"><img src="images/10.jpg" class="chimage1" title="鸟瞰图"></a></li>'  ;  
+                                    // } 
+                                }  
+                      chtabBox += '</ul></div></div></div></div>' ;
+                    chtab +=   chtabBox ;   
+                  }     
+        chtab += '</div></div>'; 
+        var chClick = '<div class="chClick"><h3>'+imgs.lpname+'</h3><b>'+imgs.lptel+ '<p class="smbh"><img src="/html/img/sm.gif"><span>扫码拨号</span></p></b><div class="smbo_cx2"><span>扫码拨号<br/>让您购房更简单</span><i class="smbo_codeimg2" id="smbo_codeimg" ></i><div class="smbo_tb2"><em class="xs"></em></div></div><ul class="">' ;
+              for (var i = 0; i < imgs.right_list.length; i++) {
+                  if(i==imgs.current_list){
+                      chClick +=  '<li class="chBg">'+imgs.right_list[i]+'</li>'   ;
+                  }else{
+                      chClick +=  '<li>'+imgs.right_list[i]+'</li>'   ;  
+                  } 
+              }        
+             chClick +='</ul><div class="zaixian_zx"><a href="javascript:void(0);" onclick="openZoosUrlx(/chatwin/);">在线咨询</a></div></div>'  ; 
+        chtab += chClick +'<img class="closeimgbox" src="/html/img/close.png" style="position: fixed;right: 33px;top: 16px;width:27px;height:27px"></div>'  ;
+        console.log(chtab)  ;
+
+        $('#imgbox').html(chtab); 
+//	    $('.smbo_tb2').html($('.dds').html()); 
+	               var mycans=$(".dds canvas")[0];    
+                     var img=convertCanvasToImage(mycans);  
+                     img.width=90;
+                     img.height=90;
+                 $(".smbo_tb2").append(img); 
+	  
+        $("#imgbox").css("display","block");
+        $(".closeimgbox").click(function(argument) {
+           $("#imgbox").css("display","none");
+        });
+        $('.chtab .chClick li').each(function(){
+            $('.chtab .chClick li').click(function(){
+                $('.chtab .chClick li').removeClass('chBg');
+                $(this).addClass('chBg');
+                var index = $(this).index();
+                // var arr = [
+                //         'images/chBg1.png',
+                //         'images/chBg2.png',
+                //         'images/chBg3.png',
+                //         'images/chBg4.png',
+                //         'images/chBg5.png',
+                //         'images/chBg6.png',
+                //         'images/chBg7.png',
+                //     ] // 背景图片  不需要注释即可
+                $('.chtab .scroll').css('margin-top',-index*700+'px');
+                // $('.chtab').css('background-image','url('+arr[index]+')')// 背景图片  不需要注释即可
+            })
+        });
+
+
+
+
+         
+
+         
+
+
+                // Converts canvas to an image
+               function convertCanvasToImage(canvas) {
+                 var image = new Image();
+                 image.src = canvas.toDataURL("image/png");
+                 return image;
+               }
+               // Converts image to canvas; returns new canvas element
+               function convertImageToCanvas(image) {
+                 var canvas = document.createElement("canvas");
+                 canvas.width = image.width;
+                 canvas.height = image.height;
+                 canvas.getContext("2d").drawImage(image, 0, 0);
+
+                 return canvas;
+               }
+
+/**
+ * Copyright (c) 2010 Anders Ekdahl (http://coffeescripter.com/)
+ * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+ * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
+ *
+ * Version: 1.2.4
+ *
+ * Demo and documentation: http://coffeescripter.com/code/ad-gallery/
+ */
+(function($) {
+  $.fn.adGallery = function(options) {
+    var defaults = { loader_image: '/assets/img/index/icon/loader.gif',
+                     start_at_index: 0,
+                     description_wrapper: false,
+                     thumb_opacity: 0.7,
+                     animate_first_image: false,
+                     animation_speed: 400,
+                     width: false,
+                     height: false,
+                     display_next_and_prev: true,
+                     display_back_and_forward: true,
+                     scroll_jump: 0, // If 0, it jumps the width of the container
+                     slideshow: {
+                       enable: true,
+                       autostart: false,
+                       speed: 5000,
+                       start_label: 'Start',
+                       stop_label: 'Stop',
+                       stop_on_scroll: true,
+                       countdown_prefix: '(',
+                       countdown_sufix: ')',
+                       onStart: false,
+                       onStop: false
+                     },
+                     effect: 'slide-hori', // or 'slide-vert', 'fade', or 'resize', 'none'
+                     enable_keyboard_move: true,
+                     cycle: true,
+                     callbacks: {
+                       init: false,
+                       afterImageVisible: false,
+                       beforeImageVisible: false
+                     }
+    };
+    var settings = $.extend(false, defaults, options);
+    if(options && options.slideshow) {
+      settings.slideshow = $.extend(false, defaults.slideshow, options.slideshow);
+    };
+    if(!settings.slideshow.enable) {
+      settings.slideshow.autostart = false;
+    };
+    var galleries = [];
+    $(this).each(function() {
+      var gallery = new AdGallery(this, settings);
+      galleries[galleries.length] = gallery;
+    });
+    // Sorry, breaking the jQuery chain because the gallery instances
+    // are returned so you can fiddle with them
+    return galleries;
+  };
+
+  function VerticalSlideAnimation(img_container, direction, desc) {
+    var current_top = parseInt(img_container.css('top'), 10);
+    if(direction == 'left') {
+      var old_image_top = '-'+ this.image_wrapper_height +'px';
+      img_container.css('top', this.image_wrapper_height +'px');
+    } else {
+      var old_image_top = this.image_wrapper_height +'px';
+      img_container.css('top', '-'+ this.image_wrapper_height +'px');
+    };
+    if(desc) {
+      desc.css('bottom', '-'+ desc[0].offsetHeight +'px');
+      desc.animate({bottom: 0}, this.settings.animation_speed * 2);
+    };
+    if(this.current_description) {
+      this.current_description.animate({bottom: '-'+ this.current_description[0].offsetHeight +'px'}, this.settings.animation_speed * 2);
+    };
+    return {old_image: {top: old_image_top},
+            new_image: {top: current_top}};
+  };
+
+  function HorizontalSlideAnimation(img_container, direction, desc) {
+    var current_left = parseInt(img_container.css('left'), 10);
+    if(direction == 'left') {
+      var old_image_left = '-'+ this.image_wrapper_width +'px';
+      img_container.css('left',this.image_wrapper_width +'px');
+    } else {
+      var old_image_left = this.image_wrapper_width +'px';
+      img_container.css('left','-'+ this.image_wrapper_width +'px');
+    };
+    if(desc) {
+      desc.css('bottom', '-'+ desc[0].offsetHeight +'px');
+      desc.animate({bottom: 0}, this.settings.animation_speed * 2);
+    };
+    if(this.current_description) {
+      this.current_description.animate({bottom: '-'+ this.current_description[0].offsetHeight +'px'}, this.settings.animation_speed * 2);
+    };
+    return {old_image: {left: old_image_left},
+            new_image: {left: current_left}};
+  };
+
+  function ResizeAnimation(img_container, direction, desc) {
+    var image_width = img_container.width();
+    var image_height = img_container.height();
+    var current_left = parseInt(img_container.css('left'), 10);
+    var current_top = parseInt(img_container.css('top'), 10);
+    img_container.css({width: 0, height: 0, top: this.image_wrapper_height / 2, left: this.image_wrapper_width / 2});
+    return {old_image: {width: 0,
+                        height: 0,
+                        top: this.image_wrapper_height / 2,
+                        left: this.image_wrapper_width / 2},
+            new_image: {width: image_width,
+                        height: image_height,
+                        top: current_top,
+                        left: current_left}};
+  };
+
+  function FadeAnimation(img_container, direction, desc) {
+    img_container.css('opacity', 0);
+    return {old_image: {opacity: 0},
+            new_image: {opacity: 1}};
+  };
+
+  // Sort of a hack, will clean this up... eventually
+  function NoneAnimation(img_container, direction, desc) {
+    img_container.css('opacity', 0);
+    return {old_image: {opacity: 0},
+            new_image: {opacity: 1},
+            speed: 0};
+  };
+
+  function AdGallery(wrapper, settings) {
+    this.init(wrapper, settings);
+  };
+  AdGallery.prototype = {
+    // Elements
+    wrapper: false,
+    image_wrapper: false,
+    gallery_info: false,
+    nav: false,
+    loader: false,
+    preloads: false,
+    thumbs_wrapper: false,
+    scroll_back: false,
+    scroll_forward: false,
+    next_link: false,
+    prev_link: false,
+
+    slideshow: false,
+    image_wrapper_width: 0,
+    image_wrapper_height: 0,
+    current_index: 0,
+    current_image: false,
+    current_description: false,
+    nav_display_width: 0,
+    settings: false,
+    images: false,
+    in_transition: false,
+    animations: false,
+    init: function(wrapper, settings) {
+      var context = this;
+      this.wrapper = $(wrapper);
+      this.settings = settings;
+      this.setupElements();
+      this.setupAnimations();
+      if(this.settings.width) {
+        this.image_wrapper_width = this.settings.width;
+        this.image_wrapper.width(this.settings.width);
+        this.wrapper.width(this.settings.width);
+      } else {
+        this.image_wrapper_width = this.image_wrapper.width();
+      };
+      if(this.settings.height) {
+        this.image_wrapper_height = this.settings.height;
+        this.image_wrapper.height(this.settings.height);
+      } else {
+        this.image_wrapper_height = this.image_wrapper.height();
+      };
+      this.nav_display_width = this.nav.width();
+      this.current_index = 0;
+      this.current_image = false;
+      this.current_description = false;
+      this.in_transition = false;
+      this.findImages();
+      if(this.settings.display_next_and_prev) {
+        this.initNextAndPrev();
+      };
+      // The slideshow needs a callback to trigger the next image to be shown
+      // but we don't want to give it access to the whole gallery instance
+      var nextimage_callback = function(callback) {
+        return context.nextImage(callback);
+      };
+      this.slideshow = new AdGallerySlideshow(nextimage_callback, this.settings.slideshow);
+      this.controls.append(this.slideshow.create());
+      if(this.settings.slideshow.enable) {
+        this.slideshow.enable();
+      } else {
+        this.slideshow.disable();
+      };
+      if(this.settings.display_back_and_forward) {
+        this.initBackAndForward();
+      };
+      if(this.settings.enable_keyboard_move) {
+        this.initKeyEvents();
+      };
+      var start_at = parseInt(this.settings.start_at_index, 10);
+      if(window.location.hash && window.location.hash.indexOf('#ad-image') === 0) {
+        start_at = window.location.hash.replace(/[^0-9]+/g, '');
+        // Check if it's a number
+        if((start_at * 1) != start_at) {
+          start_at = this.settings.start_at_index;
+        };
+      };
+
+      this.loading(true);
+      this.showImage(start_at,
+        function() {
+          // We don't want to start the slideshow before the image has been
+          // displayed
+          if(context.settings.slideshow.autostart) {
+            context.preloadImage(start_at + 1);
+            context.slideshow.start();
+          };
+        }
+      );
+      this.fireCallback(this.settings.callbacks.init);
+    },
+    setupAnimations: function() {
+      this.animations = {
+        'slide-vert': VerticalSlideAnimation,
+        'slide-hori': HorizontalSlideAnimation,
+        'resize': ResizeAnimation,
+        'fade': FadeAnimation,
+        'none': NoneAnimation
+      };
+    },
+    setupElements: function() {
+      this.controls = this.wrapper.find('.ad-controls');
+      this.gallery_info = $('<p class="ad-info"></p>');
+      this.controls.append(this.gallery_info);
+      this.image_wrapper = this.wrapper.find('.ad-image-wrapper');
+      this.image_wrapper.empty();
+      this.nav = this.wrapper.find('.ad-nav');
+      this.thumbs_wrapper = this.nav.find('.ad-thumbs');
+      this.preloads = $('<div class="ad-preloads"></div>');
+      this.loader = $('<img class="ad-loader" src="'+ this.settings.loader_image +'">');
+      this.image_wrapper.append(this.loader);
+      this.loader.hide();
+      $(document.body).append(this.preloads);
+    },
+    loading: function(bool) {
+      if(bool) {
+        this.loader.show();
+      } else {
+        this.loader.hide();
+      };
+    },
+    addAnimation: function(name, fn) {
+      if($.isFunction(fn)) {
+        this.animations[name] = fn;
+      };
+    },
+    findImages: function() {
+      var context = this;
+      this.images = [];
+      var thumb_wrapper_width = 0;
+      var thumbs_loaded = 0;
+      var thumbs = this.thumbs_wrapper.find('a');
+      var thumb_count = thumbs.length;
+      if(this.settings.thumb_opacity < 1) {
+        thumbs.find('img').css('opacity', this.settings.thumb_opacity);
+      };
+      thumbs.each(
+        function(i) {
+          var link = $(this);
+          var image_src = link.attr('href');
+          var thumb = link.find('img');
+          // Check if the thumb has already loaded
+          if(!context.isImageLoaded(thumb[0])) {
+            thumb.load(
+              function() {
+                thumb_wrapper_width += this.parentNode.parentNode.offsetWidth;
+                thumbs_loaded++;
+              }
+            );
+          } else{
+            thumb_wrapper_width += thumb[0].parentNode.parentNode.offsetWidth;
+            thumbs_loaded++;
+          };
+          link.addClass('ad-thumb'+ i);
+          link.click(
+            function() {
+              context.showImage(i);
+              context.slideshow.stop();
+              return false;
+            }
+          ).hover(
+            function() {
+              if(!$(this).is('.ad-active') && context.settings.thumb_opacity < 1) {
+                $(this).find('img').fadeTo(300, 1);
+              };
+              context.preloadImage(i);
+            },
+            function() {
+              if(!$(this).is('.ad-active') && context.settings.thumb_opacity < 1) {
+                $(this).find('img').fadeTo(300, context.settings.thumb_opacity);
+              };
+            }
+          );
+          var link = false;
+          if(thumb.data('ad-link')) {
+            link = thumb.data('ad-link');
+          } else if(thumb.attr('longdesc') && thumb.attr('longdesc').length) {
+            link = thumb.attr('longdesc');
+          };
+          var desc = false;
+          if(thumb.data('ad-desc')) {
+            desc = thumb.data('ad-desc');
+          } else if(thumb.attr('alt') && thumb.attr('alt').length) {
+            desc = thumb.attr('alt');
+          };
+          var title = false;
+          if(thumb.data('ad-title')) {
+            title = thumb.data('ad-title');
+          } else if(thumb.attr('title') && thumb.attr('title').length) {
+            title = thumb.attr('title');
+          };
+          context.images[i] = { thumb: thumb.attr('src'), image: image_src, error: false,
+                                preloaded: false, desc: desc, title: title, size: false,
+                                link: link };
+        }
+      );
+      // Wait until all thumbs are loaded, and then set the width of the ul
+      var inter = setInterval(
+        function() {
+          if(thumb_count == thumbs_loaded) {
+            thumb_wrapper_width -= 100;
+            var list = context.nav.find('.ad-thumb-list');
+            list.css('width', thumb_wrapper_width +'px');
+            var i = 1;
+            var last_height = list.height();
+            while(i < 201) {
+              list.css('width', (thumb_wrapper_width + i) +'px');
+              if(last_height != list.height()) {
+                break;
+              }
+              last_height = list.height();
+              i++;
+            }
+            clearInterval(inter);
+          };
+        },
+        100
+      );
+    },
+    initKeyEvents: function() {
+      var context = this;
+      $(document).keydown(
+        function(e) {
+          if(e.keyCode == 39) {
+            // right arrow
+            context.nextImage();
+            context.slideshow.stop();
+          } else if(e.keyCode == 37) {
+            // left arrow
+            context.prevImage();
+            context.slideshow.stop();
+          };
+        }
+      );
+    },
+    initNextAndPrev: function() {
+      this.next_link = $('<div class="ad-next"><div class="ad-next-image"></div></div>');
+      this.prev_link = $('<div class="ad-prev"><div class="ad-prev-image"></div></div>');
+      this.image_wrapper.append(this.next_link);
+      this.image_wrapper.append(this.prev_link);
+      var context = this;
+      this.prev_link.add(this.next_link).mouseover(
+        function(e) {
+          // IE 6 hides the wrapper div, so we have to set it's width
+          $(this).css('height', context.image_wrapper_height);
+          $(this).find('div').show();
+        }
+      ).mouseout(
+        function(e) {
+          $(this).find('div').hide();
+        }
+      ).click(
+        function() {
+          if($(this).is('.ad-next')) {
+            context.nextImage();
+            context.slideshow.stop();
+          } else {
+            context.prevImage();
+            context.slideshow.stop();
+          };
+        }
+      ).find('div').css('opacity', 0.7);
+    },
+    initBackAndForward: function() {
+      var context = this;
+      this.scroll_forward = $('<div class="ad-forward"></div>');
+      this.scroll_back = $('<div class="ad-back"></div>');
+      this.nav.append(this.scroll_forward);
+      this.nav.prepend(this.scroll_back);
+      var has_scrolled = 0;
+      var thumbs_scroll_interval = false;
+      $(this.scroll_back).add(this.scroll_forward).click(
+        function() {
+          // We don't want to jump the whole width, since an image
+          // might be cut at the edge
+          var width = context.nav_display_width - 50;
+          if(context.settings.scroll_jump > 0) {
+            var width = context.settings.scroll_jump;
+          };
+          if($(this).is('.ad-forward')) {
+            var left = context.thumbs_wrapper.scrollLeft() + width;
+          } else {
+            var left = context.thumbs_wrapper.scrollLeft() - width;
+          };
+          if(context.settings.slideshow.stop_on_scroll) {
+            context.slideshow.stop();
+          };
+          context.thumbs_wrapper.animate({scrollLeft: left +'px'});
+          return false;
+        }
+      ).css('opacity', 0.6).hover(
+        function() {
+          var direction = 'left';
+          if($(this).is('.ad-forward')) {
+            direction = 'right';
+          };
+          thumbs_scroll_interval = setInterval(
+            function() {
+              has_scrolled++;
+              // Don't want to stop the slideshow just because we scrolled a pixel or two
+              if(has_scrolled > 30 && context.settings.slideshow.stop_on_scroll) {
+                context.slideshow.stop();
+              };
+              var left = context.thumbs_wrapper.scrollLeft() + 1;
+              if(direction == 'left') {
+                left = context.thumbs_wrapper.scrollLeft() - 1;
+              };
+              context.thumbs_wrapper.scrollLeft(left);
+            },
+            10
+          );
+          $(this).css('opacity', 1);
+        },
+        function() {
+          has_scrolled = 0;
+          clearInterval(thumbs_scroll_interval);
+          $(this).css('opacity', 0.6);
+        }
+      );
+    },
+    _afterShow: function() {
+      this.gallery_info.html((this.current_index + 1) +' / '+ this.images.length);
+      if(!this.settings.cycle) {
+        // Needed for IE
+        this.prev_link.show().css('height', this.image_wrapper_height);
+        this.next_link.show().css('height', this.image_wrapper_height);
+        if(this.current_index == (this.images.length - 1)) {
+          this.next_link.hide();
+        };
+        if(this.current_index == 0) {
+          this.prev_link.hide();
+        };
+      };
+      this.fireCallback(this.settings.callbacks.afterImageVisible);
+    },
+    /**
+     * Checks if the image is small enough to fit inside the container
+     * If it's not, shrink it proportionally
+     */
+    _getContainedImageSize: function(image_width, image_height) {
+      if(image_height > this.image_wrapper_height) {
+        var ratio = image_width / image_height;
+        image_height = this.image_wrapper_height;
+        image_width = this.image_wrapper_height * ratio;
+      };
+      if(image_width > this.image_wrapper_width) {
+        var ratio = image_height / image_width;
+        image_width = this.image_wrapper_width;
+        image_height = this.image_wrapper_width * ratio;
+      };
+      return {width: image_width, height: image_height};
+    },
+    /**
+     * If the image dimensions are smaller than the wrapper, we position
+     * it in the middle anyway
+     */
+    _centerImage: function(img_container, image_width, image_height) {
+      img_container.css('top', '0px');
+      if(image_height < this.image_wrapper_height) {
+        var dif = this.image_wrapper_height - image_height;
+        img_container.css('top', (dif / 2) +'px');
+      };
+      img_container.css('left', '0px');
+      if(image_width < this.image_wrapper_width) {
+        var dif = this.image_wrapper_width - image_width;
+        img_container.css('left', (dif / 2) +'px');
+      };
+    },
+    _getDescription: function(image) {
+      var desc = false;
+      if(image.desc.length || image.title.length) {
+        var title = '';
+        if(image.title.length) {
+          title = '<strong class="ad-description-title">'+ image.title +'</strong>';
+        };
+        var desc = '';
+        if(image.desc.length) {
+          desc = '<span>'+ image.desc +'</span>';
+        };
+        desc = $('<p class="ad-image-description">'+ title + desc +'</p>');
+      };
+      return desc;
+    },
+    /**
+     * @param function callback Gets fired when the image has loaded, is displaying
+     *                          and it's animation has finished
+     */
+    showImage: function(index, callback) {
+      if(this.images[index] && !this.in_transition) {
+        var context = this;
+        var image = this.images[index];
+        this.in_transition = true;
+        if(!image.preloaded) {
+          this.loading(true);
+          this.preloadImage(index, function() {
+            context.loading(false);
+            context._showWhenLoaded(index, callback);
+          });
+        } else {
+          this._showWhenLoaded(index, callback);
+        };
+      };
+    },
+    /**
+     * @param function callback Gets fired when the image has loaded, is displaying
+     *                          and it's animation has finished
+     */
+    _showWhenLoaded: function(index, callback) {
+      if(this.images[index]) {
+        var context = this;
+        var image = this.images[index];
+        var img_container = $(document.createElement('div')).addClass('ad-image');
+        var img = $(new Image()).attr('src', image.image);
+        if(image.link) {
+          var link = $('<a href="'+ image.link +'" target="_blank"></a>');
+          link.append(img);
+          img_container.append(link);
+        } else {
+          img_container.append(img);
+        }
+        this.image_wrapper.prepend(img_container);
+        var size = this._getContainedImageSize(image.size.width+0, image.size.height+0);
+        img.attr('width', size.width);
+        img.attr('height', size.height);
+        img_container.css({width: size.width +'px', height: size.height +'px'});
+        this._centerImage(img_container, size.width, size.height);
+        var desc = this._getDescription(image, img_container);
+        if(desc) {
+          if(!this.settings.description_wrapper) {
+            img_container.append(desc);
+            var width = size.width - parseInt(desc.css('padding-left'), 10) - parseInt(desc.css('padding-right'), 10);
+            desc.css('width', width +'px');
+          } else {
+            this.settings.description_wrapper.append(desc);
+          }
+        };
+        this.highLightThumb(this.nav.find('.ad-thumb'+ index));
+
+        var direction = 'right';
+        if(this.current_index < index) {
+          direction = 'left';
+        };
+        this.fireCallback(this.settings.callbacks.beforeImageVisible);
+        if(this.current_image || this.settings.animate_first_image) {
+          var animation_speed = this.settings.animation_speed;
+          var easing = 'swing';
+          var animation = this.animations[this.settings.effect].call(this, img_container, direction, desc);
+          if(typeof animation.speed != 'undefined') {
+            animation_speed = animation.speed;
+          };
+          if(typeof animation.easing != 'undefined') {
+            easing = animation.easing;
+          };
+          if(this.current_image) {
+            var old_image = this.current_image;
+            var old_description = this.current_description;
+            old_image.animate(animation.old_image, animation_speed, easing,
+              function() {
+                old_image.remove();
+                if(old_description) old_description.remove();
+              }
+            );
+          };
+          img_container.animate(animation.new_image, animation_speed, easing,
+            function() {
+              context.current_index = index;
+              context.current_image = img_container;
+              context.current_description = desc;
+              context.in_transition = false;
+              context._afterShow();
+              context.fireCallback(callback);
+            }
+          );
+        } else {
+          this.current_index = index;
+          this.current_image = img_container;
+          context.current_description = desc;
+          this.in_transition = false;
+          context._afterShow();
+          this.fireCallback(callback);
+        };
+      };
+    },
+    nextIndex: function() {
+      if(this.current_index == (this.images.length - 1)) {
+        if(!this.settings.cycle) {
+          return false;
+        };
+        var next = 0;
+      } else {
+        var next = this.current_index + 1;
+      };
+      return next;
+    },
+    nextImage: function(callback) {
+      var next = this.nextIndex();
+      if(next === false) return false;
+      this.preloadImage(next + 1);
+      this.showImage(next, callback);
+      return true;
+    },
+    prevIndex: function() {
+      if(this.current_index == 0) {
+        if(!this.settings.cycle) {
+          return false;
+        };
+        var prev = this.images.length - 1;
+      } else {
+        var prev = this.current_index - 1;
+      };
+      return prev;
+    },
+    prevImage: function(callback) {
+      var prev = this.prevIndex();
+      if(prev === false) return false;
+      this.preloadImage(prev - 1);
+      this.showImage(prev, callback);
+      return true;
+    },
+    preloadAll: function() {
+      var context = this;
+      var i = 0;
+      function preloadNext() {
+        if(i < context.images.length) {
+          i++;
+          context.preloadImage(i, preloadNext);
+        };
+      };
+      context.preloadImage(i, preloadNext);
+    },
+    preloadImage: function(index, callback) {
+      if(this.images[index]) {
+        var image = this.images[index];
+        if(!this.images[index].preloaded) {
+          var img = $(new Image());
+          img.attr('src', image.image);
+          if(!this.isImageLoaded(img[0])) {
+            this.preloads.append(img);
+            var context = this;
+            img.load(
+              function() {
+                image.preloaded = true;
+                image.size = { width: this.width, height: this.height };
+                context.fireCallback(callback);
+              }
+            ).error(
+              function() {
+                image.error = true;
+                image.preloaded = false;
+                image.size = false;
+              }
+            );
+          } else {
+            image.preloaded = true;
+            image.size = { width: img[0].width, height: img[0].height };
+            this.fireCallback(callback);
+          };
+        } else {
+          this.fireCallback(callback);
+        };
+      };
+    },
+    isImageLoaded: function(img) {
+      if(typeof img.complete != 'undefined' && !img.complete) {
+        return false;
+      };
+      if(typeof img.naturalWidth != 'undefined' && img.naturalWidth == 0) {
+        return false;
+      };
+      return true;
+    },
+    highLightThumb: function(thumb) {
+      this.thumbs_wrapper.find('.ad-active').removeClass('ad-active');
+      thumb.addClass('ad-active');
+      if(this.settings.thumb_opacity < 1) {
+        this.thumbs_wrapper.find('a:not(.ad-active) img').fadeTo(300, this.settings.thumb_opacity);
+        thumb.find('img').fadeTo(300, 1);
+      };
+      var left = thumb[0].parentNode.offsetLeft;
+      left -= (this.nav_display_width / 2) - (thumb[0].offsetWidth / 2);
+      this.thumbs_wrapper.animate({scrollLeft: left +'px'});
+    },
+    fireCallback: function(fn) {
+      if($.isFunction(fn)) {
+        fn.call(this);
+      };
+    }
+  };
+
+  function AdGallerySlideshow(nextimage_callback, settings) {
+    this.init(nextimage_callback, settings);
+  };
+  AdGallerySlideshow.prototype = {
+    start_link: false,
+    stop_link: false,
+    countdown: false,
+    controls: false,
+
+    settings: false,
+    nextimage_callback: false,
+    enabled: false,
+    running: false,
+    countdown_interval: false,
+    init: function(nextimage_callback, settings) {
+      var context = this;
+      this.nextimage_callback = nextimage_callback;
+      this.settings = settings;
+    },
+    create: function() {
+      this.start_link = $('<span class="ad-slideshow-start">'+ this.settings.start_label +'</span>');
+      this.stop_link = $('<span class="ad-slideshow-stop">'+ this.settings.stop_label +'</span>');
+      this.countdown = $('<span class="ad-slideshow-countdown"></span>');
+      this.controls = $('<div class="ad-slideshow-controls"></div>');
+      this.controls.append(this.start_link).append(this.stop_link).append(this.countdown);
+      this.countdown.hide();
+
+      var context = this;
+      this.start_link.click(
+        function() {
+          context.start();
+        }
+      );
+      this.stop_link.click(
+        function() {
+          context.stop();
+        }
+      );
+      $(document).keydown(
+        function(e) {
+          if(e.keyCode == 83) {
+            // 's'
+            if(context.running) {
+              context.stop();
+            } else {
+              context.start();
+            };
+          };
+        }
+      );
+      return this.controls;
+    },
+    disable: function() {
+      this.enabled = false;
+      this.stop();
+      this.controls.hide();
+    },
+    enable: function() {
+      this.enabled = true;
+      this.controls.show();
+    },
+    toggle: function() {
+      if(this.enabled) {
+        this.disable();
+      } else {
+        this.enable();
+      };
+    },
+    start: function() {
+      if(this.running || !this.enabled) return false;
+      var context = this;
+      this.running = true;
+      this.controls.addClass('ad-slideshow-running');
+      this._next();
+      this.fireCallback(this.settings.onStart);
+      return true;
+    },
+    stop: function() {
+      if(!this.running) return false;
+      this.running = false;
+      this.countdown.hide();
+      this.controls.removeClass('ad-slideshow-running');
+      clearInterval(this.countdown_interval);
+      this.fireCallback(this.settings.onStop);
+      return true;
+    },
+    _next: function() {
+      var context = this;
+      var pre = this.settings.countdown_prefix;
+      var su = this.settings.countdown_sufix;
+      clearInterval(context.countdown_interval);
+      this.countdown.show().html(pre + (this.settings.speed / 1000) + su);
+      var slide_timer = 0;
+      this.countdown_interval = setInterval(
+        function() {
+          slide_timer += 1000;
+          if(slide_timer >= context.settings.speed) {
+            var whenNextIsShown = function() {
+              // A check so the user hasn't stoped the slideshow during the
+              // animation
+              if(context.running) {
+                context._next();
+              };
+              slide_timer = 0;
+            };
+            if(!context.nextimage_callback(whenNextIsShown)) {
+              context.stop();
+            };
+            slide_timer = 0;
+          };
+          var sec = parseInt(context.countdown.text().replace(/[^0-9]/g, ''), 10);
+          sec--;
+          if(sec > 0) {
+            context.countdown.html(pre + sec + su);
+          };
+        },
+        1000
+      );
+    },
+    fireCallback: function(fn) {
+      if($.isFunction(fn)) {
+        fn.call(this);
+      };
+    }
+  };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+    // $('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
+    // $('img.image1').data('ad-title', 'Title through $.data');
+    // $('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
+    // $('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
+    
+    var galleries = $('.ad-gallery').adGallery();
+    // $('#switch-effect').change(
+    //   function() {
+    //     galleries[0].settings.effect = $(this).val();
+    //     return false;
+    //   }
+    // );
+    // $('#toggle-slideshow').click(
+    //   function() {
+    //     galleries[0].slideshow.toggle();
+    //     return false;
+    //   }
+    // );
+    // $('#toggle-description').click(
+    //   function() {
+    //     if(!galleries[0].settings.description_wrapper) {
+    //       galleries[0].settings.description_wrapper = $('#descriptions');
+    //     } else {
+    //       galleries[0].settings.description_wrapper = false;
+    //     }
+    //     return false;
+    //   }
+    // );
+ /*楼盘相册页*/
+}
+$(function () {
+ //切换
+ $('.f_title-list li').click(function () {
+   var liindex = $('.f_title-list li').index(this);
+   $(this).addClass('on').siblings().removeClass('on');
+   $('.product-wrap div.product').eq(liindex).fadeIn(150).siblings('div.product').hide();
+   var liWidth = $('.f_title-list li').width();
+   $('.find_tab .f_title-list p').stop(false, true).animate({
+     'left': liindex * liWidth + 'px'
+   }, 300);
+   showpagexc(liindex);
+ });
+});
+  
+</script>

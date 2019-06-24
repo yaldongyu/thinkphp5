@@ -1,0 +1,71 @@
+<meta charset="utf-8">
+<title>{$lpname}{$site.name}-旅游地产-{$CityName}房价-{$CityName}房产</title>
+{if isset($keywords)}
+<meta name="keywords" content="{$keywords}" />
+{/if}
+{if isset($description)}
+<meta name="description" content="{$description}" />
+{/if}
+{if isset($author)}
+<meta name="author" content="{$author}">
+{/if}
+<link rel="shortcut icon" href="__CDN__/assets/img/favicon.ico" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<link href="__CDN__/assets/css/index/global.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+<link href="__CDN__/assets/css/index/header.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/jquery.min.js?v={$site.version}"></script>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/mobilyslider.js?v={$site.version}" ></script>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/public.js?v={$site.version}"></script>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/jcarousellite_1.0.1.js?v={$site.version}" ></script>
+ 
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/page.js?v={$site.version}"></script>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/current.js?v={$site.version}"></script> 
+ 
+
+
+
+
+<!--报名弹窗-->
+<link href="/html/js/baoming/layer.css?v={$site.version}" rel="stylesheet" />
+<script src="/html/js/baoming/layer.js?v={$site.version}" type="text/javascript"></script> 
+<script type="text/javascript" src="/html/js/baoming/bm_form.js?v={$site.version}"></script> 
+<!--end报名弹窗-->
+  
+ 
+  
+ 
+<script type="text/javascript">
+(function(){
+    var user = navigator.userAgent;
+	var Agents = ["Android","Linux","iPhone"];
+	var flag = false;
+	var domain = document.domain;
+	var url = location.href;
+	var urlarr = url.split(".");
+	var arr = domain.split(".");
+	for (var i = 0;i<Agents.length;i++) {
+        if (user.indexOf(Agents[i]) > 0){
+        	flag = true;
+        }
+    }
+    if(flag == true){
+    	if (arr[0]=="www") {
+			location = "http://m."+urlarr[1]+"."+urlarr['2'];
+    	}else{
+    		location = "http://m"+arr[0]+"."+urlarr[1]+"."+urlarr['2'];
+    	}
+        
+    } 
+})();
+</script>
+
+ 
+
+ 
+<script type="text/javascript">
+   
+    var require = {
+        config: {$config|json_encode}
+    };
+</script>

@@ -1,0 +1,31 @@
+ 
+ 
+    <div style="height:42px;" class="h42"></div>
+    <!--主页导航：开始-->
+    <div class="VpageNav"> 
+      <span class="menuItem active"><a href="/tuangou/index/typeid/0">最新团购</a></span> 
+      <span class="menuItem"><a href="/tuangou/index/typeid/1">往期团购</a></span> </div>
+      <script type="text/javascript">
+        $(".menuItem").attr("class","menuItem");
+        if(location.pathname.toLocaleLowerCase()=="/tuangou/index/typeid/1")
+          {$($(".menuItem")[1]).attr("class","menuItem active");}else{$($(".menuItem")[0]).attr("class","menuItem active");}
+      </script>
+    <!--主页导航：结束-->
+    <div class="box">
+
+       
+
+      {volist name="$index['list']" id="vo"}
+      <div class="list-img"> <a href="/tuangou/detail/ids/{$vo.id}"><img data-original="{$vo.KP_PicUrl}" src="/assets/img/mobile/errorpic.jpg" alt="{$vo.KP_Title}" style="display: inline;"></a>
+        <ul>
+          <li><a href="/tuangou/detail/ids/{$vo.id}"><span class="tg_bt">{$vo.KP_Title}</span></a></li>
+          <li><a href="/tuangou/detail/ids/{$vo.id}"><span class="tg_ms"> </span></a></li>
+          <li><a href="/tuangou/detail/ids/{$vo.id}">已有<span class="tg_rs">{$vo.bmnum}</span>人报名</a>
+            <span class="tg_btn"><a href="/tuangou/detail/ids/{$vo.id}" class="btn green ">了解祥情</a></span></li>
+          <li><a href="/tuangou/detail/ids/{$vo.id}">距离报名结束还有<ins class="icon-36"></ins><i id="day_show">{$vo.KP_EndTime}</i> </a></li>
+          <li><a href="/tuangou/detail/ids/{$vo.id}">{$vo.KP_Yhby}<b>{$vo.KP_Yhby2}</b></a></li>
+          <li></li>
+        </ul>
+      </div>
+      {/volist}
+   </div>

@@ -1,0 +1,128 @@
+<link href="__CDN__/html/css/mobile/tuan.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {  //设置标题
+      $(".header_logo2 a").html($(".t_bt span").text()).attr("href","javascript:void(0);");  
+    })  
+</script> 
+
+<!--  [id] =&gt; 64
+            [KP_SiteID] =&gt; 
+            [KP_LpID] =&gt; 643
+            [KP_Title] =&gt; 衍宏万国文旅城,文化之城，旅游之城
+            [KP_Provice] =&gt; 21
+            [KP_Citys] =&gt; 3275
+            [KP_District] =&gt; 0
+            [KP_County] =&gt; 0
+            [KP_Yhby] =&gt; 原无折扣
+            [KP_Yhby2] =&gt; 团购一次性96折按揭97 折
+            [KP_Yhxq] =&gt; 一座集文化、旅游、休闲、娱乐、购物、美食、居住于一体繁华复合之城。
+            [KP_EndTime] =&gt; 2019-06-30 19:48:08
+            [KP_Htnr] =&gt; 
+               [KP_Htzt] =&gt; 0
+            [KP_PicUrl] =&gt; /uploads/20190515/9d22ac0d92b75b9773f521b25fad1cb41Max.jpg
+            [KP_PicUrl2] =&gt; 
+            [weigh] =&gt; 21
+            [KP_AddUser] =&gt; 吕强
+            [KP_AddTime] =&gt; 2019-05-31 17:23:50
+            [KP_EditUser] =&gt; 吕强
+            [KP_EditTime] =&gt; 2019-05-31 17:23:50
+            [KP_Content] =&gt;  -->
+<!--内容开始-->
+<div class="t_toppic"><img src="__CDN__/html/img/mobile/tuan.jpg"></div>
+<div class="w100">
+  <div class="w94_2">
+    <div class="t_canshu">
+      <div class="t_csk">
+        <div class="tip-item"> <span>{$index['content']['KP_Price']}<em>{$index['content']['KP_Price_unit']}</em></span>
+          <p>楼盘{$index['content']['KP_Price_title']}</p>
+        </div>
+        <div class="tip-item"> 
+          <marquee width="100px" direction="left" scrollamount="5" align="middle">  
+          <span>{$index['Lpinfo']['KP_Zlhx']}<em>㎡</em></span>
+          </marquee>
+          <p>主力户型</p>
+        </div>
+        <div class="tip-item"> <span>{$index['Lpinfo']['bmnum']}<em>人</em></span>
+          <p>参团人数</p>
+        </div>
+      </div>
+    </div>
+    <div class="t_bt"> <span>{$index['content']['KP_Title']}</span> </div>
+    <div class="t_ctbn"><a class="popup" data-name="参加团购" data-id="0" data-module="mobile_团购详情立刻参团" data-text="团购享优惠，24小时接机，专车看房" href="javascript:;">立即参团</a></div>
+    <div class="clear"></div>
+    <div class="t_time t2"> <i><img src="__CDN__/html/img/mobile/time.png"></i> <span class="t_djs">团购结束倒计时：<em class="time"><b id="day_show">00</b>天<b id="hour_show">00</b>时<b id="minute_show">00</b>分<b id="second_show">00</b> 秒</em></span> </div>
+    <div class="clear"></div>
+    <div class="yh_info">{$index['content']['KP_Yhby2']}</div>
+  </div>
+</div>
+    
+<div class="w100">
+  <div class="w94_2">
+  <!--楼盘信息-->  
+  <div class="fy_info"> <i><img src="__CDN__/html/img/mobile/fang.png"></i> <span>房源信息</span> </div>
+  <div class="xm_mc"> 项目：<a href=""><span>{$index['Lpinfo']['KP_LpName']}</span>&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a> </div>
+  <div class="xm_mc"> 地址：<span>{$index['Lpinfo']['KP_Lpdz']} </span> </div>
+  <div class="xm_mc mc_lime">
+       {volist name=":explode(',',$index['Lpinfo']['KP_TsType'])"   id="co"  length="4" }  
+                                    <i>{$co} </i>
+       {/volist}
+    </div>
+  <!--售楼热线-->
+  <div class="hot_tel">
+    <div class="hot_tel_num">
+      <p class="num_txt-1">售楼热线：{$index['Lpinfo']['KP_Tel']}</p>
+      <p class="num_txt-2">最新开盘、户型及优惠信息、详情请致电咨询</p>
+    </div>
+    <div class="hot_tel_ico"><a href="tel:{$index['Lpinfo']['KP_Tel']}"><img src="__CDN__/html/img/mobile/footer.png"></a></div>
+  </div>
+</div>
+</div>
+
+ 
+<!--楼盘介绍-->
+<div class="w100_2">
+  <div class="w94_2">
+    <h3 class="xmjs">项目介绍</h3>
+    <p class="xmjs_line"></p>
+    <div class="xmjs_con"> {$index['content']['KP_Htnr']} </div>
+    
+    <div class="tishi_info">好房不等人，赶快报名参加团购吧！(所涉及到面积均为建筑面积)</div>
+    
+        <!--看房定制-->
+  <div class="h_kfdz" style="margin-top: 1rem">
+          <div class="h_kfdz_cont">
+              <div class="h_kfdz_title">看房定制</div>
+              <div class="h_kfdz_nav">
+                  <ul>
+                      <li>
+                          <p class="h_tu"><img src="__CDN__/html/img/mobile/bm_dz.png" alt=""></p>
+                          <p class="h_text">定制看房行程</p>
+                      </li>
+                      <li>
+                          <p class="h_tu"><img src="__CDN__/html/img/mobile/bm_zc.png" alt=""></p>
+                          <p class="h_text">全程免费看房</p>
+                      </li>
+                      <li>
+                          <p class="h_tu"><img src="__CDN__/html/img/mobile/bm_vip.png" alt=""></p>
+                          <p class="h_text">一对一专业服务</p>
+                      </li>
+                  </ul>
+              </div>  
+              <div class="h_kfdz_inpt">
+                      <input type="hidden" name="Bm_Name2" id="Bm_Name2" value="游客"/>
+                <input type="hidden" value="团购详情页-报名看房[Moblie]" id="Bm_Message2" name="Bm_Message2" />
+                <input type="hidden" value="{$index['content']['KP_LpID']}" id="Bm_HouseID2" name="Bm_HouseID2" />
+              <input type="hidden" value="/tuangou/detail/ids/{$index['content']['id']}" id="Bm_Url2" name="Bm_Url2" />
+                <input type="hidden" value="团购详情页-报名看房" id="Bm_Title2" name="Bm_Title2" />                                 
+
+                      <div class="h_kfdz_num">
+                          <input class="h_input" name="Bm_Phone2" id="Bm_Phone2"  type="text" placeholder="输入您的手机号">
+                      </div>
+                      <div class="h_kfdz_sub"><a href="javascript:void(0);" value="立即报名" onclick="Getperation('KftBm',2);return false;">立即报名</a></div>
+              </div>
+              <div  style="height:1rem;"></div>
+          </div>
+      </div>
+    
+  </div>
+</div>

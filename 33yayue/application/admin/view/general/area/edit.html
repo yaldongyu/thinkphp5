@@ -1,0 +1,103 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">区域:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'>
+                <input id="c-KP_Area" data-rule="required" class="form-control" data-toggle="city-picker" data-simple="true" type="text" value="{$row.KP_Area_text}">
+                <input id="c-name" class="form-control" name="row[name]"  type="hidden" value="{$row.name}">
+                <input id="c-areaid" class="form-control" name="row[areaid]"  type="hidden" value="{$row.areaid}">
+                <input id="c-areapid" class="form-control" name="row[areapid]" type="hidden" value="{$row.areapid}">
+                <input id="c-prov" class="form-control" name="row[KP_Provice]"  type="hidden" value="{$row.KP_Provice}">
+                <input id="c-city" class="form-control" name="row[KP_Citys]" type="hidden" value="{$row.KP_Citys}">
+                <input id="c-dist" class="form-control" name="row[KP_District]"  type="hidden" value="{$row.KP_District}">
+                <input id="c-county" class="form-control" name="row[KP_County]" type="hidden" value="{$row.KP_County}">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">域名:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-domain" class="form-control" name="row[domain]" value="{$row.domain}" type="text" style="font-size: 16px;" >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">区域图片:</label>
+        <div class="col-xs-12 col-sm-6">
+            <div class="input-group">
+                <input id="c-picurl" class="form-control" size="50" name="row[picurl]" type="text" value="{$row['picurl']}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-picurl" class="btn btn-danger plupload" data-input-id="c-picurl" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-url="ajax/uploadnosy" data-multiple="false" data-preview-id="p-picurl"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-picurl" class="btn btn-primary fachoose" data-input-id="c-picurl" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-picurl"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-picurl"></ul>
+        </div>
+        <label class="control-label" style="color:#888888;">大小：1200 x 431</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">区域描述:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-desc" cols="50" rows="5" class="form-control" name="row[desc]" type="text" >{$row['desc']}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">上月均价:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-provjuprice" class="form-control" name="row[provjuprice]" value="{$row['provjuprice']}" type="text" style="font-size: 16px;" >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">本月均价:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-curjuprice" class="form-control" name="row[curjuprice]" value="{$row['curjuprice']}" type="text" style="font-size: 16px;" >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">排序:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-weigh" class="form-control" name="row[weigh]" value="{$row.weigh}" type="number">
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">状态:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[status]', ['0'=>'隐藏', '1'=>'显示'],  $row['status'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">热门:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[ishot]', ['0'=>'否', '1'=>'是'],  $row['ishot'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">录单人:</label>
+        <div class="col-xs-12 col-sm-8">
+            <label class="control-label">{$row.adduser}({$row.addtime})</label>
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">最后编辑人:</label>
+        <div class="col-xs-12 col-sm-8">
+            <label class="control-label">{$row.edituser}({$row.edittime})</label>
+            
+        </div>
+    </div>
+    
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,1437 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" /> 
+<script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script> 
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/fangdai.js" ></script> 
+<!--网站地图-->
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/project.js" ></script>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/jquery.qrcode.min.js" ></script>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/voice.min.js" ></script>
+<style type="text/css">
+      #left_scroll{    z-index: 4;display:none;background: url(/assets/img/zuo.png) no-repeat 8px center;height: 85px;width: 19px;position: absolute;background-position-x:1px;cursor: pointer;    position: absolute; border: aliceblue;
+    left: 0px;
+    bottom: 0px;    background-color: #000000cf;}
+    #right_scroll{    z-index: 4;display:none;background: url(/assets/img/you.png) no-repeat 8px center;height: 84px;width: 21px;position: absolute;;background-position-x:-1px;cursor: pointer;     right: 0px;bottom: 0px;    border: aliceblue;background-color: #000000cf;}
+
+
+    .aroundList ul li{width: 90%;margin: 0 auto;padding: 15px 0;padding-left: 4px;border-bottom: 1px solid #f4f4f4;}
+    .zb_list{width: 100%;display: block;}
+    .zb_left{float: left; width: 119px;}
+    .zb_left a img{width: 143px; height: 101px;}
+    .zb_right{float: left;width: 143px;margin-left: 45px;}
+    .zb_right h4{font-size: 16px; color: #333;margin-top: 10px;}
+    .zb_jg{font-size: 16px;color: #333;margin: 10px 0;}
+    .zb_jg em{color: #ff3333;}
+    .zb_zx a{padding: 2px 4px; font-size: 14px; background: #ff3333;color: #fff}
+    .clearfix:after {content: '\20';display: block;height: 0;clear: both;visibility: hidden;overflow: hidden;}
+</style>
+<script>
+  $(function () {
+      jQuery('#qrcode').qrcode({ width: 90, height: 90, text: "http://m.{$domain}/house/house_details/ids/{$index['lpinfo']['id']}" }); 
+      jQuery('#qrcode2').qrcode({ width: 60, height: 60, text: "http://m.{$domain}/house/house_details/ids/{$index['lpinfo']['id']}" });       
+  })
+</script>
+
+ 
+<div class="fix_bg" style="display: none">
+  <div class="fix_hname">
+    <div class="fix_title">{$index['lpinfo']['KP_LpName']} </div>
+    <div class="fix_jiage">{$index['lpinfo']['KP_Juprice']?"均价":"总价"}：
+      <em>{$index['lpinfo']['KP_Juprice']?$index['lpinfo']['KP_Juprice']."":($index['lpinfo']['KP_TaoJia']?$index['lpinfo']['KP_TaoJia']."万元/套":"待定")}</em></div>  
+
+      
+    <div class="fix_right">
+    <div class="fix_phone"><img src="/assets/img/dt_tel.png"><span>{$index['lpinfo']['KP_Tel']}</span></div>
+      <div class="fix_qrcode" id="qrcode2"></div>
+      <div class="fix_qrcode_txt">
+        <p>扫码看房</p>
+        <p>轻松置业</p>
+      </div>
+    </div>
+  </div> 
+</div>
+
+
+
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+  
+
+<!--内容-->
+<div class="w1200">
+  <div class="house_top">
+    <div class="QRcode" id="qrcode"></div>
+    <div class="house_title"> <span>{$index['lpinfo']['KP_LpName']}</span>
+       {if condition=" $index['lpinfo']['KP_Xszt']==0 "}
+          <i>在售</i> 
+       {elseif condition=" $index['lpinfo']['KP_Xszt']==1 "}
+          <i>待售</i> 
+       {else /}
+          <i>售罄</i> 
+       {/if}
+       <em><img src="/html/images/house_map.png">{$index['lpinfo']['CNAME']}</em> 
+    </div>
+    <div class="house_te">
+      <div class="house_te_l"> 
+        {volist name=":explode(',',str_replace('，',',',$index['lpinfo']['KP_TsType']))"   id="co"}  
+            <i>{$co}</i>         
+        {/volist} 
+      </div>
+    </div>
+    <div class="house_top_tel">
+      <div class="house_top_tel_pic"><img src="/html/images/house_tell.gif"></div>
+      <div class="house_top_tel_txt"> <p>{$index['lpinfo']['KP_Tel']}</p></div>
+    </div>
+    <div class="clear"></div>
+      <!--楼盘栏目-->
+    <div style="margin-top: 20px;margin-left: -10px">
+      <div class="HouseColumn" style="border-bottom: 1px solid #ececec"> 
+          <a href="/house/house_details/ids/{$index['lpinfo']['id']}" class="{$actionname=="house_details"?"Select":""}">楼盘首页</a> 
+        <a href="/house/lpdt/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lpdt"?"Select":""}">楼盘动态</a> 
+        <a href="/house/lpdetail/ids/{$index['lpinfo']['id']}"      class="{$actionname=="lpdetail"?"Select":""}">详情信息</a> 
+        <a href="/house/lphx/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lphx"?"Select":""}">楼盘户型</a> 
+        <a href="/house/lpxc/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lpxc"?"Select":""}">楼盘相册</a> 
+     <!--    <a href="/house/lpvideo/ids/{$index['lpinfo']['id']}"       class="{$actionname=="lpvideo"?"Select":""}"">视频看房</a>  -->
+        <a href="/house/lpdp/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lpdp"?"Select":""}">点评问答</a>
+      </div>
+    </div>
+ 
+ 
+    <!--小图大图切换-->
+    <div class="house_picture" id="HouseMain_Left">
+      <div class="HouseImg_Max">
+        <ul >   <li  ></li> 
+          {empty name="$index['KP_VideoLogo']"}
+           {else/}  
+            <li> 
+              <video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" width="700px" height="430px" controls webkit-playsinline preload="none" poster="/html/images/house_max.jpg" data-setup="{}">
+                <source src="$index['KP_VideoUrl']" type='video/mp4'>
+              </video>  
+           <!--    <iframe height="400px" width="600px" src=' ' frameborder=0 'allowfullscreen' scrolling="no" allowfullscreen="true" allowtransparency="true"></iframe> -->
+            </li>
+          {/empty}
+
+          <?php $a=0; ?> 
+          {volist name="index['lpalbum']" id="vo" key="k"}
+             
+             {if condition="$vo.KP_HcName==5 AND $a<5"}  <li atr="{$a=$a+1}"><a href="/house/LpXc/ids/{$vo.KP_LpID}"  ><img src="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" alt="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" /></a></li>
+             {/if}
+          {/volist}
+           <?php $a=0; ?> 
+           {volist name="index['lpalbum']" id="vo" key="k"}
+             
+             {if condition="$vo.KP_HcName==1 AND $a<5"}  <li atr="{$a=$a+1}"><a href="/house/LpXc/ids/{$vo.KP_LpID}"  ><img src="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" alt="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" /></a></li>
+             {/if}
+          {/volist}
+           <?php $a=0; ?> 
+           {volist name="index['lpalbum']" id="vo" key="k"}
+             
+             {if condition="$vo.KP_HcName==0 AND $a<5"}  <li atr="{$a=$a+1}"><a href="/house/LpXc/ids/{$vo.KP_LpID}"  ><img src="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" alt="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" /></a></li>
+             {/if}
+          {/volist}
+           <?php $a=0; ?> 
+           {volist name="index['lpalbum']" id="vo" key="k"}
+             
+             {if condition="$vo.KP_HcName==2 AND $a<5"}  <li atr="{$a=$a+1}"><a href="/house/LpXc/ids/{$vo.KP_LpID}"  ><img src="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" alt="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" /></a></li>
+             {/if}
+          {/volist}
+           <?php $a=0; ?> 
+           {volist name="index['lpalbum']" id="vo" key="k"}
+             
+             {if condition="$vo.KP_HcName==4 AND $a<5"}  <li atr="{$a=$a+1}"><a href="/house/LpXc/ids/{$vo.KP_LpID}"  ><img src="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" alt="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" /></a></li>
+             {/if}
+          {/volist}
+          <?php $a=0; ?> 
+             {volist name="index['lpalbum']" id="vo" key="k"}
+             
+             {if condition="$vo.KP_HcName==3 AND $a<5"}  <li atr="{$a=$a+1}"><a href="/house/LpXc/ids/{$vo.KP_LpID}"  ><img src="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" alt="<?php  echo(  str_replace("Min","Max",$vo["KP_PicUrl"]) ) ?>" /></a></li>
+             {/if}
+          {/volist}
+             <li  ></li> 
+        </ul>
+      </div>
+
+      <div class="HouseImg_Min">
+        <ul id="carousel_ul" style="width: 1445px;">
+            <li id="left_scroll"></li>  
+          {empty name="$index['KP_VideoLogo']"}
+          {else/} 
+              <li class="Select"><a href="javascript:void(0);"  ><img src="{$index['KP_VideoLogo']}" alt="视频看房" /><span>视频看房</span></a></li>
+          {/empty}
+          <?php $a=0; ?> 
+         {volist name="index['lpalbum']" id="vo" key="k"   }
+              {if condition="$vo.KP_HcName==5 AND $a<5 "}     <li atr="{$a=$a+1}"  class="{if condition="$k==0"}Select{/if}">
+                  <a href="javascript:void(0);"  ><img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>" alt="{$vo['KP_PicTitle']}" /><span>{$vo['KP_PicTitle']}</span></a></li>
+                  {/if}
+         {/volist}
+          <?php $a=0; ?> 
+    {volist name="index['lpalbum']" id="vo" key="k"   }
+              {if condition="$vo.KP_HcName==1 AND $a<5"}     <li atr="{$a=$a+1}" class="{if condition="$k==0"}Select{/if}">
+                  <a href="javascript:void(0);"  ><img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>" alt="{$vo['KP_PicTitle']}" /><span>{$vo['KP_PicTitle']}</span></a></li>
+                  {/if}
+         {/volist}
+          <?php $a=0; ?> 
+             {volist name="index['lpalbum']" id="vo" key="k"   }
+              {if condition="$vo.KP_HcName==0 AND $a<5"}     <li atr="{$a=$a+1}" class="{if condition="$k==0"}Select{/if}">
+                  <a href="javascript:void(0);"  ><img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>" alt="{$vo['KP_PicTitle']}" /><span>{$vo['KP_PicTitle']}</span></a></li>
+                  {/if}
+         {/volist}
+          <?php  $a=0; ?> 
+             {volist name="index['lpalbum']" id="vo" key="k"   }
+              {if condition="$vo.KP_HcName==2 AND $a<5"}     <li atr="{$a=$a+1}" class="{if condition="$k==0"}Select{/if}">
+                  <a href="javascript:void(0);"  ><img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>" alt="{$vo['KP_PicTitle']}" /><span>{$vo['KP_PicTitle']}</span></a></li>
+                  {/if}
+         {/volist}
+          <?php $a=0; ?> 
+             {volist name="index['lpalbum']" id="vo" key="k"   }
+              {if condition="$vo.KP_HcName==4 AND $a<5"}     <li atr="{$a=$a+1}" class="{if condition="$k==0"}Select{/if}">
+                  <a href="javascript:void(0);"  ><img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>" alt="{$vo['KP_PicTitle']}" /><span>{$vo['KP_PicTitle']}</span></a></li>
+                  {/if}
+         {/volist}
+          <?php $a=0; ?> 
+                      {volist name="index['lpalbum']" id="vo" key="k"   }
+              {if condition="$vo.KP_HcName==3 AND $a<5"}     <li atr="{$a=$a+1}" class="{if condition="$k==0"}Select{/if}">
+                  <a href="javascript:void(0);"  ><img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>" alt="{$vo['KP_PicTitle']}" /><span>{$vo['KP_PicTitle']}</span></a></li>
+                  {/if}
+         {/volist}
+        <li id="right_scroll"></li>
+        </ul>
+      </div>
+    </div>
+
+
+    
+
+
+
+    <!--右侧详情-->
+    <div class="house_detail">
+       <div class="detail_jj">
+        <div class="detail_jj_l"> 
+           <p>{$index['xmjgzs'][0]['KP_Juprice']?"均价":"总价"}：<span>{$index['KP_Price']}</span> </p>
+            <p style="font-size: 16px;display: {$index['BdTime']?"block":"none"};">(此价格已<em style="color: #ff3333">{$index['BdTime']}</em>天没有变动)</p>
+           <!--  <p>截止时间：{$index['xmjgzs'][0]['KP_ValidityStart']}至{$index['xmjgzs'][0]['KP_ValidityEnd']}</p> -->
+        </div>
+        <div class="detail_jj_r   bm_trigger" lpname="{$index['lpinfo']['KP_LpName']}" lpid="{$index['lpinfo']['id']}" lppic="{$index['lpinfo']['KP_Wjt']}"><img style="margin-top: 20px; width: 30px;" src="/assets/img/guanzhu.png">关注</div> 
+        <div class="clear"></div>
+        <div class="detail_canshu">
+          <ul>
+      <li style="border-bottom: 1px solid #ececec;padding-bottom: 10px;margin-bottom: 10px"><span class="top_zhekou">折</span><span class="top_zhe_txt" title="{$index['lpinfo']['KP_Activity']}">{$index['lpinfo']['KP_Activity']}</span><a href="" class="top_zhe_ling tc_youhui"><i class="lingico"></i>领取优惠</a></li>
+            <li><span>物业类型：</span>
+
+              {volist name=":explode(',',str_replace('，',',',$index['lpinfo']['KP_Wylx']))"    id="co"}  
+                  {$co}&nbsp;&nbsp;&nbsp;&nbsp;         
+              {/volist}  
+            </li>
+             <li><span>主力户型：</span><i class="d_add" title="{$index['lpinfo']['KP_Zlhx']}">{$index['lpinfo']['KP_Zlhx']}</i> <a href="/house/lphx/ids/{$index['lpinfo']['id']}" target="_blank" class="d_hx">全部户型</a></li>
+            <li><span>装修状况：</span>{$index['lpinfo']['KP_Zxqk']}</li>
+        <li><span>开盘时间：</span>{$index['lpinfo']['KP_KpTime']}<a href="javascript:0;" class="k_tong">开盘通知</a></li>
+            <li><span>预售证号：</span><i class="d_add">{$index['lpinfo']['KP_Ysxkz']}</i></li>
+            <li><span style="letter-spacing: 5px;margin-right: 10px">开发商：</span>{empty name="$index['lpinfo']['KP_Kfs']"}待定{else/}{$index['lpinfo']['KP_Kfs']}{/empty}</li>
+           
+            <li><span>楼盘地址：</span><i class="d_add" title="{$index['lpinfo']['CNAME']}·{$index['lpinfo']['KP_Lpdz']}">{$index['lpinfo']['CNAME']}·{$index['lpinfo']['KP_Lpdz']}</i><a href="#mapx"   class="d_map">查看地图</a></li>
+          </ul>
+        </div>
+        
+     
+
+        <div class="detail_contact">
+          <div class="h_kefu_phone"> 
+            <span class="h_kefu_telpic"><img src="__CDN__/assets/img/Talbum.gif"></span> 
+            <span class="h_kefu_num">售楼热线：{$index['lpinfo']['KP_Tel']}</span> 
+          </div>
+          <div class="h_kefu_btn"> 
+            <a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"><img src="__CDN__/assets/img/zx.png">在线咨询</a>
+            <a href="javascript:void(0);" class="bm_trigger" lpname="{$index['lpinfo']['KP_LpName']}" lpid="{$index['lpinfo']['id']}" lppic="{$index['lpinfo']['KP_Wjt']}"><img src="__CDN__/assets/img/jj.png">变价通知</a> 
+            <a href="javascript:void(0);" class="free_tel"><img src="__CDN__/assets/img/dh.png">免费通话</a> 
+          </div>
+        </div>
+     
+
+      </div>
+    </div>  
+  </div>
+  <!--楼盘头部结束--> 
+ 
+  <div class="clear"></div> 
+
+  <!--楼盘语音-->
+ 
+    <div class="w1200 voice-cover column" style="display: none;">
+           <audio src="http://www.hifkw.com/uploadfiles/file/201901/1548578907.mp3" id="voice" ></audio>
+           <a href="javascript:" class="up-pop" data-des="输入手机号码即可获取完整的专业楼盘解读信息!" data-typeid="14" data-pc="1" title="语音讲房" style="display:none">语音讲房</a>
+            <div class="voice-player">
+               <div class="voice-control">
+                   <div class="voice-control-FR"><i></i></div>
+                   <div class="voice-play switch-play play-control"></div>
+                   <div class="voice-control-FF"><i></i></div>
+               </div>
+               <div class="voice-progressBar">
+                   <div class="voice-progressBar-all">
+                       <div class="voice-progressBar-load"></div>
+                       <div class="voice-progressBar-current">
+                           <span class="voice-progressBar-button"></span>
+                       </div>
+                   </div>
+               </div>
+               <div class="voice-time">
+                   <div class="voice-time-now voice-time-cover voice-time-tpl">
+                       <span class="time-m">00</span>
+                       <span class="gutter">:</span>
+                       <span class="time-s">00</span>
+                   </div>
+                   <div class="time-gutter voice-time-tpl">/</div>
+                   <div class="voice-time-all voice-time-cover voice-time-tpl">
+                           <span class="time-m">00</span>
+                           <span class="gutter">:</span>
+                           <span class="time-s">00</span>
+                   </div>
+               </div>
+               <div class="voice-volume">
+                   <div class="voice-volume-switch volume-switch-on voice-volume-tpl"></div>
+                   <div class="voice-volume-progressBar voice-volume-tpl">
+                       <div class="voice-volume-progressBar-all">
+                           <div class="voice-volume-progressBar-now"></div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+            <div class="voice-bg">
+                <a href="javascript:" class="voice-click voice-play play-control"></a>
+            </div>
+         </div>
+          <!--语音播放结束--> 
+         <script>
+        /* 楼盘名称、楼盘id、catid、均价 */
+        //init('雅居乐清水湾','179','26',17000)
+    </script>
+
+
+
+  <!--楼盘动态-->
+  <div class="baiBG clearfix">
+    <div class="loupan_dt">
+      <div class="dt_title lpsy_dt_title">
+      <h3>楼盘动态</h3>
+        <a href="/house/lpdt/ids/{$index['lpinfo']['id']}" target="_blank">查看更多+</a> 
+      </div>
+      <div class="dt_bg">
+        <div class="dt_center">
+          <div class="timeline">
+              {volist name="index['lpnews']" id="vo" key="k"} 
+                <div class="feed"><a href="/news/detail/ids/{$vo['id']}" target="_blank">
+                  <div class="date">{$vo['KP_AddTime']}</div>
+                  <em class="circle"></em>
+                  <div class="feed_detail">
+                   <h4><span>{$vo['KP_Typename']}</span>{$vo['KP_Title']}</h4>
+                    <p>{$vo['KP_Description']}</p>
+                  </div>
+                  </a> 
+                </div>
+             {/volist}  
+          </div>
+        </div>
+        <div class="dt_dingy">
+          <h3>楼盘动态订阅</h3>
+          <p>担心错过楼盘开盘？</p>
+          <p>担心不能第一时间获取楼盘新动态?</p>
+          <p>立即订阅，楼盘一手情报抢先知道！</p>
+          <div class="dt_input">
+            <input type="text" id="SendPhone" placeholder="请输入手机号码">
+              <input type="hidden" id="Send_Title" value="楼盘动态订阅" >
+                  <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-订阅" >
+                  
+            <a href="javascript:;" onclick="SendToPhone_Submitdivname('dt_input')">一键订阅</a> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+
+
+ 
+ 
+     <!--楼盘户型-->
+    <div class="baiBG">
+      <div class="loupan_dt">
+        <div class="dt_title2 lpsy_dt_title">
+        <h3>楼盘户型</h3>
+          <a href="/house/lphx/ids/{$index['lpinfo']['id']}" target="_blank">查看更多+</a> </div>
+        <div class="hx_zhanshi">
+        <ul>
+            {volist name="index['lphx']" id="vo" key="k"}
+                <li>
+                  <div class="h_hx_pic"><a href="/house/huxing_detail/ids/{$index['lpinfo']['id']}/hxid/{$vo.id}">
+                     <img src="<?php  echo(  str_replace("Max","Min",$vo["KP_PicUrl"]) ) ?>">
+                    </a></div>
+                  <div class="h_hx_txt h_hx_jia">
+                    <a href="/house/huxing_detail/ids/{$index['lpinfo']['id']}/hxid/{$vo.id}"><h1>{$vo['KP_Hx']}</h1></a>
+                    <em>{$vo['KP_Area']}</em>
+                                  
+                    <p> 
+                       
+                      {volist name=":explode(',',str_replace('，',',',$vo.KP_HxTs) )"   id="co"    }  
+                                {if condition="$co<>''"}     <i>{$co}</i>          {/if}
+                      {/volist} 
+                     </p>
+                      <p>{$vo['KP_Content']} </p>
+                     <!--  {if condition="$vo['KP_Ckjg']=='0.0000'"}
+                        <em>待定</em> 万/套</p>
+                      {else /}
+                        <em>{$vo['KP_Ckjg']}</em>万/套
+                      {/if} -->
+                  </div>
+                  <div class="h_hx_btn"><a href="" class="free_tel">户型报价</a></div>
+                </li> 
+              
+            {/volist}     
+
+         
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div> 
+
+  <!--详情信息-->
+  <div class="baiBG">
+    <div class="loupan_dt">
+      <div class="dt_title2 lpsy_dt_title">
+        <h3>详情参数</h3>
+          <a href="/house/lpdetail/ids/{$index['lpinfo']['id']}">查看更多+</a> 
+      </div>
+      <table class="lpm-section4-table">
+                     <tbody>
+                      <tr>
+                        <td class="lpm-table-1"> <span>建筑类型</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Jzlx']}</td>
+                        
+                        <td class="lpm-table-1"><span>装修状况</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Zxqk']}</td>
+                        
+                        <td class="lpm-table-1"><span>物业类型</span></td>
+                        <td class="lpm-table-2"><span class="lpm-location">{$index['lpinfo']['KP_Wylx']}</span></td>
+                     </tr>
+                     <tr>
+                        <td class="lpm-table-1"><span>占地面积</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Gharea']}</td>
+                        
+                        <td class="lpm-table-1"><span>建筑面积</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Jzarea']}</td>
+                        
+                        <td class="lpm-table-1"><span>物 业 费</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Wyf']}</td>
+                     </tr>
+                     <tr>
+                        <td class="lpm-table-1"><span>容 积 率</span></td>
+                        <td class="lpm-table-2"><span class="fl">{$index['lpinfo']['KP_Rjl']}</span></td>
+                        
+                        <td class="lpm-table-1"><span>绿 化 率</span></td>
+                        <td class="lpm-table-2"><span class="fl">{$index['lpinfo']['KP_Lhl']}</span></td>
+                        
+                        <td class="lpm-table-1"><span>总户数</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Ghhs']} </td>
+                     </tr>
+                       <tr>
+                        <td class="lpm-table-1">总栋数</td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Zds']}栋</td>
+                        
+                        <td class="lpm-table-1">主力户型</td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Zlhx']}</td>
+                        
+                        <td class="lpm-table-1">停车位</td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Parking']}</td>
+                     </tr>
+                     <tr>
+                        <td class="lpm-table-1"><span>物业公司</span></td>
+                        <td class="lpm-table-2">{$index['lpinfo']['KP_Wygs']}</td>
+                        
+                        <td class="lpm-table-1"><span>产权年限</span></td>
+                        <td class="lpm-table-2"><span class="fl">{$index['lpinfo']['KP_Cqnx']}年</span></td>
+                        
+                        <td class="lpm-table-1"><span>预售许可证</span></td>
+                        <td class="lpm-table-2"><span>{$index['lpinfo']['KP_Ysxkz']}</span></td>
+                     </tr>
+                     <tr>
+                        <td class="lpm-table-1"><span>开 发 商</span></td>
+                        <td class="lpm-table-2"><span>{$index['lpinfo']['KP_Kfs']}</span></td>
+                        
+                        <td class="lpm-table-1">咨询电话</td> 
+                        <td class="lpm-table-2"><span class="red">{$index['lpinfo']['KP_Tel']}</span></td>
+                        
+                        <td class="lpm-table-1">楼盘地址</td>
+                        <td class="lpm-table-2"><span>{$index['lpinfo']['KP_Lpdz']}</span></td>
+                     </tr> 
+                </tbody>
+      </table>
+  </div>
+</div>
+   <!--定制好房-->
+  <div class="dingzhi" style="background: url(/assets/img/bg-banner-ask.jpg)no-repeat;margin-top: 30px">
+      <div class="dingzhi_bm" style="border: 1px solid #598cf1;background: #fff">
+        <input type="text" id="SendPhone" placeholder="请输入手机号码">
+          <input type="hidden" id="Send_Title" value="置业顾问帮您定制好房" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-报名" >
+                
+            <a style="background: #598cf1" href="javascript:;" onclick="SendToPhone_Submitdivname('dingzhi_bm')">立即报名</a>
+      </div>
+  </div>
+
+    <!--楼盘相册-->
+<div class="baiBG clearfix">
+  <div class="loupan_dt">    
+    <div class="dt_title2 lpsy_dt_title" style="margin-bottom: 10px">
+      <h3>楼盘相册</h3>
+       <ul class="Lxc_tab_hd">
+          <li  style="display: none;"></li> 
+        {volist name="index['lpalbum']" id="vo" key="k"   length="4"}                                
+          <li  KP_HcName="{$vo.KP_HcName}" lpid="{$index['lpinfo']['id']}" >{$vo.KP_PicTitle}（{$vo.num}）</li> 
+        {/volist}  
+      </ul>
+        <a href="/house/lpxc/ids/{$index['lpinfo']['id']}" target="_blank">查看更多+</a> 
+    </div>
+    <div class="tu_zhanshi" style="height: 340px;background: #fff">
+    
+    <div class="Lxc_tab">
+      
+      <ul class="Lxc_tab_bd">
+       <!--关于我们  -->
+        <li class="thisclass">
+          {volist name="index['lpalbum']" id="vo" key="k"   length="4"}
+            <div class="Lxc_list">
+                <a href="/house/LpXc/ids/{$vo.KP_LpID}" target="_blank">
+                <img src="{$vo.KP_PicUrl}">
+              <!--<span>样板间</span>--></a>
+            </div>
+          {/volist}  
+        </li>
+        
+
+         {volist name="index['lpalbum']" id="vo" key="k"   length="4"}                                
+          <li >
+             {volist name="index['lpalbum']" id="vo" key="i"   length="4"}
+              <div class="Lxc_list" style="display: none;">
+                  <a href="" target="_blank">
+                  <img src="/assets/img/index/phonebig.png"> </a>
+              </div>
+            {/volist}  
+          </li> 
+        {/volist}  
+      
+       
+      </ul>
+    </div>
+    
+    <div class="bang" style="margin-top: -43px">
+          <span>更多图片获取 &gt; </span>
+          <div class="suanjia">
+          <input type="text" id="SendPhone" placeholder="请输入手机号码">
+           <input type="hidden" id="Send_Title" value="更多图片获取" >
+            <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-图片获取" >
+               
+              <a href="javascript:;" onclick="SendToPhone_Submitdivname('suanjia')">立即获取</a>  
+          <!--<p>算贷款利息？算首付？一键预约算价！</p>-->
+          </div>
+    </div>
+    
+
+    <script>
+            $(function () {
+                function tabs(tabTit, on, tabCon) {
+                  $(tabTit).children().click(function () {
+                    $(this).addClass(on).siblings().removeClass(on);
+                    var index = $(tabTit).children().index(this);
+                    $(tabCon).children().eq(index).show().siblings().hide();
+                       $.post("/house/house_details_xcajax", {lpid:$(this).attr("lpid"),types:$(this).attr("KP_HcName")},function(data) {  
+        
+                                var v = data.rows;  
+                                var c = $(tabCon).children().eq(index).find(".Lxc_list"); 
+                                for (var i = 0; i < v.length; i++) {   
+                                  $(c[i]).find("a").attr("href","/house/lpxc/ids/" + v[i].KP_LpID) ;
+                                  $(c[i]).find("img").attr("src",v[i].KP_PicUrl) ; 
+                                  $(c[i]).css("display","") ; 
+
+                                } 
+                          }); 
+                  });
+                };
+                tabs(".Lxc_tab_hd", "active", ".Lxc_tab_bd"); 
+            });
+    </script>
+    </div> 
+  </div>
+</div> 
+    
+    
+    <div class="clear"></div>
+    
+            <!--价格走势-->
+<div class="baiBG clearfix">
+  <div class="loupan_dt">
+    <div class="dt_title2 lpsy_dt_title"><h3>房价走势<em>（元/㎡）</em></h3><span class="zou_ti bm_trigger" lpname="{$index['lpinfo']['KP_LpName']}" lpid="{$index['lpinfo']['id']}" lppic="{$index['lpinfo']['KP_Wjt']}" >变价通知我</span></div>
+    <div class="PriceLine_Left_Main" id="container"> </div>
+  </div>
+</div>
+                <!--购房预算-->
+<div class="baiBG clearfix">
+  <div class="loupan_dt">
+    <div class="dt_title2 lpsy_dt_title"><h3>购房预算</h3></div>
+    
+      <!--计算器-->
+    <div class="width_1200 Xyf_Calculator" id="house-gfys" style="height: 580px;background: #fff">
+      <div class="Xyf_Calculator_Main">
+        <div class="month-pay" js="month-pay">
+          <div class="mp-form-group">
+            <div class="mp-label">选择户型</div>
+            <div class="mp-form-control">
+              <div class="mp-select-mask" >1室1厅1卫（约42㎡）</div>
+              <ul class="optgroup" id="htype-dropdown" tabindex="5000" style="overflow: hidden; outline: none;">
+                <li data-code="42"> 1室1厅1卫（约42㎡） </li>
+                <li data-code="63"> 2室2厅1卫（约63㎡） </li>
+                <li data-code="62"> 2室2厅1卫（约62㎡） </li>
+                <li data-code="100"> 3室2厅2卫（约100㎡） </li>
+                <li data-code="123"> 4室2厅2卫（约123㎡） </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mp-form-group">
+            <div class="mp-label">估算总价</div>
+            <div class="mp-form-control">
+              <input type="text" id="totalHousePrice" total-price="63" class="mp-input mp-input-md">
+              <span class="mp-unit">万元</span> </div>
+          </div>
+          <div class="mp-form-group">
+            <div class="mp-label">按揭成数</div>
+            <div class="mp-form-control">
+              <div class="mp-select-mask">7成</div>
+              <ul class="optgroup" id="percent-dropdown" tabindex="5001" style=" outline: none;">
+                <li data-code="0.1">1成</li>
+                <li data-code="0.2">2成</li>
+                <li data-code="0.3">3成</li>
+                <li data-code="0.4">4成</li>
+                <li data-code="0.5">5成</li>
+                <li data-code="0.6">6成</li>
+                <li data-code="0.7">7成</li>
+                <li data-code="0.8">8成</li>
+                <li data-code="0.9">9成</li>
+                <li data-code="1">10成</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mp-form-group">
+            <div class="mp-label">贷款类别</div>
+            <div class="mp-form-control">
+              <div class="mp-select-mask">商业货款</div>
+              <ul class="optgroup" id="daikuan_type_list">
+                <li data-code="1">商业货款</li>
+                <li data-code="2">公积金贷款</li>
+                <li data-code="3">组合贷款</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mp-form-group" id="group-dk-area" style="display:none;">
+            <div class="mp-label">贷款金额</div>
+            <div class="mp-form-control"> <span class="mp-loan-total">(贷款总额<i id="group-dk-total"></i>万)</span>
+              <div class="sec-input"> <span class="type-name">公积金</span>
+                <input type="text" id="total-price-gjj" class="mp-input mp-input-md">
+                <span class="mp-unit">万元</span> </div>
+              <div class="sec-input"> <span class="type-name">商业性</span>
+                <input type="text" id="total-price-sy" class="mp-input mp-input-md">
+                <span class="mp-unit">万元</span> </div>
+            </div>
+          </div>
+          <div class="mp-form-group">
+            <div class="mp-label">贷款时间</div>
+            <div class="mp-form-control">
+              <div class="mp-select-mask">20年(240期)</div>
+              <ul class="optgroup" id="time-dropdown" tabindex="5002" style=" outline: none;">
+                <li data-code="1">1年(12期)</li>
+                <li data-code="2">2年(24期)</li>
+                <li data-code="3">3年(36期)</li>
+                <li data-code="4">4年(48期)</li>
+                <li data-code="5">5年(60期)</li>
+                <li data-code="6">6年(72期)</li>
+                <li data-code="7">7年(84期)</li>
+                <li data-code="8">8年(96期)</li>
+                <li data-code="9">9年(108期)</li>
+                <li data-code="10">10年(120期)</li>
+                <li data-code="15">15年(180期)</li>
+                <li data-code="20">20年(240期)</li>
+                <li data-code="25">25年(300期)</li>
+                <li data-code="30">30年(360期)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!--计算按钮-->
+        <div class="ji_anniu">
+            <div class="ji_annniu_1">
+              <input type="hidden" id="currentChooseArea" value="42" />
+              <input type="hidden" id="currentBuildingPirce" value="15000" />
+              <input type="hidden" id="daikuan_type" value="1" />
+              <input type="hidden" id="daikuan_total_price" value="63" />
+              <input type="hidden" id="years" value="20" />
+              <input type="hidden" id="lilv" value="9" />
+              <input type="hidden" id="anjie" value="0.7" />
+              <button type="button" class="hj-btn" id="mortgageCalculation">开始<br/>计算</button>
+            </div>
+        </div>
+      
+      
+        <div class="hj-col-lg-9 referesult">
+          <h4 class="referesult-title">参考结果<span>以等额本息计算结果，数据仅供参考。</span></h4>
+          <!-- 大饼图 -->
+          <div id="pieChart"></div>
+          <div id="priceLineChart" style="height: 16px;"></div>
+          <span class="total-price" style="left: 206.5px; top: 270.5px;"> 总价 <strong> <i id="ht-total-price"></i> <span>万</span> </strong> </span>
+        
+          <div class="huan_kuan">月均还款<i id="average_month_pay">3263元</i></div>
+          <ul>
+            <li><span class="square orange-square-std"></span><span class="field">参考首付</span><span id="first_pay">19万（3成）</span></li>
+            <li><span class="square aqua-square"></span><span class="field">贷款金额</span><span id="daikuan_total_price2">45万（7成）</span></li>
+            <li><span class="square purple-square"></span><span class="field">支付利息</span><span id="pay_lixi">33.3万</span></li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      
+        <div class="bang">
+          <span>算贷款利息？算首付？一键预约算价！> </span>
+          <div class="suanjia">
+          <input type="text" id="SendPhone" placeholder="请输入手机号码">
+            <input type="hidden" id="Send_Title" value="预约算价" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-算价" >
+                
+              <a href="javascript:;" onclick="SendToPhone_Submitdivname('suanjia')">预约算价</a> 
+          <!--<p>算贷款利息？算首付？一键预约算价！</p>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>   
+     
+    
+    
+      
+                <!--周边配套-->
+<div class="baiBG clearfix">
+  <div class="loupan_dt">                
+    <div class="dt_title2 lpsy_dt_title" id="mapx"><h3>周边配套</h3></div>  
+   
+    <div style="width: 1200px; margin:   auto;">
+            <div class="around" id="around">
+              <div class="aroundContainer">
+                <div class="aroundMap" id="map"></div>
+                <div class="tabBox">
+                  <ul class="aroundType">
+                    <li data-bl="traffic" data-key="公交站" data-index="subway,bus" data-length="10,10">交通</li>
+                    <li data-bl="education" data-key="幼儿园,小学,中学,大学" data-index="kindergarten,primary-school,middle-school,University" data-length="10,10,10,10">教育</li>
+                    <li data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+                    <li data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+                    <li data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+                    <li data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+                  </ul>
+                  <div class="itemTagBox"></div>
+                  <div class="aroundList" id="mapListContainer"></div>
+                  <div class="loading">
+                    <img src="/html/images/map/loading.gif" class="loadingImg">
+                    <span class="loadingText">努力加载中...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+                var mapconfig = {
+                    longitude: "{$index['lpinfo']['longitude']}",
+                    latitude: "{$index['lpinfo']['latitude']}",
+                    ak: 'pBKFP0G7ydDYqW3A1eQGXBPeVrBCwbG4',
+                    resblockName: "{$index['lpinfo']['KP_LpName']}",
+                    tabEle: $(".aroundType li"),
+                    listContainer: $("#mapListContainer"),
+                    isShowToolbar: true
+                };
+                $(document).ready(function () {
+                    initMap(mapconfig);
+                });
+            </script>
+    </div>
+  </div>
+</div>  
+
+
+
+
+    <!--猜你喜欢-->
+<div class="baiBG clearfix">
+  <div class="loupan_dt">
+    <div class="dt_title2 lpsy_dt_title">
+      <h3>为您推荐</h3>
+        <a href="/house">查看更多+</a> 
+    </div>
+
+    <div class="cai_zhanshi">
+      <ul>
+        {volist name="index['tjlp']" id="vo" key="k"}   
+            <li>
+                <a href="/house/house_details/ids/{$vo['id']}" target="">
+                <img src="{$vo['KP_Wjt']|str_replace="Min","Cen",###}">
+              <span>{$vo['KP_LpName']}</span></a>
+              <div class="hx_txt">
+                <p class="cn_jia">{$vo['KP_Price']}</p>
+                <p>{$vo['CNAME']}</p>
+              </div>
+            </li>  
+        {/volist}
+      </ul>
+    </div> 
+  </div>
+</div>
+
+
+<div class="baiBG clearfix">
+  <div class="loupan_dt">
+   <div class="chListBox clearfix"  >
+
+        <!-- 周边楼盘 s -->
+           <div class="chlists">
+               <h3><b>周边楼盘</b></h3>
+               <span class="chselect clearfix"><em class="chWid01">楼盘名称</em><em class="chWid02">区域</em><em class="chWid03">价格</em><em class="chWid02">热度</em></span>
+               <ul class="chul clearfix">
+                {volist name="$index['zblp']" id="vo"}
+                  <li class="clearfix"><b class="chNum">{$i}</b><a href="/house/house_details/ids/{$vo.id}" class="chName">{$vo.KP_LpName}</a><span class="chCity">{$vo.CNAME}</span><em>{$vo.KP_Price}</em>
+                    <span class="chScore"><img src="/assets/img/hot{$i<4?'':($i<7?'2':'3')}.png"></span></li>
+                {/volist}
+              <!--     <li class="clearfix"><b class="chNum">2</b><a href="" class="chName">清风椰树林椰树林风椰</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">3</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot.png"></span></li>
+                  <li class="clearfix"><b class="chNum">4</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">5</b><a href="" class="chName">清风椰树林风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li>
+                  <li class="clearfix"><b class="chNum">6</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">7</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li>
+                  <li class="clearfix"><b class="chNum">8</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">9</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li>
+                  <li class="clearfix"><b class="chNum">10</b><a href="" class="chName">清风椰树林椰树林椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li>  -->
+               </ul>
+           </div>
+
+        <!-- 周边楼盘 e -->
+
+
+
+
+        <!-- 同价位楼盘 s -->
+           <div class="chlists">
+               <h3><b>同价位楼盘</b></h3>
+               <span class="chselect clearfix"><em class="chWid01">楼盘名称</em><em class="chWid02">区域</em><em class="chWid03">价格</em><em class="chWid02">热度</em></span>
+               <ul class="chul clearfix">
+                  {volist name="$index['tjwlp']" id="vo"}
+                  <li class="clearfix"><b class="chNum">{$i}</b><a href="/house/house_details/ids/{$vo.id}" class="chName">{$vo.KP_LpName}</a><span class="chCity">{$vo.CNAME}</span><em>{$vo.KP_Price}</em>
+                    <span class="chScore"><img src="/assets/img/hot{$i<4?'':($i<7?'2':'3')}.png"></span></li>
+                    {/volist}
+                 <!--  <li class="clearfix"><b class="chNum">2</b><a href="" class="chName">清风椰树林椰树林风椰</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">3</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot.png"></span></li>
+                  <li class="clearfix"><b class="chNum">4</b><a href="" class="chName">清风椰树林椰树林风椰</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">5</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li>
+                  <li class="clearfix"><b class="chNum">6</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">7</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li>
+                  <li class="clearfix"><b class="chNum">8</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">9</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li>
+                  <li class="clearfix"><b class="chNum">10</b><a href="" class="chName">清风椰树林椰树林椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li>  -->
+               </ul>
+           </div>
+
+        <!-- 同价位楼盘 e -->
+
+
+
+        <!-- 本月楼盘 s -->
+           <div class="chlists">
+               <h3><b>热销楼盘</b></h3>
+               <span class="chselect clearfix"><em class="chWid01">楼盘名称</em><em class="chWid02">区域</em><em class="chWid03">价格</em><em class="chWid02">热度</em></span>
+               <ul class="chul clearfix">
+                 {volist name="$index['rxlp']" id="vo"}
+                  <li class="clearfix"><b class="chNum">{$i}</b><a href="/house/house_details/ids/{$vo.id}" class="chName">{$vo.KP_LpName}</a><span class="chCity">{$vo.CNAME}</span><em>{$vo.KP_Price}</em>
+                    <span class="chScore"><img src="/assets/img/hot{$i<4?'':($i<7?'2':'3')}.png"></span></li>
+                    {/volist}
+                 <!--  <li class="clearfix"><b class="chNum">2</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">3</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot.png"></span></li>
+                  <li class="clearfix"><b class="chNum">4</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">5</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li>
+                  <li class="clearfix"><b class="chNum">6</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">7</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot2.png"></span></li>
+                  <li class="clearfix"><b class="chNum">8</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li> 
+                  <li class="clearfix"><b class="chNum">9</b><a href="" class="chName">清风椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li>
+                  <li class="clearfix"><b class="chNum">10</b><a href="" class="chName">清风椰树林椰树林</a><span class="chCity">陵水</span><em>32000元/㎡</em>
+                    <span class="chScore"><img src="/assets/img/hot3.png"></span></li>  -->
+               </ul>
+           </div>
+
+        <!-- 本月楼盘 e -->
+
+
+
+       </div>
+  </div>
+</div>
+
+       <!--猜你喜欢-->
+<div class="baiBG clearfix">
+  <div class="loupan_dt">
+    <div class="dt_title2 lpsy_dt_title">
+      <h3>热门城市</h3>
+        <a href="/house"></a> 
+    </div>
+
+    <div class="cai_zhanshi">
+      <ul  >
+       <!-- [id] => 87 [name] => 万宁 [areaid] => 3277 [domain] => wanning.lvfang66.com [ishot] => 1 [picurl] => -->
+           {volist name='hotquyu' id='co'  length="4"}
+                
+                       <li  >
+                       <a href="javascript:void(0);" onclick="Yhz_SearchEncode('City','{$co.areaid}')"> 
+                        <img src="{$co.picurl}">
+                      <span>{$co.KP_Provice}-{$co.name}</span></a>
+                      <div class="hx_txt">
+                        <p class="cn_jia"> </p>
+                        <p> </p>
+                      </div>
+                    </li>  
+               
+            {/volist}
+            
+       
+      </ul>
+    </div> 
+  </div>
+</div>
+
+ 
+  
+</div><!--w1200end--> 
+
+ 
+
+ 
+<!--报名看房-->
+<div class="kf_kfbm">
+  <div class="kf_container">
+    <div class="tc_title">看房团</div>
+    <div class="tc_x">免费接机，预定酒店住宿；专车全程接送看房，买房获取额外优惠</div>
+    <div class="tc_center">
+      <div class="tc_center_left">
+        <input type="text" id="lp_Namekfbm" placeholder="请输入您的姓名" />
+        <input type="text" id="lp_Phonekfbm" placeholder="请输入手机号码" />
+         <input   type="hidden" id="LpIDkfbm" value="{$index['lpinfo']['id']}"  >
+        <a href="javascript:void(0);" onclick="lp_Submit_kf_kfbm()" class="btn">立即提交</a> </div>
+      <div class="tc_center_right"> <span>{$index['lpinfo']['KP_LpName']}</span>
+        <div class="tc_lptu"><img src="/html/images/tc_lp.jpg"></div>
+      </div>
+    </div>
+    <a href="#0" class="kf_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>
+
+ 
+
+<!--开盘通知-->
+<div class="kp_tong">
+  <div class="kp_container">
+    <div class="tc_title">开盘通知</div>
+    <div class="free_x">为方便您获取开盘信息，请输入您的手机号，开盘信息会第一时间发送到您手机上！</div>
+    <div class="tc_center">
+      <input class="free_ip" type="text" id="FreeCall_Phone1" placeholder="请输入您的手机号码">
+      <input class="free_ip" type="hidden" id="LpID1" value="{$index['lpinfo']['id']}"  >
+      <a href="javascript:;" onclick="FreeCall_Submit_house(1)" class="free_th">免费通话</a> </div>
+    <a href="#0" class="kp_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>
+
+<!--免费通话-->
+<div class="free">
+  <div class="fr_container">
+    <div class="tc_title">免费通话</div>
+    <div class="free_x">输入您的电话号码，点击通话，稍后您将接到平台打来的电话，该通话完全免费，请放心接听！</div>
+    <div class="tc_center">
+      <input class="free_ip" type="text" id="FreeCall_Phone2" placeholder="请输入您的手机号码">
+       <input class="free_ip" type="hidden" id="LpID2" value="{$index['lpinfo']['id']}"  >
+      <a href="javascript:;" onclick="FreeCall_Submit_house(2)" class="free_th">免费通话</a> </div>
+    <a href="#0" class="fr_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>
+
+<!--优惠弹窗-->
+<div class="yh_shenqing">
+  <div class="yh_container">
+    <div class="tc_title">优惠申请</div>
+    <div class="tc_x">免费接机，预定酒店住宿；专车全程接送看房，买房获取额外优惠</div>
+    <div class="tc_center">
+      <div class="tc_center_left">
+        <input type="text" id="lp_Name"  placeholder="请输入您的姓名" />
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码" />
+        <input type="hidden" id="T_Title" placeholder="楼盘详情优惠申请" />
+       <input type="hidden" id="T_Message" placeholder="楼盘详情优惠申请" />
+       <input type="hidden" id="T_LpID" placeholder="{$index['lpinfo']['id']}" />
+       <input type="hidden" id="T_TgID" placeholder="" /> 
+ 
+        <a href="javascript:void(0);"   class="btn">立即提交</a> </div>
+      <div class="tc_center_right"> <span>{$index['lpinfo']['KP_LpName']}</span>
+        <div class="tc_lptu"><img src="{$index['lpinfo']['KP_Wjt']}"></div>
+      </div>
+    </div>
+    <a href="#0" class="yh_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>
+
+<script type="text/javascript">
+    //价格趋势图
+    $(function () {                   
+        $.post("/house/pricezs",{"id":{$index['lpinfo']['id']},"taojia":{$index['lpinfo']['KP_TaoJia']?$index['lpinfo']['KP_TaoJia']:0}},function (data) {
+
+            var highcharts_categories =data.month; 
+            var highcharts_series_data1= data.KP_Qiprice;
+            var highcharts_series_data2=data.KP_Juprice ;
+            var taojia_data3 = data.KP_TaoJia;
+            var flag = data.flag;
+            if (flag==0) {
+              $('#container').highcharts({
+              //Highcharts.chart('container', {
+                chart: {
+                    //type: 'spline',
+                    marginTop: 30,
+                    marginBottom: 80
+                },
+                title: {
+                    text: null
+                    /*
+                    text: '和泓假日阳光',
+                    x: -20 //center
+                    *
+                    },
+                    subtitle: {
+                    //text: null
+                    /*
+                    text: '咨询售楼处：400&nbsp;900&nbsp;7099',
+                    x: -20
+                    */
+                },
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories:  highcharts_categories  
+                },
+                yAxis: {
+                    title: {
+                        text: null //'楼盘价格趋势'
+                    },
+                    labels: {
+                        format: '{value}万元/套'
+                    },
+                    opposite: true,
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    crosshairs: true,
+                    shared: true,
+                    valueSuffix: '万元'
+                },
+
+                legend: {
+                    layout: 'horizontal',
+                    borderWidth: 0
+                },
+
+                series: [{
+                    name: '套价',
+                    color: '#DA5C4F',
+                    data:taojia_data3
+                }]
+            });
+            }else{
+             $('#container').highcharts({
+              //Highcharts.chart('container', {
+                chart: {
+                    //type: 'spline',
+                    marginTop: 30,
+                    marginBottom: 80
+                },
+                title: {
+                    text: null
+                    /*
+                    text: '和泓假日阳光',
+                    x: -20 //center
+                    *
+                    },
+                    subtitle: {
+                    //text: null
+                    /*
+                    text: '咨询售楼处：400&nbsp;900&nbsp;7099',
+                    x: -20
+                    */
+                },
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories:  highcharts_categories  
+                },
+                yAxis: {
+                    title: {
+                        text: null //'楼盘价格趋势'
+                    },
+                    labels: {
+                        format: '{value}元'
+                    },
+                    opposite: true,
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    crosshairs: true,
+                    shared: true,
+                    valueSuffix: '元'
+                },
+
+                legend: {
+                    layout: 'horizontal',
+                    borderWidth: 0
+                },
+
+                series: [{
+                    name: '均价',
+                    color: '#DA5C4F',
+                    data:highcharts_series_data1
+                }, {
+                    name: '起价',
+                    color: '#B1D468',
+                    data: highcharts_series_data2  
+                }]
+            });
+           }
+        });                      
+    });
+
+    // $(function function_name(argument) {
+    //    $(".highcharts-title tspan").html("");
+    // })
+     
+     
+     /* 计算器参考月供 */
+    $('[js="month-pay"]').on('click', '.mp-form-control .mp-select-mask', function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active').siblings('.optgroup').slideUp(100);
+        } else {
+            $(this).parents('[js="month-pay"]').find('.mp-select-mask').removeClass('active');    // 删除其他active
+            $(this).parents('[js="month-pay"]').find('.optgroup').slideUp(100);                   // 回收其他下拉
+
+            $(this).addClass('active').siblings('.optgroup').slideDown(100);
+        }
+    });
+
+    $('[js="month-pay"]').on('click', '.mp-form-control .optgroup li', function () {
+        var _index = $(this).index();
+        var _text = $(this).text();
+        $(this).parent().siblings('.mp-select-mask').text(_text).removeClass('active');
+        $(this).parent().slideUp(100).siblings('select').children('option').eq(_index).attr('checked', 'checked').siblings().removeAttr('checked');
+    });
+
+    $('[js="month-pay"]').on('click', '.mp-form-control', function (e) {
+        e.stopPropagation();
+    });
+
+    $('.referesult').each(function () {                                                             // 总价定位
+        var _left = ($(this).width() - $(this).find('.total-price').width()) / 2 + 10;
+        var _top = ($(this).height() - $(this).find('.total-price').height()) / 2 - 10;
+        $(this).find('.total-price').css({ 'left': _left, 'top': _top });
+    });
+
+
+    $(document).click(function () {
+        $('[js="month-pay"]').find('.optgroup').slideUp(100).siblings('.mp-select-mask').removeClass('active');
+    });
+</script> 
+
+ 
+<script type="text/javascript">      
+  
+     $(function () { //5个小图就添加、滚动栏
+        if($(".HouseImg_Min li").length>7){
+          $("#left_scroll").css("display","block");
+          $("#right_scroll").css("display","block");
+          $("#carousel_ul").css("width", (700+($(".HouseImg_Min li").length-7)*143)+"px");
+          $('#left_scroll').attr("canmove","true");
+          $('#right_scroll').attr("canmove","true");
+          $('#right_scroll').click(function(){ 
+                if($(this).attr("canmove")=="true" &&  parseInt($("#carousel_ul").css("marginLeft")) >(0-($(".HouseImg_Min li").length-7)*143    )){
+                  nextSelect();
+                  $(this).attr("canmove","false");
+                  $("#carousel_ul").animate({marginLeft: (parseInt($("#carousel_ul").css("marginLeft"))-143)}, "slow",function(argument) {
+                    $('#right_scroll').attr("canmove","true");
+                  }); 
+                }
+          });
+          //左滑相册
+          $('#left_scroll').click(function(){
+          
+             if($(this).attr("canmove")=="true" &&  parseInt($("#carousel_ul").css("marginLeft")) <0    ){
+                  prevSelect();
+                  $(this).attr("canmove","false");
+                  $("#carousel_ul").animate({marginLeft: (parseInt($("#carousel_ul").css("marginLeft"))+143)}, "slow",function(argument) {
+                    $('#left_scroll').attr("canmove","true");
+                  }); 
+                }
+          });
+        }
+      })
+    $(function () { //小图大图切换
+        $(".HouseImg_Min li").click(function () {
+            if($(this).attr("id")=="left_scroll"   ||  $(this).attr("id")=="right_scroll" ){ }else{
+
+            var index = $(this).index();
+            $(".HouseImg_Min li").removeClass("Select");
+            $(".HouseImg_Min li").eq(index).addClass("Select");
+
+            $(".HouseImg_Max li").css("display", "none");
+            $(".HouseImg_Max li").eq(index).css("display", "block");
+          }
+        })
+            var index =1
+            $(".HouseImg_Min li").removeClass("Select");
+            $(".HouseImg_Min li").eq(index).addClass("Select");
+
+            $(".HouseImg_Max li").css("display", "none");
+            $(".HouseImg_Max li").eq(index).css("display", "block");
+         $("#top").css("display","none");
+    })
+
+    function nextSelect() {
+
+        var index =  $("#carousel_ul").find("[class=Select]").index();
+            $(".HouseImg_Min li").removeClass("Select");
+            $(".HouseImg_Min li").eq(index+1).addClass("Select");
+
+            $(".HouseImg_Max li").css("display", "none");
+            $(".HouseImg_Max li").eq(index+1).css("display", "block");
+    }
+   function prevSelect() {
+
+        var index =  $("#carousel_ul").find("[class=Select]").index();
+            $(".HouseImg_Min li").removeClass("Select");
+            $(".HouseImg_Min li").eq(index-1).addClass("Select");
+
+            $(".HouseImg_Max li").css("display", "none");
+            $(".HouseImg_Max li").eq(index-1).css("display", "block");
+    }
+</script> 
+
+ 
+ 
+<!-- 扫描拨号 -->
+        <style type="text/css">
+            #smbox {position: fixed;width: 144px;top: 449px;left: 50%;margin-left: 616px;text-align: center;font-size: 14px;z-index: 9;background: #ff4a00;padding-top: 6px;padding-bottom: 7px;border-radius: 5px;} 
+            p {margin: 0;}
+            .smimg{display: block;width: 132px;height: 132px;background: #fff;margin: 0 auto;padding-top: 10px;}
+            .smimg img{border: none;display: inline;vertical-align: top;}
+        </style>
+        <div id="smbox" style="display: none">
+            <p style="color: #fff;padding: 5px;"><img style="display: inline-block;vertical-align: bottom;" src="/assets/img/tel_right.png">&nbsp;扫码拨号</p>
+            <p class="smimg"></p> 
+            <p style="position: absolute;top: -20px;left: 0px;cursor: pointer;color: #999;" class="closesmbox">关闭</p>
+            <p style="color: #fff;padding-top: 5px;">售楼处免费热线</p> 
+        </div>
+
+        <script type="text/javascript">
+          $(".closesmbox").click(function(argument){
+            $("#smbox").css("display","none");
+          });
+
+          // setTimeout(function(argument) {
+
+
+               
+
+          // },500);
+           
+          var setcode  =  setInterval(function(){
+               if(parseInt($($(".telqrcode canvas")[0]).attr("width"))>0 && $("#smbox").css("display")=="none" ){
+                    var mycans=$(".telqrcode canvas")[0];   
+                    //调用convertCanvasToImage函数将canvas转化为img形式
+                    var img=convertCanvasToImage(mycans);  
+                    img.width=120;
+                    img.height=120;
+                    //将img插入容器
+                    $('#smbox p').eq(1).append(img);
+                    $("#smbox").css("display","block"); 
+                    clearInterval(setcode);                   
+               }
+            }, 30);
+          // setInterval(function(){
+          //       var t = ($("#smbox").offset().top +  $("#smbox").height())  -($(".foot").offset().top -20) ;
+          //       t= (t>0?t:0) ;
+          //       if(t>0){
+          //         $("#smbox").css("top","" + ( 449 - t) + "px"); 
+          //       }else{
+          //         $("#smbox").css("top","449px"); 
+          //       }
+          //   }, 30);
+          
+         
+
+
+               // Converts canvas to an image
+              function convertCanvasToImage(canvas) {
+                var image = new Image();
+                image.src = canvas.toDataURL("image/png");
+                return image;
+              }
+              // Converts image to canvas; returns new canvas element
+              function convertImageToCanvas(image) {
+                var canvas = document.createElement("canvas");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                canvas.getContext("2d").drawImage(image, 0, 0);
+
+                return canvas;
+              }
+              
+        </script>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+      // 同价位楼盘
+        $(function() {
+           $(".chlists:last-child").css({ marginRight:"0"});
+           $('.chlists ul').find("li b:eq(0),li b:eq(1),li b:eq(2)").addClass('style');
+
+        });
+
+
+
+
+
+
+
+
+
+          function showsecdiv(){ 
+            if($(".aroundType li").eq(0).attr("class")=="selectTag"){}else{
+              $(".itemTagBox").css("display",""); 
+              $(".aroundList").css("height","358px");
+            } 
+          }
+
+          var lmai = setInterval(ck,200);
+          var dataisok = false ;
+          var mapdata ;
+          loaddata();
+          function loaddata(argument) {
+             $.ajax({
+                'url': '/house/house_details_zblpajax', //服务器的地址 
+                'data': { 'lpid': {$index['lpinfo']['id']} ,'lpcity': '{$index['lpinfo']['KP_Provice']}' },  
+                'type': 'POST', //请求类型 
+                'success': function(data) {
+                    mapdata = data.zblp ;
+                    dataisok=true;
+                }
+              });  
+          }
+          function ck(argument) {
+            if($(".aroundType li").length>0 && dataisok){
+              load_map_addtion_info();
+              lmai = clearInterval(lmai);
+            }
+          }
+          
+          function load_map_addtion_info(argument){
+              $(".aroundType li").last().remove();
+              $("<li data-bl='zblp' data-key='' data-index='' data-length='' class='selectTag'>周边楼盘</li>").insertBefore($(".aroundType li").eq(0)).click(function(argument){
+                $(".itemTagBox").css("display","none");
+                $(".aroundType li").attr("class","");
+                $(".aroundList").css("height","403px");
+                $(this).attr("class","selectTag");
+                  console.log(mapdata);
+                  var htmla = ""
+                    +"    "
+                    +"    <ul>" ;
+
+
+                    for (var i = 0; i < mapdata.length; i++) {
+                        htmla +="" 
+                              +"    <li class='clearfix'>"
+                              +"       <div class='zb_list'>"
+                              +"         <div class='zb_left'>"
+                              +"          <a href='/house/house_details/ids/"+  mapdata[i].id +"'><img src='"+  mapdata[i].KP_Wjt +"'></a>"
+                              +"         </div>"
+                              +"         <div class='zb_right'>"
+                              +"           <h4>"+mapdata[i].KP_LpName+"</h4>"
+                              +"          <p class='zb_jg'>"+mapdata[i].KP_Price_title+"<em>"+mapdata[i].KP_Price+"</em>"+mapdata[i].KP_Price_unit+"</p>"
+                              +"           <p class='zb_zx'><a href='javascript:void(0);'  onclick=openZoosUrlx(\'chatwin\');>在线咨询</a></p>"
+                              +"         </div>"
+                              +"       </div>"
+                              +"     </li>  "  
+                    } 
+                     htmla +=""   
+                      
+                    +"   </ul>"
+                    +" "
+                 $(".aroundList").html(htmla);
+                 setInterval(showsecdiv,200);
+              });
+              //.trigger("click");
+              setTimeout(function(argument) {
+
+                 $(".aroundType li").eq(0).trigger("click");
+              },4000);
+             
+          }
+        
+   </script>  
+
+

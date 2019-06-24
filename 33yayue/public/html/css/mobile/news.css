@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+/*轮播*/
+.m_banner{width: 100%;margin: 0 auto;margin-top: 50px;}
+.banner {height:197px;overflow:hidden;position:relative;}
+.banner .banner_img {background:#fff;}
+.news_zhez{font-size: .3rem;background-color: rgba(0,0,0,0.5);padding: 9px 8px;position: absolute;left: 0;bottom: 0;color: #fff;width: 100%;}
+.banner .banner_img ul li{height:197px;}
+.banner .banner_img ul li a img {display:block;width:100%; height: 100%;}
+/*#swiper-pagination1{right:10px;bottom:11px; width: auto;}*/
+.swiper-pagination-bullet{background:#FFF;opacity:1;width:10px;height:10px;}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 3px;}
+.swiper-pagination-bullet-active{background:#FF6C00}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{width: 100%;}
+
+/*栏目筛选*/
+/* ===== retrie分类下来 ===== */
+.retrie {position: relative;z-index: 10;height: 50px;background-color: #fff;border-bottom: 1px solid #e8e8e8;}
+.retrie dt { overflow: hidden }
+.retrie dt a {position: relative;float: left;width: 2.5rem;height: 49px;line-height: 50px;color: #333;font-size: .3rem;text-align: center;}
+.retrie dt a:after {position: absolute;top: 50%;left: 50%;margin-top: -4px;margin-left: 40px;width: 8px;height: 8px;background: url(../images/ico-down-3.png)no-repeat;display: inline-block;content: ' ';-webkit-transform: rotate(131deg);}
+.retrie .dta {position: absolute;width: 2.5rem;height: 49px;line-height: 50px;color: #333;font-size: .3rem;text-align: center;right: 0;top: 0;}
+
+.retrie dt .up {color: #396bcb;}
+.retrie dt .up:after {margin-top: 0;background: url(../images/hico-down-3.png)no-repeat;display: inline-block;-webkit-transform: rotate(-45deg);}
+.retrie dd { position: relative; }
+/* ===== slide-area ===== */
+.slide {position: absolute;top: 0px;left: 0;z-index: 104;display: none; width: 100%;overflow-y: auto;background-color: #fff;}
+.slide li {display: block;height: 50px;border-top: 1px solid #eee;}
+.slide li a {display: block;padding: 0 30px;height: 50px;background-color: transparent;line-height: 50px;font-size: .3rem}
+.slide li a:hover,.slide li a.selected { background-color: #f6f6f6; }
+.slide li a.select { background-color: #fff; }
+
+/* 列表 */
+
+.khfxWarp{padding-top:.1rem}
+.khfxRow{position: relative;background:#fff;padding:0 0.3rem;margin-bottom: .1rem}
+.newsli_tu{display: inline-block;vertical-align: top;width: 38%;border-radius: 5px;height: 100px;margin-right: 10px;margin-top: .2rem;}
+.newsli_tu img{display: block;width: 100%;height: 100%}
+.newsli_txt{display: inline-block;vertical-align: top;width: 57%;height: 110px;position: relative;margin-top: .2rem;overflow: hidden;}
+.newsli_txt p:first-child{font-size: .3rem;line-height: 23px;font-weight: 600;}
+.newsli_txt p:last-child{font-size: 0.7rem;line-height: 30px;color: #979797;width: 100%;position: absolute;bottom: 0;}
+.newsli_lei{display: block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width: 30%;float: left;font-size: .25rem;}
+.newsli_time{float: left;font-size: .25rem;}
+
+
+/**************************新闻详情页************************************/
+.newsShow_title{margin-top: 65px;font-size: .38rem;font-weight: 550;margin-bottom: .2rem;}
+.newsShow_data{font-size: .25rem;color: #999;height: 30px;line-height: 30px; border-bottom: 1px solid #eaeaea;}
+.newsShow_yuan{float: left;}
+.newsShow_yuan span:first-child{margin-right: .25rem;}
+.newsShow_tongzhi{float: right;display: block;}
+.newsShow_tongzhi a img{width: .35rem;height: .35rem;display: inline-block;margin-right: .1rem;}
+.newsShow_tongzhi a span{font-size: .29rem;color: #ff3333;vertical-align: middle;}
+.news_conter{margin: .3rem 0;}
+.news_footer{width: 70%;margin: 0 auto;}
+.news_footer span{height: 1px;background: #eaeaea;width: 100%;display: inline-block;}
+.news_footer_txt{text-align: center;margin: 0 auto;margin-top: -.3rem;font-size: .35rem;background: #ffffff;width: 1.7rem;z-index: 1;position: relative;}
+.end_txt{margin: .3rem 0;font-size: .27rem;line-height: .4rem;}
+.end_erweima{width: 2rem;margin: 0 auto;}
+.end_erweima img{width: 100%;}
+.newstxt_up{margin-bottom: .1rem;margin-top: .3rem;}
+.newstxt_up i{width: .4rem;display: inline-block}
+.newstxt_up i img{width: 100%;}
+.newstxt_up span{margin-left: .1rem;font-size: .3rem;vertical-align: middle;}
+
+/*为您挑选*/
+/*.hx_list{ margin-bottom: 0;margin-top: .3rem;overflow: auto;webkit-overflow-scrolling: touch;}
+.hx_ul{width: 910px;}
+.hx_ul li{float: left;margin-right: 14px;width: 155px;}
+.hx_pic img{ width: 155px;height: 126px;}
+.hx_txt {padding: .1rem 0; font-size: .3rem}
+.hx_txt .hx_zhut{background: #ff3333;padding: 0 .2rem;color: #fff;font-size: .8rem;border-radius: 2px}
+.hx_txt p{margin-top: .1rem;font-size: .25rem;color: #999}
+.hx_jage{color: #ff3333;margin-top: .1rem}*/
+/*为您挑选*/
+/*.hx_jage{color: #ff3333;margin-top: .1rem}*/
+.Lplist li{padding: 15px 0; border-bottom: 1px solid #eaeaea;position: relative;}
+/*.Lplist li a{display: block;}*/
+.Lplist li:last-child{border-bottom: none;}
+.Lp_pic{ width: 36%;display: inline-block;vertical-align: top;position: relative;}
+.Lp_pic img{display: block;width: 100%;height: 1.9rem;border-radius: 5px;}
+.Lp_pic i{position: absolute;top: 0px;left: 0px;background-image: linear-gradient(270deg,#ff7338,#f54732);font-size: 0.25rem;color: #fff; padding: 1px 4px;border-top-left-radius: 4px;}
+.Lp_con{display: inline-block;vertical-align: top;position: relative;left: 8px;width: 61%;font-size: .25rem;}
+.Lp_con .Lp_title{font-size: .3rem;margin-bottom: 6px;width: 3rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.Lp_con .Lp_title span{font-weight: 400;font-size: .24rem;color: #a9b6ca;}
+.Lp_con .Lp_add{color: #999;margin-bottom: 6px;}
+.Lp_con .Lp_hx{color: #999;}
+.Lp_con .Lp_jiage em{color: #ff3333;font-weight: 600;font-size: .4rem;}
+.Lp_con .Lp_tese{margin-top: .1rem}
+.Lp_con .Lp_tese span{color: #8196cd;border-radius: 3px;background: #ebf3fe;padding: 1px 3px;margin-right: .1rem}
+.tel_phone{position: absolute;right: .32rem;top: .5rem;width: 1rem;}
+.tel_phone .tel_num{display: block;}
+.tel_phone .tel_num img{width: 100%; height: 100%;}

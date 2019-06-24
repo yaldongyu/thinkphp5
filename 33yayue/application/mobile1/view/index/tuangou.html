@@ -1,0 +1,117 @@
+<link href="__CDN__/html/css/mobile/tuan.css" rel="stylesheet" type="text/css" /> 
+<!-- <script src="__CDN__/html/js/mobile/first.js" type="text/javascript"></script>   -->
+<script type="text/javascript">
+  //团购倒计时
+    var intDiff = parseInt(511228); //倒计时总秒数量
+    function timer(intDiff) {
+        window.setInterval(function () {
+        var day = 0,
+        hour = 0,
+        minute = 0,
+        second = 0; //时间默认值        
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('#day_show').html(day);
+            $('#hour_show').html(hour);
+            $('#minute_show').html(minute);
+            $('#second_show').html(second);
+      $('#day_show2').html(day);
+            $('#hour_show2').html(hour);
+            $('#minute_show2').html(minute);
+            $('#second_show2').html(second);
+      $('#day_show3').html(day);
+            $('#hour_show3').html(hour);
+            $('#minute_show3').html(minute);
+            $('#second_show3').html(second);
+      $('#day_show4').html(day);
+            $('#hour_show4').html(hour);
+            $('#minute_show4').html(minute);
+            $('#second_show4').html(second);
+            intDiff--;
+        }, 1000);
+    }
+    $(function () {
+        timer(intDiff);
+    });
+
+</script>
+
+<!--内容开始-->
+  <div class="tuan_bg">
+    <div class="tuan_title">
+      <h3>特价好房</h3>
+      <p class="title_line"></p>
+      <p class="title_sm">好房+优惠，组团买房更划算</p>
+    </div>
+  </div>
+<!-- 秒
+                    [KP_Yhby] =&gt; 原无折扣
+                    [KP_Yhby2] =&gt; 团购一次性96折按揭97 折
+                    [bmnum] =&gt; 0
+                    [CNAME] =&gt; 海南-儋州
+                )
+ 
+                (
+                    [id] =&gt; 64
+                    [KP_Title] =&gt; 衍宏万国文旅城,文化之城，旅游之城
+                    [KP_PicUrl] =&gt; /uploads/20190515/9d22ac0d92b75b9773f521b25fad1cb41Max.jpg
+                    [KP_Provice] =&gt; 21
+                    [KP_Citys] =&gt; 3275
+                    [KP_District] =&gt; 0
+                    [KP_County] =&gt; 0
+                    [KP_Yhxq] =&gt; 一座集文化、旅游、休闲、娱乐、购物、美食、居住于一体繁华复合之城。
+                    [KP_EndTime] =&gt; 2019-06-30 19:48:08
+                    [KP_Yhby] =&gt; 原无折扣
+                    [KP_Yhby2] =&gt; 团购一次性96折按揭97 折
+                )
+ 
+                (
+                    [id] =&gt; 55
+                    [KP_Title] =&gt; 绿地滇池国际健康城，礼赞自然，淳和温煦
+                    [KP_PicUrl] =&gt; /uploads/20190419/a542cffb8aabd7e4aac2878e376806941Max.jpg
+                    [KP_Provice] =&gt; 25
+                    [KP_Citys] =&gt; 415
+                    [KP_District] =&gt; 0
+                    [KP_County] =&gt; 0
+                    [KP_Yhxq] =&gt; 绿地春城滇池国际健康示范城择址昆明大渔片区，西临滇池，紧邻拥有多样化景观资源的湿地公园。绿地健康城不分按揭全款97折
+                    [KP_EndTime] =&gt; 10天 -->
+  <!--团购内容-->
+  {volist name="$index['list']" id="vo"}
+  
+  <div class="w100">
+    <div class="w94 tuan_kuang{$i>1?"2":""}">
+      <div class="t_cont_title">
+        <span class="t_hd">活动</span>
+        <span class="t_mz">{$vo.KP_Title}</span>
+      </div>
+      <div class="t_time">
+        <i><img src="__CDN__/html/img/mobile/time.png"></i>
+        <span class="t_djs">团购结束倒计时：<em class="time"><b id="day_show">00</b>天<b id="hour_show">00</b>时<b id="minute_show">00</b>分<b id="second_show">00</b> 秒</em></span>
+      </div>
+      <div class="t_time">
+        <i><img src="__CDN__/html/img/mobile/bm.png"></i>
+        <span class="t_djs"><em>{$vo.bmnum}</em>人已参团</span>
+      </div>
+     
+      <div class="t_tu"><img src="{$vo.KP_PicUrl}"><span>{$vo.CNAME}</span></div>
+      
+      <div class="t_youhui">
+        <i><img src="__CDN__/html/img/mobile/tehui2.png"></i>
+        <span>{$vo.KP_Yhby2}</span>
+      </div>
+      <div class="t_tbn">
+        <a href="/tuangou/detail/ids/{$vo.id}">了解详情</a>
+        <a class="popup" data-name="参加团购" data-id="0" data-module="mobile_团购报名" data-text="团购享优惠，24小时接机，专车看房" href="javascript:;">立即参团</a>
+      </div>
+    </div>
+  </div>
+  {/volist}
+  
+  
+ 

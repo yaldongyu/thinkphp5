@@ -1,0 +1,126 @@
+<style>
+.formbody{padding:10px 18px;}
+.formtitle{border-bottom:solid 1px #d0dee5;line-height:35px;height:35px;margin-bottom:28px;position:relative;}
+.formtitle .lspan{font-weight:bold;font-size:14px;border-bottom:solid 3px #66c9f3;float:left;position:absolute;z-index:100;bottom:-1px;padding:0 3px;height:30px;line-height:30px;}
+.formtitle .rspan{float:right;position:absolute;z-index:100;bottom:-1px;right:0px;padding:0 3px;height:30px;line-height:30px;}
+.forminfo{padding-left:23px;}
+.forminfo .lis{margin-bottom:13px;}
+.forminfo .lis .tt{float:left;width:86px;display:block;line-height:34px;}
+.forminfo .lis i{color:#7f7f7f;padding-left:20px;font-style:normal;line-height:34px;}
+.picbox{ width:190px; height:270px;position:relative; float:left;display:inline;margin:24px 0px 0px 24px;}
+.pic1{ width:188px; height:260px; border:#CCC 1px solid; list-style:none; position:absolute; top:0px; left:0px; z-index:3;background:#FFF;}
+.pic1 ul{ margin:0px; padding:0px;}
+.pic1 li.lat{ width:160px; padding:10px 13px 13px 10px; list-style:none; float:left; display:inline;}
+.pic1 li.lat img{ width:160px; height:160px;}
+.pic1 li.lat2{ width:188px; height:20px; line-height:20px; list-style:none; float:left; display:inline; font-size:12px;padding:0px 14px;}
+.pic1 li.lat2 span.left{ width:120px; height:20px; float:left; display:block; white-space:nowrap; overflow:hidden;}
+.pic1 li.lat2 font.gay{color:#9A9A9A;}
+.pic1 li.lat3{ width:188px; height:20px; line-height:20px; list-style:none; float:left; display:inline; font-size:12px;padding:0px 14px;}
+.pic1 li.lat3 span.left{ width:120px; height:20px; float:left; display:block; white-space:nowrap; overflow:hidden;}
+.pic1 li.lat3 span.right{ width:40px; height:20px; white-space:nowrap; overflow:hidden;color:#FF6600;margin:0px; padding:0px;float:left; display:block; text-align:right;}
+.pic1 li.lat4{ width:188px; height:20px; line-height:20px; list-style:none; float:left; display:inline; font-size:12px;padding:0px 14px; color:#9A9A9A; }
+.pic1 li.lat4 span.left{ width:120px; height:20px; float:left; display:block; white-space:nowrap; overflow:hidden;}
+.pic1 li.lat4 span.right{ width:40px; height:20px; white-space:nowrap; overflow:hidden;margin:0px; padding:0px;float:left; display:block; text-align:right;}
+.pic2{ width:188px; height:260px; border:#CCC 1px solid; list-style:none; position:absolute; top:3px; left:0px; z-index:2;background:#FFF; background:none;}
+.pic3{ width:188px; height:260px; border:#CCC 1px solid; list-style:none; position:absolute; top:6px; left:0px; z-index:1;background:#FFF; background:none;}
+.comm-stat {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 29px;
+    padding-top: 2px;
+    height: 14px;
+    font: 100 12px/12px '\5B8B\4F53';
+    color: #FFF;
+    text-align: center;
+    _font: 100 12px/14px '\5B8B\4F53';
+    float: right;
+    margin-top: 2px
+}
+.zsale {background: #0085cd}
+.dsale {background: #85b50c}
+.hot-sale {background: #F60}
+.wsale {background: #999}
+.down{margin-bottom:3px;}
+.button7{border:solid 1px #bfcfe1;height:25px;line-height:23px;vertical-align:middle;color:#333;}
+.tipso_style{cursor:default;}
+</style>
+<script type="text/javascript">
+    function move(id,flag){
+        Fast.api.ajax({
+           url:'housing/lpalbum/move',
+           data:{id:id,flag:flag}
+        }, function(data, ret){
+           //成功的回调
+           window.location.reload();
+           return false;
+        }, function(data, ret){
+           //失败的回调
+           return false;
+        });
+    }
+
+    function checkOrCancelAll(){
+        //1.获取checkbo的元素对象
+        var chElt=document.getElementById("BoxAll");
+        //2.获取选中状态
+        var checkedElt=chElt.checked;
+        //3.若checked=true,将所有的复选框选中,checked=false,将所有的复选框取消
+        var allCheck=document.getElementsByName("BoxList");
+        if(checkedElt){
+        //全选
+        for(var i=0;i<allCheck.length;i++){
+        //设置复选框的选中状态
+        allCheck[i].checked=true;
+        }
+
+        }else{
+        //取消全选
+        for(var i=0;i<allCheck.length;i++){
+        allCheck[i].checked=false;
+        }
+        }
+        }
+</script>
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div class="formbody">
+        <div class="formtitle">
+            <div class="lspan"><a href="javascript:void(0);" onclick="location.href=window.location;return false;">【{$lpname}相册】</a><span id="hxCount"><span style="color:#FF0000">({$count})</span></span></div>
+            <div class="rspan down">
+                <label for="BoxAll">全选/返选</label>
+                <input name="BoxAll" type="checkbox" id="BoxAll" onclick="checkOrCancelAll()">
+                <span id="AddDelbtn">&nbsp;&nbsp;<a href="javascript:;" class="btn btn-success btn-add " title="添加" id="up"><i class="fa fa-plus"></i> 创建相册</a>&nbsp;&nbsp;<a href="javascript:;" id="delbtn" class="btn btn-danger btn-del btn-disabled" title="删除"><i class="fa fa-trash"></i> 删除</a></span>
+            </div>
+        </div>
+        {volist name="list" id="vo"}
+            <div class="picbox">
+                <div class="pic1" style="border: 1px solid rgb(204, 204, 204);">
+                    <ul>
+                        <li class="lat">
+                            <img id="PicUrl" src="{$vo['logourl']}" style="padding:3px;border:1px solid #CCC;background-color:#FFF;" onclick="Backend.api.open('housing/lppic/index/ids/'+{$vo.id}, '图库', '')">
+                        </li>
+                        <li class="lat2 tips tipso_style">{$XctypeList[$vo.KP_HcName]}({$vo['tpnum']})</li>
+                        <li class="lat3"><span class="left">创建于 <span style="color:#FF6600;font-weight:bold;">{$vo['KP_AddTime']}</span></span><span class="right"><input name="BoxList" class="box" type="checkbox" id="ids[]" value="{$vo['id']}"></span></li>
+                        <li class="lat4">
+                            <span class="left"><a href="javascript:void(0);" onclick="move({$vo['id']},0)" value="{$vo['id']}">左移</a>&nbsp;&nbsp;<a href="javascript:void(0);"  value="{$vo['id']}" onclick="move({$vo['id']},1)">右移</a></span>
+                            <span class="right"><a href="javascript:void(0);" onclick="Fast.api.open('housing/lpalbum/edit/ids/'+{$vo['id']}, __('Choose'), {
+                    callback: function (data) {window.location.reload();}});return false;">编辑</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {/volist}
+            
+        <div class="clear"></div>
+    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

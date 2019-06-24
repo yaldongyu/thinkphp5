@@ -1,0 +1,65 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%; position: relative;}
+.ad1{ background: url(../img/ad01.jpg) no-repeat center center; width: 100%; height: 600px;}
+.ad2{ background: url(../img/ad02.jpg) no-repeat center center; width: 100%; height: 612px;}
+.ad3{ background: url(../img/ad03.jpg) no-repeat center center; width: 100%; height: 775px;}
+.ad4{ background: url(../img/ad04.jpg) no-repeat center center; width: 100%; height: 609px;}
+.ad5{ background: url(../img/ad05.jpg) no-repeat center center; width: 100%; height: 888px;}
+.ad6{ background: url(../img/ad06.jpg) no-repeat center center; width: 100%; height: 858px; position: relative;}
+.ad7{ background: url(../img/ad07.jpg) no-repeat center center; width: 100%; height: 300px;}
+
+.shipin{ width: 1200px; margin: 0 auto;}
+.shipin embed{ float: right; margin-top: 141px;}
+
+.huxing_box{ width: 1200px; height: 530px; margin: 0 auto; position: relative; top: 0; left: 50%; margin-left: -600px;}
+.huxing{ width: 1200px; height: 741px; float: left; position: relative; overflow: hidden;}
+.huxing_img{ height: 1076px; width: 1200px; position: relative; left: -1200px;}
+.huxing_img .img{ float: left;}
+.arrow{ background: url(../img/arrow_r.png) no-repeat 100%; width: 54px; height: 102px; position: absolute; right: 0; top: 50%; margin-top: -51px; cursor: pointer;}
+.huxing_box .arrow_l{ left: 0; background: url(../img/arrow_l.png) no-repeat;}
+.ad6 a{position: absolute; left: 50%; bottom: 67px; color: #2e6c4a; font-size: 20px; font-weight: bold; margin-left: -60px;}
+
+
+.bottom{ width: 1200px; margin: 0 auto; text-align: center; line-height: 30px; font-size: 18px; color: #2e6c4a; font-weight: bold;}
+.bottom a{ font-size: 40px; color: #2e6c4a; line-height: 70px;}
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

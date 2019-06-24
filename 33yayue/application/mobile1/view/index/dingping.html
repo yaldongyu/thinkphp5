@@ -1,0 +1,71 @@
+<link href="__CDN__/html/css/mobile/house.css" rel="stylesheet" type="text/css" />   
+<script src="__CDN__/html/js/mobile/house.js" type="text/javascript"></script>  
+<script src="__CDN__/assets/js/frontend/index/house/QA.js" type="text/javascript"></script>   
+<script type="text/javascript">
+    $(function () {  //设置标题
+      $(".header_logo2 a").html("项目点评").attr("href","javascript:void(0);");  
+    })  
+</script> 
+ 
+    <!-- header -->
+    <header class="favor-header-bar">
+        <ul class="tabs">
+            <li><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}">首页</a></li>
+            <li><a href="/house/lpdetail/ids/{$index["LpInfo"]["id"]}">详情</a></li>
+            <li><a href="/house/lpdt/ids/{$index["LpInfo"]["id"]}">动态</a></li>
+            <li><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}">相册</a></li>
+            <li><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}">户型</a></li>
+            <li class="default"><a href="/house/lpdp/ids/{$index["LpInfo"]["id"]}">点评</a></li>
+        </ul>
+    </header>  
+     <!--导航条--> 
+ <div class="fix_bg">
+        <div class="y_lpindexnav_main">
+            <ul>
+                <li><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><span>楼盘首页</span><i></i></a></li>
+                <li><a href="/house/lpdetail/ids/{$index["LpInfo"]["id"]}"><span>详情</span><i></i></a></li>     
+                <li><a href="/house/lpdt/ids/{$index["LpInfo"]["id"]}"><span>动态</span><i></i></a></li>    
+                <li><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}"><span>相册</span><i></i></a></li>
+                <li><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}"><span>户型</span><i></i></a></li>
+                <li class="on"><a href="/house/lpdp/ids/{$index["LpInfo"]["id"]}"><span>点评</span><i></i></a></li>
+            </ul>
+        </div>
+    </div>  
+    
+ 
+<!--内容开始-->
+    <div class="w100_2">
+        <div class="w94_2">
+            <div class="wd_title" style="margin-top: .3rem">请将您的 <span>疑问</span> 告诉我们吧：</div>
+    <div class="wd_shuru2">
+        <div class="wd_num_input2"><input type="text" id="Ask_Phone" placeholder="请输入手机号码" /></div>
+        <div class="wd_num_input2"><textarea cols="60" rows="8" placeholder="请输入您的疑问" id="Ask_Content" ></textarea></div>
+        <input type="hidden" id="lpid" value="{$index["LpInfo"]["id"]}">
+        <div class="wd_tijiao2"><a href="javascript:;"  onclick="Ask_Submit()">提交我的问题</a></div>
+    </div>
+        </div>
+    </div>
+
+       
+    <div class="w100_2">
+        <div class="w94" style="margin-top: .1rem;">
+            {volist name="$index['lpdp']" id="vo"}
+      <div class="user-cmt">
+      <div class="face"> <span><img src="/html/img/mobile/wd.png" alt=""></span> </div>
+      <div class="text">
+        <div class="cmt-detail">
+          <p>{$vo.KP_Content}</p>
+          <p> <span class="c-time">{$vo.KP_PLTime}</span></p>
+        </div>
+        <div class="msn_2">
+            <p class="msn_da"><span>答：</span>{$vo.KP_HfContent}</p>
+        </div>
+      </div>
+    </div>
+    {/volist}
+        </div> 
+    </div>
+    
+
+
+ 

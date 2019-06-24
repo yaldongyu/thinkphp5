@@ -1,0 +1,111 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_type')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <select id="c-KP_Type" data-rule="required" class="form-control selectpicker" name="row[KP_Type]">
+                {foreach name="HxtypeList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.KP_Type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_xszt')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <select id="c-KP_Xszt" data-rule="required" class="form-control selectpicker" name="row[KP_Xszt]">
+                {foreach name="XstypeList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.KP_Xszt"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_hx')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Hx" class="form-control " name="row[KP_Hx]" type="text" value="{$row.KP_Hx}" placeholder="如：3房2厅1卫">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_hxbh')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Hxbh" class="form-control" name="row[KP_Hxbh]" type="text" value="{$row.KP_Hxbh}" placeholder="如：开发商自己设定A,B,C,D,F等户型">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_area')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Area" class="form-control "  name="row[KP_Area]" type="text" value="{$row.KP_Area}" placeholder="如：48.59㎡">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_bslc')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Bslc" class="form-control "  name="row[KP_Bslc]" type="text" value="{$row.KP_Bslc}" placeholder="如果是别墅，所在楼层">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_ckjg')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Ckjg" class="form-control" name="row[KP_Ckjg]" value="{$row.KP_Ckjg}" type="number">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">万元/套</label>
+       <label class="control-label col-xs-12 col-sm-2">{:__('Kp_cx')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Cx" class="form-control "  name="row[KP_Cx]" value="{$row.KP_Cx}" type="text">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">如：朝南</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('户型特色')}:</label>
+        <div class="col-xs-12 col-sm-5">
+            <input id="c-KP_HxTs" class="form-control" name="row[KP_HxTs]" type="text" value="{$row.KP_HxTs}">
+        </div>
+        <label class="control-label" style="float: left;color: #999;font-size: 10px;">如：南北通透,户型方正,观景阳台</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">户型解析:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Content" class="form-control " rows="5" name="row[KP_Content]" cols="50">{$row.KP_Content}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_picurl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-KP_PicUrl" data-rule="required" class="form-control" size="50" name="row[KP_PicUrl]" type="text" value="{$row.KP_PicUrl}" >
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_PicUrl" class="btn btn-danger plupload" data-input-id="c-KP_PicUrl" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-KP_PicUrl"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_PicUrl" class="btn btn-primary fachoose" data-input-id="c-KP_PicUrl" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_PicUrl"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_PicUrl"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('全景地址')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_AllViewUrl" class="form-control" name="row[KP_AllViewUrl]" type="text" value="{$row.KP_AllViewUrl}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input disabled="" class="form-control" type="text" value="{$row.KP_AddUser}({$row.KP_AddTime}})">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">最后编辑:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input  disabled="" class="form-control" type="text" value="{$row.KP_EditUser}({$row.KP_EditTime})">
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

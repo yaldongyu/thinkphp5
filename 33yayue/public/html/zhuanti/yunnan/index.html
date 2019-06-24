@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云南专题页</title>
+<link rel="stylesheet" href="Styles/index.css" type="text/css">
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "云南专题页-帮你找房报名";
+        var T_Message = "PC端-云南专题页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房网置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+
+</head>
+
+<body>
+
+<!--导航-->
+<div class="head" style="background: #fff">
+	<a href="http://www.3yayue.com"><img src="img/logo.png" alt=""></a>
+	<ul>
+		<li><a href="http://www.3yayue.com/" target="_blank">阅房网首页</a></li>
+		<li><a href="http://www.3yayue.com/house/" target="_blank">新房</a></li>
+		<li><a href="http://www.3yayue.com/news/" target="_blank">资讯</a></li>
+		<li><a href="http://www.3yayue.com/tuangou/" target="_blank">团购</a></li>
+		<li><a href="http://www.3yayue.com/houseunion/" target="_blank">购房联盟</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<!--正文-->
+<div class="center" style="background: #f7f7f7">
+	<ul>
+		<li class="banner">
+			<a class="a01" href="#lp01"><img src="img/a01.png" alt=""></a>
+			<a class="a02" href="#lp02"><img src="img/a02.png" alt=""></a>
+			<a class="a03" href="#lp03"><img src="img/a03.png" alt=""></a>
+			<a class="a04" href="#lp04"><img src="img/a04.png" alt=""></a>
+			<a class="a05" href="#lp05"><img src="img/a05.png" alt=""></a>
+			<a class="a06" href="#lp06"><img src="img/a06.png" alt=""></a>
+			<a class="a07" href="#lp07"><img src="img/a07.png" alt=""></a>
+			<a class="a08" href="#lp08"><img src="img/a08.png" alt=""></a>
+			<a class="a09" href="#lp09"><img src="img/a09.png" alt=""></a>
+			<a class="a10" href="#lp10"><img src="img/a10.png" alt=""></a>
+		</li>
+		<li class="tab01"></li>
+		<li class="ad1 ad9">
+			<div class="loupan01">
+				<div class="lp01" id="lp01">
+					<a href="http://www.3yayue.com/house/1876.html" target="_blank"><img src="img/lp01.jpg" alt=""></a>
+					<div class="touming">
+						<a href="http://www.3yayue.com/house/1876.html" target="_blank">告庄西双景</a>
+						<span>价格：待定</span>
+						<p>告庄西双景为傣语，汉意为“九塔十二寨”，旨在重现古时景洪盛景，打造一个“景洪城中之城”。</p>
+					</div>
+				</div>
+				<div class="lp01 lp02" id="lp02">
+					<a href="http://www.3yayue.com/house/1862.html" target="_blank"><img src="img/lp02.jpg" alt=""></a>
+					<div class="touming">
+						<a href="http://www.3yayue.com/house/1862.html" target="_blank">俊发滨江俊园</a>
+						<span>价格：13500/㎡</span>
+						<p>设计风格，是传承西双版纳传统建筑文化的基础上进行设计与创新，同时结合着现代风格建筑线条，色调稳重而不失活力，创造出富有视觉感染力的形象。</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="ad2 ad0">
+			<div class="loupan02">
+				<div class="lp01 lp03" id="lp03">
+					<a href="http://www.3yayue.com/house/1871.html" target="_blank"><img src="img/lp03.jpg" alt=""></a>
+					<div class="touming">
+						<a href="http://www.3yayue.com/house/1871.html" target="_blank">万达西双版纳国际度假区</a>
+						<span>价格：13000/㎡</span>
+						<p>位于西双版纳州景洪市，占地5.3平米公里，是万达集团斥巨资打造的综合型文化旅游项目，拥有一座可同时容纳5万人游玩的水陆两栖综合性主题乐园。</p>
+					</div>
+				</div>
+				<div class="lp04" id="lp04">
+					<a href="http://www.3yayue.com/house/1863.html" target="_blank"><img src="img/lp04.jpg" alt=""></a>
+					<div class="right">
+						<a href="http://www.3yayue.com/house/1863.html" target="_blank">梦云南雨林澜山</a>
+						<span>价格：18000/㎡</span>
+						<p>项目位于景洪市曼弄枫度假区二期东侧， 背山面水，为傣王宫旧址福地，靠近澜沧江，临近勐泐大佛寺，同时融合热带雨林风情。</p>
+					</div>
+				</div>
+				<div class="lp04 lp05" id="lp05">
+					<a href="http://www.3yayue.com/house/1956.html" target="_blank"><img src="img/lp05.jpg" alt=""></a>
+					<div class="right">
+						<a href="http://www.3yayue.com/house/1956.html" target="_blank">俊发玉龙湾</a>
+						<span>价格：待定</span>
+						<p>由俊发集团携手协力投资共同打造，集现代服务业、休闲度假旅游业、文化创意产业和生态居住产业于一体的宜居宜业、山水园林的生态新城。</p>
+					</div>
+				</div>
+				
+			</div>
+		</li>
+		<li class="ad3 ad9">
+			<div class="loupan03">
+				<div class="lp06" id="lp06">
+					<a href="http://www.3yayue.com/house/1884.html" target="_blank"><img src="img/lp06.jpg" alt=""></a>
+					<div class="left">
+						<a href="http://www.3yayue.com/house/1884.html" target="_blank">王府广场</a>
+						<span>价格：待定</span>
+						<p>王府广场位于景洪城市中心传统商业熟地，毗邻嘎兰南路和勐海路等。项目总建筑面积30万平方米，双首层风情商业街，精投资单身公寓。</p>
+					</div>
+				</div>
+				<div class="lp06 lp07" id="lp07">
+					<a href="http://www.3yayue.com/house/1957.html" target="_blank"><img src="img/lp07.jpg" alt=""></a>
+					<div class="left">
+						<a href="http://www.3yayue.com/house/1957.html" target="_blank">勐巴拉雨林小镇</a>
+						<span>价格：13000/㎡</span>
+						<p>项目位于勐海县曼兴湖边，北接214国道，西靠勐海县城，东北面是普洱茶六大茶山之一的南糯山,勐海县有着独特的气候。</p>
+					</div>
+				</div>
+				<div class="lp06 lp08" id="lp08">
+					<a href="http://www.3yayue.com/house/1892.html" target="_blank"><img src="img/lp08.jpg" alt=""></a>
+					<div class="left">
+						<a href="http://www.3yayue.com/house/1892.html" target="_blank">雅居乐西双林语</a>
+						<span>价格：待定</span>
+						<p>项目位于世界暖都西双版纳，毗邻机场，地处泛亚高铁中转站，背靠10万公顷热带雨林大黑山。</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="ad4 ad0">
+			<div class="loupan04">
+				<div class="lp09" id="lp09">
+					<a href="http://www.3yayue.com/house/1859.html" target="_blank"><img src="img/lp09.jpg" alt=""></a>
+					<div class="touming touming01">
+						<a href="http://www.3yayue.com/house/1859.html" target="_blank">平安悦景庄</a>
+						<span>价格：22500元/㎡</span>
+						<p>由平安不动产投资、云南景和置业有限公司开发，依托西双版纳的天然气候和旅游资源，致力于打造温泉度假区。</p>
+					</div>
+				</div>
+				<div class="lp10" id="lp10">
+					<a href="http://www.3yayue.com/house/1877.html" target="_blank"><img src="img/lp10.jpg" alt=""></a>
+					<div class="touming touming01">
+						<a href="http://www.3yayue.com/house/1877.html" target="_blank">玖沐雨林</a>
+						<span>价格：10000元/㎡</span>
+						<p>本项目是一个文旅项目，所谓文旅项目不是简单粗暴的大，也不是城市地产项目的单一，而是保罗万象，将旅游与文化相结合，尽可能的配套全面无遗漏。</p>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		
+		
+		
+	</ul>
+	<div class="clear"></div>
+	
+</div>
+
+<!--报名-->
+<div class="Bieshu_BmCont">
+    <div class="width_1200 Bieshu_Bm">
+        <div class="Bieshu_Bm_Left">
+            <div class="MaxText">
+               
+            </div>
+            <div class="MinText">
+             
+            </div>
+            <div class="Btn">
+               
+            </div>
+        </div>
+        <div class="Bieshu_Bm_Mid">
+        </div>
+        <div class="Bieshu_Bm_Right">
+            <div class="Title">
+            </div>
+            <div class="Name">
+                <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+            </div>
+            <div class="Phone">
+                <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick="Bs_Submit()">
+                    预约看房
+                </a>
+            </div>
+            <h1>品鉴热线：400-1552-899</h1>
+            <!--返回顶部-->
+			<div class="top">
+				<img src="img/top.png" alt="">
+			</div>
+        </div>
+        <div class="claer"></div>
+    </div>
+</div>
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+
+
+
+
+		<!--返回顶部-->
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+
+
+
+
+
+</body>
+</html>

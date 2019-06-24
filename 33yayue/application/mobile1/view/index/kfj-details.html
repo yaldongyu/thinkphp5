@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="tHead">
+<link rel="canonical" href="29777.html" />
+<meta name="applicable-device" content="mobile" />
+<meta name="applicable-device" content="mobile" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no, email=no" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="screen-orientation" content="portrait" />
+<meta name="x5-orientation" content="portrait" />
+<meta name="full-screen" content="yes" />
+<meta name="x5-fullscreen" content="true" />
+<meta name="browsermode" content="application" />
+<meta name="x5-page-mode" content="app" />
+<meta name="msapplication-tap-highlight" content="no" />
+<link href="/assets/css/mobile/main.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/mobile/hn.css" rel="stylesheet" type="text/css" />
+<script src="/assets/js/frontend/mobile/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/assets/js/frontend/mobile/Kaipie.js%3Fskin=aero" type="text/javascript"></script>
+<script src="/assets/js/frontend/mobile/base.js" type="text/javascript"></script>
+<title>想要置业云南 胡姐满意购得腾冲的小院子_阅房网</title>
+<meta name="keywords" content="腾冲的小院子,腾冲房产" />
+<meta name="description" content="本期看房故事的主人公是胡姐一家。早些时候，胡姐就有想要在南方买房的打算，一来是为了方便父母冬天到南方养老，二来也可以用于一家人度假居住。" />
+<script type="text/javascript" language="javascript">
+    var WWWURL = "/";
+    var deviceHeight = $(window).height(); //浏览器当前窗口可视区域高度
+    $(document).ready(function() {
+    
+    
+		//楼盘动态获取外景图	    
+        if($(".tx-img img").length>0){
+             $.get('/comm/getwjtbyid.asp?id=' + 0,function(data,status){
+                  $(".tx-img img").attr("src", JSON.parse(decodeURIComponent(data.replace(/'/g, '"'))))
+             });
+        }
+       
+    
+        $("img").bind("error", function () {
+            this.src = "/images/errorpic.jpg";
+        });
+    });
+
+    function goZycs() {
+        $.post(window.location.pathname,
+	{
+	    sType: 'zy',
+	    oLpID: '0'
+	},
+	function (data) {
+	    if (data.info != 'Yes') {
+	        kp.dialog.alert(data.info);
+	        return false;
+	    } else {
+	        kp.dialog.tips('<span style="color:#090">感谢您的支持</span>', 1.5);
+	        setTimeout(function () {
+	            window.location = window.location;
+	        }, 1200);
+	    }
+	}, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+
+    function Getperation2() {
+        var Bm_Name = $.trim($("#Bm_Name2").val());
+        var Bm_Phone = $.trim($("#Bm_Phone2").val());
+        var Bm_Message = $.trim($("#Bm_Message2").val());
+        var Bm_HouseID = $.trim($("#Bm_HouseID2").val());
+        var Bm_Url = $.trim($("#Bm_Url2").val());
+        var Bm_Title = $.trim($("#Bm_Title2").val());
+        if (Bm_Phone == '' || !$.IsTelephone(Bm_Phone, 1)) {
+            kp.dialog.alert("请填写正确的手机号码");
+            return false;
+        }
+
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'Add',
+	        Bm_Name: Bm_Name,
+	        Bm_Phone: Bm_Phone,
+	        Bm_Message: Bm_Message,
+	        Bm_HouseID: Bm_HouseID,
+	        Bm_Url: Bm_Url,
+	        Bm_Title: Bm_Title
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            kp.dialog.alert(data.info);
+	            return false;
+	        } else {
+	            kp.dialog.tips('您已成功提交，最新降价、优惠活动信息第一时间通知您！', 1.5);
+	            setTimeout(function () {
+	                window.location = window.location;
+	            }, 1200);
+	        }
+	    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+	}
+
+	function Getperation3() {
+	    var Bm_Name = $.trim($("#Bm_Name3").val());
+	    var Bm_Phone = $.trim($("#Bm_Phone3").val());
+	    var Bm_Message = $.trim($("#Bm_Message3").val());
+	    var Bm_HouseID = $.trim($("#Bm_HouseID3").val());
+	    var Bm_Url = $.trim($("#Bm_Url3").val());
+	    var Bm_Title = $.trim($("#Bm_Title3").val());
+	    if (Bm_Phone == '' || !$.IsTelephone(Bm_Phone, 1)) {
+	        kp.dialog.alert("请填写正确的手机号码");
+	        return false;
+	    }
+
+	    $.post('/Baoming.aspx',
+	    {
+	        sType: 'Add',
+	        Bm_Name: Bm_Name,
+	        Bm_Phone: Bm_Phone,
+	        Bm_Message: Bm_Message,
+	        Bm_HouseID: Bm_HouseID,
+	        Bm_Url: Bm_Url,
+	        Bm_Title: Bm_Title
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            kp.dialog.alert(data.info);
+	            return false;
+	        } else {
+	            kp.dialog.tips('您已成功提交，最新购房优惠信息第一时间通知您！', 1.5);
+	            setTimeout(function () {
+	                window.location = window.location;
+	            }, 1200);
+	        }
+	    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+	}
+	function Getperation33() {
+	    var Bm_Name = $.trim($("#Bm_Name33").val());
+	    var Bm_Phone = $.trim($("#Bm_Phone33").val());
+	    var Bm_Message = $.trim($("#Bm_Message33").val());
+	    var Bm_HouseID = $.trim($("#Bm_HouseID33").val());
+	    var Bm_Url = $.trim($("#Bm_Url33").val());
+	    var Bm_Title = $.trim($("#Bm_Title33").val());
+	    if (Bm_Phone == '' || !$.IsTelephone(Bm_Phone, 1)) {
+	        kp.dialog.alert("请填写正确的手机号码");
+	        return false;
+	    }
+
+	    $.post('/Baoming.aspx',
+	    {
+	        sType: 'Add',
+	        Bm_Name: Bm_Name,
+	        Bm_Phone: Bm_Phone,
+	        Bm_Message: Bm_Message,
+	        Bm_HouseID: Bm_HouseID,
+	        Bm_Url: Bm_Url,
+	        Bm_Title: Bm_Title
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            kp.dialog.alert(data.info);
+	            return false;
+	        } else {
+	            kp.dialog.tips('您已成功提交，最新购房优惠信息第一时间通知您！', 1.5);
+	            setTimeout(function () {
+	                window.location = window.location;
+	            }, 1200);
+	        }
+	    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+	}
+
+	function Getperation4() {
+	    var Bm_Name = $.trim($("#Bm_Name4").val());
+	    var Bm_Phone = $.trim($("#Bm_Phone4").val());
+	    var Bm_Message = $.trim($("#Bm_Message4").val());
+	    var Bm_HouseID = $.trim($("#Bm_HouseID4").val());
+	    var Bm_Url = $.trim($("#Bm_Url4").val());
+	    var Bm_Title = $.trim($("#Bm_Title4").val());
+	    if (Bm_Phone == '' || !$.IsTelephone(Bm_Phone, 1)) {
+	        kp.dialog.alert("请填写正确的手机号码");
+	        return false;
+	    }
+
+	    $.post('/Baoming.aspx',
+	    {
+	        sType: 'Add',
+	        Bm_Name: Bm_Name,
+	        Bm_Phone: Bm_Phone,
+	        Bm_Message: Bm_Message,
+	        Bm_HouseID: Bm_HouseID,
+	        Bm_Url: Bm_Url,
+	        Bm_Title: Bm_Title
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            kp.dialog.alert(data.info);
+	            return false;
+	        } else {
+	            kp.dialog.tips('您已成功提交，我们尽快致电给您！', 1.5);
+	            setTimeout(function () {
+	                window.location = window.location;
+	            }, 1200);
+	        }
+	    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+	}
+</script>
+<style type="text/css"></style>
+</head>
+
+<body>
+<form name="form2" method="post" action="/news/29777.html?id=29777" id="form2">
+  
+  <div class="oldhouse">
+    <header class="bot_menu">
+      <div class="hLeft"> <a class="ico_back" onclick="history.back()"></a> </div>
+      <div class="hCenter"> <a href="/news/10/"><span id="Span1">资讯正文</span></a> </div>
+      <script type="text/javascript" language="javascript">
+                    $(function () {
+                        var jqTitle = $("#jqTitle").text();
+                        if (jqTitle == "[" + "title" + "]") {
+                            $("#jqTitle").text("");
+                        }
+                    });
+                </script>
+      <div class="hIcon"> <a href="/comm/navlist.aspx" id="A1"><i class="ico-nav"></i></a> </div>
+    </header>
+    <div class="content">
+      <div class="wraper box"> 
+        <!--动态阅读：开始-->
+        <div class="newsViewBox" style="background:#fff;margin-top:10px;">
+          <div class="viewHead">
+            <h2> 想要置业云南 胡姐满意购得腾冲的小院子</h2>
+            <p> <em>编辑： </em> <em>时间：        2019/2/14 18:11:23</em>  <em class="dongt"> <a href="javascript:void(0)" id="tjBtn33"> <i> <img src="/assets/img/mobile/dt.gif"></i>有新动态通知我</a> </em> </p>
+          </div>
+          <div class="viewBody">
+            <div align="justify">
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>看房背景：</strong>本期看房故事的主人公是胡姐一家。早些时候，胡姐就有想要在南方买房的打算，一来是为了方便父母冬天到南方养老，二来也可以用于一家人度假居住。原本胡姐是打算看看海南的，也通过朋友介绍认识了咱们公司的专业置业顾问小詹，后来经过沟通了解，才得知海南已经实行限购政策，胡姐暂时还没有在海南购房的资格。于是，小詹也向胡姐推荐了同样适合养老度假的云南。</span><span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 网上一直流传着那么一句话，“一个人的丽江、两个人的大理，一家人的腾冲。”考虑到胡姐购房的主要目的还是想方便父母养老，所以在胡姐询问云南哪个城市较合适时，小詹推荐了腾冲。</span><span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一开始胡姐也有点惊讶，对于云南，胡姐说自己也去过几次，谈不上陌生，也比较喜欢当地的风土人情和环境气候。然而对于腾冲，胡姐却是不甚熟悉，胡姐说以为小詹会推荐昆明或大理之类的热门城市。小詹也向胡姐解释，如果是打算购置度假房，当然是大理、丽江更合适；但如果是养老的话，则更推荐腾冲。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 胡姐为人也十分谨慎，由于不太了解腾冲，就告诉小詹自己先了解一下。也选了个合适的时间，带着一家人到腾冲旅游。胡姐一家人在腾冲游玩了两三天之后，就完全明白了小詹的推荐，一家人都十分喜欢腾冲。胡姐和老公喜欢腾冲的温泉，胡姐父母喜欢腾冲古镇的古朴安静。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 胡姐到腾冲的第三天，就主动联系了小詹，先是肯定小詹的推荐，表示一家人都很喜欢腾冲，之后就询问小詹有没有好的项目推荐，想着最好是趁着这几天把房子给定下来。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 小詹也专门为胡姐制定了看房路线，第二天一早就带着胡姐一家开始了看房之旅。来之前胡姐在网上关注了腾冲的一个项目，胡姐觉得这个项目的户型和价格都很符合她的购房需求，配套之类的设施她也很是喜欢，所以想实地考察看看这个小区如何。小詹便带着胡姐一家先去看了胡姐中意的项目，在项目售楼部简单了解区位和小区概况后，便跟着售楼员到项目实体楼看样板间，看了一圈下来胡姐说与她原先想的有些出入，而且在售房源不多，所剩户型也不是很满意，就不考虑这个项目，让小詹接着带去看下一个项目。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下一个项目是小詹向胡姐推荐的<a href="http://www.0898yue.com/house/3062.html" target="_blank"><span style="font-family:Microsoft YaHei;font-size:18px;color:#FF0000;">腾冲的小院子</span></a>，走进售楼处，先在沙盘前详细了解项目的情况。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141808216724.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141808283263.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><span style="font-family:Microsoft YaHei;font-size:16px;">观看项目沙盘</span><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 腾冲的小院子位于腾冲市西山坝新区，倚山观云海，俯瞰全城繁华风景，也是通往各主要景区的必经之路。距离云峰山、银杏村、火山地质公园，万亩花海、北海湿地、和顺古镇、热海等热门景区，车程均不超过1小时。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141808511227.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141808582628.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141809081391.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><span style="font-size:16px;font-family:Microsoft YaHei;">考察项目实景</span><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 项目拥有樱花谷和溪谷景观带双景观轴。产品包含面积从139平方至270平方的联排别墅，独特的自然地理条件上建造的坡地别墅，落差最大处可达60米。共有5种房型可供挑选。6种不同户型和面积的花园洋房，可在家中享受大露台带来的舒适感。单层和复式的点式小高层外形为特别的蝴蝶型，公寓房型更为简洁实用。腾冲的小院子点睛之作的大小楼王双拼别墅，让业主在豪华别墅中享受自在美景。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141809288185.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141809353649.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><span style="font-size:16px;font-family:Microsoft YaHei;">查看项目样板间</span><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在听完沙盘讲解之后，小詹又带着胡姐一家到项目样板间考察。胡姐他们在看了项目样板间后都觉得很满意，喜欢得不得了。接着小詹又和胡姐她们去看了小区内部环境和相应的配套，整体看下来胡姐一家对腾冲的小院子都很是喜欢，尤其是胡姐的父母对小区的绿化和配套都赞不绝口，在户型选择方面一家人也没有多做犹豫，很快就选好了满意的户型。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141809524273.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><img src="/assets/img/mobile/Max_201902141809584816.jpg" alt="" /><br />
+                </span> </p>
+              <p align="center"> <span style="font-family:Microsoft YaHei;font-size:18px;"><span style="font-family:Microsoft YaHei;font-size:16px;">考察项目配套</span><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 胡姐一家确定好时候，小詹协助胡姐很快就办好了购房手续。能这么顺利就买到一家人都满意的房子，胡姐十分高兴，也很感谢小詹的精准推荐和专业服务，为他们省了不少的时间，让胡姐一家还能在云南多游玩几天。能得到胡姐的认可和满意，小詹自然是十分开心，也祝胡姐一家有个愉快的旅程。</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 处处为客户着想，站在客户的角度去看问题，帮助客户解决问题，让每一位客户都能买到满意的房子，是我们一直以来的信念与责任！未来我们也会一直秉持信念，不忘初心，为每一位客户提供专业优质的服务！</span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family:Microsoft YaHei;font-size:18px;color:#FF0000;">阅房网购房联盟，极具影响力的购房服务组织。免费接送机，0元全程看房，购房享受低折扣。购房联盟以优质服务，树立良好的口碑，成为了购房者置业的优质选择，自成立之日起，已累计服务逾万组客户，得到您的认同是我们最大的动力。购房联盟服务热线：400-0898-930</span><br />
+                </span> </p>
+              <p> <span style="font-family:Microsoft YaHei;font-size:18px;"><br />
+                </span> </p>
+            </div>
+          </div>
+          <div class="view-rrs" style="background: url(Images/tx-bg.png) no-repeat;width: 100%;height: auto; background-size:100% 100%; text-align: center;margin-top: 35px;margin-bottom: 20px;">
+            <div class="tx-img"> <img src="/assets/img/mobile/errorpic.jpg"></div>
+            <div class="tx-title"> </div>
+            <h5>订阅最新购房优惠信息</h5>
+            <div>
+              <input type="text" name="Bm_Phone3" id="Bm_Phone33" placeholder="请输入您的手机号" class="inp">
+              <input type="button" value="优惠信息" class="btn blue" onclick="Getperation33();return false;" style="font-size: 1.0rem;border: 0.5px solid #fff;background-color: #23acfd">
+              <input type="hidden" name="Bm_Name3" id="Bm_Name33" value="游客">
+              <input type="hidden" value="想要置业云南 胡姐满意购得腾冲的小院子-订阅[Moblie]" id="Bm_Message33" name="Bm_Message3">
+              <input type="hidden" value="0" id="Bm_HouseID33" name="Bm_HouseID3">
+              <input type="hidden" value="/news/29777.html" id="Bm_Url33" name="Bm_Url3">
+              <input type="hidden" value="想要置业云南 胡姐满意购得腾冲的小院子-订阅" id="Bm_Title33" name="Bm_Title3">
+            </div>
+            <div class="tx-hd">———————— 互动 ————————</div>
+            <div class="tx-button"> <a data-tag="1" href="tel:0898-28282890" class="lptel pad10" id="A2"> <i style="top: -1px"> <img src="/assets/img/mobile/tx-qd.png"></i>售楼处</a>&nbsp;&nbsp;or&nbsp;&nbsp; <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="pageWeixin"> <i> <img src="/assets/img/mobile/tx-yh.png"></i>在线咨询</a></div>
+          </div>
+          <div class="viewNext"> <span><a href="/news/29776.html" class="btn"><ins class="icon-29"></ins>上一篇：打算长期居住海南，李小姐成功置业陵水天赐南湾</a></span> <span><a href="/news/29778.html" class="btn"><ins class="icon-28"></ins>下一篇：户型与环境俱佳 杜哥许姐选房最满意雅居乐云南原乡</a></span> </div>
+          <div class="fx"> 声明：<br>
+            ●凡注明为其他媒体来源的信息，均为转载自其他媒体，其目的在于促进信息交流，并不代表本网赞同其观点或对其内容真实性负责，如涉及到面积均为建筑面积。<br>
+            ●本站转载时会标明出处，版权归原载媒体和作者所有。如所载内容涉及版权问题，请及时和本站联系。<br>
+          </div>
+        </div>
+        <!--动态阅读：结束--> 
+      </div>
+    </div>
+  </div>
+  <div class="blank10"></div>
+  <div class="bot_menu"> <a href="/">首页</a> <a href="/house/">新房</a> <a href="/news/">资讯</a> <a href="/tuangou/">团购</a> <a href="/news/10/">看房记</a> <a href="/news/3/">优惠信息</a> </div>
+  <!--footer--> 
+  <!--底部 开始-->
+  <div class="footer"> <a href="/about.html">关于我们</a>| <a href="/banquan.html">版权声明</a>| <a href="/contact.html">联系我们</a>
+    <p></p>
+    <span>版权所有@阅房网 琼ICP备13002332号-1</span> </div>
+  <br />
+  <br />
+  <div id="fixed">
+    <div class="table">
+      <div class="td"> <a href="tel:089865899610" class="red_btn bg_blue"><ins class="icon-18"></ins>免费通话</a> </div>
+      <div class="td"> <a href="javascript:void(0);" class="red_btn bg_orange" id="lmbmBtn"><ins class="icon-23"></ins>预约看房</a> </div>
+      <div class="lmbmBox sFix" id="lmbmBox">
+        <div class="lmbmForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+          <h3>预约看房</h3>
+          <span><ins class="icon-25"></ins>
+          <input name="Yy_Name" id="Yy_Name" required type="text" class="itext" placeholder="请填写姓名/称呼" />
+          </span> <span><ins class="icon-43"></ins>
+          <input name="Yy_Pone" id="Yy_Phone" required type="text" class="itext" placeholder="请填写手机" />
+          </span>
+          <textarea class="itext" placeholder="其他备注或说明" name="Yy_Message" id="Yy_Message"></textarea>
+          <p><a href="javascript:void(0);" class="btn blue" onclick="Yybm();return false;">提交报名</a></p>
+        </div>
+        <div class="fixMask"></div>
+      </div>
+      <div class="td"> <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="red_btn" id="group_sub"><ins class="icon-5"></ins>在线咨询</a> </div>
+    </div>
+  </div>
+  <script type="text/javascript" language="javascript">
+$(function () {
+    //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+    $(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 1000) {
+                $("#backtop").fadeIn(1500);
+            }
+            else {
+                $("#backtop").fadeOut(1500);
+            }
+        });
+        //当点击跳转链接后，回到页面顶部位置
+        $("#backtop").click(function () {
+            $('body,html').animate({ scrollTop: 0 }, 1000); //1000代表1秒时间回到顶点
+            return false;
+        });
+    });
+});
+function hide() {
+    document.getElementById("lmbmBox").style.display = 'none';
+}
+function Yybm() {
+    var Yy_Name = $.trim($("#Yy_Name").val());
+    var Yy_Phone = $.trim($("#Yy_Phone").val());
+    var Yy_Message = $.trim($("#Yy_Message").val());
+    if (Yy_Name == '') {
+        kp.dialog.alert("请填写姓名/称呼");
+        return false;
+    }
+    if (Yy_Phone == '' || !$.IsTelephone(Yy_Phone, 1)) {
+        kp.dialog.alert("请输入正确的手机号码");
+        return false;
+    }
+
+    kp.dialog.confirm('你确定要报名吗？', function () {
+        $.post('/Yybaoming.aspx',
+			    {
+			        sType: 'Add',
+			        Yy_Name: Yy_Name,
+			        Yy_Phone: Yy_Phone,
+			        Yy_Message: Yy_Message
+			    },
+			    function (data) {
+			        if (data.info != 'Yes') {
+			            kp.dialog.alert(data.info);
+			            return false;
+			        } else {
+			            kp.dialog.tips('您已预约成功，我们会尽快联系您！请您等待！', 1.5);
+			            setTimeout(function () {
+			                kp.dialog.opener.window.location = kp.dialog.opener.window.location;
+			                kp.dialog.close();
+			            }, 1200);
+			        }
+			    }, "json").error(function () { kp.dialog.alert("数据加载失败，请检查后再操作！"); return false; });
+    }, function () { });
+}
+</script> 
+  <a id="backtop" style="position: fixed; height: 37px; width: 37px; right: 8px; bottom: 65px; z-index: 99; display:none; background: url(../Images/backtop.png) 50% 50% / 37px 37px no-repeat;">&nbsp;</a> 
+  <!--底部 结束-->
+</form>
+<!--商务通201709--> 
+<script language="javascript" src="http://swt.0898yue.com/JS/LsJS.aspx?siteid=MLD43635825&float=1&lng=cn"></script> 
+<!--离线宝--> 
+<script>    var _hmt = _hmt || []; (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?8320cf5ea91dc597f833e64f86642787"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script> 
+<script type="text/javascript" charset="utf-8" async src="../../lxbjs.baidu.com/lxb.js%3Fsid=6315208"></script>
+</body>
+</html>

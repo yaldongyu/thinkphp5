@@ -1,0 +1,85 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+          
+               <select id="c-KP_Type" data-rule="required" class="form-control selectpicker" name="row[KP_Type]">
+                                {foreach name="linkpos" item="vo"}
+                                  <option value="{$key}">{$vo}</option>
+                                {/foreach}  
+                            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Title" class="form-control " rows="1" name="row[KP_Title]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Url" class="form-control " rows="1" name="row[KP_Url]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_sh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+               <select id="c-KP_Sh" data-rule="required" class="form-control selectpicker" name="row[KP_Sh]">
+                                {foreach name="linkshenhe" item="vo"}
+                                  <option value="{$key}">{$vo}</option>
+                                {/foreach} 
+                            </select>
+        </div>
+    </div>
+  <!--   <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_px')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Px" class="form-control" name="row[KP_Px]" type="number">
+        </div>
+    </div> -->
+  <!--   <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_AddUser" class="form-control " rows="5" name="row[KP_AddUser]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_addtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_AddTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_AddTime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_edituser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_EditUser" class="form-control " rows="5" name="row[KP_EditUser]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_edittime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_EditTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_EditTime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_note')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Note" class="form-control " rows="5" name="row[KP_Note]" cols="50"></textarea>
+        </div>
+    </div> -->
+       <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input disabled="" class="form-control" type="text" value="{$admin.nickname}({:date('Y-m-d H:i:s')})">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

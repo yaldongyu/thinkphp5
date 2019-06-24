@@ -1,0 +1,143 @@
+ {layout name="layout/default" /}
+<style type="text/css">
+	/*看房专车页*/
+.ZhaunChe_Top{ height:530px; width:100%; background:url(/assets/img/index/zhuanche.jpg)no-repeat; background-size:auto 100%; background-position:center center;}
+.ZhuanChe_Column_Cont{ background:rgba(255,255,255,.3);}
+.ZhuanChe_Column{ height:80px; padding:10px;}
+.ZhuanChe_Column img{ height:100%;}
+
+/*报名主题*/
+.ZhuanCheBm_Cont{ width:100%; background:#fff; padding:50px 0;}
+.ZhuanCheBm{}
+.ZhuanCheBm_Left{ float:left; width:600px; }
+.ZhuanCheBm_Right{ float:left; width:600px; border-left:2px solid #eee;}
+
+.ZhuanCheBm_Left .Title{ text-align:center; font-size:28px; color:#ff5555;}
+.ZhuanCheBm_Left .ZcForm{ margin-top:30px; padding:0 80px;}
+.ZhuanCheBm_Left .ZcForm span{ font-size:16px;}
+.ZhuanCheBm_Left .ZcForm input{ width:300px; height:40px; border:1px solid #ddd; padding-left:10px; color:#666; font-size:16px;}
+.ZcForm_Item{ margin-bottom:20px;}
+.ZcForm_Item .ZcFormBtn{ display:block; margin-left:83px; width:300px; height:40px; background:#ff5555; color:#fff; font-size:18px; line-height:40px; text-align:center;}
+.ZcForm_Item .ZcFormBtn:hover{ background:#ff6666;}
+
+.ZhuanCheBm_Right .WxTitle{ font-size:28px; color:#ff6600; text-align:center;}
+.ZhuanCheBm_Right .WxPic{ margin-top:30px; text-align:center;}
+.ZhuanCheBm_Right .WxPic img{ display:inline-block; width:150px; height:150px;}
+.ZhuanCheBm_Right .Info{ margin-top:20px; text-align:center;}
+.ZhuanCheBm_Right .Info p{ margin-bottom:15px; font-size:18px; color:#666;}
+.ZhuanCheBm_Right .Info span{ font-size:24px; color:#ff6600; }
+
+/*看房流程*/
+.ZhuanCheFlow_Cont{ width:100%; height:360px; background:#bbb;}
+.ZhuanCheFlow{ text-align:center; padding-top:40px;}
+.ZhuanCheFlow img{ display:inline-block; height:250px;}
+
+</style>
+<div class="ZhaunChe_Top">
+    <div class="ZhuanChe_Column_Cont">
+        <div class="width_1200 ZhuanChe_Column">
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="ZhuanCheBm_Cont">
+    <div class="width_1200 ZhuanCheBm">
+        <div class="ZhuanCheBm_Left">
+            <div class="Title">
+            在线预约免费看房专车
+            </div>
+            <div class="ZcForm">
+                <div class="ZcForm_Item">
+                    <span>您的姓名：</span>
+                    <input type="text" id="ZcName" placeholder="请输入您的姓名">
+                </div>
+                <div class="ZcForm_Item">
+                    <span>手机号码：</span>
+                    <input type="text" id="ZcPhone" placeholder="请输入手机号码">
+                </div>
+                <div class="ZcForm_Item">
+                    <span>意向楼盘：</span>
+                    <input type="text" id="ZcHouse" value="{$house}">
+                </div>
+                <div class="ZcForm_Item">
+                    <a class="ZcFormBtn" href="javascript:void(0);" onclick="Bs_Submit()">立即预约</a>
+                </div>
+            </div>
+        </div>
+        <div class="ZhuanCheBm_Right">
+            <div class="WxTitle">
+            微信叫车，方便快捷
+            </div>
+            <div class="WxPic">
+                <img src="__CDN__/assets/img/index/wx_dyh.jpg" alt="阅房网微信">
+            </div>
+            <div class="Info">
+                <p>看房苦恼不认识路？</p>
+                <p>看房路上还在挤公交？看房劳途奔波累瘫了？</p>
+                <span>手机扫描二维码，微信预约免费看房专车吧！</span>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<div class="ZhuanCheFlow_Cont">
+    <div class="width_1200 ZhuanCheFlow">
+        <img src="__CDN__/assets/img/index/zhuanche_line.png" alt="">
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+
+        var T_KftName = $.trim($("#ZcName").val());
+        var T_KftPhone = $.trim($("#ZcPhone").val());
+        var T_Title = "预约看房专车-意向楼盘：" + $.trim($("#ZcHouse").val());
+        var T_Message = "PC端-预约看房专车页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "请输入您的姓名") {
+            Tip_Control("请输入您的姓名!",1500);
+            return false;
+        }
+        if (!all_tel_validate(T_KftPhone)) {
+            Tip_Control("请输入手机号码!", 1500);
+            return false;
+        }
+        $.post('/ajax/LpBaoming',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                Tip_Control("恭喜预约成功！阅房网置业顾问将会联系您，请稍后片刻！",2500);
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+
+
+
+
+   

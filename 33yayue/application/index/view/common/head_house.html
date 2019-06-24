@@ -1,0 +1,68 @@
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/jquery.qrcode.min.js" ></script>
+
+<script>
+  $(function () { 
+     jQuery('#qrcode').qrcode({ width: 90, height: 90, text: "http://m.{$domain}/house/house_details/ids/{$index['lpinfo']['id']}" }); 
+      jQuery('#qrcode2').qrcode({ width: 60, height: 60, text: "http://m.{$domain}/house/house_details/ids/{$index['lpinfo']['id']}" }); 
+  })
+</script>
+<div class="fix_bg fixnav" style="">
+  <div class="fix_hname">
+    <div class="fix_title">{$index['lpinfo']['KP_LpName']}</div>
+    
+       <div class="fix_jiage">{$index['lpinfo']['KP_Juprice']?"均价":"总价"}：
+      <em>{$index['lpinfo']['KP_Juprice']?$index['lpinfo']['KP_Juprice']."":($index['lpinfo']['KP_TaoJia']?$index['lpinfo']['KP_TaoJia']."万元/套":"待定")}</em></div>  
+    <div class="fix_right">
+    <div class="fix_phone"><img src="/assets/img/dt_tel.png"><span>{$index['lpinfo']['KP_Tel']}</span></div>
+      <div class="fix_qrcode" id="qrcode2"></div>
+      <div class="fix_qrcode_txt">
+        <p>扫码看房</p>
+        <p>轻松置业</p>
+      </div>
+    </div>
+  </div> 
+</div>
+
+
+
+<div class="lp_head">
+   <div class="QRcode" id="qrcode"></div>
+  <div class="house_title"> <span>{$index['lpinfo']['KP_LpName']}</span>
+        {if condition=" $index['lpinfo']['KP_Xszt']==0 "}
+        <i>在售</i> 
+     {elseif condition=" $index['lpinfo']['KP_Xszt']==1 "}
+        <i>待售</i> 
+     {else /}
+        <i>售罄</i> 
+     {/if} <em><img src="/html/images/house_map.png">{$index['lpinfo']['CNAME']}</em> </div>
+  <div class="house_te">
+      <div class="house_te_l">
+          
+            {volist name=":explode(',',$index['lpinfo']['KP_TsType'])"   id="co"}  
+            <i>{$co}</i>         
+        {/volist}         
+         
+      </div>
+  </div>
+  <div class="lp_head_tel"><div style="background: #ff3333;width: 40px;height: 40px;border-radius: 50%;display: inline-block;text-align: center;;line-height: 40px;"><img style="width: 42px;height: 42px;vertical-align: middle;" src="/html/images/house_tell.gif"></div><span style="    vertical-align: top;
+    margin-left: 10px;    font-size: 30px;">售楼电话：{$index['lpinfo']['KP_Tel']}</span></div>
+  <div class="lp_head_tz"><a href="javascript:0;" class="bm_trigger" lpname="{$index['lpinfo']['KP_LpName']}" lpid="{$index['lpinfo']['id']}" lppic="{$index['lpinfo']['KP_Wjt']}"><i></i>变价通知</a></div>
+  <div class="lp_head_zx"><a href="javascript:openZoosUrlx('chatwin');;"><i></i>在线咨询</a></div>
+</div>
+
+
+
+    
+
+      <!--楼盘栏目-->
+   <div style="margin-top: 20px;">
+    <div class="HouseColumn"> 
+      <a href="/house/house_details/ids/{$index['lpinfo']['id']}" class="{$actionname=="house_details"?"Select":""}">楼盘首页</a> 
+      <a href="/house/lpdt/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lpdt"?"Select":""}">楼盘动态</a> 
+      <a href="/house/lpdetail/ids/{$index['lpinfo']['id']}"      class="{$actionname=="lpdetail"?"Select":""}">详情信息</a> 
+      <a href="/house/lphx/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lphx"||$actionname=="huxing_detail"?"Select":""}">楼盘户型</a> 
+      <a href="/house/lpxc/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lpxc"?"Select":""}">楼盘相册</a> 
+     <!--  <a href="/house/lpvideo/ids/{$index['lpinfo']['id']}"       class="{$actionname=="lpvideo"?"Select":""}"">视频看房</a>  -->
+      <a href="/house/lpdp/ids/{$index['lpinfo']['id']}"          class="{$actionname=="lpdp"?"Select":""}">点评问答</a> 
+    </div>
+  </div> 

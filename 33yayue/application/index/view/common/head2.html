@@ -1,0 +1,42 @@
+<div class="h_search">
+  <div class="sou">
+    <div class="TopSearch">
+      <input type="text" id="Sokey" placeholder="请输入楼盘名称/关键字/开发商/地址.." />
+      <a href="javascript:;" class="k_Search" onclick="SearchClick()">搜索</a> 
+      <a href="javascript:;" class="MapSearch h_map" onclick="goMap()">地图找房</a>
+      <div class="clear"></div>
+      <div class="hot_sou" style="margin-top: 10px; color: #fff"> 热门楼盘： 
+             {volist name='head["rmso"]' id='vo'}
+                 <a href="{$vo.KP_Url}" target="_blank">{$vo.KP_Key}</a>
+             {/volist} 
+      </div>
+      <div class="tiaojian"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--降价弹窗-->
+<div class="tc_zhezhao">
+  <div class="tc_container">
+    <div class="tc_title">变价通知</div>
+    <div class="tc_x">将最新变价、优惠活动信息第一时间通知您！</div>
+    <div class="tc_center">
+      <div class="tc_center_left">
+        <input type="text" id="jj_Name" placeholder="请输入您的姓名" />
+        <input type="text" id="jj_Phone" placeholder="请输入手机号码" />
+        <input type="hidden" id="LpID" value="" />
+        <a href="javascript:void(0);" onclick="jj_Submit()" class="btn">立即提交</a> </div>
+      <div class="tc_center_right"> <span>楼盘名称</span>
+        <div class="tc_lptu"><img src="/html/images/tc_lp.jpg"></div>
+      </div>
+    </div>
+    <a href="#0" class="tc_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>    
+
+
+
+
+ 

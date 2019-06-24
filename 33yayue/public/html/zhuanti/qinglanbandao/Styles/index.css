@@ -1,0 +1,69 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%; position: relative;}
+.banner img{ width: 100%; height: auto;}
+.ad1{ background: url(../img/ad01.jpg) no-repeat center center; width: 100%; height: 608px;}
+.ad2{ background: url(../img/ad02.jpg) no-repeat center center; width: 100%; height: 625px;}
+.ad3{ background: url(../img/ad03.jpg) no-repeat center center; width: 100%; height: 690px;}
+.ad4{ background: url(../img/ad04.jpg) no-repeat center center; width: 100%; height: 624px;}
+.ad5{ background: url(../img/ad05.jpg) no-repeat center center; width: 100%; height: 705px;}
+.tab1{ background: url(../img/tab01.jpg) no-repeat center center; width: 100%; height: 105px;}
+
+.ad6{ width: 1200px; margin: 0 auto; height: 72px;}
+.ad6 ul{ margin-top: 50px;}
+.ad6 .a1{ float: left; margin: 0 25px 0 25px; width: 190px;height: 72px; line-height: 72px; border: #ccc 2px solid; text-align: center; border-radius:10px; font-size: 20px; cursor: pointer;}
+
+.ad6 .aa1{ background: #d36e14; color: #fff;}
+
+.huxing_box{ display: none;}
+.aa2{ display: block;}
+.huxing_box{ width: 1200px; margin: 0 auto; position: relative; height: 800px;}
+.huxing{ width: 600px; height: 742px; float: left; position: relative; overflow: hidden;top: 0; left: 300px;}
+.huxing_img{ width: 600px; position: relative; left: -600px;}
+.huxing_img .img{ float: left;}
+.arrow{ background: url(../img/arrow_r.png) no-repeat 100%; width: 46px; height: 46px; position: absolute; right: 0; top: 50%; margin-top: -23px; cursor: pointer;}
+.huxing_box .arrow_l{ left: 0; background: url(../img/arrow_l.png) no-repeat;}
+
+.bottom{ width: 1200px; height: 347px; margin: 0 auto; padding-top: 55px;}
+.bottom a{ font-size: 30px; color: #fff;}
+.bottom p{ margin-top: 30px; font-size: 18px; color: #fff; line-height: 30px;}
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

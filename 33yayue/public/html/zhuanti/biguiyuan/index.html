@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>碧桂园专题页</title>
+<link rel="stylesheet" href="Styles/index.css" type="text/css">
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "碧桂园专题页-帮你找房报名";
+        var T_Message = "PC端-碧桂园专题页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房网置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+
+</head>
+
+<body>
+
+<!--导航-->
+<div class="head" style="background: #fff">
+	<a href="http://www.3yayue.com"><img src="img/logo.png" alt=""></a>
+	<ul>
+		<li><a href="http://www.3yayue.com/" target="_blank">阅房网首页</a></li>
+		<li><a href="http://www.3yayue.com/house/" target="_blank">新房</a></li>
+		<li><a href="http://www.3yayue.com/news/" target="_blank">资讯</a></li>
+		<li><a href="http://www.3yayue.com/tuangou/" target="_blank">团购</a></li>
+		<li><a href="http://www.3yayue.com/houseunion/" target="_blank">购房联盟</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<!--正文-->
+<div class="center">
+	<ul>
+		<li class="banner"><img src="img/banner01.jpg" alt=""></li>
+		<div class="ba1">
+			<div class="quyu">
+				<ul class="quyu_kuang">
+					<li class="diqu">
+						<a class="a1 aa1" data-list="0">海南</a>
+						<a class="a1" data-list="1">马来西亚</a>
+						<a class="a1" data-list="2">广东</a>
+						<a class="a1" data-list="3">广西</a>
+					</li>
+				</ul>
+				<ul class="diqu_kuang">
+					<li class="loupan aa2">
+						<a class="a2 a3 aa3" data-list="0">碧桂园·东海岸</a>
+						<a class="a2 a3" data-list="1">碧桂园·金沙滩</a>
+						<div class="jieshao jieshao1 aa2 jieshao01">
+							<img src="img/a1.jpg" alt="">
+							<a href="http://www.3yayue.com/house/769.html" target="_blank">点击进入碧桂园·东海岸</a>
+						</div>
+					
+						<div class="jieshao jieshao1 jieshao02">
+							<img src="img/a2.jpg" alt="">
+							<a href="http://www.3yayue.com/house/681.html" target="_blank">点击进入碧桂园·金沙滩</a>
+						</div>
+						
+					</li>
+					<li class="loupan">
+						<a class="a2 aa3">碧桂园·森林城市</a>
+						<div class="jieshao aa2 jieshao03">
+							<img src="img/a3.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1814.html" target="_blank">点击进入碧桂园·森林城市</a>
+						</div>
+							
+						
+				
+					</li>
+					<li class="loupan">
+						<a class="a2 a4 aa3" data-list="0">碧桂园·月亮湾</a>
+						<a class="a2 a4" data-list="1">碧桂园·鼎龙湾</a>
+						<div class="jieshao jieshao2 aa2 jieshao04">
+							<img src="img/a4.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1821.html" target="_blank">点击进入碧桂园·月亮湾</a>
+						</div>
+						<div class="jieshao jieshao2 jieshao05">
+							<img src="img/a5.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1734.html" target="_blank">点击进入碧桂园·鼎龙湾</a>
+						</div>
+					</li>
+					<li class="loupan">
+						<a class="a2 a5 aa3" data-list="0">碧桂园·滨海城</a>
+						<a class="a2 a5" data-list="1">碧桂园·北海印象</a>
+						<a class="a2 a5" data-list="2">碧桂园·北纬21°</a>
+						<a class="a2 a5" data-list="3">碧桂园·安州府</a>
+						<div class="jieshao jieshao3 aa2 jieshao06">
+							<img src="img/a6.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1809.html" target="_blank">点击进入碧桂园·滨海城</a>
+						</div>
+						<div class="jieshao jieshao3 jieshao07">
+							<img src="img/a7.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1546.html" target="_blank">点击进入碧桂园·北海印象</a>
+						</div>
+						<div class="jieshao jieshao3 jieshao08">
+							<img src="img/a8.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1028.html" target="_blank">点击进入碧桂园·北纬21°</a>
+						</div>
+						<div class="jieshao jieshao3 jieshao09">
+							<img src="img/a9.jpg" alt="">
+							<a href="http://www.3yayue.com/house/1960.html" target="_blank">点击进入碧桂园·安州府</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+	
+		</div>
+		
+
+	
+		
+	
+	</ul>
+	<div class="clear"></div>
+	
+</div>
+
+<!--报名-->
+<div class="Bieshu_BmCont">
+    <div class="width_1200 Bieshu_Bm">
+        <div class="Bieshu_Bm_Left">
+            <div class="MaxText">
+               
+            </div>
+            <div class="MinText">
+             
+            </div>
+            <div class="Btn">
+               
+            </div>
+        </div>
+        <div class="Bieshu_Bm_Mid">
+        </div>
+        <div class="Bieshu_Bm_Right">
+            <div class="Title">
+            </div>
+            <div class="Name">
+                <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+            </div>
+            <div class="Phone">
+                <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick="Bs_Submit()">
+                    预约看房
+                </a>
+            </div>
+            <h1>品鉴热线：400-1552-899</h1>
+            <!--返回顶部-->
+			<div class="top">
+				<img src="img/top.png" alt="">
+			</div>
+        </div>
+        <div class="claer"></div>
+    </div>
+</div>
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+
+
+<script>
+	$(".a1").on('click',
+		function(){
+			var listNum = $(this).attr("data-list");
+			$(this).addClass("aa1").siblings().removeClass("aa1");
+			$(".loupan").removeClass("aa2").eq(listNum).addClass("aa2");
+		}
+	)
+	$(".a2").on('click',
+		function(){
+			$(this).addClass("aa3").siblings().removeClass("aa3");
+		}
+	)
+	$(".a3").on('click',
+		function(){
+			var listNum = $(this).attr("data-list");
+			$(".jieshao1").removeClass("aa2").eq(listNum).addClass("aa2");
+		}
+	)
+	$(".a4").on('click',
+		function(){
+			var listNum = $(this).attr("data-list");
+			$(".jieshao2").removeClass("aa2").eq(listNum).addClass("aa2");
+		}
+	)
+	$(".a5").on('click',
+		function(){
+			var listNum = $(this).attr("data-list");
+			$(".jieshao3").removeClass("aa2").eq(listNum).addClass("aa2");
+		}
+	)
+</script>
+
+		<!--返回顶部-->
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+
+
+
+
+
+</body>
+</html>

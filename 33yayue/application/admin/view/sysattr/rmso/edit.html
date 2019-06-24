@@ -1,0 +1,73 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Key" class="form-control " rows="1" name="row[KP_Key]" cols="50">{$row.KP_Key}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Url" class="form-control " rows="1" name="row[KP_Url]" cols="50">{$row.KP_Url}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_mobileurl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_MobileUrl" class="form-control " rows="1" name="row[KP_MobileUrl]" cols="50">{$row.KP_MobileUrl}</textarea>
+        </div>
+    </div>
+  <!--   <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_AddUser" class="form-control " rows="5" name="row[KP_AddUser]" cols="50">{$row.KP_AddUser}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_addtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_AddTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_AddTime]" type="text" value="{$row.KP_AddTime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_edituser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_EditUser" class="form-control " rows="5" name="row[KP_EditUser]" cols="50">{$row.KP_EditUser}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_edittime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_EditTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_EditTime]" type="text" value="{$row.KP_EditTime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Content" class="form-control editor" rows="5" name="row[KP_Content]" cols="50">{$row.KP_Content}</textarea>
+        </div>
+    </div> -->
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">入单人:</label>
+        
+        <div class="col-xs-12 col-sm-8">
+           <table><tr><td>
+                <input style="width: 180px  "  disabled="" class="form-control" type="text" value="{$row.KP_AddUser}({$row.KP_AddTime})">
+           </td><td>
+              <label class="control-label col-xs-12 col-sm-2" style="width: 131px">最后编辑人:</label>
+         
+           </td><td>
+                <input style="width: 180px  "  disabled="" class="form-control" type="text" value="{$row.KP_EditUser}({$row.KP_EditTime})">
+           </td></tr></table>
+
+           
+        </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

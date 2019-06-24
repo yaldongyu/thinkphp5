@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>购房流程</title>
+<link rel="stylesheet" href="Styles/index.css" type="text/css">
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+
+
+</head>
+<body>
+<!--导航-->
+<div class="head" style="background: #fff">
+	<a href="http://www.3yayue.com"><img src="img/logo.png" alt=""></a>
+	<ul>
+		<li><a href="http://www.3yayue.com/" target="_blank">阅房网首页</a></li>
+		<li><a href="http://www.3yayue.com/house/" target="_blank">新房</a></li>
+		<li><a href="http://www.3yayue.com/news/" target="_blank">资讯</a></li>
+		<li><a href="http://www.3yayue.com/tuangou/" target="_blank">团购</a></li>
+		<li><a href="http://www.3yayue.com/houseunion/" target="_blank">购房联盟</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+<!--banner-->
+
+<!--正文-->
+<div class="center">
+	<ul>
+		<li class="ad1"></li>
+		<li class="ad2"></li>
+		<li class="ad3"></li>
+		<li class="ad4"></li>
+		<li class="ad5"></li>
+		<li class="ad6"></li>
+		<li class="ad7"></li>
+		<li class="ad8"></li>
+	</ul>
+</div>
+<!--底部-->
+			<div class="top">
+				<img src="img/top.png" alt="">
+			</div>
+<!--报名看房-->
+
+
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+
+
+
+		<!--返回顶部-->
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+		
+</body>
+</html>

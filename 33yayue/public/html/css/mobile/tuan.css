@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+.tuan_bg{position: relative;box-sizing: border-box;background: url(../images/tuan_bg.jpg) no-repeat;background-size: 100% 100%;height: 4rem;margin-top: 50px}
+.tuan_title{width: 65%;text-align: center; margin: 0 auto;padding-top: .5rem;}
+.tuan_title h3{font-size: .4rem;color: #fff;font-weight: 700;}
+.title_line{width: 2rem;border: 1px solid #fff;display: block;margin: 0 auto;margin-top: .2rem;}
+.title_sm{font-size: .3rem; color: #fff;margin-top: .1rem;}
+.tuan_kuang{margin-top: -1.8rem; position: relative;z-index: 9;background: #fff;border-top-left-radius: 5px;border-top-right-radius: 5px;padding: .3rem .3rem}
+.tuan_kuang2{margin-top: 0; position: relative;z-index: 9;background: #fff;border-top-left-radius: 5px;border-top-right-radius: 5px;padding: .3rem .3rem}
+.t_cont_title{margin-bottom: .3rem;}
+.t_hd{font-size: .3rem;color: #fff;padding: 0rem .1rem;display: inline-block; background: -webkit-linear-gradient(#ffb850, #ff963c); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#ffb850, #ff963c); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#ffb850, #ff963c); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#ffb850, #ff963c); /* 标准的语法 */}
+.t_mz{font-size: .3rem;font-weight: 600;}
+.t_time{float: left; margin-right: 1rem;margin-bottom: .2rem;}
+.t_time i{width: .4rem; height: .4rem;display: inline-block}
+.t_time i img{width: 100%;}
+.t_djs{font-size: .3rem;color: #999;display: inline-block;vertical-align: middle;}
+.t_djs em{display: inline-block;color: #FF3333}
+.t_tu{position: relative;width: 99%;margin: 0 auto;display: inline-block}
+.t_tu img{width: 100%;border-radius: 5px;display: block}
+.t_tu span{background: rgba(0,0,0,0.6);padding: .1rem .2rem;color: #fff;position: absolute;right: .2rem;top: .2rem;border-radius: 15px;display: inline-block;font-size: .2rem}
+
+.t_youhui{position: relative;width: 100%;height: 1rem;border-bottom: 1px solid #eeeeee;margin-top: .2rem}
+.t_youhui i{width: 12%;position: absolute;left: 0;top: 0;}
+.t_youhui i img{width: 100%;}
+.t_youhui span{font-size: .3rem;color: #ff3333;display: block;height: .8rem;line-height: .8rem;padding-left: .7rem;background: #fff0f0;}
+.t_tbn{width: 90%;margin: 0 auto;margin-top: .3rem;}
+.t_tbn a{display: inline-block;text-align: center;padding: .2rem .8rem;border-radius: 5px;color: #fff;font-size: .25rem}
+.t_tbn a:nth-child(1){float: left; background: -webkit-linear-gradient(#ffb850, #ff963c); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#ffb850, #ff963c); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#ffb850, #ff963c); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#ffb850, #ff963c); /* 标准的语法 */ }
+.t_tbn a:nth-child(2){float: right; background: -webkit-linear-gradient(#f37f5b, #fd453e); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f37f5b, #fd453e); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f37f5b, #fd453e); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f37f5b, #fd453e); /* 标准的语法 */ }
+
+/*****************团购详情页*******************/
+.t_toppic{width: 100%;position: relative;margin-top: 50px;}
+.t_toppic img{width: 100%;}
+.t_canshu{padding: .3rem 0; border-bottom: 1px solid #eeeeee}
+.t_csk{display: flex;}
+.tip-item {-webkit-box-flex: 1;-ms-flex: 1;flex: 1;text-align: center;/*padding: 0 .5rem;*/}
+.tip-item span{font-size: .4rem;color: #ff3333;}
+.tip-item span em{font-size: .25rem;}
+.tip-item p{color: #999;font-size: .3rem;}
+
+.t_bt{width: 70%;margin-top: .3rem;float: left;}
+.t_bt span{font-size: .3rem;font-weight: 550;}
+.t_ctbn{float: right;margin-top: .5rem}
+.t_ctbn a{display: inline-block;text-align: center;padding: .13rem .5rem;border-radius: 15px;color: #fff;background: -webkit-linear-gradient(#f37f5b, #fd453e); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f37f5b, #fd453e); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f37f5b, #fd453e); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f37f5b, #fd453e); }
+.t2{margin-top: .2rem;}
+.yh_info{width: 100%;text-align: center;background: #FCE1D9;height: .8rem;line-height: .8rem; border-radius: 5px;color:#fd453e; font-size: .3rem;}
+
+.fy_info{margin:.2rem 0;}
+.fy_info i{width: .5rem; height: .5rem;display: inline-block;font-size: .3rem}
+.fy_info i img{width: 100%;}
+.fy_info span{font-size: .3rem;vertical-align:middle;font-weight: 550;}
+.xm_mc{margin-bottom: .2rem;font-size: .3rem;color: #333}
+.xm_mc span{color: #999}
+.xm_mc i{ margin: 5px 3px;font-size: 0.3rem;padding: 3px 5px;border-radius: 3px;display: inline-block;border: 1px solid #7a90b6; color: #7a90b6}
+.xm_mc i:nth-child(1){border: 1px solid #7a90b6; color: #7a90b6}
+.xm_mc i:nth-child(2){border: 1px solid #ff9900; color: #ff9900}
+.xm_mc i:nth-child(3){border: 1px solid #6699ff; color: #6699ff}
+.xm_mc i:nth-child(4){border: 1px solid #d85d37; color: #d85d37}
+.mc_lime{border-bottom: 1px solid #eeeeee;padding-bottom: .3rem}
+
+/*售楼热线*/
+.hot_tel{width: 100%;margin-top: .3rem;}
+.hot_tel_num{float: left;width: 88%;}
+.num_txt-1{font-size: .43rem;font-weight: 700;color: #ff4a00;}
+.num_txt-2{font-size: .3rem;color: #999;margin-top: .1rem;}
+.hot_tel_ico{float: right;width: 12%;margin-top: .2rem;}
+.hot_tel_ico img{width:80%}
+
+/*项目介绍*/
+.xmjs{width: 100%;text-align: center;font-size: .4rem;font-weight: 600;padding: .2rem 0 .1rem}
+.xmjs_line{width: .8rem;margin: 0 auto;border: 1.5px solid #5f95c9;display: block;}
+.xmjs_con{margin:.4rem 0;}
+.tishi_info{text-align: center;font-size: .3rem; color: #999;}

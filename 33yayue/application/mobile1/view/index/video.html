@@ -1,0 +1,105 @@
+ 
+ 
+ 
+    <div style="height:42px;" class="h42"></div>
+    <!--主页导航：开始-->
+    <div class="VpageNav"> 
+      <span  class="menuItem active" ><a href="/video">全部视频</a></span> 
+      <span  class="menuItem" ><a href="/video/index/typeid/0">楼盘视频</a></span> 
+      <span  class="menuItem" ><a href="/video/index/typeid/1" >海南风情</a></span> 
+      <span  class="menuItem" ><a href="/video/index/typeid/2">海南美食汇</a></span> </div>
+
+      <script type="text/javascript">
+        var typeid="";
+        $(".menuItem").attr("class","menuItem");
+      if(location.pathname.toLocaleLowerCase()=="/video"){$($(".menuItem")[0]).attr("class","menuItem active");} 
+      if(location.pathname.toLocaleLowerCase()=="/video/index/typeid/0"){$($(".menuItem")[1]).attr("class","menuItem active");typeid=0;} 
+      if(location.pathname.toLocaleLowerCase()=="/video/index/typeid/1"){$($(".menuItem")[2]).attr("class","menuItem active");typeid=1;} 
+      if(location.pathname.toLocaleLowerCase()=="/video/index/typeid/2"){$($(".menuItem")[3]).attr("class","menuItem active");typeid=2;} 
+      </script>
+
+    <!--主页导航：结束-->
+    <div class="box" id="videodata">
+      {volist name="$index['list']" id="vo"}
+     
+      <div class="list-img VideoList php_page"> <a href="/video/detail/ids/{$vo.id}"><img data-original="{$vo.KP_PicUrl}" src="/assets/img/mobile/errorpic.jpg" alt="{$vo.KP_Title}" /></a>
+        <ul>
+          <li class="V_Name"><a href="/video/detail/ids/{$vo.id}"><strong>{$vo.KP_Title}</strong></a></li>
+          <li><span>播放：{$vo.KP_Cs} 次</span></li>
+        </ul>
+      </div>
+      {/volist}
+    
+       <div class="list-img VideoList vue_page" style="display: none;" v-for="vo in lps"> 
+        <a :href="houseurl(vo.id)"><img :data-original="valf(vo.KP_PicUrl)"  src="/assets/img/mobile/errorpic.jpg" :alt="valf(vo.KP_Title)" /></a>
+        <ul>
+          <li class="V_Name"><a :href="houseurl(vo.id)"><strong>{$vo.KP_Title}</strong></a></li>
+          <li><span>播放：{$vo.KP_Cs} 次</span></li>
+        </ul>
+      </div>
+      
+      <!--翻页开始-->
+      <div id="AspNetPager1" class="pagination" align="left">
+        <div class="pagination" align="right" style="font-size:12px;"> </div>
+        <div align="left" class="pagination">
+        
+        </div>
+      </div>
+<div id="urls"      style="display: none;"></div>
+<div id="tip"       style="display: none;"></div>
+<div class="total"  style="display: none;">{$index['total']}</div>
+      <!--翻页结束--> 
+
+    </div>
+
+    <script type="text/javascript">
+
+
+var Lpdata = {"page":"1","pagesize":"20","typeid":typeid};
+
+$(".pagination").html(PageStr(Lpdata.pagesize ,{$index['total']},1 ));
+var app4 ; 
+app4 = new Vue({
+          el: '#videodata',
+          data: {lps:"msg"} ,
+          methods:{
+              valf:function(value){return  value   ;},
+              houseurl:function(value){return "/video/detail/ids/" + value + ""; } 
+             
+          }
+        });
+ 
+            
+      function setParmsValue(parms, parmsValue) {
+        //do post toger div
+
+        Lpdata["page"] = unescape(1);
+        Lpdata[parms] = unescape(parmsValue);
+        $.post("/video/indexapi", Lpdata, function(data,status){
+            //console.log( data.list  );
+            app4.$data.lps=data.list;
+                
+            $(".total").text(data.total);
+            $(".pagination").html(PageStr(Lpdata.pagesize ,data.total,Lpdata.page ));
+            $("body,html").scrollTop(0);
+            $.each($('.pagination  a'), function(i,val){ if(val.innerHTML==Lpdata.page){   val.parentNode.innerHTML="<span class='active'>" +Lpdata.page+"</span>";} });
+           
+            setTimeout(function () {
+              $(".php_page").css("display","none");
+              $(".vue_page").css("display","block");
+            }  ,1);         
+                 
+            });
+      }
+
+
+
+
+        
+
+ 
+    </script>
+ 
+   
+
+ 

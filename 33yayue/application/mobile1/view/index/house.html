@@ -1,0 +1,339 @@
+<link href="__CDN__/html/css/mobile/house.css" rel="stylesheet" type="text/css" /> 
+<link href="__CDN__/html/css/mobile/dropload.css" rel="stylesheet" type="text/css" /> 
+
+<script src="__CDN__/html/js/mobile/dropload.js" type="text/javascript"></script>  
+ 
+
+<!--正文开始-->
+<div class="w100" style="padding-bottom: 0">
+  <div class="w94_2">
+    <div class="search_box">
+      <p class="search-content"> <span class="icon-search"><img src="__CDN__/html/img/mobile/seach.png"></span>
+        <input class="ipt" type="text" name="name" placeholder="请输入楼盘名称或区域">
+      </p>
+    </div>
+    <div class="xf_banner"><a href=""><img src="__CDN__/html/img/mobile/banner.jpg"></a></div>
+  </div>
+  <section class="job-module" id="job_fix">
+    <dl class="retrie">
+      <dt> <a id="quyu" href="javascript:;">区域 </a> <a id="jiage" href="javascript:;">价格</a> <a id="tese" href="javascript:;">特色 </a> <a id="huxing" href="javascript:;">户型</a> </dt>
+      <dd class="area">
+        <ul class="slide downlist">
+          <div class="Z_con2_2">
+            <div class="F_wd_top_con2">
+              <div class="F_wd_top_con2_l" id="wrapper">
+                <div>
+                  <ul class="sy">
+                    <li class="current"><a href="javascript:;" value="ct=">不限</a></li>
+                    {volist name='index["sxqy"]' id='vo' }    
+                        <li>{$vo.name}</li>
+                    {/volist}  
+                  
+                  </ul>
+                </div>
+              </div>
+              <div class="F_wd_top_con2_r" id="wrapper1">
+                <div class="content">
+                  <ul class="by" style="display: block">
+                  </ul>
+                </div>
+                  {volist name='index["sxqy"]' id='vo' }    
+                      <div class="content">
+                        <ul class="by">
+                          <li class="F_wd_top_con2_r_borb1"><a href="javascript:;" value="ct={$vo.areaid}">不限</a></li>
+                          {volist name='vo.quyu' id='co' }           
+                              <li class="F_wd_top_con2_r_borb1"><a href="javascript:void(0);"   value="ct={$co.areaid}" >{$co.name}</a></li>
+                          {/volist} 
+                        </ul>
+                      </div>  
+                  {/volist}    
+              </div>
+            </div>
+          </div>
+        </ul>
+      </dd>
+      <dd class="jiage">
+        <ul class="slide downlist">
+          <li class="F_wd_top_con2_r_borb1"><a href="javascript:;" value="tp=">不限</a></li>
+            {volist name='index["sxjg"]' id='vo' }  
+              <li class="F_wd_top_con2_r_borb1"><a  href="javascript:void(0);"   value="tp={$vo.KP_Content}">{$vo.KP_Name}</a></li>
+           {/volist}
+        </ul>
+      </dd>
+      <dd class="tese">
+        <ul class="slide downlist">
+          <li class="F_wd_top_con2_r_borb1"><a href="javascript:;" value="ts=">不限</a></li>
+            {volist name='index["sxts"]' id='vo' }  
+              <li class="F_wd_top_con2_r_borb1"><a  href="javascript:void(0);"   value="ts={$vo.KP_Name}">{$vo.KP_Name}</a></li>
+           {/volist}
+        </ul>
+      </dd>
+      <dd class="huxing">
+        <ul class="slide downlist">
+          <li class="F_wd_top_con2_r_borb1"><a href="javascript:;" value="hx=">不限</a></li>
+            {volist name='index["sxhx"]' id='vo' }  
+              <li class="F_wd_top_con2_r_borb1"><a   href="javascript:void(0);"   value="hx={$vo.KP_Content}">{$vo.KP_Name}</a></li>
+           {/volist}
+        </ul>
+      </dd>
+    </dl>
+  </section>
+</div>
+<div class="w100">
+  <div class="w94_2">
+   <!--楼盘列表-->
+    <article class="khfxWarp">
+      <section class="khfxPane" style="display:block"></section>
+    </article>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none;">
+  <input type="text" id="parms" value="">
+  <input type="text" id="parmsValue" value="">
+  <input type="text" id="page" value="1">
+  <div id="Lpdata">
+    {"page":"1", "pagesize":"20",  "City":"",
+                            "Price":"", "Ts":"",  "Wy":"",  "Jzlx":"",
+                            "KpTime":"","Zxqk":"","Xszt":"","KpTimeDown":"",
+                            "Sokey":""}
+  </div>
+</div>
+<script type="text/javascript"> 
+      
+  $(function(){
+      //隐藏尾部 
+      $(".footer_w100").css("display","none");
+        //设置标题
+      $(".header_logo2 a").html("新房查询").attr("href","javascript:void(0);"); 
+  
+      //区域选择
+      $(".F_wd_top_con2_r_borb1").click(function(){
+          $(this).addClass("F_wd_top_con2_r_borb2").siblings().removeClass("F_wd_top_con2_r_borb2");
+      })
+
+      //竖直切换
+      var $li = $('.sy li');
+      var $ul = $('.content .by');
+      $li.click(function(){
+        var $this = $(this);
+        var $t = $this.index(); 
+        $li.removeClass();
+        $this.addClass('current');
+        $ul.css('display','none');
+        $ul.eq($t).css('display','block');
+      })
+
+      // 下拉菜单
+      $('.retrie dt a').click(function(){
+        var $t=$(this);
+        if($t.hasClass('up')){
+          $(".retrie dt a").removeClass('up');
+          $('.downlist').hide();
+          $('.mask').hide();
+        }else{
+          $(".retrie dt a").removeClass('up');
+          $('.downlist').hide();
+          $t.addClass('up');
+          $('.downlist').eq($(".retrie dt a").index($(this)[0])).show();
+          $('.mask').show();
+        }
+      });
+      $(".area ul li a:contains('"+$('#quyu').text()+"')").addClass('selected');
+      $(".wage ul li a:contains('"+$('#jiage').text()+"')").addClass('selected');
+      $(".area ul li a:contains('"+$('#tese').text()+"')").addClass('selected');
+      $(".wage ul li a:contains('"+$('#huxing').text()+"')").addClass('selected');
+
+      $(".ipt").click(function(argument) {
+         location.href="/index/Search" ;
+      })
+  })
+ 
+
+
+ 
+   
+
+
+ 
+
+/*下来刷新列表*/ 
+$(function () {
+    var itemIndex = 0;
+
+    var tabLoadEndArray = [false];
+    var tabLenghtArray = [{$index['total']}];
+    var tabScroolTopArray = [0];
+    
+    // dropload
+    var dropload = $('.khfxWarp').dropload({
+        scrollArea: window,
+        domDown: {
+            domClass: 'dropload-down',
+            domRefresh: '<div class="dropload-refresh">上拉加载更多</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData: '<div class="dropload-noData">已无数据</div>'
+        },
+        loadDownFn: function (me) {
+
+            var Lpdata = JSON.parse($("#Lpdata").text())   
+            // $("#page").val(parseInt($("#page").val())+1)
+            // var parms = $("#parms").val();
+            // var parmsValue = $("#parmsValue").val();
+            // Lpdata[parms] = unescape(parmsValue); 
+            $.post("/house/indexapi", Lpdata, function(data,status){  
+              console.log( data.list  ); 
+              if(data.list.length==0){
+                  $(".dropload-load").text("暂无满足条件的楼盘");
+                  return;
+                    
+              }
+               if (tabLoadEndArray[itemIndex]) {
+                    me.resetload();
+                    me.lock();
+                    me.noData();
+                    me.resetload();
+                    return;
+                }
+                var result = ''; 
+                var dt = data.list ;
+                for (var index = 0; index < dt.length; index++) {
+                    if (tabLenghtArray[itemIndex] > 0) {
+                        tabLenghtArray[itemIndex]--;
+                    } else {
+                        tabLoadEndArray[itemIndex] = true;
+                        break;
+                    }
+
+                    if (itemIndex == 0) {
+                        result
+                        += ''
+                        + '    <hgroup class="khfxRow">'
+            + '    <a href="/house/house_details/ids/'+ dt[index].id+'">'
+                        + '      <div class="houseli_tu"><img src="'+ dt[index].KP_Wjt+'"><i>'+ dt[index].CNAME+'</i></div>'
+                        + '      <div class="houseli_txt">'
+                        + '        <p class="houseli_title">'+ dt[index].KP_LpName+'<span> | '+ (dt[index].KP_Xszt==0?"在售":(dt[index].KP_Xszt==1?"待售":"售罄")) +'</span></p>'   
+            + '        <p class="houseli_hux">'+ dt[index].KP_Zlhx+'</p>'
+                        + '        <p class="houseli_jia"><span>'+ dt[index].KP_Price+'</span>'+ dt[index].KP_Price_unit+'</p>'
+            + '        <p class="houseli_data">有效期：'+ dt[index].KP_ValidityStart+'-'+ dt[index].KP_ValidityEnd+'</p>'
+                        + '      </div>'
+            + '    </a>'
+            + '    <div class="houseli_tell"><a href="tel:'+ dt[index].Kp_tel+'"><img src="__CDN__/html/img/mobile/footer.png"></a></div>'
+            + '    <div class="clear"></div>'
+            + '    <div class="houseli_biaoq">'
+            + '    <span class="houseli_guanz">已有 <em>'+ dt[index].KP_Cs+'</em> 人关注</span>' ;
+
+                  var ts = dt[index].KP_TsType.split(",");
+                  for (var i = 0; i < ts.length; i++) {
+                   if(i<2){
+                    result  +=  '    <span class="houseli_tese">'+ ts[i] +'</span>'   ;
+                    }
+                  } 
+            
+             
+                result  +=   '    </div>'
+                        + '    </hgroup>';
+                    } 
+                }
+                $('.khfxPane').eq(itemIndex).append(result);
+                //page +1
+                Lpdata["page"] = (parseInt(Lpdata["page"]) +1);
+                $("#Lpdata").html(JSON.stringify(Lpdata));
+                me.resetload();
+            });
+
+             
+        }
+    });
+
+    $(".F_wd_top_con2_r_borb1 a").on('click', function(){
+        var Lpdata = JSON.parse($("#Lpdata").text())  ;
+        Lpdata["page"] = 1; 
+        var v= $(this).attr("value").split("=") ;
+        Lpdata[v[0]] = v[1];
+        $("#Lpdata").html(JSON.stringify(Lpdata));
+        // $("#parms").val(v[0]);
+        // $("#parmsValue").val(v[1]);
+        $('.khfxPane').eq(0).html(""); 
+        dropload.resetload();
+        
+        //隐藏菜单
+        var cid = $(this).parent().parent().parent().attr("class");
+
+        if(cid=="jiage" || cid=="tese" || cid=="huxing" ) {
+         $("#"+cid ).click();
+         $("#"+cid ).html(v[1]==""?(cid=="jiage"?"价格":(cid=="tese"?"特色":"户型")):$(this).text());
+
+        }else{
+           $("#quyu").click(); 
+           if($(this).text()=="不限"){
+              $("#quyu").html( $(".sy li").eq($(this).parent().parent().parent().index()).text() ); 
+           }else{
+             $("#quyu").html($(this).text());
+           }
+          
+        }
+         
+    });
+    $('.sy li').eq(0).find("a").on('click', function(){
+        var Lpdata = JSON.parse($("#Lpdata").text())  ;
+        Lpdata["page"] = 1; 
+        var v= $(this).attr("value").split("=") ;
+        Lpdata[v[0]] = v[1];
+        $("#Lpdata").html(JSON.stringify(Lpdata));
+        $('.khfxPane').eq(0).html("");
+        dropload.resetload();
+          //隐藏菜单 console.log($(this).parent().parent().parent().attr("class"))
+          $("#quyu").click();$("#quyu").html("区域");
+          
+          
+    });
+    // $('.tabHead span').on('click', function () { 
+    //     tabScroolTopArray[itemIndex] = $(window).scrollTop();
+    //     var $this = $(this);
+    //     itemIndex = $this.index();
+    //     $(window).scrollTop(tabScroolTopArray[itemIndex]);
+        
+    //     $(this).addClass('active').siblings('.tabHead span').removeClass('active');
+    //     $('.tabHead .border').css('left', $(this).offset().left + 'px');
+    //     $('.khfxPane').eq(itemIndex).show().siblings('.khfxPane').hide(); 
+    //     if (!tabLoadEndArray[itemIndex]) {
+    //         dropload.unlock();
+    //         dropload.noData(false);
+    //     } else {
+    //         dropload.lock('down');
+    //         dropload.noData();
+    //     }
+    //     dropload.resetload();
+    // });
+ 
+});
+
+   
+  </script>
+  
+
+ 

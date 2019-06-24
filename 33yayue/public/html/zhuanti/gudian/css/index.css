@@ -1,0 +1,59 @@
+/*全局基础样式*/
+*{box-sizing: border-box; border: 0; margin: 0; padding: 0;font-size: 14px; color: #424342; font-family: Microsoft YaHei;}
+body{background-color: #fff;}
+a{text-decoration: none;}
+a:hover{color: #ff8400;}
+li{list-style-type: none;}
+.clear{ clear: both;}
+/*导航*/
+.daohang{width: 100%;height: 50px; background-color: #fff;}
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #00064a; border-bottom: solid 1px #00064a;}
+/*正文*/
+.diyi{position:relative;}
+.banner img{width:100%; margin: 0 auto; vertical-align: middle; left: 50%;}
+/*文字滑动*/
+.fr{position: absolute;left: 50%;top: 35%;}
+.fr img{position: relative; width: 100%; z-index: 12;  top: -10px; left: -260px;}
+.imgAnimation{  animation-name: imgAnimation;  animation: imgAnimation 1.3s alternate;  -webkit-animation: imgAnimation 1.3s alternate ;  -moz-animation: imgAnimation 1.3s alternate; }  
+@-webkit-keyframes imgAnimation{  
+from{ bottom: -198px;top:500px;}  
+	to{  left: 50%} }
+@-ms-keyframes imgAnimation{  
+from{ bottom: -198px;top:500px;}  
+	to{  left: 50%} }
+/* end文字滑动*/
+.tedian img{width: 100%;margin: 0 auto;vertical-align: middle;left: 50%;min-width: 1200px;}
+.er{width: 1200px; margin: 0 auto; margin-bottom: 100px;}
+.di{ width:100%; margin: 0 auto; min-width: 1200px; height: 260px;}
+.di-nr{width:1200px; margin: 0 auto;}
+.di-nr li{  width: 1200px; text-align:center; margin-top: 25px; font-size: 24px; color: #180e31}
+.di-nr li a{ font-size:24px; color: #180E31}
+.di-nr li a:hover{ color: #d3791e }
+/*轮播图*/
+
+.luenbo{ width: 1200px; height: 563px; position: relative; margin: 0 auto; margin-bottom: 50px;} 
+.jiantou{width: 1200px; display: block; position: absolute; top:39%;}
+.jiantou_left{ background-image: url(../images/left.png); width: 50px; height: 68px; float: left;cursor: pointer;}
+.jiantou_right{ background-image: url(../images/right.png); width: 50px; height: 68px; float:  right;cursor: pointer;}
+.img_box{ width: 1050px; height: 591px;  margin: 0 auto; overflow: hidden;}
+.img_box ul{ width: 1200px;position: relative;}
+.img_box li{float: left;}
+.b img{ width:100%;margin: 0 auto;vertical-align: middle; left: 50%; min-width: 1050px;}
+.huxing_box a{ width: 150px; background: #F5AD01; position: absolute; left: 520px; top: 590px; color: #fff; font-size: 16px; text-align: center; line-height: 34px;}
+.huxing_box a:hover{ color: #fff; background: #a0592d;}
+
+/*滚动*/
+.gd{ width: 1200px; overflow: hidden; text-align: center; border: 1px #F5AD01 solid;border-radius: 5px;}
+.gd tr{padding:5px 0;}
+.gd td{padding:5px 5px; text-align: center;}
+
+.ybj{width: 1200px;}
+.ybj-b a{ width:150px;  font-size: 16px; margin: 0 auto;  text-align: center; margin-top: 10px; text-align: center; display: block;background: #F5AD01; line-height: 34px; color: #fff;}
+.ybj-b a:hover{color: #fff; background: #a0592d;}
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}

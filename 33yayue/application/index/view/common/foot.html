@@ -1,0 +1,227 @@
+<!--底部开始-免责声明-->
+        <div class="clear"></div>
+        <div class="minze">*免责声明<br/>楼盘信息由开发商提供，最终以政府部门登记备案为准，请谨慎核查。本站所有房源均为“一房一价”。如该楼盘信息有误，您可以联系我们修正。</div>
+<!--底部-->
+    <div class="foot">
+        <div class="foot_k">
+        
+        <div class="yqlink">
+            <span>友情链接：</span>
+            <ul>
+                <li><a href="http://www.yfw66.com"  target="_blank"> 阅房网</a></li>
+                <li><a href="http://www.yflj66.com"  target="_blank">阅房旅居</a></li>
+                <li><a href="http://www.xunfang66.com"  target="_blank"> 讯房网</a></li>
+                <li><a href="http://www.fdw123.com"  target="_blank"> 房典网</a></li>
+                <li><a href="http://www.lvfangw.com"  target="_blank"> 旅房网</a></li>
+            </ul>
+        </div>
+        <div class="num">
+            <div class="num_nb">24小时服务热线：{$Think.config.site.tel}</div>
+        </div>
+            <div class="clear"></div>
+        <div class="rm_city">
+            <span>热门城市：</span>
+            <ul>
+
+            {volist name='hotquyu' id='co' }
+               
+                    <li><a href="http://{$co.domain}"  target="_blank"> {$co.name}房产</a></li>
+                   
+               
+            {/volist}
+               
+            </ul>       
+        </div>
+ 
+
+            <div class="foot_about">
+                <ul>
+                    <li><a  target="_blank" href="/about">关于我们</a>|</li>
+                    <li><a  target="_blank" href="/about">联系我们</a>|</li>
+                    <li><a  target="_blank" href="/about">版权声明</a>|</li>
+                    <li><a  target="_blank" href="/about">服务协议</a></li>
+                </ul>
+                <span>
+                    {if condition="$domain=='lvfang66.com'"}
+                        "版权声明© 广西阅房网科技有限公司 ICP备案号：桂ICP备18008566号"
+                    {else /}
+                        {$Think.config.site.beian}
+                    {/if}
+                </span>
+                <div class="banq">
+                    <a href=""  target="_blank"> <img src="/html/images/foot_shim.png"></a>
+                    <a href=""  target="_blank"> <img src="/html/images/foot_shim2.png"></a>
+                </div>
+            </div>
+            
+            <div class="foot_ma">
+                <div class="foot_ma2"><img src="/html/images/foot_ma.png"><span>手机官网</span></div>
+                <div class="foot_ma2"><img src="/html/images/foot_ma2.png"><span>关注我们</span></div>
+            </div>
+        
+        </div>
+    </div>
+
+
+  <!--提示框弹层-->
+  <div class="Tip_Info"> </div> 
+     
+<!--在线客服-->
+ 
+<!--在线客服End-->
+ 
+
+  <!--顶部搜索弹层-->
+  <div class="Search_Box"></div> 
+
+{$Think.config.site.onlinekefu} 
+ 
+ 
+
+
+
+<div  class="Tuangou_Success" style="position:fixed;top:50%;left:50%;margin-left:-250px;margin-top:-50px;width:500px;height:100px;background:rgba(0,0,0,.8);font-size:16px;color:#fff;text-align:center;line-height:100px;z-index:999;display:none;"  ></div>
+<!-- 底部优惠报名 -->
+ <!-- 底部优惠报名 -->
+{if condition="($actionname neq 'index' and $controllername eq 'house')||($actionname eq 'map' and $controllername eq 'index')"}
+{else/}
+
+    <div id="footADdiv" style="position: fixed;bottom: 0;z-index: 5;"></div>
+    <script type="text/javascript">
+     
+        $(function(argument) {
+             var a = (new Date).getTime();
+             $("#footADdiv").load("/html/footbar.html?tel={$Think.config.site.tel}&v="+a,function(){
+                  $(".zhongqiucefr .mianfei span").html("{$Think.config.site.tel}");
+             })
+        })
+    </script> 
+ 
+   
+{/if}
+
+
+<div id="top" style="display: none"></div>
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/jquery.qrcode.min.js" ></script>
+
+
+<script type="text/javascript">
+    //返回顶部
+$(function () {
+    var tophtml = "<div id=\"top_back\" class=\"top-back\"><a href=\"javascript:void(0);\" onclick=\"openZoosUrlx('chatwin');\" class=\"btn btn-qq\"></a><div id=\"indexqrcode\"  class=\"btn btn-wx\"></div><div class=\"btn btn-phone\"><div class=\"phone\"><div id=\"telqrcode\" class=\"telqrcode\"></div></div></div><div class=\"btn btn-top\"></div></div>";
+    $("#top").html(tophtml);
+    $("#top_back").each(function () {
+        $(this).find(".btn-wx").mouseenter(function () {
+            $(this).find("canvas").fadeIn("fast");
+            $(this).find("img").fadeIn("fast");
+        });
+        $(this).find(".btn-wx").mouseleave(function () {
+            $(this).find("canvas").fadeOut("fast");
+            $(this).find("img").fadeOut("fast");
+        });
+        $(this).find(".btn-phone").mouseenter(function () {
+            $(this).find(".phone").fadeIn("fast");
+        });
+        $(this).find(".btn-phone").mouseleave(function () {
+            $(this).find(".phone").fadeOut("fast");
+        });
+        $(this).find(".btn-top").click(function () {
+            $("html, body").animate({
+                "scroll-top": 0
+            }, "fast");
+        });
+    });
+    var lastRmenuStatus = false;
+    $(window).scroll(function () { 
+        var _top = $(window).scrollTop();
+        if (_top > 200) {
+            $("#top_back").data("expanded", true);
+        } else {
+            $("#top_back").data("expanded", false);
+        }
+        if ($("#top_back").data("expanded") != lastRmenuStatus) {
+            lastRmenuStatus = $("#top_back").data("expanded");
+            if (lastRmenuStatus) {
+                $("#top_back .btn-top").slideDown();
+            } else {
+                $("#top_back .btn-top").slideUp();
+            }
+        }
+    });
+});
+
+</script>
+<script>
+  $(function () {
+    
+      jQuery('#indexqrcode').qrcode({ width: 160, height: 160, text: "http://m"+ location.hostname +"" });
+       $('#indexqrcode').append('<img src="/assets/img/favicon.ico" style="display: none;width: 40px;height: 40px;position: absolute;left: -102px;top: 63px;    background-color: white;padding: 3px;">');
+       jQuery('#telqrcode').qrcode({ width: 160, height: 160, text: "http://m" + location.hostname.replace("www","") + "/index/bohao/{$index['lpinfo']['id']?"/ids/".$index['lpinfo']['id']:""}" });
+      
+    })
+</script>
+
+<script type="text/javascript">
+   
+    
+
+
+
+//提示区域城市
+function setCookie(c_name,value,expire_ms)
+{
+    var exdate=new Date()
+    exdate.setDate(exdate.getTime()+expire_ms)
+    document.cookie=c_name+ "=" +escape(value)+
+    ((expire_ms==null) ? "" : "; expires="+exdate.toGMTString())
+}
+function getCookie(c_name)
+{
+    if (document.cookie.length>0)
+      {
+      c_start=document.cookie.indexOf(c_name + "=")
+      if (c_start!=-1)
+        { 
+        c_start=c_start + c_name.length+1 
+        c_end=document.cookie.indexOf(";",c_start)
+        if (c_end==-1) c_end=document.cookie.length
+        return unescape(document.cookie.substring(c_start,c_end))
+        } 
+      }
+    return ""
+}
+function checkCookie()
+{
+    TipCity=getCookie('TipCity');
+    console.log("cookie=" + TipCity);
+    if (TipCity!=null && TipCity!=""   )
+      {  console.log(TipCity!="{$CityName}");
+         console.log(TipCity );
+         console.log( "{$CityName}");
+        if (TipCity!="{$CityName}" )
+            {
+                    Tip_Control("您查看的城市是{$CityName}", 2500);
+                    setCookie("TipCity","{$CityName}",3000);
+                  
+            }
+        }
+    else 
+      {
+            Tip_Control("您查看的城市是{$CityName}", 2500);
+            setCookie("TipCity","{$CityName}",3000);
+       
+      }
+}
+ 
+
+if(location.pathname=="/" || location.pathname =="/index" ){
+    if("{$CityName}"!="全国"){
+        //Tip_Control("您当前查看的城市是： {$CityName} ", 2500);
+         Tip_Control("", 2500);$(".Tip_Info").html("您当前查看的城市是： <i style='color: #fff902;font-weight: 600;font-size: larger;'>{$CityName}</i> !");
+    }
+}
+</script>
+
+
+
+

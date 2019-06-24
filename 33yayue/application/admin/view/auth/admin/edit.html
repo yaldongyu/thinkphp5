@@ -1,0 +1,92 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">部门:</label>
+        <div class="col-xs-12 col-sm-3">
+            {:build_select('row[KP_Bmid]', $ruledata, $row.KP_Bmid, ['class'=>'form-control', 'required'=>''])}
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">职务:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Zhiwu" data-source="auth/zw/selectpage" class="form-control selectpage" name="row[KP_Zhiwu]" type="text" value="{$row.KP_Zhiwu}" data-primary-key='id' data-field='KP_ZwName'>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">姓名:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-nickname" class="form-control" name="row[nickname]" type="text" data-rule='required' value="{$row.nickname}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">工号:</label>
+        <div class="col-xs-12 col-sm-3">
+            <label class="control-label">{$row.KP_Loginid}</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Password')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-password" class="form-control" name="row[password]" type="password" value="" placeholder="为空则不修改">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">邮箱:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-email" class="form-control" name="row[email]" type="text" data-rule='email' value="{$row.email}">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">电话:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Tel" class="form-control "  name="row[KP_Tel]" value="{$row.KP_Tel}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">性别:</label>
+        <div class="col-xs-12 col-sm-3">
+            {:build_radios('row[KP_Sex]', ['0'=>'男', '1'=>'女'], $row.KP_Sex)}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">在职:</label>
+        <div class="col-xs-12 col-sm-3">
+            {:build_radios('row[KP_ZaiZhi]', ['0'=>'在职', '1'=>'离职'], $row.KP_ZaiZhi)}
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">状态:</label>
+        <div class="col-xs-12 col-sm-3">
+            {:build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('Hidden')],$row.status)}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">有效期:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_YxTime" class="form-control datetimepicker" data-date-max-date="2038-01-01" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_YxTime]" type="text" value="{$row.KP_YxTime}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">所属组别:</label>
+        <div class="col-xs-12 col-sm-3">
+            {:build_select('group[]', $groupdata, $groupids, ['class'=>'form-control selectpicker', 'multiple'=>'', 'data-rule'=>'required'])}
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Avatar')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" class="form-control" size="50" name="row[avatar]" type="text" value="{$row.avatar}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-url="ajax/uploadnosy" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

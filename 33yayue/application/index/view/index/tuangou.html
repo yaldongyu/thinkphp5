@@ -1,0 +1,82 @@
+<link href="__CDN__/assets/css/index/tejia.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+ <!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>特价专区</span></div>
+
+<!--内容-->
+    <div class="w1200_k Wcenter">
+        <ul>
+            {volist name="$index['list']" id="vo"}
+            <li>
+                <div class="jiaobiao"><img src="/html/images/jiaobiao.png"></div>
+                <div class="tuan">
+                <div class="tuan_tu"><a href="/tuangou/detail/ids/{$vo['id']}"><img src="{$vo['KP_PicUrl']}"></a></div>
+                <div class="tuan_center">
+                    <p class="tuan_title"><a href="/tuangou/detail/ids/{$vo['id']}" target="_blank">{$vo['KP_Title']}</a></p>
+                    <div class="tuan_jia">
+                        <p>{$vo['pricetxt']}</p>
+                        <p>{$vo['KP_Juprice']}</p>
+                    </div>
+                    <div class="tuan_jia">
+                        <p>主推户型</p>
+                        {if condition="strlen($vo['KP_Zlhx'])<17"}
+                            <p >{$vo['KP_Zlhx']}</p >
+                        {else/}
+                        <marquee width="115px" direction="left" scrollamount="5" align="middle" title="{$vo['KP_Zlhx']}">{$vo['KP_Zlhx']}</marquee>
+                        {/if}
+                    </div>
+                    <div class="tuan_num"><span>{$vo['bmnum']}</span>人报名</div>
+                    <div class="clear"></div>
+                    <div class="tuan_youhui">优惠说明：<span>{$vo['KP_Yhby2']}</span></div>
+                    <div class="tuan_youhui">结束倒计时： <b id="day_show{$vo['id']}">0</b>天<b id="hour_show{$vo['id']}">0</b>时<b id="minute_show{$vo['id']}">0</b>分<b id="second_show{$vo['id']}">0</b>秒 </div>
+                    <div class="tuan_youhui">楼盘地址：{$vo['CNAME']}（{$vo['KP_Lpdz']}）</div>
+                    <div class="tuan_canyu">
+                        <div class="tuan_canyu_l"><img src="/html/images/tuan_call.png"><span>{$vo['KP_Tel']}</span></div>
+                        <div class="tuan_canyu_r"><a href="/tuangou/detail/ids/{$vo['id']}" target="_blank">查看详情</a></div>
+                    </div>
+                </div>
+                
+                </div>
+            </li>
+             <script type="text/javascript">
+                $(function () {
+                    timer({$vo['id']},{$vo['KP_EndTime']})
+                });
+            </script> 
+            {/volist}
+        </ul>
+    </div>
+  
+
+
+<script type="text/javascript">
+
+    
+//倒计时
+    //var intDiff = parseInt(1838149); //倒计时总秒数量
+    function timer(id,intDiff) {
+        window.setInterval(function () {
+        var day = 0,
+        hour = 0,
+        minute = 0,
+        second = 0; //时间默认值        
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('#day_show'+id).html(day);
+            $('#hour_show'+id).html(hour);
+            $('#minute_show'+id).html(minute);
+            $('#second_show'+id).html(second);
+            intDiff--;
+        }, 1000);
+    }
+    $(function () {
+        //timer({$vo['id']},1838149)
+    });
+
+</script> 

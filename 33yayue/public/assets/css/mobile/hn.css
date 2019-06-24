@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'hn';
+  src: url('hn.eot');
+  src: url('hn.eot') format('embedded-opentype'),
+       url('hn.woff') format('woff'),
+       url('hn.ttf') format('truetype'),
+       url('hn.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {font-family: 'cnvery';src: url('hn.svg?17200792#cnvery') format('svg');}
+}
+*/
+
+a:hover ins{ text-decoration:none !important;}
+ins{
+font-family: "hn";font-style: normal;font-weight: normal;speak: none;
+display: inline-block;text-decoration: inherit;width:1.5em;
+margin:0;text-align: center;font-variant: normal;text-transform: none;
+}
+.icon-1:before { content: '\e800'; } /* '' */
+.icon-48:before { content: '\e801'; } /* '' */
+.icon-10:before { content: '\e802'; } /* '' */
+.icon-9:before { content: '\e803'; } /* '' */
+.icon-38:before { content: '\e804'; } /* '' */
+.icon-39:before { content: '\e805'; } /* '' */
+.icon-33:before { content: '\e806'; } /* '' */
+.icon-34:before { content: '\e807'; } /* '' */
+.icon-8:before { content: '\e808'; } /* '' */
+.icon-32:before { content: '\e809'; } /* '' */
+.icon-2:before { content: '\e80a'; } /* '' */
+.icon-3:before { content: '\e80b'; } /* '' */
+.icon-4:before { content: '\e80c'; } /* '' */
+.icon-5:before { content: '\e80d'; } /* '' */
+.icon-19:before { content: '\e80f'; } /* '' */
+.icon-41:before { content: '\e810'; } /* '' */
+.icon-18:before { content: '\e811'; } /* '' */
+.icon-40:before { content: '\e812'; } /* '' */
+.icon-31:before { content: '\e813'; } /* '' */
+.icon-11:before { content: '\e816'; } /* '' */
+.icon-16:before { content: '\e817'; } /* '' */
+.icon-24:before { content: '\e818'; } /* '' */
+.icon-13:before { content: '\e819'; } /* '' */
+.icon-29:before { content: '\e81a'; } /* '' */
+.icon-28:before { content: '\e81b'; } /* '' */
+.icon-7:before { content: '\e81c'; } /* '' */
+.icon-6:before { content: '\e81d'; } /* '' */
+.icon-35:before { content: '\e81e'; } /* '' */
+.icon-42:before { content: '\e81f'; } /* '' */
+.icon-20:before { content: '\e820'; } /* '' */
+.icon-30:before { content: '\e821'; } /* '' */
+.icon-36:before { content: '\e822'; } /* '' */
+.icon-43:before { content: '\e823'; } /* '' */
+.icon-44:before { content: '\e824'; } /* '' */
+.icon-21:before { content: '\e825'; } /* '' */
+.icon-22:before { content: '\e826'; } /* '' */
+.icon-37:before { content: '\e827'; } /* '' */
+.icon-25:before { content: '\e828'; } /* '' */
+.icon-27:before { content: '\e829'; } /* '' */
+.icon-23:before { content: '\e82a'; } /* '' */
+.icon-49:before { content: '\e82b'; } /* '' */
+.icon-46:before { content: '\e82c'; } /* '' */
+.icon-45:before { content: '\e82d'; } /* '' */
+.icon-47:before { content: '\e82e'; } /* '' */
+.icon-12:before { content: '\e82f'; } /* '' */
+.icon-50:before { content: '\e830'; } /* '' */
+.icon-51:before { content: '\e831'; } /* '' */
+.icon-56:before { content: '\e832'; } /* '' */
+.icon-52:before { content: '\e833'; } /* '' */
+.icon-53:before { content: '\e834'; } /* '' */
+.icon-54:before { content: '\e835'; } /* '' */
+.icon-55:before { content: '\e836'; } /* '' */
+.icon-57:before { content: '\e837'; } /* '' */
+.icon-58:before { content: '\e838'; } /* '' */
+.icon-17:before { content: '\e839'; } /* '' */
+.icon-14:before { content: '\e83a'; } /* '' */
+.icon-59:before { content: '\e83b'; } /* '' */
+.icon-61:before { content: '\e83c'; } /* '' */
+.icon-60:before { content: '\e83d'; } /* '' */
+.icon-62:before { content: '\e83e'; } /* '' */
+.icon-63:before { content: '\e83f'; } /* '' */
+.icon-26:before { content: '\e840'; } /* '' */

@@ -1,0 +1,39 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_hcname')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <select id="c-KP_HcName" data-rule="required" class="form-control selectpicker" name="row[KP_HcName]">
+                {foreach name="XctypeList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.KP_HcName"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">相册描述:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Hcjs" class="form-control " rows="5" name="row[KP_Hcjs]" cols="50">{$row.KP_Hcjs}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">创建人:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input disabled="" class="form-control" type="text" value="{$row.KP_AddUser}({$row.KP_AddTime})">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">最后编辑:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input  disabled="" class="form-control" type="text" value="{$row.KP_EditUser}({$row.KP_EditTime})">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

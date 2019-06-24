@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>清澜半岛专题页</title>
+<link rel="stylesheet" href="Styles/index.css" type="text/css">
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "清澜半岛专题页-帮你找房报名";
+        var T_Message = "PC端-清澜半岛专题页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房网置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+<script type="text/javascript">
+window.onload = function(){
+   if(location.search.indexOf("?")==-1){
+      location.href += "?myurl";
+   }
+   else{
+      if(location.search.indexOf("myurl")==-1) location.href += "&myurl";
+   }
+}
+
+    </script>
+</head>
+
+<body>
+
+<!--导航-->
+<div class="head" style="background: #fff">
+	<a href="http://www.3yayue.com"><img src="img/logo.png" alt=""></a>
+	<ul>
+		<li><a href="http://www.3yayue.com/" target="_blank">阅房网首页</a></li>
+		<li><a href="http://www.3yayue.com/house/" target="_blank">新房</a></li>
+		<li><a href="http://www.3yayue.com/news/" target="_blank">资讯</a></li>
+		<li><a href="http://www.3yayue.com/tuangou/" target="_blank">团购</a></li>
+		<li><a href="http://www.3yayue.com/houseunion/" target="_blank">购房联盟</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<!--正文-->
+<div class="center">
+	<ul>
+		<li class="banner"><img src="img/banner01.jpg" alt=""></li>
+		<li class="ad1"></li>
+		<li class="ad2"></li>
+		<li class="ad3"></li>
+		<li class="ad4"></li>
+		<li class="ad5"></li>
+		<li class="tab1"></li>
+		<div>
+			<div class="ad6">
+				<ul>
+					<li class="a1 aa1" data-list="0">芭提雅墅A户型
+					</li>
+					<li class="a1" data-list="1">芭提雅墅B户型
+					</li>
+					<li class="a1" data-list="2">芭提雅墅C户型
+					</li>
+					<li class="a1" data-list="3">海尚御景
+					</li>
+					<li class="a1" data-list="4">芭提雅苑
+					</li>
+				</ul>
+			</div>
+			<div class="huxing_box aa2">
+				<div class="huxing">
+								<ul class="huxing_img">
+									<li class="img"><img src="img/a-.jpg" alt=""></li>
+									<li class="img"><img src="img/a1.jpg" alt=""></li>
+									<li class="img"><img src="img/a2.jpg" alt=""></li>
+									<li class="img"><img src="img/a3.jpg" alt=""></li>
+								</ul>
+								<div class="arrow arrow_l"></div>
+								<div class="arrow"></div>
+							</div>
+			</div>
+			<div class="huxing_box">
+				<div class="huxing">
+								<ul class="huxing_img">
+									<li class="img"><img src="img/b-.jpg" alt=""></li>
+									<li class="img"><img src="img/b1.jpg" alt=""></li>
+									<li class="img"><img src="img/b2.jpg" alt=""></li>
+									<li class="img"><img src="img/b3.jpg" alt=""></li>
+								</ul>
+								<div class="arrow arrow_l"></div>
+								<div class="arrow"></div>
+							</div>
+			</div>
+			<div class="huxing_box">
+				<div class="huxing">
+								<ul class="huxing_img">
+									<li class="img"><img src="img/c-.jpg" alt=""></li>
+									<li class="img"><img src="img/c1.jpg" alt=""></li>
+									<li class="img"><img src="img/c2.jpg" alt=""></li>
+									<li class="img"><img src="img/c3.jpg" alt=""></li>
+								</ul>
+								<div class="arrow arrow_l"></div>
+								<div class="arrow"></div>
+							</div>
+			</div>
+			<div class="huxing_box">			
+				<div class="huxing">
+								<ul class="huxing_img">
+									<li class="img"><img src="img/a11.jpg" alt=""></li>
+									<li class="img"><img src="img/a22.jpg" alt=""></li>
+									<li class="img"><img src="img/a33.jpg" alt=""></li>
+									<li class="img"><img src="img/a44.jpg" alt=""></li>
+								</ul>
+								<div class="arrow arrow_l"></div>
+								<div class="arrow"></div>
+							</div>
+			</div>
+			<div class="huxing_box">
+				<div class="huxing">
+								<ul class="huxing_img">
+									<li class="img"><img src="img/b11.jpg" alt=""></li>
+									<li class="img"><img src="img/b22.jpg" alt=""></li>
+									<li class="img"><img src="img/b33.jpg" alt=""></li>
+									<li class="img"><img src="img/b44.jpg" alt=""></li>
+								</ul>
+								<div class="arrow arrow_l"></div>
+								<div class="arrow"></div>
+							</div>
+			</div>
+		</div>
+		<div style="background: #3f9dff">
+			<div class="bottom">
+				<a href="http://www.3yayue.com/house/375.html" target="_blank">点击进入清澜半岛详情页...</a>
+				<p>开 发 商：海南中坤渝安投资有限公司<br>
+				物业公司：海南合恒皓天物业公司<br>
+楼盘地址：文昌市清澜开发区高隆湾片区<br>
+预售许可证：【2014】文房预字（009）号</p>
+			</div>
+			
+		</div>
+	</ul>
+	<div class="clear"></div>
+	
+</div>
+
+<!--报名-->
+<div class="Bieshu_BmCont">
+    <div class="width_1200 Bieshu_Bm">
+        <div class="Bieshu_Bm_Left">
+            <div class="MaxText">
+               
+            </div>
+            <div class="MinText">
+             
+            </div>
+            <div class="Btn">
+               
+            </div>
+        </div>
+        <div class="Bieshu_Bm_Mid">
+        </div>
+        <div class="Bieshu_Bm_Right">
+            <div class="Title">
+            </div>
+            <div class="Name">
+                <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+            </div>
+            <div class="Phone">
+                <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick="Bs_Submit()">
+                    预约看房
+                </a>
+            </div>
+            <h1>品鉴热线：400-1552-899</h1>
+            <!--返回顶部-->
+			<div class="top">
+				<img src="img/top.png" alt="">
+			</div>
+        </div>
+        <div class="claer"></div>
+    </div>
+</div>
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+<script type="text/javascript">
+			var n=0;
+			// 初始化方便换不同尺寸的图
+			var  shul = $(".huxing_img .img").length;
+			console.log(shul);
+			var is_node = $(".huxing_img .img").eq(shul-1).clone();
+			$(".huxing_img").prepend(is_node);
+			var node = $(".huxing_img .img").eq(1).clone();
+			$(".huxing_img").append(node);
+			//----------------------------------------------------
+			var number=$(".huxing_img .img").length+1;
+			var imgwidth = $(".img img").width();
+			$(".huxing_img").css({
+				"width":number*imgwidth
+			});
+			//向右移动
+			function right(){
+				n++;
+				if(n<=4){
+					$(".huxing_img").animate({"left":-imgwidth*n});
+					//设置圆点的位置
+					$(".location .circular").eq(n-1).addClass('color').siblings().removeClass('color');
+					if(n==4){
+						$(".location .circular").eq(n-2).addClass('color').siblings().removeClass('color');
+					}
+				}else if(n==5) {
+					$(".huxing_img").css({"left":-imgwidth*4})
+					$(".huxing_img").animate({"left":-imgwidth*1});
+					//设置圆点的位置
+					$(".location .circular").eq(n-6).addClass('color').siblings().removeClass('color');
+					n=1;
+				}	
+			}
+			//向左移动
+			function left(){
+				if(1<n){
+					n--;
+					$(".huxing_img").animate({"left":-imgwidth*n});
+					//设置圆点的位置
+					$(".location .circular").eq(n-1).addClass('color').siblings().removeClass('color');
+					if(n==6){
+						$(".location .circular").eq(n-6).addClass('color').siblings().removeClass('color');
+					}
+				}else if (n==1) {
+					$(".huxing_img").css({"left":-imgwidth*5})
+					$(".huxing_img").animate({"left":-imgwidth*4});
+					//设置圆点的位置
+					$(".location .circular").eq(n+3).addClass('color').siblings().removeClass('color');
+					n=4;
+				}
+			}
+			//点击圆点切换
+			$(".location .circular").click(function(event) {
+				/* Act on the event */
+				var danqian = $(this).index()+1;
+				n=danqian;
+				$(".huxing_img").animate({"left":-imgwidth*n});
+				$(this).addClass('color').siblings().removeClass('color');
+			});
+			//点击移动
+			$(".arrow").click(function(){
+				var index=$(this).index();
+				if(index==2){
+					right();	
+				}else if (index==1) {
+					left();
+				}
+			});
+			var  timing=setInterval("right()",3000);
+			//鼠标经过停止定时器
+			$(".huxing").mouseenter(function(event) {
+				/* Act on the event */
+				clearInterval(timing);
+			}).mouseleave(function(event) {
+				/* Act on the event */
+				timing=setInterval("right()",3000)
+			});
+
+		</script>
+
+<script>
+	$(".a1").on('click',
+		function(){
+			var listNum = $(this).attr("data-list");
+			$(this).addClass("aa1").siblings().removeClass("aa1");
+			$(".huxing_box").removeClass("aa2").eq(listNum).addClass("aa2");
+		
+		}
+	)
+
+</script>
+
+		<!--返回顶部-->
+<script>
+	 $(window).scroll(function(){
+	 var sc=$(window).scrollTop();
+	 if(sc>800){
+		 $(".top").show(); 
+	 }else{
+		 $(".top").hide();
+	 }
+ })
+	  $(".top").click(function(){
+	 var sc=$(window).scrollTop();
+	 $('body,html').animate({scrollTop:0},100);
+ }) 
+</script>
+
+
+
+
+
+</body>
+</html>

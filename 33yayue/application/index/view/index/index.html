@@ -1,0 +1,629 @@
+<link href="__CDN__/assets/css/index/index.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+ 
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/index.js?v={$site.version}" ></script>
+<!--轮播图-->
+<div class="banner">
+  <div class="slider">
+    <div class="sliderContent">
+        
+        {volist name='index["hdplist"]' id='vo'}
+          <div class="item">
+            <a href="{$vo.KP_Link}"   target="_blank" hidefocus="true" style="outline: none;">
+            <img src="{$vo.KP_PicUrl}" alt="{$vo.KP_Title}"></a>
+          </div>  
+        {/volist}
+      
+    </div>
+    <div class="sliderArrows" style="display:none;"> <a href="" class="prev png_bg" hidefocus="true" style="outline:none;">Previous</a> <a href="" class="next png_bg" hidefocus="true" style="outline: none;">Next</a> </div>
+  </div>
+</div>
+
+<!--中间内容-->
+<div class="content"> 
+  <!--筛选栏-->
+  <div class="choice_box">
+    <div class="choice_box_b">
+      <div style="padding: 30px;">
+        <div class="hot_sou"> 热门楼盘：  
+             {volist name='head["rmso"]' id='vo'}
+                 <a href="{$vo.KP_Url}" target="_blank">{$vo.KP_Key}</a>
+             {/volist} 
+        </div>
+        <div class="TopSearch">
+          <input type="text" id="Sokey" placeholder="请输入楼盘名称/关键字/开发商/地址.." />
+          <a href="javascript:void(0);" class="k_Search" onclick="SearchClick()">搜索</a> 
+          <a href="" class="MapSearch2" onclick="goMap()"  target="_blank">地图找房</a>
+          <div class="clear"></div> 
+        </div>
+        <div class="tiaojian">
+          <div class="area"> <em>区域</em>
+            <ul>
+              {volist name='index["sxqy"]' id='vo'} 
+                <li><a href="javascript:void(0);" onclick="Yhz_SearchEncode('City','{$vo.areaid}')" >{$vo.name}</a></li>  
+              {/volist} 
+            </ul>
+          </div>
+          <div class="area"> <em>价格</em>
+            <ul>
+              {volist name='index["sxjg"]' id='vo'}    
+                 <li><a href="javascript:void(0);" onclick="Yhz_SearchEncode('Price','{$vo.KP_Content}')"  >{$vo.KP_Name}</a></li>
+              {/volist} 
+            </ul>
+          </div>
+          <div class="area"> <em>特色</em>
+            <ul style="border-right:none">
+                {volist name='index["sxts"]' id='vo'}    
+                  <li><a href="javascript:void(0);" onclick="Yhz_SearchEncode('Ts','{$vo.KP_Name}')">{$vo.KP_Name}</a>
+                {/volist} 
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--本周精选-->
+  <div class="week_tab">
+    <div class="tab">
+      <ul class="tab-hd">
+        <li class="active">本周甄选</li>
+        <li>优选惠购</li>
+      </ul>
+      <ul class="tab-bd">
+         <li class="thisclass">{volist name='index["byzx"]' id='vo'}<a href="{$vo.KP_Link}"  {$i==1?"":"style='margin-right: 0'"}  target="_blank"><img src="{$vo.KP_PicUrl}"></a>{/volist}</li><li>{volist name='index["byzx"]' id='vo'}<a href="{$vo.KP_Link}"  {$i==1?"":"style='margin-right: 0'"}  target="_blank"><img src="{$vo.KP_PicUrl}"></a>{/volist}  
+        </li> 
+      </ul>
+    </div>
+  </div>
+ 
+  <!--发现好房-->
+  <div class="find">
+    <h3>发现好房</h3>
+    <span>醇美房源，焕心之旅，为发现而发现</span>
+    <div class="find_tab">
+      <div class="f_title">
+        <ul class="f_title-list">
+          <li class="on">热销楼盘</li>
+          <li>一线海景</li>
+          <li>养生度假</li>
+          <li>投资房产</li>
+          <p></p>
+        </ul>
+      </div>
+      <div class="product-wrap" style="    z-index: 3;
+    position: relative;"> 
+        <!--热销楼盘-->
+        <div class="product show">
+          <ul>
+            <li>
+              <div class="gallery">
+ 
+                {volist name='index["rxlp"]' id='vo'}    
+                      <div class="gallery-item">
+                        <div class="gallery-item-image">  <img src="{$vo.KP_Wjt}"> 
+                          <div class="f_wen"> <span>{$vo.KP_LpName}</span> <em>[{$vo.CNAME}]</em> </div>
+                          <div class="f_hui">折扣：{$vo.KP_YouHui}</div>
+                          <div class="f_price">
+                            <div class="f_tese">
+                              {volist name=":explode(',',$vo.KP_TsType)"   id="co" length="2"   }  
+                                  <i>{$co}</i>         
+                              {/volist}
+                            </div>
+                            <div class="f_jia">
+                              {empty name="$vo['KP_Qiprice']"}
+                                {empty name="$vo['KP_TaoJia']"}
+                                  待定 
+                                {else/}
+                                  {$vo['KP_TaoJia']} <i>万元/套</i> 
+                                {/empty}
+                              {else/}
+                                {$vo['KP_Qiprice']} <i>元/m²</i> 
+                              {/empty}                         
+                            </div>
+                          </div>
+                        </div>
+                        <div class="gallery-item-description">
+                          <div class="f_anniu f_xiangq"><a href="/house/house_details/ids/{$vo.id}"   target="_blank">了解项目</a></div>
+                          <div class="f_anniu f_kefu"><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"   class="ask">在线咨询</a></div>
+                        </div>
+                      </div>
+                {/volist}
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!--一线海景-->
+        <div class="product">
+          <ul>
+            <li>
+              <div class="gallery">
+                  {volist name='index["rxlp"]' id='vo'}    
+                      <div class="gallery-item">
+                        <div class="gallery-item-image"> <img src="{$vo.KP_Wjt}"> 
+                          <div class="f_wen"> <span>{$vo.KP_LpName}</span> <em>[{$vo.CNAME}]</em> </div>
+                          <div class="f_hui">折扣：{$vo.KP_YouHui}</div>
+                          <div class="f_price">
+                            <div class="f_tese">
+                              {volist name=":explode(',',$vo.KP_TsType)"   id="co" length="2"   }  
+                                  <i>{$co}</i>         
+                              {/volist}
+                            </div>
+                            <div class="f_jia">
+                              {empty name="$vo['KP_Qiprice']"}
+                                {empty name="$vo['KP_TaoJia']"}
+                                  待定 
+                                {else/}
+                                  {$vo['KP_TaoJia']} <i>万元/套</i> 
+                                {/empty}
+                              {else/}
+                                {$vo['KP_Qiprice']} <i>元/m²</i> 
+                              {/empty}                         
+                            </div>
+                          </div>
+                        </div>
+                        <div class="gallery-item-description">
+                          <div class="f_anniu f_xiangq"><a href="/house/house_details/ids/{$vo.id}"   target="_blank">了解项目</a></div>
+                          <div class="f_anniu f_kefu"><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"   class="ask">在线咨询</a></div>
+                        </div>
+                      </div>
+                {/volist}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!--养生宜居-->
+        <div class="product">
+          <ul>
+            <li> 
+               <div class="gallery">
+                {volist name='index["rxlp"]' id='vo'}    
+                      <div class="gallery-item">
+                        <div class="gallery-item-image">  <img src="{$vo.KP_Wjt}"> 
+                          <div class="f_wen"> <span>{$vo.KP_LpName}</span> <em>[{$vo.CNAME}]</em> </div>
+                          <div class="f_hui">折扣：{$vo.KP_YouHui}</div>
+                          <div class="f_price">
+                            <div class="f_tese">
+                              {volist name=":explode(',',$vo.KP_TsType)"   id="co" length="2"   }  
+                                  <i>{$co}</i>         
+                              {/volist}
+                            </div>
+                            <div class="f_jia">
+                              {empty name="$vo['KP_Qiprice']"}
+                                {empty name="$vo['KP_TaoJia']"}
+                                  待定 
+                                {else/}
+                                  {$vo['KP_TaoJia']} <i>万元/套</i> 
+                                {/empty}
+                              {else/}
+                                {$vo['KP_Qiprice']} <i>元/m²</i> 
+                              {/empty}                         
+                            </div>
+                          </div>
+                        </div>
+                        <div class="gallery-item-description">
+                          <div class="f_anniu f_xiangq"><a href="/house/house_details/ids/{$vo.id}"   target="_blank">了解项目</a></div>
+                          <div class="f_anniu f_kefu"><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"  class="ask">在线咨询</a></div>
+                        </div>
+                      </div>
+                {/volist}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!--豪宅别墅-->
+        <div class="product">
+          <ul>
+            <li> 
+              <div class="gallery">
+                  {volist name='index["rxlp"]' id='vo'}    
+                      <div class="gallery-item">
+                        <div class="gallery-item-image">  <img src="{$vo.KP_Wjt}"> 
+                          <div class="f_wen"> <span>{$vo.KP_LpName}</span> <em>[{$vo.CNAME}]</em> </div>
+                          <div class="f_hui">折扣：{$vo.KP_YouHui}</div>
+                          <div class="f_price">
+                            <div class="f_tese">
+                              {volist name=":explode(',',$vo.KP_TsType)"   id="co" length="2"   }  
+                                  <i>{$co}</i>         
+                              {/volist}
+                            </div>
+                            <div class="f_jia">
+                              {empty name="$vo['KP_Qiprice']"}
+                                {empty name="$vo['KP_TaoJia']"}
+                                  待定 
+                                {else/}
+                                  {$vo['KP_TaoJia']} <i>万元/套</i> 
+                                {/empty}
+                              {else/}
+                                {$vo['KP_Qiprice']} <i>元/m²</i> 
+                              {/empty}                         
+                            </div>
+                          </div>
+                        </div>
+                        <div class="gallery-item-description">
+                          <div class="f_anniu f_xiangq"><a href="/house/house_details/ids/{$vo.id}"   target="_blank">了解项目</a></div>
+                          <div class="f_anniu f_kefu"><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"   class="ask">在线咨询</a></div>
+                        </div>
+                      </div>
+                {/volist}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--房价走势-->
+  
+  <div class="zou">
+    <div class="zou_left">
+      <h3>房价走势</h3>
+      <div class="zou_tab">
+        <div class="tab1">
+          <ul class="tab-hd1">
+            
+            
+              {volist name='index["sxqy"]' id='vo'}
+                <li  class="{$i>1?'':'active1'}">{$vo.name}</li> 
+              {/volist}    
+          </ul>
+          <ul class="tab-bd1">
+              {volist name='index["sxqy"]' id='vo'}
+                <li  class="{$i>1?'':'thisclass1'}">
+                        <div class="m_kaung">
+                      <h4>当月新房均价</h4>
+                      <span>{$vo.curjuprice}<em>元/㎡</em></span> </div>
+                    <div class="m_kaung">
+                      <h4>下月新房均价</h4>
+                      <span>{$vo.provjuprice}<em>元/㎡</em></span> </div>
+                </li> 
+              {/volist}  
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="zou_right">
+      <h3>近期成交</h3>
+      <div class="shuju">
+        <ul class="shuju_title">
+          <li>项目名称</li>
+          <li>户型</li>
+          <li>成交价</li>
+          <li>日期</li>
+        </ul>
+        <div class="roll-enroll" style="width: 445px;height: 235px;position: absolute;overflow: hidden;">
+          <dl>
+            <dd class="roll-hidden">
+              <ul class="roll-list" > 
+                {volist name='index["zjcj"]' id='vo'}
+                  <li class="roll-item"><a href="/house/house_details/ids/{$vo.KP_LpID}" target="_blank"> 
+                    <span>{$vo.KP_LpName}</span>
+                    <p>{$vo.KP_Hx}</p>
+                      <i>{$vo.KP_Price}</i> <b>{$vo.KP_Time}</b> </a></li>
+                {/volist}    
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <!--房价走势报名框-->
+    <div class="zou_baom">
+      <div class="baom_bd">
+        <div class="Bieshu_Bm_Right">
+          <div class="Name">
+            <input type="text" id="Bs_Name" placeholder="请输入您的意向城市" />
+          </div>
+          <div class="Phone">
+            <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+          </div>
+          <div class="Btn"> <a href="javascript:;" onclick="Bs_Submit()"> 立即提交 </a> </div>
+        </div>
+        <div class="bm_tishi">*房价变动通知：实时掌握房价动态，不错过购房最佳时机</div>
+      </div>
+    </div>
+  </div>
+  
+  <!--广告图-->
+  <div class="ggtu">  
+     {volist name='index["tghd"]' id='vo'}
+         <a href="{$vo.KP_Link}"    target="_blank" style="{$i==2?"margin-right: 0":""}">
+          <img src="{$vo.KP_PicUrl}"><span class="ggtu_title">{$vo.KP_Title}</span></a><i></i>
+     {/volist}
+    
+  </div>
+ 
+  
+  <!--导购资讯-->
+  <div class="find">
+    <h3>导购资讯</h3>
+    <ul class="index_news_tab">
+      <li><a  target="_blank" href="/news/index/ids/2">楼盘热点</a>|</li>
+      <li><a  target="_blank" href="/news/index/ids/3">优惠信息</a>|</li>
+      <li><a  target="_blank" href="/news/index/ids/5">楼盘导购</a>|</li>
+      <li><a  target="_blank" href="/news/index/ids/10">看房记</a>|</li>
+      <li><a  target="_blank" href="/news/index/ids/9">户型/样板间鉴赏</a></li>
+    </ul>
+  </div>
+  <div class="index_news_tou"> <span>房产头条：</span> 
+     {volist name='index["fctt"]' id='vo' }
+        {if condition="$i==1"}   
+             <a href="/news/detail/ids/{$vo.id}"   target="_blank">{$vo.KP_Title}</a> 
+        {/if}
+     {/volist}
+   
+  </div>
+  <div class="index_news_tou_x">
+    <ul>
+     {volist name='index["fctt"]' id='vo' }
+        {if condition="$i>1"}  
+              <li> <a href="/news/detail/ids/{$vo.id}"   target="_blank">{$vo.KP_Title}</a> </li> 
+        {/if} 
+     {/volist}  
+    </ul>
+  </div>
+  
+  <div class="indexNews">
+    <div class="indexNews_left indexNews_item">
+        <h3>楼盘<span>热点</span></h3>
+      <div class="indexNews_pic">
+        <div class="indexNews_pic_list" id="piclist1">
+          <ul>
+            {volist name='index["lprd"]' id='vo' length='5' }
+                <li><a href="/news/detail/ids/{$vo.id}" target="_blank"><img alt="{$vo.KP_Title}" src="{$vo.KP_PicUrl}">
+                  <h2><span>{$vo.KP_Title}</span></h2>
+                  </a></li>
+            {/volist} 
+            {for start="0" end="(5-count($index['lprd']))"}
+                <li><a href="" target="_blank"><img alt="" src="">
+                  <h2><span></span></h2>
+                  </a></li>
+            {/for}
+          </ul>
+        </div>
+        <i class="arrow_i01" id="pre1"></i><i class="arrow_i02" id="next1"></i>
+        </div>
+        <ul class="indexNews_list">
+             {volist name='index["lprd"]' id='vo'   }
+                {if condition="$i>5"}  
+                   <li>
+                        <img src="{$vo.KP_PicUrl}">
+                        <div class="indexNews_list_txt">
+                            <h2><a href="/news/detail/ids/{$vo.id}" target="_blank">{$vo.KP_Title}</a></h2>
+                            <p>{$vo.KP_AddTime}</p>
+                        </div>
+                    </li>
+                {/if}  
+             {/volist}
+        </ul>
+        <div class="more_list"><a href="/news/index/ids/2" target="_blank">查看更多</a></div>
+    </div><!--end楼盘热点-->
+     <div class="indexNews_left indexNews_item">
+         <h3>楼盘<span>导购</span></h3>
+      <div class="indexNews_pic">
+        <div class="indexNews_pic_list" id="piclist2">
+          <ul> 
+             {volist name='index["lpdg"]' id='vo' length='5' }
+                <li><a href="/news/detail/ids/{$vo.id}" target="_blank"><img alt="{$vo.KP_Title}" src="{$vo.KP_PicUrl}">
+                  <h2><span>{$vo.KP_Title}</span></h2>
+                  </a></li>
+            {/volist} 
+            {for start="0" end="(5-count($index['lpdg']))"}
+                <li><a href="" target="_blank"><img alt="" src="">
+                  <h2><span></span></h2>
+                  </a></li>
+            {/for}
+          </ul>
+        </div>
+        <!--<div class="indexNews_label">左上角角标</div> -->
+        <i class="arrow_i01" id="pre2"></i><i class="arrow_i02" id="next2"></i>
+        </div>
+        <ul class="indexNews_list">
+             {volist name='index["lpdg"]' id='vo'   }
+                {if condition="$i>5"}  
+                   <li>
+                        <img src="{$vo.KP_PicUrl}">
+                        <div class="indexNews_list_txt">
+                            <h2><a href="/news/detail/ids/{$vo.id}" target="_blank">{$vo.KP_Title}</a></h2>
+                            <p>{$vo.KP_AddTime}</p>
+                        </div>
+                    </li>
+                {/if}  
+             {/volist}
+        </ul>
+        <div class="more_list"><a href="/news/index/ids/5" target="_blank">查看更多</a></div>
+    </div><!--end楼盘导购-->
+
+    <div class="indexNews_right indexNews_item">
+      <ul class="indexNews_nav">
+        <li class="on">楼市动态 <i></i></li>
+        <li>新闻资讯 <i></i></li>
+        <li>购房攻略 <i></i></li>
+      </ul>
+      <div class="indexNews_tab">
+        <ul class="indexNews_list">
+             {volist name='index["lsdt"]' id='vo'   }  
+                  <li><img alt="{$vo.KP_Title}" src="{$vo.KP_PicUrl}">
+                    <div class="indexNews_list_txt">
+                      <h2><a href="/news/detail/ids/{$vo.id}" target="_blank">{$vo.KP_Title}</a></h2>
+                      <p>{$vo.KP_AddTime}</p>
+                    </div>
+                  </li> 
+             {/volist}  
+        </ul>
+        <div class="more_list"><a href="/news/index/ids/11" target="_blank">查看更多</a></div>
+      </div>
+      <div class="indexNews_tab">
+        <ul class="indexNews_list clearfix">
+             {volist name='index["lsdt"]' id='vo'   }  
+                  <li><img alt="{$vo.KP_Title}" src="{$vo.KP_PicUrl}">
+                    <div class="indexNews_list_txt">
+                      <h2><a href="/news/detail/ids/{$vo.id}" target="_blank">{$vo.KP_Title}</a></h2>
+                      <p>{$vo.KP_AddTime}</p>
+                    </div>
+                  </li> 
+             {/volist}   
+        </ul>
+        <div class="more_list"><a href="/news/index/ids/11" target="_blank">查看更多</a></div>
+      </div>
+      <div class="indexNews_tab">
+        <ul class="indexNews_list">
+              {volist name='index["lsdt"]' id='vo'   }  
+                  <li><img alt="{$vo.KP_Title}" src="{$vo.KP_PicUrl}">
+                    <div class="indexNews_list_txt">
+                      <h2><a href="/news/detail/ids/{$vo.id}" target="_blank">{$vo.KP_Title}</a></h2>
+                      <p>{$vo.KP_AddTime}</p>
+                    </div>
+                  </li> 
+             {/volist}  
+        </ul>
+        <div class="more_list"><a href="/news/index/ids/11" target="_blank">查看更多</a></div>
+      </div>
+    </div>
+  </div>
+    <div class="clear"></div>
+  <!--换个角度看房-->
+    <div class="find">
+    <h3>换个角度看房</h3>
+    <span>视频看房，更直观，更真实，全方位了解项目情况</span>
+    </div>
+</div><!--end中间内容--> 
+
+ 
+ <!--换个角度看房-->
+    <div class="videobg">
+        <div class="video_z">
+            
+                  <div class="indexVideo_pic">
+                    <div class="indexVideo_pic_list" id="piclist3">
+                      <ul>  
+                       {volist name='index["dbsp"]' id='vo'   }    
+                        <li>
+                            <div class="videobg_k"></div>
+                            <a href="/video/detail/ids/{$vo.id}" target="_blank"><img src="{$vo.KP_PicUrl}"></a>
+                            <div class="videotb"><img src="/html/images/indexvideo.png"></div>
+                            
+                            <div class="viedonr">
+                                <h1><a href="/house/house_details/ids/{$vo.id}">{$vo.KP_LpName}</a><span>{$vo.KP_City}</span></h1>
+                                <p>户型：{$vo.KP_Zlhx}</p>
+                                <h2>{$vo.KP_YouHui}</h2>
+                                <div class="viedonr_xq">
+                                    <div class="gksp"><a href="/video/detail/ids/{$vo.id}"   target="_blank">观看视频</a></div>
+                                </div>
+                            </div>
+                        </li>
+                      {/volist}
+                       
+                       
+                      </ul>
+                    </div>
+                      <i class="arrow_i01" id="pre3"></i> <a href="/video" target="_blank"><i class="arrow_i03"></i></a><i class="arrow_i02" id="next3"></i>
+        </div>
+            
+        </div>
+    </div>
+    
+<!--看房导流-->
+    <div class="kfdl">
+        <ul>
+            <li>
+                <img src="/html/images/gflc_call.png">
+                <span>专业房产顾问为您解答</span>
+            </li>
+            <li>
+                <img src="/html/images/gflc_xuq.png">
+                <span>全程沟通，完全了解您的意向</span>
+            </li>
+            <li>
+                <img src="/html/images/gflc_xingc.png">
+                <span>为看房做好准备</span>
+            </li>
+            <li>
+                <img src="/html/images/gflc_look.png">
+                <span>全程陪同看房，专车免费接送</span>
+            </li>
+            <li>
+                <img src="/html/images/gflc_yhui.png" style="width: 108px; height: 90px;">
+                <span>给您专属折扣，达成交易</span>
+            </li>
+        </ul>
+    </div>
+
+
+ <div id="rightBar" style="display:none;height: 100%;width: 38px;background: rgba(0,0,0,0.8);position: fixed;right: 0;top: 0;z-index: 900;"></div>
+    <script type="text/javascript">
+     
+        $(function(argument) {
+             var a = (new Date).getTime();
+             $("#rightBar").load("/html/rightBar/rightBar.html?v="+a,function(){
+                console.log("a");
+                $("#rightBar").css("display","");
+               jQuery('#index_rightBar_qrcode').qrcode({ width: 90, height: 90, text: "http://m"+ location.hostname +"" });
+               jQuery('#index_rightBar_qrcode2').qrcode({ width: 90, height: 90, text: "http://m" + location.hostname.replace("www","") + "/index/bohao/{$index['lpinfo']['id']?"/ids/".$index['lpinfo']['id']:""}" });
+
+                $('.tc_youhui').on('click', function (event) {
+                    event.preventDefault();
+                    $('.yh_shenqing').addClass('yh_visible');
+                    //$(".dialog-addquxiao").hide()
+                  });
+
+              //       var mycans=$("#indexqrcode canvas")[0];    
+              //       var img=convertCanvasToImage(mycans);  
+              //       img.width=90;
+              //       img.height=90;
+              //   $(".waiter-title i").append(img); 
+         
+
+         
+
+
+              //  // Converts canvas to an image
+              // function convertCanvasToImage(canvas) {
+              //   var image = new Image();
+              //   image.src = canvas.toDataURL("image/png");
+              //   return image;
+              // }
+              // // Converts image to canvas; returns new canvas element
+              // function convertImageToCanvas(image) {
+              //   var canvas = document.createElement("canvas");
+              //   canvas.width = image.width;
+              //   canvas.height = image.height;
+              //   canvas.getContext("2d").drawImage(image, 0, 0);
+
+              //   return canvas;
+              // }
+           
+
+
+
+             })
+        })
+  </script> 
+
+
+
+<div class="yh_shenqing"  >
+  <div class="yh_container">
+    <div class="tc_title">定制看房</div>
+    <div class="tc_x" style="font-size: 16px;text-align: left; margin-left: 50px;">
+①告诉我们您的购买需求&nbsp;&nbsp;&nbsp;&nbsp; 
+③启用免费专车接送您全程看房<br>
+②时间地点您来决定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+④买房不明白？我们帮您避雷 </div>
+    <div class="tc_center">
+      <div class="tc_center_left">
+        <input type="text" id="lp_Name" placeholder="请输入您的姓名">
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码">
+        <input type="hidden" id="T_Title" placeholder="首页定制">
+        <input type="hidden" id="T_Message" placeholder="首页定制">
+        <input type="hidden" id="T_LpID" placeholder="">
+        <input type="hidden" id="T_TgID" placeholder="">
+
+        <a href="javascript:void(0);" class="btn">立即提交</a> </div>
+      <div class="tc_center_right"> <span> </span>
+        <div class="tc_lptu"><img src="/html/img/haij.jpg"></div>
+      </div>
+    </div>
+    <a href="#0" class="yh_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>

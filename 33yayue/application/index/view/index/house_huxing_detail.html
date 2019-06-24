@@ -1,0 +1,459 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+<!--户型-->
+<link href="__CDN__/assets/css/index/baguettebox.min.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/baguettebox.min.js?v={$site.version}"></script> 
+
+
+<style type="text/css">
+  /*户型*/
+.con{overflow:hidden; margin:0px auto; width:auto; height:100%; padding: 20px 20px 0 20px;}
+#carousel_container{position:relative; height:60px; overflow:hidden;}
+#carousel_inner{width:1097px; height:60px; overflow: hidden; position:absolute;left:35px; top:0;box-sizing:border-box;-moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+#left_scroll{background: url(/assets/img/left1_03.jpg) no-repeat 8px center;height: 56px;width: 25px;position: absolute;top: 0;left: 0;background-position-x:1px;cursor: pointer;}
+#right_scroll{background: url(/assets/img/right1_03.jpg) no-repeat 8px center;height: 56px;width: 25px;position: absolute;top: 0;right: 0;background-position-x:-1px;cursor: pointer;}
+#carousel_ul{width:9999px; height:60px; position:relative;}
+#carousel_ul li{float: left; position: relative; display: inline; width: 103px;height: 36px; overflow: hidden;text-align:center;border: 1px solid #e5e5e5;margin-right: 15px;padding: 11px 0;}
+.db {display: block;}
+.zydp{overflow: auto;width: 100%}
+#carousel_ul li:hover a{text-decoration: none;}
+.on p {width: 103px;text-align: center;font-size: 12px;color: #ff4a00;overflow: hidden; }
+#carousel_ul li:hover ,#carousel_ul .on{cursor: pointer;width: 105px;color: #ff4a00;padding: 11px 0; border: 1px solid #ff4a00;}
+
+.hx_xqq{margin: 0 auto;margin-top: 30px;width: 1160px;border-top: 1px solid #e5e5e5;padding:30px 0;}
+.hx_xqq_tu{width: 747px; height: 578px; float: left;position: relative;overflow: hidden;}
+.hx_xqq_tu a img{max-width: 100%;max-height: 100%;margin: auto; position: absolute;  top: 0;left: 0;bottom: 0;right: 0; }
+.ckyt{position: absolute;right: 0;bottom: 0;background: rgba(0,0,0,.5);font-size: 16px;color:#fff;text-align: center;width: 114px;height: 36px;line-height: 36px;border-top-left-radius: 5px;}
+.hx_xqq_conter{float: right; width: 387px;height: 578px;}
+.hx_xqq_conter h1{font-size: 24px;font-weight: bold;padding: 15px 0;margin-bottom: 2px;}
+.hx_xqq_conter h1 i{    display: inline-block;font-size: 14px;font-weight: normal;background: #ececec;color: #ff3333;border-radius: 3px;padding: 1px 8px;margin-left: 15px;}
+.jianzhu{font-size: 16px;margin-bottom: 19px;color: #ff4a00}
+.jianzhu a{padding: 3px 5px;margin-left: 30px;font-size: 14px;display: inline-block;border-radius: 5px;color: #84a5c7;}
+.jianzhu a img{width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
+.hx_tes{ border-bottom: 1px solid #e1e1e1;padding-bottom: 10px;padding-top: 6px;margin-bottom: 20px;}
+.hx_tes span{font-size: 13px;color: #849aad;background: #f1f4f6;border-radius: 3px;margin-right: 10px;padding: 4px 10px;display: inline-block; margin-bottom: 9px;}
+.hx_jiexi{font-size: 16px;width: 387px;line-height: 30px;overflow-y: auto; /*display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 5;overflow: hidden;*/margin-bottom: 10px;height: 145px;}
+.hx_jiexi em{color:#849aad }
+
+
+/*浮动占位*/
+.clearfix:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+}
+</style>
+ <!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+
+<!--正文-->
+  <div class="w1200">
+      {include file='common/head_house' /}
+  
+  <!--正文-->
+
+<div class="find_tab">
+    
+      <!-- 内容 -->
+          <div style="background: #fff">
+              <div class="con">
+                  <div id="carousel_container">
+                      <div id="left_scroll"></div>
+                      <div id="carousel_inner">
+                          <ul id="carousel_ul" style="width: 1445px;  ">
+                              
+                               {volist name="$index['rows']" id="vo"}
+                                   <li class="" data-id="{$vo['id']}">
+                                      <a href="javascript:void(0);" class="db">
+                                          <p class="f12">{$vo['KP_Hx']}<br>建面 约{$vo['KP_Area']}</p>
+                                      </a>
+                                  </li>  
+                                {/volist}
+                               
+                           </ul>
+                      </div>
+                     
+                     <div id="right_scroll"></div>
+                  </div>
+              </div>
+            {volist name="$index['rows']" id="vo"}  
+            
+             
+
+
+              <div class="hx_xqq clearfix" data-id="{$vo['id']}" style="display: none">
+                <div class="hx_xqq_tu">
+                  <a href="javascript:void(0);">
+                    <b></b>
+                    <img srcdata="{$vo.KP_PicUrl}" src="{$vo.KP_PicUrl}" datacaption="{$vo.KP_Hx}"> 
+                  <div class="ckyt">查看原图</div>
+                  </a>
+                </div>
+                <div class="hx_xqq_conter">
+                  <h1>{$vo['KP_Hx']}<i>{$vo['KP_TypeName']}</i></h1>
+                  <div class="jianzhu">建筑面积约：{$vo['KP_Area']}<a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"><img src="/assets/img/w.png">了解户型报价</a></div>
+                  <div class="hx_tes">
+                     {volist name=":explode(',',$vo.KP_HxTs)"   id="co"    }  
+                            {if condition="$co<>''"}     <span>{$co}</span>          {/if}
+                      {/volist}  
+                  </div>
+                  <div class="hx_jiexi"><em>解析：</em> {$vo['KP_Content']} </div>
+                  
+                  <div class="dt_dingy" style="width: 387px;margin-right: 0;height: 200px;border:1px solid #e5e5e5;">
+                    <h3 style="background: -webkit-linear-gradient(left, #598cf1 , #F7E008);background: -o-linear-gradient(right, #598cf1 , #F7E008);background: -moz-linear-gradient(right, #598cf1 , #F7E008);background: linear-gradient(to right, #598cf1 , #F7E008);">预约看房</h3>
+                    <div class="dt_input dt_inputhxdetail{$vo['id']}">
+                      <input type="text" id="SendPhone" placeholder="请输入手机号码">
+                        <input type="hidden" id="Send_Title" value="户型预约看房" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-{$vo['KP_Hx']}" >
+                
+                      <a href="javascript:;" onclick="SendToPhone_Submitdivname('dt_inputhxdetail{$vo['id']}')" style="border-radius: 0;margin-left: -17px;width: 260px;height: 40px;line-height: 40px">立即预约</a> </div>
+                  </div>
+                </div>
+                
+              </div>
+            {/volist}
+          </div>
+            
+         
+</div>
+    </div>
+  
+    </div><!--w1200 end-->
+
+<script type="text/javascript">   
+var width = $('#carousel_ul').children('li').length;
+$('#carousel_ul').css('width',width*120+5);
+//右滑相册
+var index = 1;
+var num = 0;
+if (width<9){
+  $('#right_scroll').css("display","none"); 
+  $('#left_scroll').css("display","none"); 
+}else{
+    $('#right_scroll').css("display",""); 
+  $('#left_scroll').css("display",""); 
+}
+$('#right_scroll').click(function(){
+  if(index >= width-8){
+    // layer.alert('已经是最后一张了，试试往前滑吧！！', {icon: 6});
+  }else{
+    num = -120*index;
+    $("#carousel_ul").animate({marginLeft: num}, "slow");
+    index++;
+  }
+});
+//左滑相册
+$('#left_scroll').click(function(){
+  if(index <= 1){
+   // layer.alert('不能再往前了..', {icon: 5});
+  }else{
+    num = parseInt(num)+120;
+    $("#carousel_ul").animate({marginLeft: num}, "slow");
+    index--;
+  }
+});
+
+
+$('#carousel_ul li').click(function(argument) { 
+  var index = $(this).index(); 
+  $(".hx_xqq").css("display","none");
+  $(".hx_xqq").eq(index).css("display","");
+  
+  $("#carousel_ul li").attr("class","");
+  $(this).attr("class","on")
+})
+$("[data-id='{$index['selectid']}']").css("display","");
+// $("[data-id='{$index['selectid']}']").attr("class","on");
+
+//滚动条显示当前户型
+$("#carousel_ul li").attr("class","");
+$("#carousel_ul [data-id='{$index['selectid']}']").attr("class","on")
+
+ 
+
+</script>
+
+<!-- //遮罩 -->
+ 
+<!-- //图片 -->
+<style type="text/css">
+#fs-loader,#fs-prev,#fs-next,#fs-close{background-color:black;color:white;font-weight:bold;cursor:pointer;line-height:1em;}
+#fs-close{top:1em;right:1em;padding:35px !important;font-size:32px !important;background-color:rgba(0,0,0,0.5);}
+#fs-prev{left:1em;}#fs-next{right:1em;}
+#fs-prev:hover,#fs-next:hover,#fs-close:hover{color:#000;background-color: rgba(255,255,255,0.3);}
+ 
+#fs-caption{position: absolute;bottom:30px;text-align:center;width:100%;left:0;line-height:1em;display:none; font-size:22px !important;}
+#fs-caption span{ padding:5px 15px;background-color:#FFF; font-size:22px; font-family:'Microsoft YaHei',Arial, sans-serif;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px; }
+#fs-loader,#fs-prev,#fs-next,#fs-close{padding:10px;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px; }
+#fs-prev,#fs-next{z-index: 92; position: absolute;padding:60px 35px;top:50%;margin-top:-55px; font-size:30px !important;}
+#fs-prev .icon11{clear:both;position:absolute;left:20px;top:50%;margin-top:-20px;width:26px;height:40px;background:url(/assets/img/index/Prev.png) no-repeat center center;}
+#fs-next .icon12{clear:both;position:absolute;left:23px;top:50%;margin-top:-20px;width:26px;height:40px;background:url(/assets/img/index/Next.png) no-repeat center center;}
+#fs-close .icon13{clear:both;position:absolute;right:23px;top:0%;margin-top:20px;width:26px;height:26px;background:url(/assets/img/index/Close.png) no-repeat center center;} 
+
+</style>
+
+ 
+  
+<script type="text/javascript">
+  $(function(argument) {
+     $(".hx_xqq_tu").click(function(argument) {
+        console.log($(".hx_xqq_tu").index($(this)));  
+       var html_built ='<div class="zhezhao"  style="visibility: visible; position: fixed; z-index: 1100; left: 0px; top: 0px; opacity: 0.8; width: 100%; height: 100%; background-color: rgb(0, 0, 0); display: block;">' 
+            + '<div class="ui" id="fs-close"   style="z-index: 96;"><ins class="icon13"></ins></div>' 
+            + '<div class="ui" id="fs-prev"    style="z-index: 92;"><ins class="icon11"></ins></div>' 
+            + '<div class="ui" id="fs-next"    style="z-index: 96;"><ins class="icon12"></ins></div>' 
+            + '<div class="ui" id="fs-caption" style="display: block;"><span></span></div></div>' 
+            + '' 
+            + '' ; 
+        $("body").append(html_built);
+       // $("body").append('<div class="zhezhao"  style="visibility: visible; position: fixed; z-index: 1100; left: 0px; top: 0px; opacity: 0.8; width: 100%; height: 100%; background-color: rgb(0, 0, 0); display: block;"> <div class="ui" id="fs-close" onclick="window.close();" style="z-index: 96;"><ins class="icon13"></ins></div><div class="ui" id="fs-prev" onclick="showprev();" style="z-index: 92;"><ins class="icon11"></ins></div><div class="ui" id="fs-next" onclick="shownext();" style="z-index: 96;"><ins class="icon12"></ins></div><div class="ui" id="fs-caption" style="display: block;"><span>样板间</span></div></div>');
+       realSrc= $(this).find("img").attr("srcdata");
+       capTion = $(this).find("img").attr("datacaption");
+
+       currentWidth = $(this).find("img").css("width");
+       currentHeight = $(this).find("img").css("height");
+       currentLeft = $(this).offset().left;
+       currentTop  = $(this).offset().top - $(window).scrollTop();
+       speed = 500 ;
+       $(this).addClass("viewCurrent"); 
+       $("<div id='box'><img/></div>").find("img").attr("src", $(this).find("img").attr("src")).load(function() {  
+                
+                //MaxPercent = 0.8;
+                pw=parseInt($(window).width());
+                ph=parseInt($(window).height());
+                pw =parseInt( pw *10 / this.width ) *0.8
+                ph =parseInt( ph *10 / this.height ) *0.8
+                
+                ZoomPix = pw<ph? pw/10:ph/10 ;
+                realWidth = this.width*ZoomPix ;
+                realHeight = this.height*ZoomPix ;
+
+                // realWidth = this.width*ZoomPix>parseInt($(window).width()*MaxPercent)?parseInt($(window).width()*MaxPercent):this.width*ZoomPix;
+                // realHeight = realWidth * this.height / this.width  ;
+                // if(realHeight>parseInt($(window).height())){
+                //   realHeight = this.height*ZoomPix>parseInt($(window).height()*MaxPercent)?parseInt($(window).height()*MaxPercent):this.height*ZoomPix;
+                //   realWidth = realHeight * this.width  / this.height ; 
+                // }
+
+                      
+                endTop =  ($(window).height() -  realHeight) /2 ;
+                endLeft =  ($(window).width() -  realWidth) /2 ;
+                $("#fs-caption >span").html(capTion);
+                 // console.log(realWidth+ "," +realHeight);
+                 $("body").append('<img class="imgbox" src="'+ realSrc +'" style="border: 1px solid #f1f1f1;border-radius: 10px;cursor:grab; position: fixed; visibility: visible; z-index: 1102; left: '+ currentLeft+'px; top: '+ currentTop +'px; width: '+currentWidth+'; height: '+currentHeight+'; display: block;">');  
+    
+                $('img').last().animate({width:realWidth,height:realHeight,top:endTop,left:endLeft},speed); 
+                // $('img').last().click(function() {
+                //   closeall(speed);
+                // }) ;
+            
+                bind_bigit($('img').last()[0]);
+                bind_movethis($('img').last()) ;
+                
+ 
+ 
+                   
+                
+               
+                
+
+
+
+                $("#fs-close").click(function(){closeall(speed);});
+                $("#fs-next").click(function(){shownext();});
+                $("#fs-prev").click(function(){showprev();});
+
+       }); 
+       function closeall(speed) { 
+                   currentWidth = $(".viewCurrent").find("img").css("width");
+                   currentHeight = $(".viewCurrent").find("img").css("height");
+                   currentLeft = $(".viewCurrent").offset().left;
+                   currentTop  = $(".viewCurrent").offset().top - $(window).scrollTop();
+                   $(".viewCurrent").removeClass("viewCurrent");
+                  $(".imgbox").animate({width:currentWidth,height:currentHeight,top:currentTop,left:currentLeft},speed); 
+                  setTimeout(function(argument) {
+                      $('.zhezhao').last().remove();
+                      $(".imgbox").remove();
+                  },speed); 
+       }
+       function shownext(){ 
+        var current_index = $(".hx_xqq_tu").index($(".viewCurrent")) ;
+        if(current_index<$(".hx_xqq_tu").length){
+            $(".hx_xqq_tu").eq(current_index).removeClass("viewCurrent");
+            $(".hx_xqq_tu").eq(current_index+1).addClass("viewCurrent");
+            capTion = $(".viewCurrent").find("img").attr("datacaption");
+            $("#fs-caption >span").html(capTion); 
+            realSrc = $(".viewCurrent").find("img").attr("srcdata");
+              $("<img/>").attr("src",realSrc).load(function() { 
+                pw=parseInt($(window).width());
+                ph=parseInt($(window).height());
+                pw =parseInt( pw *10 / this.width ) *0.8
+                ph =parseInt( ph *10 / this.height ) *0.8
+                
+                ZoomPix = pw<ph? pw/10:ph/10 ;
+                realWidth = this.width*ZoomPix ;
+                realHeight = this.height*ZoomPix ;
+                // MaxPercent = 0.8;
+                // ZoomPix = 1.2;
+                // realWidth = this.width*ZoomPix>parseInt($(window).width()*MaxPercent)?parseInt($(window).width()*MaxPercent):this.width*ZoomPix;
+                // realHeight = realWidth * this.height / this.width  ;
+                // if(realHeight>parseInt($(window).height())){
+                //   realHeight = this.height*ZoomPix>parseInt($(window).height()*MaxPercent)?parseInt($(window).height()*MaxPercent):this.height*ZoomPix;
+                //   realWidth = realHeight * this.width  / this.height ; 
+                // } 
+                endTop =  ($(window).height() -  realHeight) /2 ;
+                endLeft =  ($(window).width() -  realWidth) /2 ;
+                $(".imgbox").attr("src",realSrc); 
+                $(".imgbox").animate({width:realWidth,height:realHeight,top:endTop,left:endLeft},speed); 
+             });
+
+          }
+         
+       }
+       function showprev(){
+         var current_index = $(".hx_xqq_tu").index($(".viewCurrent")) ;
+         if(current_index>0){
+            $(".hx_xqq_tu").eq(current_index).removeClass("viewCurrent");
+            $(".hx_xqq_tu").eq(current_index-1).addClass("viewCurrent");
+            capTion = $(".viewCurrent").find("img").attr("datacaption");
+            $("#fs-caption >span").html(capTion); 
+            realSrc = $(".viewCurrent").find("img").attr("srcdata");
+           
+              $("<img/>").attr("src",realSrc).load(function() { 
+                  pw=parseInt($(window).width());
+                ph=parseInt($(window).height());
+                pw =parseInt( pw *10 / this.width ) *0.8
+                ph =parseInt( ph *10 / this.height ) *0.8
+                
+                ZoomPix = pw<ph? pw/10:ph/10 ;
+                realWidth = this.width*ZoomPix ;
+                realHeight = this.height*ZoomPix ;  
+                // MaxPercent = 0.8;
+                // ZoomPix = 1.2;
+                // realWidth = this.width*ZoomPix>parseInt($(window).width()*MaxPercent)?parseInt($(window).width()*MaxPercent):this.width*ZoomPix;
+                // realHeight = realWidth * this.height / this.width  ;
+                // if(realHeight>parseInt($(window).height())){
+                //   realHeight = this.height*ZoomPix>parseInt($(window).height()*MaxPercent)?parseInt($(window).height()*MaxPercent):this.height*ZoomPix;
+                //   realWidth = realHeight * this.width  / this.height ; 
+                // } 
+                endTop =  ($(window).height() -  realHeight) /2 ;
+                endLeft =  ($(window).width() -  realWidth) /2 ;
+                $(".imgbox").attr("src",realSrc); 
+                $(".imgbox").animate({width:realWidth,height:realHeight,top:endTop,left:endLeft},speed); 
+             });
+          }
+       }
+    });
+  })
+ 
+
+
+
+function bind_bigit(canvas) {
+    disabledMouseWheel();
+     if (canvas.addEventListener) { 
+      // IE9, Chrome, Safari, Opera
+      canvas.addEventListener("mousewheel", scaleCanvas, false);
+      // Firefox
+      canvas.addEventListener("DOMMouseScroll", scaleCanvas, false);
+    }else{
+      // IE 6/7/8
+      canvas.attachEvent("onmousewheel", scaleCanvas);
+    }
+}
+function scaleCanvas(event) {
+    
+    var big_small = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail))); 
+    realWidth += 0.2 * realWidth * big_small ;
+    realHeight += 0.2 * realHeight * big_small ;
+    endTop =  ($(window).height() -  realHeight) /2 ;
+    endLeft =  ($(window).width() -  realWidth) /2 ;
+    if(big_small>0){
+      $(".imgbox").css("cursor","zoom-in");  
+    }else{
+      $(".imgbox").css("cursor","zoom-out");  
+    }
+    $(".imgbox").animate({width:realWidth,height:realHeight,top:endTop,left:endLeft},20); 
+    setTimeout(function(argument) {
+       $(".imgbox").css("cursor","grab");    
+    }   ,200   );
+}
+function disabledMouseWheel() {
+  if (document.addEventListener) {
+    document.addEventListener('DOMMouseScroll', scrollFunc, false);
+  }//W3C
+  window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome
+}
+function scrollFunc(evt) {
+  // evt = evt || window.event;
+  //   if(evt.preventDefault) {
+  //   // Firefox
+  //     evt.preventDefault();
+  //     evt.stopPropagation();
+  //   } else {
+  //     // IE
+  //     evt.cancelBubble=true;
+  //     evt.returnValue = false;
+  // }
+  return true;
+}
+
+
+
+ 
+function bind_movethis(evt){ 
+ 
+  console.log($(".imgbox")  );
+  var a =  $(".imgbox") ;
+  a.css("width","100px");
+
+ // $(".imgbox").animate({width:10,height:10,top:10,left:10},1000);
+  $(".imgbox").mousedown(function(evt) {
+        evt.preventDefault();
+      console.log("down");
+      var movex; var movey; 
+      var e = event || window.event;
+            movex=e.clientX;
+            movey=e.clientY ;    
+
+     
+       $(".imgbox").attr("mov","true");
+       $(".imgbox").attr("x",e.clientX);
+       $(".imgbox").attr("y",e.clientY);
+       $(".imgbox").attr("t",parseInt($(".imgbox").css("top")));
+       $(".imgbox").attr("l",parseInt($(".imgbox").css("left")));
+      
+  });
+   $(".imgbox").mousemove(function(evt) { 
+        if($(".imgbox").attr("mov")=="true"){
+            // evt.preventDefault();
+            //console.log($(".imgbox").attr("x"));
+            var startX =  $(".imgbox").attr("x") ;
+            var startY =  $(".imgbox").attr("y") ;
+            var e = event || window.event;
+            var pyl = e.clientX -startX ;
+            var pyt = e.clientY -startY ;
+            
+            
+              $(this).css("top",   (parseInt($(".imgbox").attr("t")) + pyt) + "px");
+              $(this).css("left",  (parseInt($(".imgbox").attr("l")) + pyl) + "px");
+        }
+      });
+      
+      $(".imgbox").mouseup(function(evt) {  
+          $(".imgbox").attr("mov","false"); 
+      
+      });
+}
+ 
+ 
+ 
+ 
+ 
+</script>
+
+
+  
+ 

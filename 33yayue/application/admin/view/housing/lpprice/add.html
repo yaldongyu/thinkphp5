@@ -1,0 +1,50 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_jgtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_JgTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[KP_JgTime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_qiprice')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Qiprice" class="form-control" name="row[KP_Qiprice]" type="number">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_juprice')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Juprice" class="form-control" name="row[KP_Juprice]" type="number">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_validitystart')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_ValidityStart" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[KP_ValidityStart]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">至:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_ValidityEnd" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[KP_ValidityEnd]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_jgms')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Jgms" class="form-control" name="row[KP_Jgms]" type="text" >
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  disabled="" class="form-control" type="text" value="{$admin.nickname}({:date('Y-m-d H:i:s')})">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

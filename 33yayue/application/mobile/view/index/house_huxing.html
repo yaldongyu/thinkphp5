@@ -1,0 +1,129 @@
+<link href="/assets/css/mobile/lightgallery.min.css" rel="stylesheet">
+ <script src="/assets/js/frontend/mobile/lightgallery.min.js"></script>
+<div class="content">
+                <!--楼盘详情页头：开始-->
+               <div class="pageHead">
+			        <div class="phPic"> 
+			          <span><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><img src="{$index["LpInfo"]["KP_Logo"]}" alt="{$index["LpInfo"]["KP_LpName"]}" /></a>
+			          </span> 
+			        </div>
+
+			        <div class="phData">  
+			         <span>  {$index["LpInfo"]["KP_Juprice"]==0 
+            ? ($index["LpInfo"]["KP_TaoJia"]==0 ? "<b>待定</b>" : "总价：<b>".$index["LpInfo"]["KP_TaoJia"]."</b>万元/套") 
+            : "均价：<b>".$index["LpInfo"]["KP_Juprice"]."</b>元/m²"}&nbsp;&nbsp; <em class="t0">{$index["LpInfo"]["KP_Xszt"]==0?"在售":($index["LpInfo"]["KP_Xszt"]==1?"待售":"售罄")}</em></span>   <span><ins class="icon-37"></ins>{$index["LpInfo"]["KP_Wylx"]} </span> <span><ins class="icon-24"></ins> {$index["LpInfo"]["KP_Lpdz"]} </span> 
+			        </div>
+			        <div class="phSide"> 
+			          <span> </span> 
+			        </div>
+			    </div>
+			      <!--楼盘详情统计：开始-->
+		      	<div class="pageStat"> <span><a href="javascript:void(0)" id="tjBtn1"><ins class="icon-63"></ins> 降价通知</a></span> <span><a href="javascript:void(0);"  id="tjBtn2"><ins class="icon-60"></ins> 认筹通知</a></span> 
+		         
+		 		</div>
+
+                <!--楼盘详情统计：结束-->
+                <!--楼盘详情页头：结束-->
+                <!--相册导航：开始-->  
+                <div class="photoNav">
+                	{volist name="$index['Types']" id="vo"}
+                        <span class="menuItem  ">
+                        	<a href="/house/lphx/ids/{$index["LpInfo"]["id"]}/typeid/{$vo.KP_Type}">{$vo.name}</a>
+                        </span>
+                    {/volist}
+                        
+                    
+                </div>   
+                <!--相册导航：结束-->
+                <div class="pagePanel">
+                    <div class="photoBox">
+                       <h3 class="mt">{$index['Type_name']}   </h3>
+                        
+                     
+                       
+                     
+                        <!--------------图片列表：开始-------------->
+                        <ul id="pg">
+                              {volist name="$index['rows']" id="vo"}
+                             
+                              <li class=" " data-responsive="{$vo.KP_PicUrl}" data-src="{:str_replace('Min','Max',$vo.KP_PicUrl)}" data-sub-html="<span><em>{$vo.KP_Hxbh} {$vo.KP_Hx} {$vo.KP_Area}</em>" data-pinterest-text="{$vo.KP_Hxbh} {$vo.KP_Hx} {$vo.KP_Area}" data-tweet-text=" ">
+                                <a href="" style="text-align: center;">
+                                    <img   src="{$vo.KP_PicUrl}"  />
+                                     <span><em> {$vo.KP_Hx} {$vo.KP_Area}  </em> </span>  
+                                </a>
+                              </li>
+                             {/volist} 
+                            
+                        </ul>
+                       
+                    <!--------------图片列表：结束-------------->
+                    </div>
+                    <!--主页导航：开始-->
+                    
+                   
+                </div>
+               
+</div>
+
+ <!-- <div id="footer" class="pageMemu">
+    <ul>
+      <li style="width:20%"><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}"><ins class="icon-9"></ins>户&nbsp;型&nbsp;图</a></li>
+      <li style="width:20%"><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}"><ins class="icon-17"></ins>楼盘相册</a></li>
+      <li style="width:30%"><a href="tel:{$index["LpInfo"]["KP_Tel"]}" class="pageTel"><ins class="icon-18"></ins>免费通话</a></li>
+      <li style="width:30%"><a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="pageWeixin"><ins class="icon-53"></ins>在线客服</a></li>
+    </ul>
+  </div> -->
+  <div id="fade" class="black_overlay"></div>
+
+  <div id="fade" class="black_overlay"></div>
+		<div class="tjBox sFix" id="tjBox" style="display: none;">
+            <div class="tjForm">
+            <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+            <h3>降价通知</h3>
+            <em>将楼盘最新数据信息以及最新降价、优惠活动信息第一时间通知您！</em>
+            <span><ins class="icon-43"></ins><input name="Bm_Phone2" id="Bm_Phone2" required="" type="text" class="itext" placeholder="请填写联系方式"></span>
+            <input type="hidden" name="Bm_Name2" id="Bm_Name2" value="游客">
+            <input type="hidden" value="{$index["LpInfo"]["KP_LpName"]}-降价通知[Moblie]" id="Bm_Message2" name="Bm_Message2">
+            <input type="hidden" value="{$index["LpInfo"]["id"]}" id="Bm_HouseID2" name="Bm_HouseID2">
+            <input type="hidden" value="" id="Bm_Url2" name="Bm_Url2">
+            <input type="hidden" value="{$index["LpInfo"]["KP_LpName"]}-降价通知" id="Bm_Title2" name="Bm_Title2">
+            <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation('huxingjiangjia',2);return false;">提交</a></p>
+            </div>
+            <div class="fixMask"></div>
+        </div>
+
+
+
+
+
+  <script type="text/javascript">
+    setTimeout(function function_name(argument) {
+    		//选中状态一方一厅
+    		$(".menuItem a:contains('"+$(".mt")[0].innerText+"')").parent().attr("class","menuItem active");
+    		//去除尾部多余的菜单，只保留户型相册底部 bot_menu  footer是联系我们的信息
+		    $($(".bot_menu")[1]).css("display","none") ;
+		    $(".footer").css("display","none") ;
+  	},0);
+  	//图片查看插件
+  	// $(document).ready(function () {
+       
+             
+           
+   //      });
+   lightGallery(document.getElementById('pg')); 
+   // $('.photoBox').on('click','li',function(){
+   //           console.log("a");
+           
+   //          }) 
+
+ 
+  </script>
+
+   <script type="text/javascript">
+   $(function(argument) {
+     $("#fixed").css("display","none");
+   })
+ </script>
+
+
+      

@@ -1,0 +1,79 @@
+ 
+  	<style type="text/css">
+ 
+  		.clear{ clear: both} 
+        /*初始化e---------------*/
+
+        .clearfix:after{content:"";display:block;clear:both;}
+        .clearfix{zoom:1;}
+        .rightBar{height: 100%;width: 38px;background:rgba(0,0,0,0.8);position: fixed;right:0;top:0;}
+        .wuyou-waiter{position: fixed; right: 0px; top:25%; margin-top: -90px; width: 38px;  z-index: 999;}
+        .waiter-ul li{position: relative; height:80px;margin-bottom: 20px;}
+        .waiter-ul li>a{ position: absolute; left: 0; top: 0; z-index: 2; color: #fff; display: block; width: 34px; padding:5px 2px 10px 2px; text-align: center; -webkit-transition:all 0.6s;-ms-transition:all 0.6s;-moz-transition:all 0.6s; text-decoration: none; font-size: 14px;line-height: 15px;}
+        .waiter-title{position: absolute; left: 0px; bottom: 0; color: #fff; width: 38px; height: 30px;padding:5px 0 5px 0; line-height: 18px; text-align: center;-webkit-transition:all 0.6s;-ms-transition:all 0.6s;-moz-transition:all 0.6s; z-index: 199999; opacity: 0;}
+        .waiter-ul li:hover .waiter-title{left: -130px; opacity: 1;}
+        .waiter-ul li>a span img{padding: 5px; width:22px;}
+        .waiter-ul li a:hover{background:#6da9de;}
+        .waiter-ul li>a p{font-size: 12px;}
+        .waiter-ul li.wuyou-contact .waiter-title,.waiter-ul li.wuyou-contact a:hover{background:#6da9de; }
+        .waiter-ul li.wuyou-contact .waiter-title{height: 90px;left: -110px;width:90px;padding: 10px;background: #f9f9f9;}
+        .waiter-ul li.wuyou-contact .waiter-title img{width: 90px;}
+        .chpointer{cursor: pointer;}
+        .to-top { display:none;padding: 0 20px; color: #fff; background-color: #f50;margin-top: 100px;}
+        .waiter-ul li a.to-top:hover{background: #f50; }
+        .chPhone{position: fixed;top:35%;right:48px;width:114px;height: 96px;background: #fff;color:#fff;background: url(/html/rightBar/images/ccbg.png) no-repeat 0 0 ;padding-top: 30px;border-radius: 5px;}
+         .chPhone span{background: #ff5454;padding: 5px 8px;display: block;}
+        .chPhone span p{color：#fff;text-align: center;line-height: 26px;font-size: 14px; }
+        .chPhone canvas{border:5px solid #fff;width: 88px;}
+  	</style>
+   
+	            		     
+				<div class="wuyou-waiter">
+					<ul class="waiter-ul">
+
+                        <li class="wuyou-contact">
+                        	<a class="" href="" target="_blank"><span><img src="/html/rightBar/images/icon/chsm.gif"></span><p>扫码看房</p></a>
+                        	<div class="waiter-title"><i  id="index_rightBar_qrcode">  </i></div>
+                        </li>
+ 
+					    <li  ><a href="javascript:;" class="chpointer tc_youhui"   ><span><img src="/html/rightBar/images/icon/chdz.png"></span><p>定制看房</p></a></li>
+					    
+
+						 <li class="wuyou-contact">
+                          <a class="" href="" target="_blank"><span><img src="/html/rightBar/images/icon/tel.png"></span><p>扫码拨号</p></a>
+                          <div class="waiter-title" style="width: 0px;height: 0px">
+                              <div class="chPhone">
+                                <span><i id="index_rightBar_qrcode2">  </i><p>让您购房更简单</p></span>
+                                
+                              </div>
+                            
+                          </div>
+                        </li>
+
+						<li><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');" ><span><img src="/html/rightBar/images/icon/chzx.png"></span><p>在线咨询</p></a></li>
+
+            <li><a href="javascript:;"  class="chpointer"><span><img src="/html/rightBar/images/icon/chyj.png"></span><p>意见反馈</p></a></li>
+
+						<li><a class="to-top"><span><img src="/html/rightBar/images/icon/chBtop.png"></span><p>返回顶部</p></a></li>
+          
+					</ul>
+				</div>
+    
+
+
+         <!-- 扫码拨号 s  -->
+         
+         <!-- 扫码拨号 e  -->
+
+
+       <!-- 悬浮框 e -->
+
+       <!-- <script src="/html/rightBar/jquery-1.11.1.min.js"></script>		 -->
+       <script src="/html/rightBar/js/jquery.toTop.js"></script>
+       <script>
+       $(function() {
+	       $('.to-top').toTop();
+       });
+       </script>
+
+ 

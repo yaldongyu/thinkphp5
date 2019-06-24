@@ -1,0 +1,64 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%;}
+.ad1{ background: url(../img/a01.jpg) no-repeat center center; width: 100%; height: 735px;}
+.ad2{ background: url(../img/a02.jpg) no-repeat center center; width: 100%; height: 759px;}
+.ad3{ background: url(../img/a03.jpg) no-repeat center center; width: 100%; height: 862px;}
+.ad4{ background: url(../img/a04.jpg) no-repeat center center; width: 100%; height: 693px;}
+.ad5{ background: url(../img/a05.jpg) no-repeat center center; width: 100%; height: 832px;}
+.ad6{ background: url(../img/a06.jpg) no-repeat center center; width: 100%; height: 632px;}
+.ad7{ background: url(../img/a07.jpg) no-repeat center center; width: 100%; height: 657px;}
+.ad8{ background: url(../img/a08.jpg) no-repeat center center; width: 100%; height: 634px;}
+.ad9{ background: url(../img/a09.jpg) no-repeat center center; width: 100%; height: 673px;}
+.ad10{ background: url(../img/a10.jpg) no-repeat center center; width: 100%; height: 556px;}
+.ad11{ background: url(../img/a11.jpg) no-repeat center center; width: 100%; height: 543px;} 
+.ad12{ background: url(../img/a12.jpg) no-repeat center center; width: 100%; height: 486px;} 
+.ad13{ background: url(../img/a13.jpg) no-repeat center center; width: 100%; height: 772px; position: relative;} 
+.ad14{ background: url(../img/a14.jpg) no-repeat center center; width: 100%; height: 500px;} 
+.ad15{ background: url(../img/a15.jpg) no-repeat center center; width: 100%; height: 596px;} 
+.ad16{ background: url(../img/a16.jpg) no-repeat center center; width: 100%; height: 764px;} 
+.ad17{ background: url(../img/a17.jpg) no-repeat center center; width: 100%; height: 664px; position: relative;}
+.ad18{ position: absolute; top: 0; left:50%; margin-left: -180px;}
+.ad18 a{ color: #d70863; font-size: 36px;}
+.ad13 a{ position: absolute; bottom: 0; left: 50%; margin-left: 340px; color: #fff; font-size: 18px;}
+
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

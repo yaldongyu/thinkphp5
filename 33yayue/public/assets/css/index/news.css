@@ -1,0 +1,144 @@
+@charset "utf-8";
+/* CSS Document */
+/*热点头条*/
+.news_hot{width: 1200px; margin: 0 auto;height: 469px; background: #fff;}
+.news_hot_k{padding: 15px;}
+.news_hot_k h3{font-size: 24px;display: block;margin-bottom: 25px;}
+.news_hot_k h3 span{color:#ff4a00; }
+.news_hot_left{float: left; position: relative;width: 540px; height: 360px;overflow: hidden;}
+.news_hot_left img{width: 540px; height: 360px;transition: all 0.7s }
+.news_hot_left img:hover{transform: scale(1.2)}
+.news_hot_left .hot_img_zhe{position: absolute; bottom: 0;width: 540px; height: 40px; 
+	background: #000;filter:alpha(opacity=70);   -moz-opacity:0.7;   -khtml-opacity: 0.7;   opacity: 0.7;
+	text-align: center;line-height: 40px;color: #fff;font-size: 20px;}
+.news_hot_right{float: right;width: 600px;height: 360px;}
+.news_hot_right ul li{width: 100%; height: 116px;margin-bottom: 6px;}
+.news_hot_right ul li img{width: 170px;height: 114px; float: left;}
+.news_hot_right ul li .right_list{float: right; width: 403px; height: 114px;}
+.right_list h2{display: block; width: 403px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;margin-bottom: 10px;}
+.right_list span{color:#999; font-size: 14px;line-height: 25px; overflow: hidden;display: -webkit-box; -webkit-box-orient: vertical;-webkit-line-clamp: 2;height: 49px;}
+
+/*资讯导航条*/
+.news_nav{width: 1200px; height: 60px;margin: 0 auto; background: #fff;margin-top: 25px;line-height: 60px;}
+.news_nav ul li{float: left; font-size: 16px;margin-right: 28px;}
+.news_nav ul li:last-child{margin-right: 0;}
+.news_nav ul li a{padding: 0px 20px;}
+.news_nav ul li a:hover{background: #ff4a00; color: #fff;padding: 0px 20px;display: inline-block;}
+.news_nav ul .on{background: #ff4a00; color: #fff;}
+
+/*资讯列表*/
+.news_center{width: 1200px; margin: 0 auto;}
+.news_list_main{width: 880px; float: left;margin: 0 auto;margin-top: 30px;}
+.news_list_main ul li{height:210px; background:#fff;margin-bottom: 30px; transition: all 0.6s;}
+.news_list_main ul li:hover{box-shadow:5px 2px 10px 2px rgba(0,0,0,0.2); transform:translate(0px,-5px);}
+.news_list_main_k{padding: 20px; }
+.news_tu{ float:left;width:260px;height:173px;}
+.news_tu a img{width:260px ; height:173px;}
+.news_txt{float:right;width:560px;height:173px;position: relative;}
+.news_txt a{font-size: 18px;color: #333;font-weight: 600;line-height: 25px;}
+.news_txt a:hover{color: #ff4a00}
+.news_txt a span{color:#3387ef;padding-right:10px;}
+.news_txt p{font-size: 14px;color: #666;margin-top: 15px;line-height: 25px;overflow: hidden;display: -webkit-box; -webkit-box-orient: vertical;-webkit-line-clamp: 3;}
+.news_time{ position:absolute;bottom:0;left:0;}
+.news_time span{display: inline-block;vertical-align: middle;}
+.news_time i{background: url(/html/images/time.png) center no-repeat; width:15px; height:15px;display: inline-block;margin-right:5px;vertical-align:middle;}
+
+/*右侧热闻*/
+.right_news{width: 280px;float: right;margin-top: 30px;}
+.rw-tj{background: #fff;width: 260px;padding: 10px;margin-bottom: 20px;}
+.right_news h3{font-size: 18px;display: inline-block; height: 35px; line-height: 35px; border-bottom: 2px solid #ff4a00; color: #333; margin-bottom:20px;}
+.right_news ul li{width: 260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;margin-bottom: 20px;}
+.right_news ul i{width: 16px; height: 16px; text-align: center;line-height: 16px; margin-right: 10px; border-radius: 50%;display: inline-block; background: #b8b8b8;color: #fff;}
+.right_news ul .one{background: #ff0000}
+.right_news ul .two{background: #ff7800}
+.right_news ul .three{background: #ffc600}
+
+.dtRight_center p span img{display: inline-block;text-align: center;}
+.dtRight_center p img {text-align: -webkit-center;    display: unset;}
+
+/*热门成交数据*/
+.chengjiao{background: #fff;width: 260px;height: 320px; padding: 10px;margin-bottom: 10px;}
+.chengjiao .news_shuju{width:260px;height: 30px; line-height: 30px; margin-bottom: 20px;border-bottom: 1px solid #eaeaea;}
+.chengjiao .news_shuju p{display: inline-block;width: 84px;text-align:center;font-size: 14px;}
+.shuju_center ul li{width:260px;}
+.shuju_center ul li a{width:86px;display: inline-block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;text-align: center;}
+.shuju_center ul li p{display:inline-block; width:83px;text-align:center; color:#999;}
+.shuju_center ul li p:nth-child(2){color:#f23742}
+
+/*提示框弹层*/
+.Tip_Info{ position:fixed; left:50%; top:50%; width:240px; height:80px; margin-left:-120px; margin-top:-40px; font-size:16px; text-align:center; line-height:80px; background:rgba(0,0,0,.6); color:#ffffff; z-index:9; display:none;}
+
+
+
+/***************楼盘动态详情******************/
+.w1200{width: 1200px; margin: 0 auto;margin-top: 30px;}
+.dongtai_left{float: left; width: 280px;height: 690px;border: 1px solid #eaeaea;background: url(/html/images/bmk_bg.png) bottom no-repeat;}
+.dtLeft_head{width: 100%;height: 70px; text-align: center; line-height: 70px;position: relative;background: #ff4a00;color: #fff;font-size: 20px;}
+.dtLeft_head i{position: absolute;background: url(/html/images/dao.png)no-repeat; bottom: -9px;left: 127px;width: 29px; height: 10px;display: block;}
+.dtLeft_xuan ul{width: 120px; margin: 0 auto;margin-top: 20px;}
+.dtLeft_xuan ul li{width: 120px;height: 50px;border-bottom: 1px solid #eaeaea;line-height: 50px; text-align: center;}
+.dtLeft_xuan ul li a{font-size: 20px; color: #666;}
+.dtLeft_xuan ul li a:hover{color: #ff4a00;}
+
+.dt_dingy{width: 280px;height: 250px;margin-top: 20px; float: right;border-radius: 5px;}
+.dt_dingy h3{text-align: left;font-size: 19px;padding-top: 15px;margin-bottom: 20px; padding-left: 15px;font-weight: 500;}
+.dt_dingy h3 span{color: #ff4a00}
+.dt_dingy p{color: #999; margin-bottom: 10px; padding-left: 15px;font-size: 14px;}
+.dt_input{margin-top: 25px;width: 230px;margin: 0 auto;}
+.dt_input input{height: 40px; background: #ededf2;width: 230px;padding-left: 10px;margin-top: 10px;margin-left: -10px;}
+.dt_input a{display: inline-block;margin-top: 20px; margin-left: -10px;width: 242px;height: 40px; color: #fff; text-align: center; font-size: 16px;line-height: 40px;border-radius: 5px;transition: .6s; background: -webkit-linear-gradient(left, #f64a32 , #fe6f37); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #f64a32 , #fe6f37); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #f64a32 , #fe6f37); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #f64a32 , #fe6f37); /* 标准的语法（必须放在最后） */}
+.dt_input a:hover{border-radius: 15px;}
+.dtLeft_tel{margin-top: 20px;font-size: 20px;color: #ff3333;width: 280px; text-align: center;}
+
+.dongtai_right{width: 890px;float:right;}
+.dtRight_title{width: 100%; height: 40px; line-height: 40px;font-size: 22px; color: #333;}
+.dtRight_source{width: 100%; height: 40px;border-bottom: 1px solid #eaeaea;line-height: 40px; font-size: 15px; color: #999; position: relative;}
+.dtRight_source span{display: inline-block; margin-right: 30px;}     
+   
+
+.share{position: absolute; right: 65px; top: 7px;font-size: 20px;}
+.dtRight_center{width: 100%; margin-top: 20px;margin-bottom: 50px;line-height: 30px;color:#333333;}
+.dtRight_foot{width: 100%;font-size: 15px; color: #999;}
+.dtRight_foot p{text-align: center;font-size: 16px;margin-bottom: 10px;}
+.dtRight_foot p img{margin: 0 auto;}
+.dtRight_tishi{width: 100%; margin-top: 30px;background: url(/html/images/tishi.png)no-repeat;background-size: 20px 17px;background-position: 0 5px;line-height: 30px;font-size: 15px; color: #999;}
+/*相关资讯*/
+.about_news{width: 100%; margin-top: 50px;}
+.about_news h3{font-size: 20px; color: #333;}
+.about_news h3 span{color: #ff4a00;}
+.about_news_list{margin-top: 30px;}
+.about_news_list li{width: 100%;height: 40px;line-height: 40px;margin-bottom: 10px;}
+.about_news_list li a{font-size: 14px; color: #333;}
+.about_news_list li a:hover{color: #ff4a00;}
+.about_news_list li a i{width: 5px; height: 5px;border-radius: 50%;background: #ccc;margin-right: 10px;display: inline-block;}
+
+
+/*团购报名*/
+.BaomingAd{ margin-top:30px; height:300px; padding-left:30px; padding-top:100px;background:url(/html/images/kft.jpg)no-repeat;width: 840px; height: 300px;}
+.BaomingAd_Main{ width:350px; height:150px; padding:10px;}
+.BaomingAd_Main input{ width:250px; height:35px; border:1px solid #ddd; margin-left:10px; border-radius:5px; padding-left:5px; background:#d9f6ff;}
+
+.BaomingAd_Main .Phone{ margin-top:15px;}
+.BaomingAd_Main .Btn{ margin-top:15px; padding-left:100px;}
+.BaomingAd_Main .Btn a{ display:block; width:150px; height:35px; line-height:35px; text-align:center; background: #ff4a00; color:#fff; font-size:16px; border-radius:5px;transition: .6s;}
+.BaomingAd_Main .Btn a:hover{border-radius: 15px;}
+
+/*猜你喜欢*/
+.dt_title{margin-top: 50px;margin-bottom: 100px;}
+.dt_title h3{float: left;font-size: 20px;color: #333;font-weight: 700;}
+.dt_title h3 span{color: #ff4a00;}
+.dt_title h3 em{color: #999;font-size: 14px;letter-spacing: 0;}
+.dt_title a{float: right;color: #666;font-size: 14px;}
+.dt_title a:hover{color: #ff4a00;}
+.tu_zhanshi{width: 100%;}
+.tu_zhanshi ul li{width: 276px;height: auto; float: left;position: relative;margin-right: 32px;}
+.tu_zhanshi ul li:last-child{margin-right: 0;}
+.tu_zhanshi ul li img{width: 276px; height: 224px;position: relative;}
+.tu_zhanshi ul li span{position: absolute;height: 30px;line-height: 30px;font-size: 16px; text-align: center; width: 276px; background: rgb(0,0,0,.6);bottom: 0px; color: #fff;}
+.hx_txt{position: relative; font-size: 16px;}
+.hx_txt p{position: absolute;top: 10px;}
+.hx_txt p:last-child{position: absolute;right: 0; color:#999;font-size: 14px;}
+.hx_txt .cn_jia{color: #f23742}

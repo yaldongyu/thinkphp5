@@ -1,0 +1,59 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%;}
+.ad1{ background: url(../img/a01.jpg) no-repeat center center; width: 100%; height: 618px;}
+.ad2{ background: url(../img/a02.jpg) no-repeat center center; width: 100%; height: 472px;}
+.ad3{ background: url(../img/a03.jpg) no-repeat center center; width: 100%; height: 443px;}
+.ad4{ background: url(../img/a04.jpg) no-repeat center center; width: 100%; height: 624px;}
+.ad5{ background: url(../img/a05.jpg) no-repeat center center; width: 100%; height: 443px;}
+.ad6{ background: url(../img/a06.jpg) no-repeat center center; width: 100%; height: 609px;}
+.ad7{ background: url(../img/a07.jpg) no-repeat center center; width: 100%; height: 394px;}
+.ad8{ background: url(../img/a08.jpg) no-repeat center center; width: 100%; height: 530px;}
+.ad9{ background: url(../img/a09.jpg) no-repeat center center; width: 100%; height: 678px;}
+.ad10{ background: url(../img/a10.jpg) no-repeat center center; width: 100%; height: 471px;}
+.ad11{ background: url(../img/a11.jpg) no-repeat center center; width: 100%; height: 557px; position: relative;} 
+.ad12{ background: url(../img/a12.jpg) no-repeat center center; width: 100%; height: 379px; margin-bottom: 80px; position: relative;}
+.ad13{ position: absolute; top: 38px; left:50%; margin-left: -550px;}
+.ad13 a{ color: #a01212; font-size: 46px; margin-bottom: 40px; float: left; width: 700px;}
+.ad13 li{ color: #232323; font-size: 24px; padding-bottom: 5px;}
+
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

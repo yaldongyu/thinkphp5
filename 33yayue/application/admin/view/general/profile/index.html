@@ -1,0 +1,305 @@
+<style>
+    .profile-avatar-container {
+        position: relative;
+        width: 100px;
+        margin: 0 auto;
+    }
+
+    .profile-avatar-container .profile-user-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-avatar-container .profile-avatar-text {
+        display: none;
+    }
+
+    .profile-avatar-container:hover .profile-avatar-text {
+        display: block;
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: #444;
+        opacity: .6;
+        color: #fff;
+        top: 0;
+        left: 0;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    .profile-avatar-container button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+
+    .tab-wrapper {
+  margin: 60px auto;
+  max-width:500px;
+}
+
+.tab-menu li {
+  position:relative;
+  background-color: #fff;
+  color:#bcbcbc;
+  display: inline-block;
+  padding: 15px 20px;
+  opacity: 0.8;
+  cursor:pointer;
+  z-index:0;
+}
+
+.tab-menu li:hover {
+  color:#464646;
+}
+
+.tab-menu li.active {
+  color:#464646;
+  opacity: 1;
+}
+
+.tab-menu li.active:hover {
+  color:#464646;
+}
+
+.tab-content>div {
+  background-color: #fff;
+  box-sizing:border-box;
+  width: 100%;
+  padding: 50px;   
+  min-height:200px;
+}
+
+.line {
+  position:absolute;
+  width: 0;
+  height: 7px;
+  background-color: #18bc9c;
+  top: 0;
+  left: 0;
+}
+</style>
+<div class="row animated fadeInRight">
+    <div class="col-md-4">
+        <div class="tab-wrapper">
+  
+          <ul class="tab-menu">
+            <li class="active" id="tb1">基本资料</li>
+            <li id="tb2">修改密码</li>
+            <li id="tb3">认证邮箱</li>
+            <li id="tb4">认证手机</li>
+          </ul>
+          
+          <div class="tab-content" >
+            <div class="box box-success" id="1">
+                <div class="panel-heading">
+                    基本资料
+                </div>
+                <div class="panel-body"> 
+
+                    <form id="update-form" role="form" data-toggle="validator" method="POST" action="{:url('general.profile/update')}">
+                        <input type="hidden" id="c-avatar" name="row[avatar]" value="{$admin.avatar}"/>
+                        <div class="box-body box-profile">
+
+                            <div class="profile-avatar-container">
+                                <img class="profile-user-img img-responsive img-circle plupload" src="{$admin.avatar|cdnurl}" alt="">
+                                <div class="profile-avatar-text img-circle">{:__('Click to edit')}</div>
+                                <button id="plupload-avatar" class="plupload" data-url="ajax/uploadnosy" data-input-id="c-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button>
+                            </div>
+
+                            <h3 class="profile-username text-center">{$admin.username}</h3>
+
+                            <p class="text-muted text-center">{$admin.email}</p>
+                            <!-- <div class="form-group">
+                                <label class="control-label">{:__('Username')}</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <label type="text" class="control-label" id="username" name="row[username]" value="" >{$admin.username}</label>
+                                </div>
+                            </div> -->
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td width="80" ><label class="control-label">姓名</label></td>
+                                            <td>{$info.nickname}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="80"><label class="control-label">邮箱</label></td>
+                                            <td>{$info.email}                                                  
+                                                {if condition="$info.KP_EmailCk eq '0'"}
+                                                <span style="margin-left: 10px;margin-right: 10px; color:#f5412b;font-size: 10px;">(未认证)</span>
+                                                {else /} 
+                                                <span style="margin-left: 10px;margin-right: 10px; color:#66e018;font-size: 10px;">(已认证)</span>
+                                                {/if}
+                                                
+                                                <a href="javascript:;" class="btn btn-xs btn-checkversion" id="emailid">修改</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="control-label">电话</label></td>
+                                            <td>{$info.KP_Tel} 
+                                                {if condition="$info.KP_PhoneCk eq '0'"}
+                                                <span style="margin-left: 10px;margin-right: 10px; color:#f5412b;font-size: 10px;">(未认证)</span>
+                                                {else /} 
+                                                <span style="margin-left: 10px;margin-right: 10px; color:#66e018;font-size: 10px;">(已认证)</span>
+                                                {/if}    
+                                                <a href="javascript:;" class="btn btn-xs btn-checkversion" id="telid">修改</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="control-label">职务</label></td>
+                                            <td>{$info.zw_text}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="control-label">部门</label></td>
+                                            <td>{$info.Bm_text}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="control-label">注册时间</label></td>
+                                            <td>{:date('Y-m-d H:i:s',$info.createtime)}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="control-label">有效时间</label></td>
+                                            <td>{$info.KP_YxTime}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="control-label">金币</label></td>
+                                            <td>￥{$info.KP_Money}</td>
+                                        </tr>
+                                    </tbody></table>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">{:__('Submit')}</button>
+                                <button type="reset" class="btn btn-default">{:__('Reset')}</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div> 
+            <div class="box box-success" id="2">
+                <div class="panel-heading">
+                    修改密码
+                </div>
+                <div class="panel-body">
+
+                    <form id="pass-form" role="form" data-toggle="validator" method="POST" action="{:url('general.profile/pass')}">
+                        <input type="hidden" id="c-avatar" name="row[avatar]" value="{$admin.avatar}"/>
+                        <div class="box-body box-profile">
+                            <div class="form-group">
+                                <label for="oldpass" class="control-label">原始密码:</label>
+                                <input type="oldpass" class="form-control" id="oldpass" name="row[oldpass]" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="newpass" class="control-label">新密码:</label>
+                                <input type="newpass" class="form-control" id="newpass" name="row[newpass]" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="surepass" class="control-label">确认密码:</label>
+                                <input type="surepass" class="form-control" id="surepass" name="row[surepass]" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">{:__('Submit')}</button>
+                                <button type="reset" class="btn btn-default">{:__('Reset')}</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="box box-success" id="3">
+                <div class="panel-heading">
+                    认证邮箱
+                </div>
+                <div class="panel-body">
+
+                    <form id="email-form" role="form" data-toggle="validator" method="POST" action="{:url('general.profile/email')}">
+                        <input type="hidden" id="c-avatar" name="row[avatar]" value="{$admin.avatar}"/>
+                        <div class="box-body box-profile">
+                            <div class="form-group">
+                                <label for="email" class="control-label">{:__('Email')}:</label>
+                                <input type="text" class="form-control" id="email" name="row[email]" value="{$admin.email}" data-rule="required;email"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="code" class="control-label" style="width: 100px;">验证码:</label>
+                                <div style="box-sizing: border-box;width: 100%;display: inline-flex;">
+                                <input type="text" width="60%" class="form-control" id="code" name="row[code]" data-rule="required;code"/>
+                                <span class="btn-primary" style="width: 40%; color:#fff;font-size: 10px;line-height: 30px;text-align: center;">获取验证码</span>
+                                </div>
+                            </div>
+          
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">{:__('Submit')}</button>
+                                <button type="reset" class="btn btn-default">{:__('Reset')}</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="box box-success" id="4">
+                <div class="panel-heading">
+                    认证手机
+                </div>
+                <div class="panel-body">
+
+                    <form id="phone-form" role="form" data-toggle="validator" method="POST" action="{:url('general.profile/phone')}">
+                        <input type="hidden" id="c-avatar" name="row[avatar]" value="{$admin.avatar}"/>
+                        <div class="box-body box-profile">
+
+                            <div class="form-group">
+                                <label for="KP_Tel" class="control-label">手机号:</label>
+                                <input type="text" class="form-control" id="KP_Tel" name="row[KP_Tel]" value="{$admin.KP_Tel}" data-rule="required;KP_Tel"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="code" class="control-label" style="width: 100px;">验证码:</label>
+                                <div style="box-sizing: border-box;width: 100%;display: inline-flex;">
+                                <input type="text" width="60%" class="form-control" id="code" name="row[code]" value="" />
+                                <span class="btn-primary" style="width: 40%; color:#fff;font-size: 10px;line-height: 30px;text-align: center;">获取验证码</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">{:__('Submit')}</button>
+                                <button type="reset" class="btn btn-default">{:__('Reset')}</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div><!-- //tab-content -->
+          
+        </div>
+
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default panel-intro panel-nav">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#one" data-toggle="tab"><i class="fa fa-list"></i> {:__('Admin log')}</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="one">
+                        <div class="widget-body no-padding">
+                            <div id="toolbar" class="toolbar">
+                                {:build_toolbar('refresh')}
+                            </div>
+                            <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

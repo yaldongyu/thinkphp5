@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+.box{width: 100%;height: 4.5rem;background: url(../images/dingzhi.jpg) no-repeat;background-size: 100% 4.5rem;margin-top: .8rem;}
+.box1{text-align: center;width: 94%;background-color: #FFFFFF;float: left;display: block;margin-left: 3%;margin-top: -1.6rem;border-radius: 10px 10px 0 0;margin-bottom: 1.9rem}
+.box1 h1{margin-top: 5%;font-size: 1.6em;color: #6c98ce;font-weight: normal;}
+.box1 select{margin-top: 5%;text-align: center;border-color: #e6e6e6;width: 80%;height:.7rem;border-radius: 5px;appearance:none; -moz-appearance:none; -webkit-appearance:none;background: url("../images/arrow.png") no-repeat 93% 50%;padding-left: .3rem;font-size: .3rem;}
+.que_btn{height: .8rem;line-height: .8rem;text-align: center;width: 90%;margin: 0 auto;margin-bottom: .4rem;background: #6c98ce;color: #fff;font-size: .35rem;}
+
+/*ui-choose样式*/
+select.ui-choose{display: none;}
+ul.ui-choose { box-sizing: border-box; display: inline-block; border: 1px solid transparent; font: 100 16px/30px; border-right: none; border-bottom: none; font-size: 0.5rem; margin: 0; padding: 0; list-style: none; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%;}
+ul.ui-choose:after { content: ""; display: table; clear: both; }
+ul.ui-choose>li { box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px; float: left; height: 34px; line-height: 32px; margin-left: 4%; margin-bottom: 5%; padding: 0 5px; cursor: pointer; position: relative; z-index: 1; width: 28%; text-align: center; overflow:hidden;font-size: .3rem}
+ul.ui-choose>li:first-child { border-radius: 5px; }
+ul.ui-choose>li:last-child { border-radius: 5px; }
+ul.ui-choose>li:hover { z-index: 4; border-color: #6c98ce; color: #6c98ce; background: #effbff}
+ul.ui-choose>li.selected { z-index: 3; border-color: #6c98ce; color: #6c98ce;}
+ul.ui-choose>li.disabled { z-index: 2; background-color: #f2f2f2; color: #aaa; cursor: not-allowed; }
+ul.ui-choose>li.disabled:hover { border-color: #aaa; }
+ul.ui-choose>li.selected.disabled { z-index: 2; background-color: #8FC7FF; color: #fff; cursor: not-allowed; border-color: #8FC7FF; }
+.demo-table {margin-top: 3%;border-collapse: collapse;width: 90%;margin-left: 5%;}
+.demo-table caption { border-bottom: 1px dashed #ccc;height: 40px;margin-bottom: 20px;font: 18px/1.2 normal 'microsoft yahei';}
+.demo-table tr td {padding: 2%;font: 16px/1.8 normal 'microsoft yahei';vertical-align: top;}
+.ui-input {vertical-align: top;height: 18px;font-size: 16px;line-height: 20px;border: 1px solid #aaa;padding: 6px 8px;border-radius: 3px;}

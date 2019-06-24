@@ -1,0 +1,77 @@
+{layout name="layout/house_dongtai_dianping_wenda" /}
+ <link href="__CDN__/assets/css/index/css/HouseDt.css?v={$Think.config.site.version}" rel="stylesheet"> 
+
+<link href="__CDN__/assets/css/index/css/HouseAsk.css?v={$Think.config.site.version}" rel="stylesheet"> 
+<!--主块-->
+<!--主块-->
+<div class="f_width_1200 Ask_Cont">
+    <div class="Ask_Left">
+        <div class="AskList">
+            <div class="Ask_Head">
+                {$index['lpinfo']['KP_LpName']}提问与解答
+            </div>
+            <div class="Ask_Main"> 
+                {volist name="index['lpwd']" id="vo" key="k"  }
+                <div class="AskItem">
+                    <div class="Ask">
+                        <div class="AskLeft">
+                            <span>问</span>
+                        </div>
+                        <div class="AskRight">
+                           {$vo['KP_Content']}} 
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="Answer">
+                        <div class="AnswerLeft">
+                            <span>答</span>
+                        </div>
+                        <div class="AnswerRight">
+                            {$vo['KP_HfContent']}}   
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="Info">
+                        <span> {$vo['KP_PLTime']}}   </span>
+                    </div>
+                </div>
+                {/volist}
+                {if condition="count($index['lpwd']) eq 0"} 
+                 <span>暂无数据显示</span>
+                {/if}
+            </div>
+           
+        </div>
+        <!--提问表单-->
+        <div class="AskForm">
+            <div class="AskForm_Head">
+            我要提问
+            </div>
+            <div class="AskForm_Main">
+                 <!--手机号码-->
+                <div class="MobileNumber">
+                    <div class="MobileNumber_Left">
+                        <b>*</b>手机：
+                    </div>
+                    <div class="MobileNumber_Right">
+                        <input type="text" id="Ask_Phone" placeholder="请输入手机号码" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--内容-->
+                <div class="Content">
+                    <div class="Content_Left">
+                        <b>*</b>内容：
+                    </div>
+                    <div class="Content_Right">
+                        <textarea cols="60" rows="8" placeholder="请输入您的疑问" id="Ask_Content" ></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ApplyBtn">
+                    <a href="javascript:void" onclick="Ask_Submit()">提交</a>
+                </div>
+            </div>
+        </div>
+    </div>
+   

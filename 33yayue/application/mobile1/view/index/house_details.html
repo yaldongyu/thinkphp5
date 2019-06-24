@@ -1,0 +1,533 @@
+<link href="__CDN__/html/css/mobile/house.css" rel="stylesheet" type="text/css" />  
+<link href="__CDN__/html/css/mobile/swiper-3.4.2.min.css" rel="stylesheet" type="text/css" />
+
+<script src="__CDN__/html/js/mobile/house.js" type="text/javascript"></script>  
+<script src="__CDN__/assets/js/frontend/index/house/QA.js" type="text/javascript"></script>  
+
+<script src="__CDN__/html/js/mobile/yuyin.js" type="text/javascript"></script>  
+<script src="__CDN__/html/js/mobile/baidu_map.js" type="text/javascript"></script>   
+<script src="__CDN__/html/js/mobile/swiper-3.4.2.min.js" type="text/javascript"></script> 
+<script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.4/src/CityList_min.js"></script>
+<script src="https://api.map.baidu.com/api?v=2.0&ak=pBKFP0G7ydDYqW3A1eQGXBPeVrBCwbG4" type="text/javascript"></script>
+  
+<!--顶部焦点图-->
+<style>
+.housecon-pic{position: relative;margin-top: 50px;}
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{top: .4rem;margin: 0 auto;}
+.swiper-pagination-bullet{border-radius: 20px;display: inline-block;height: .4rem;line-height: .4rem;text-align: center;width: 1rem;background: #f3f4f4;color: #868585;opacity: 1;font-size: .22rem;}
+.bbb .swiper-pagination-bullet-active{background: #ff7a44;opacity:1;}
+.swiper-pagination-bullet-active{color: #fff;}
+.lp_pic{z-index:2;display: none;}
+.swiper-slide img{width: 100%}
+.btn-ljtg {color: #48bf01;border: 1px solid #bcdc96;border-radius: 30px;padding: 0px 4px;right: 12px;top: 10px;padding: .15rem .5rem;font-size: .35rem;position: absolute;width: 1.5rem;height: .45rem;z-index: 10}
+.block-wrap .bk-title .title{color: #333;font-size: .45rem;}
+.lp_pic i {background: rgba(0,0,0,0);float: left;padding-left: 8px;width: .45rem;vertical-align: middle;}
+.lp_pic i img{width: 100%;vertical-align:middle;}
+.lp_pic { background: #000 none repeat scroll 0 0;border-radius: 2px;bottom: 14px;box-shadow: 0 1px 3px rgba(0,0,0,.2);color: #333;cursor: pointer;display: inline-block;font-size: .3rem;opacity: .8;position: absolute;right: 10px;text-align: center;width: 1.2rem;height: .45rem;border-radius: 30px;}
+.lp_pic span {color: #fff;display: inline-block;font-size: .2rem;}
+  </style>
+<!--顶部焦点-->
+<div class="housecon-pic">
+  <ul>
+    <li>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="Tceng">   
+              <video id="cideoPlay1" width="100%" height="400px" controls poster="{$index['KP_VideoLogo']}" webkit-playsinline="tes"  preload="none">
+                <source src="{$index['KP_VideoUrl']}" type="video/mp4" >
+              </video>
+            </div>
+          </div>
+          <div class="swiper-slide"><a href="{$index["LpInfo"]["KP_AllViewUrl"]?$index["LpInfo"]["KP_AllViewUrl"]:"javascript:void(0);"}"><img src="{$index["LpInfo"]["KP_Wjt"]}" alt="全景图"></a></div>
+          <div class="swiper-slide"> <a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}/typeid/" style="display: block;"> <img src="{$index["LpInfo"]["KP_Wjt"]}" alt="{$index["LpInfo"]["KP_LpName"]}"> </a> </div>
+        </div>
+        <div class="swiper-pagination bbb"></div>
+      </div>
+    </li>
+  </ul>
+  <div class="lp_pic"> <a href="javascript:;" title=""> <i><img src="__CDN__/html/img/mobile/pic.png"></i> <span>共{$index["xcnum"]}</span> </a> </div>
+  <script>$('.lp_pic').hide();</script> 
+  <a delay="false" onclick="history.back(-1)" class="backicon"></a> <a delay="false" href="javascript:;" id="navBtn" class="backi"></a> </div>
+<!--顶部焦点 end-->
+  <script>
+
+  </script>
+<!--导航条--> 
+ <div class="fix_bg">
+        <div class="y_lpindexnav_main">
+            <ul>
+                <li class="on"><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><span>楼盘首页</span><i></i></a></li>
+                <li><a href="/house/lpdetail/ids/{$index["LpInfo"]["id"]}"><span>详情</span><i></i></a></li>     
+                <li><a href="/house/lpdt/ids/{$index["LpInfo"]["id"]}"><span>动态</span><i></i></a></li>    
+                <li><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}"><span>相册</span><i></i></a></li>
+                <li><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}"><span>户型</span><i></i></a></li>
+                <li><a href="/house/lpdp/ids/{$index["LpInfo"]["id"]}"><span>点评</span><i></i></a></li>
+            </ul>
+        </div>
+    </div> 
+
+<!--楼盘信息头部-->
+<div class="w100">
+  <div class="w94_2" style="padding-bottom: .2rem;">
+    <div class="house_title">
+      <h3>{$index["LpInfo"]["KP_LpName"]}</h3>
+      <span>{$index["LpInfo"]["KP_Xszt"]==0?"在售":($index["LpInfo"]["KP_Xszt"]==1?"待售":"售罄")}</span> </div>
+    <div class="house_tese"> 
+      {volist name=":explode(',',$index['LpInfo']['KP_TsType'])"   id="co"  length="4" }  
+                              <span class="t{$i}">{$co} </span>
+       {/volist}
+      </div>
+    <div class="house_price"> <span> <small>{$index["KP_Price_title"]}</small><b>{$index["KP_Price"]}</b>{$index["KP_Price_unit"]} </span> <em>(更新时间：{$index["KP_JgTime"]})</em> </div>
+    <div class="house_can"> <small>开盘时间：</small> <span>{$index["LpInfo"]["KP_KpTime"]}</span> <a class="kp_tixing popup" data-name="开盘通知" data-id="0" data-module="mobile_house_kptz" data-text="第一时间获取楼盘新动态,掌握楼盘一手情报！" href="javascript:;"> <!--<i><img src="__CDN__/html/img/mobile/tong.png"></i>--><span>开盘通知</span> </a> </div>
+    <div class="house_can"> <small>预售证号：</small> <span>{$index["LpInfo"]["KP_Ysxkz"]}</span></div>
+    <div class="house_can"> <small class="s_di">楼盘地址：</small> <span class="s_zhi">{$index["LpInfo"]["KP_Lpdz"]}</span> </div>
+    <div class="can_more"><a href="/house/lpdetail/ids/{$index["LpInfo"]["id"]}">查看更多信息 &gt;</a></div>
+    <div class="can_baom"> <a class="popup" data-name="降价通知" data-id="0" data-module="mobile_house_jjtz" data-text="将最新降价、优惠活动信息第一时间通知您！" href="javascript:;"> <i><img src="__CDN__/html/img/mobile/can_down.png"></i> <span>降价通知</span> </a> <a class="popup" data-name="报名团购" data-id="0" data-module="mobile_house_bmtg" data-text="24小时接机，免费报名看房，享折扣优惠" href="javascript:;"> <i><img src="__CDN__/html/img/mobile/can_bao.png"></i> <span>报名团购</span> </a> </div>
+    
+    <!--语音-->
+    <div class="house_yuyin">
+          <a href="javascript:;" class="openboyin" style="display: block;">
+                <div class="h_yin">                    
+                    <div class="yyin fl">
+                        <span class="y-1">楼盘详情在线讲房</span><span class="y-2">{$index["LpInfo"]["KP_Yynum"]}人听过</span>
+                    </div>                                        
+                    <div class="clear"></div>
+                </div> 
+          </a>
+    </div>
+    
+        <!-- 音频 -->
+<div class="mediaplayer">
+
+       <audio id="player" src="{$index["LpInfo"]["KP_YpUrl"]}" controls></audio>
+        <!-- <audio id="player" src="/html/mobilea/images/yuyin.mp3" controls></audio> -->
+        <a href="javascript:;" id="closeyinp" style="position: absolute;top: -.65rem;right: 1.4rem;"><img src="__CDN__/html/img/mobile/yclose.jpg"></a>
+        <div id="yuyinzz" style="position: absolute;top: 1px;height: 50px;width: 100%;" onclick="openwid3('语音播报','提示：请输入您正确的手机号码继续免费收听，了解更多的楼盘详情。','【{$index["LpInfo"]["CNAME"]}】{$index["LpInfo"]["KP_LpName"]}楼盘内页_语音播报');"></div>
+   
+</div>
+<div id="timers" style="display: none;">14</div>
+    <!--end语音-->
+    
+    <div class="can_hui"> <img src="__CDN__/html/img/mobile/tehui.png">
+      <div class="hui_con">
+        <p class="txt-1">{$index["LpInfo"]["KP_YouHui"]}</p>
+        <p class="txt-2" style="display: none">距离结束剩余<span></span>天，已有<span>760</span>人报名</p>
+      </div>
+      <a class="btn-hui popup" data-name="报名看房" data-id="0" data-module="mobile_house_kptz" data-text="24小时接机，免费报名看房，享折扣优惠" href="javascript:;">立即报名</a> </div>
+  </div>
+</div>
+
+<!--主力户型-->
+<div class="w100">
+  <div class="w94_2">
+    <div class="h_title">
+      <h3>主力<span>户型</span></h3>
+      <div class="h_more"><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}">更多户型 &gt;</a></div>
+    </div>
+    <ul class="layoutlist lightgallery">
+
+        {volist name="$index['lphx']" id="vo"}   
+            <li class="clearfix" id="layout_1_1" data-src="{:str_replace('Min','Max',$vo.KP_PicUrl)}" data-sub-html="{$vo.KP_Hxbh}<br />{$vo.KP_Hx}&nbsp;&nbsp;建面{$vo.KP_Area}<br /><div class='stag'></div>">
+              <div class="img-wrapper"> <img src="{$vo.KP_PicUrl}"> </div>
+              <div class="frames-right">
+                    <div class="frames-title">{$vo.KP_Hxbh}</div>
+                    <div class="frames-info">{$vo.KP_Hx}&nbsp;&nbsp;建面{$vo.KP_Area}</div>
+            <div class="frames-price">
+               {volist name=":explode(',',$vo.KP_HxTs)"   id="co"   }  
+                 {if condition="$vo.KP_HxTs!=''" }
+                  <i>{$co}</i> 
+                 {/if}
+               {/volist} 
+            </div>
+                  </div>
+            </li>
+        {/volist} 
+        </ul>
+        
+    
+    <!--领取优惠-->
+    <div class="hui_ling">
+      <div class="ling_title">优惠活动</div>
+      <div class="ling_con"> <span>{$index["LpInfo"]["KP_Activity"]}</span>
+        <div class="ling_baom">
+          <input type="hidden" name="Bm_Name4" id="Bm_Name34" value="游客"/>
+          <input type="hidden" value="楼盘详情页-订阅[Moblie]" id="Bm_Message4" name="Bm_Message4" />
+          <input type="hidden" value="{$index["LpInfo"]["id"]}" id="Bm_HouseID4" name="Bm_HouseID4" />
+          <input type="hidden" value="/house/house_details/ids/{$index["LpInfo"]["id"]}" id="Bm_Url4" name="Bm_Url4" />
+          <input type="hidden" value="楼盘详情页-订阅" id="Bm_Title4" name="Bm_Title4" />
+          <input class="ling_input" name="Bm_Phone4" id="Bm_Phone4"  type="text" placeholder="请输入手机号码" />
+          <a class="ling_btn" href="javascript:void(0);" value="领取优惠" onclick="Getperation('KftBm',4);return false;"><i><img src="__CDN__/html/img/mobile/hui_i.png"></i>领取优惠</a> </div>
+      </div>
+    </div>
+    
+    <!--售楼热线-->
+    <div class="hot_tel">
+      <div class="hot_tel_num">
+      <p class="num_txt-1">售楼热线：<em>{$index["LpInfo"]["KP_Tel"]}</em></p>
+        <p class="num_txt-2">最新开盘、户型及优惠信息、详情请致电咨询</p>
+      </div>
+      <div class="hot_tel_ico"><a href="tel:{$index["LpInfo"]["KP_Tel"]}"><img src="__CDN__/html/img/mobile/footer.png"></a></div>
+    </div>
+  </div>
+</div>
+
+<!--楼盘动态-->
+
+<div class="w100">
+  <div class="w94_2">
+    <div class="h_title">
+      <h3>楼盘<span>动态</span></h3>
+      <div class="h_more"><a href="/house/lpdt/ids/{$index["LpInfo"]["id"]}">更多动态 &gt;</a></div>
+    </div>
+    <div class="dt-new">
+      <ul>
+          {volist name="$index['lpnews']" id="vo"}     
+        <li>
+          <div class="dt_time">{$vo.KP_AddTime}<span class="i1">{$vo.KP_Typename}</span></div> 
+          <div class="rtxt"><a href="/news/detail/ids/{$vo.id}">
+            <h4>{$vo.KP_Title}</h4>
+            <p>{$vo.KP_Description}</p>
+            </a> </div>
+        </li>
+        {/volist}
+         
+      </ul>
+    </div>
+    <a class="dt_dy popup" data-name="报名看房" data-id="0" data-module="mobile_house_kptz" data-text="24小时接机，免费报名看房，享折扣优惠" href="javascript:;">订阅楼盘动态</a> </div>
+</div>
+
+<!--楼盘问答-->
+<div class="w100">
+  <div class="w94_2">
+    <div class="h_title">
+      <h3>楼盘<span>问答</span></h3>
+      <div class="h_more"><a href="/house/lpdp">更多问答 &gt;</a></div>
+    </div>
+    {volist name="$index['lpwd']" id="vo"}  
+    <div class="user-cmt">
+      <div class="face"> <span><img src="__CDN__/html/img/mobile/wd.png" alt=""></span> </div>
+      <div class="text">
+        <div class="cmt-detail">
+          <p>{$vo.KP_Content}</p>
+          <p> <span class="c-time">{$vo.KP_PLTime}</span></p>
+        </div>
+        <div class="msn_2">
+        <p class="msn_da"><span>答：</span>{$vo.KP_HfContent}</p>
+        </div>
+      </div>
+    </div>
+    {/volist} 
+    <div class="clear"></div>
+    <div class="tiwen" onClick="toshare()"><img src="__CDN__/html/img/mobile/tiwen.png"><span>我要提问</span></div>
+  </div>
+</div>
+<!--我要提问弹出层-->
+<div class="am-share">
+  <div class="am-share-title">
+        <div class="wd_top">
+        <div class="wd_img">
+            <img src="__CDN__/html/img/mobile/lplist.jpg" alt="">
+        </div>
+        <div class="wd_title">
+            <p><span>{$index["LpInfo"]["KP_LpName"]}</span><i>{$index["LpInfo"]["KP_Xszt"]==0?"在售":($index["LpInfo"]["KP_Xszt"]==1?"待售":"售罄")}</i></p>
+            <p>
+               {volist name=":explode(',',$index['LpInfo']['KP_TsType'])"   id="co"  length="3" }  
+                              <i>{$co} </i>
+                {/volist}
+               </p>
+        </div>
+    </div>
+    <div class="wd_shuru">
+    <div class="wd_num">手机：</div>
+    <div class="wd_num_input"><input type="text" id="Ask_Phone" placeholder="请输入手机号码" /></div>
+      <div class="wd_num">问题：</div>
+    <div class="wd_num_input"><textarea cols="60" rows="8" placeholder="请输入您的疑问" id="Ask_Content" ></textarea></div>
+     <input type="hidden" id="lpid" value="{$index["LpInfo"]["id"]}">
+    <div class="wd_tijiao"><a href="javascript:;" onclick="Ask_Submit()">提交我的问题</a></div>
+    </div>
+    <div class="wd_close"><img src="__CDN__/html/img/mobile/w_cls.png"></div>
+  </div>
+</div>
+
+ 
+
+
+
+<!--周边配套-->
+<div class="w100">
+  <div class="w94_2">
+    <div class="h_title">
+      <h3>位置<span>周边</span></h3> 
+      <!--<div class="h_more">更多问答 &gt;</div>-->
+    </div>
+    
+    <div style="height:5px;"></div>
+        <div class="mapwrap pr">
+                <div class="y_lpdt" id="y_lpmap" data-jwd="{$index['LpInfo']['KP_Mapzb']}"   data-title="{$index['LpInfo']['KP_LpName']}">
+                </div>
+            </div>
+            <div class="y_lpdt_list">
+                <ul class="c">
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_44.png" alt="学校"></p>
+                            <p class="y_text">学校</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_45.png" alt="医院"></p>
+                            <p class="y_text">医院</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_46.png" alt="交通"></p>
+                            <p class="y_text">交通</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_47.png" alt="餐饮"></p>
+                            <p class="y_text">餐饮</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_48.png" alt="娱乐"></p>
+                            <p class="y_text">娱乐</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_49.png" alt="购物"></p>
+                            <p class="y_text">购物</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <p class="y_tu"><img src="__CDN__/html/img/mobile/ico_50.png" alt="银行"></p>
+                            <p class="y_text">银行</p>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+    
+  </div>
+</div>
+
+<!--优选置业顾问-->
+<div class="w100">
+  <div class="w94_2">
+    <div class="h_title" style="height: auto;">
+      <h3>优选<span>置业顾问</span></h3>
+    </div>
+    <div class="h_title_1">为你提供以下服务：政策解读 楼盘导览 户型解析</div>
+   
+
+      {volist name="$index['LpInfo']['Kfarr']" id="vo"} 
+    <div class="kefu">
+      <div class="kefu_face"><a href=""><img src="{$vo.KP_Pic}"></a></div>
+      <div class="kefu_title">
+      <div class="kefu_name">{$vo.KP_Name}</div>   
+      <div class="kefu_tit">金牌客服推荐</div>
+      </div>
+      <div class="kefu_call">
+      <ul class="kefu_ico">
+        <li><a href="javascript:void(0);" onclick=openZoosUrl('chatwin');><!--<img src="__CDN__/html/img/mobile/kefu_2.png">-->向Ta咨询</a></li>
+        <li><a href="tel:{$index['LpInfo']['KP_Tel']}"><!--<img src="__CDN__/html/img/mobile/kefu_3.png">-->售楼电话</a></li>
+      </ul>
+    </div>
+    </div>
+    {/volist}
+  </div>
+</div>
+<!--为您挑选-->
+<div class="w100_2">
+  <div class="w94_2">
+    <div class="h_title" style="height: auto;">
+      <h3>同区域<span>楼盘</span></h3>
+      <div class="h_more"><a href="/house">更多楼盘 &gt;</a></div>
+    </div>
+        <div class="hx_list">
+      <ul class="Lplist">
+      
+          {volist name="$index['tqylp']" id="vo"}
+          <li>
+            <a href="/house/house_details/ids/{$vo.id}">
+              <div class="Lp_pic"><img src="{$vo.KP_Wjt}"><i style="display: none;">免费专车</i></div>
+              <div class="Lp_con">
+                <p class="Lp_title">{$vo.KP_LpName}<span> | {$vo.KP_Xszt==0?"在售":($vo.KP_Xszt==1?"待售":"售罄")}</span></p>
+                <p class="Lp_add">{$vo.CNAME}</p>
+                <p class="Lp_jiage"><em>{$vo.KP_Price}</em>{$vo.KP_Price_unit}</p>
+                <p class="Lp_tese">
+                    {volist name=":explode(',',$vo.KP_TsType)"   id="co"  length="4" }  
+                              <span >{$co} </span>
+                    {/volist}
+                  
+                </p>
+              </div>
+            </a>
+              <div class="tel_phone"><a href="tel:{$vo.KP_Tel}" class="tel_num"><img src="__CDN__/html/img/mobile/footer.png"></a></div>
+          </li>
+          {/volist} 
+          
+        </ul>
+    </div>
+     <script type="text/javascript">
+      $(function(argument) { 
+          $(".Lp_pic").eq(parseInt(3*Math.random())).find("i").css("display","block");
+      }) 
+    </script>
+    <!--看房定制-->
+    <div class="h_kfdz">
+            <div class="h_kfdz_cont">
+                <div class="h_kfdz_title">看房定制</div>
+                <div class="h_kfdz_nav">
+                    <ul>
+                        <li>
+                            <p class="h_tu"><img src="__CDN__/html/img/mobile/bm_dz.png" alt=""></p>
+                            <p class="h_text">定制看房行程</p>
+                        </li>
+                        <li>
+                            <p class="h_tu"><img src="__CDN__/html/img/mobile/bm_zc.png" alt=""></p>
+                            <p class="h_text">全程免费看房</p>
+                        </li>
+                        <li>
+                            <p class="h_tu"><img src="__CDN__/html/img/mobile/bm_vip.png" alt=""></p>
+                            <p class="h_text">一对一专业服务</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h_kfdz_inpt">
+                        <input type="hidden" name="Bm_Name2" id="Bm_Name2" value="游客"/>
+                  <input type="hidden" value="楼盘详情页-报名看房[Moblie]" id="Bm_Message2" name="Bm_Message2" />
+                  <input type="hidden" value="{$index['LpInfo']['id']}" id="Bm_HouseID2" name="Bm_HouseID2" />
+                <input type="hidden" value="/house/house_details/ids/{$index['LpInfo']['id']}" id="Bm_Url2" name="Bm_Url2" />
+                  <input type="hidden" value="楼盘详情页-报名看房" id="Bm_Title2" name="Bm_Title2" />                                 
+
+                        <div class="h_kfdz_num">
+                            <input class="h_input" name="Bm_Phone2" id="Bm_Phone2"  type="text" placeholder="输入您的手机号">
+                        </div>
+                        <div class="h_kfdz_sub"><a href="javascript:void(0);" value="立即报名" onclick="Getperation('KftBm',2);return false;">立即报名</a></div>
+                </div>
+                <div  style="height:1rem;"></div>
+            </div>
+        </div>
+  </div>
+</div>
+ 
+
+
+
+
+
+<!--语音报名弹窗-->
+<div class="s_group3">
+    <div class="struts">
+        <div class="order">
+            <div style="height: 1.2rem;background: url(__CDN__/html/img/mobile/yuyinbg.png)no-repeat;background-size: 100%">
+                
+            </div><!--make_tit end-->
+            <div class="make_tit_3"><span class="t-3" id="make_tit_3">提示：请输入您正确的手机号码继续免费收听，了解更多的楼盘详情。</span></div>   
+               <input type="hidden" name="Bm_Name2" id="Bm_Name3" value="游客"/>
+                  <input type="hidden" value="【{$index['LpInfo']['CNAME']}】{$index['LpInfo']['KP_LpName']}楼盘内页_语音播报[Moblie]" id="Bm_Message3" name="Bm_Message3" />
+                  <input type="hidden" value="{$index['LpInfo']['id']}" id="Bm_HouseID3" name="Bm_HouseID3" />
+                <input type="hidden" value="/house/house_details/ids/{$index['LpInfo']['id']}" id="Bm_Url3" name="Bm_Url3" />
+                  <input type="hidden" value="语音播报-报名看房" id="Bm_Title3" name="Bm_Title3" />                        
+                <div class="make_form">
+                    <ul>                               
+                        <li><input type="text" name="Bm_Phone3" id="Bm_Phone3" placeholder="请输入您的手机号码" class="inp"></li>                              
+                    </ul>
+                    <div class="clear"></div> 
+                </div>
+                <div class="blank10"></div>
+                <div class="make_submit">                       
+                    <a onclick="wid_close3();" class="qx-btn fl" style="color: #48bf01;">取消</a>
+                    <input type="submit" value="确定" name="bsubmit"  style="color: #48bf01;" class="fr" onclick="Getperation('Yybbbmkf',3); ">
+                    <div class="clear"></div>                
+                </div>
+            <!--</form>-->
+        </div>
+    </div>
+</div>
+<div class="s_alert3"></div>
+<!--end语音报名弹窗-->
+
+ 
+
+
+
+
+
+
+
+
+
+
+<script src="/html/js/mobile/first.js" type="text/javascript"></script> 
+<!--相册查看器-->
+<link href="/html/js/mobile/lightgallery.min.css" rel="stylesheet" type="text/css" />
+<script src="/html/js/mobile/jquery.lazyload.min.js" type="text/javascript"></script>
+<script src="/html/js/mobile/lightgallery.min.js" type="text/javascript"></script>
+<script src="/html/js/mobile/lg-zoom.js" type="text/javascript"></script><!--放大器-->
+ 
+
+
+<script type="text/javascript">
+  
+
+
+
+
+/*新房页顶部焦点图*/
+$(document).ready(function () {
+       //图片详情
+            $(".lightgallery").lightGallery({
+                closable: false,
+                download: false,
+                share: false
+            });
+
+
+  
+  var proportion = 640 / 421;
+    var width = $(window).width();
+    var height = Math.round(width / proportion);
+    $('.zh_housecon-pic-img').height(height);
+    $('#cideoPlay1').height(height);
+    $('.swiper-slide img').height(height);
+    $('.swiper-slide').height(height);
+
+    var mycars=new Array("视频","全景","相册");
+    var video1=document.getElementById("cideoPlay1");
+    var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    onSlideChangeEnd: function(swiper){
+    if(swiper.activeIndex==2){
+    video1.pause();
+    $('.lp_pic').show();
+    }else if(swiper.activeIndex==1){
+    // video1.play();
+    $('.lp_pic').hide();
+    }
+    },                        
+    paginationBulletRender: function (swiper, index, className) {
+    return '<span class="' + className + '">' + mycars[index] + '</span>';
+    }
+    });
+    video1.onclick=function(){
+    if(video1.paused){
+    video1.play();
+    }else{
+    video1.pause();
+    }
+    }
+  
+ });
+
+
+</script>

@@ -1,0 +1,27 @@
+ 
+<script type="text/javascript">
+    $(function () {  //设置标题
+      $(".header_logo2 a").html("{$info['id']==1?"关于我们":($info['id']==2?"版权声明": "联系我们")}").attr("href","javascript:void(0);");  
+    })  
+</script>   
+    <style type="text/css">
+      .w94_2 img{max-width: 90%;}
+    </style>
+
+
+<div class="w100_2">
+  <div class="w94_2">
+      <div class="wraper box" style="    margin-top: 1.4rem;"> 
+        <!--联系我们：开始-->
+        <div class="newsViewBox" style="background:#fff;margin-top:10px;    font-size: .3rem;">
+          <div class="viewBody">
+          {$info['KP_Content']}
+          </div>
+        </div>
+        <!--联系我们：结束--> 
+      </div>
+    </div>
+  </div>
+ 
+  
+  

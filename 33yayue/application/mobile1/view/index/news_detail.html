@@ -1,0 +1,119 @@
+<link href="__CDN__/html/css/mobile/news.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript">
+    $(function () {  //设置标题
+      $(".header_logo2 a").html($(".newsShow_title").html()).attr("href","javascript:void(0);");  
+    })  
+</script>   
+<!--   [id] =&gt; 33101
+                    [KP_SiteID] =&gt; 
+                    [KP_Lmid] =&gt; 1
+                    [KP_Title] =&gt; 海南消费力up！在这个“618购物节”全国排名第28位
+                    [KP_TagKey] =&gt; 海南,消费力
+                    [KP_Description] =&gt; 2分36秒突破10亿大关！空调品类仅用时7秒成交额就突破亿元……6月19日，记者从京东集团获悉，在京东“618全球年中购物节”中，海南省6月1日至18日累计消费金额全国排名第28位，海口、三亚等热门城市人均购物7件以上。清爽消暑产品最受海南消费者青睐“从销量
+                    [KP_Tag] =&gt; 
+                    [KP_Provice] =&gt; 21
+                    [KP_Citys] =&gt; 324
+                    [KP_District] =&gt; 0
+                    [KP_County] =&gt; 0
+                    [KP_Nr] =&gt; 
+                     [KP_Ly] =&gt; 三亚新闻网-三亚日报
+                    [KP_Author] =&gt; 
+                    [KP_Cs] =&gt; 702
+                    [KP_Url] =&gt; 
+                    [KP_BtColor] =&gt; 
+                    [KP_PicUrl] =&gt; /uploads/20190620/7e9e76a8fc1ca7fff6d9ba3a252cac08Max.jpg
+                    [KP_Tj] =&gt; 1
+                    [KP_Zd] =&gt; 0
+                    [KP_Ontop] =&gt; 0
+                    [KP_LpID] =&gt; 0
+                    [KP_Waphd] =&gt; 0
+                    [KP_AddUser] =&gt; 陈运霞
+                    [KP_AddTime] =&gt; 2019-06-20 09:34:22
+                    [KP_EditUser] =&gt; 陈运霞
+                    [KP_EditTime] =&gt; 2019-06-20 09:32:31
+                    [KP_Content] =&gt;  -->
+<!--内容开始-->
+<div class="w100">
+  <div class="w94_2">
+    <div class="newsShow_title">{$index.content.KP_Title}</div>
+    <div class="newsShow_data">
+      <div class="newsShow_yuan"> <span>来源：{$index.content.KP_Ly}</span> <span>{$index.content.KP_AddTime}</span> </div>
+      <div class="newsShow_tongzhi"> <a class="popup" data-name="动态订阅" data-id="0" data-module="mobile_index_dtdy" data-text="第一时间获取楼盘新动态,掌握楼盘一手情报！" href="javascript:;"> <img src="__CDN__/html/img/mobile/newsShow.gif"><span>有新动态通知我</span> </a> </div>
+    </div>
+    <!--资讯内容-->
+    <div class="news_conter"> {$index.content.KP_Nr}  </div>
+    <!--资讯底部-->
+    <div class="news_footer"> <span></span>
+      <div class="news_footer_txt">THE END</div>
+    </div>
+    <div class="end_txt">关注{$Think.config.site.name}官方微信，提供房产资讯，掌握楼市动态，实时了解市场走势，尽享各大房产优惠信息致力打造优质购房置业平台。</div>
+    <div class="end_erweima"><img src="__CDN__/html/img/mobile/erweima.jpg"></div>
+    <div class="newstxt_up"><a href="/news/detail/ids/{$index['prev']['id']}"><i><img src="__CDN__/html/img/mobile/news_left.png"></i><span>上一篇：{$index['prev']['KP_Title']}</span></a></div>
+    <div class="newstxt_up"><a href="/news/detail/ids/{$index['next']['id']}"><i><img src="__CDN__/html/img/mobile/news_right.png"></i><span>下一篇：{$index['next']['KP_Title']}</span></a></div>
+  </div>
+</div>
+
+<!--看房定制-->
+<div class="w100_2">
+  <div class="w94_2">
+    <div class="h_kfdz" style="margin-top: .3rem;">
+      <div class="h_kfdz_cont">
+        <div class="h_kfdz_title">动态订阅</div>
+        <div class="news_dtdy"> 订阅资讯，获取楼盘最新信息，不错过买房时机！ </div>
+        <div class="h_kfdz_inpt">
+          <input type="hidden" name="Bm_Name3" id="Bm_Name3" value="游客"/>
+          <input type="hidden" value="资讯详情页-动态订阅[Moblie]" id="Bm_Message3" name="Bm_Message3" />
+          <input type="hidden" value="" id="Bm_HouseID3" name="Bm_HouseID3" />
+          <input type="hidden" value="/house/house_details/ids/{$index.content.id}" id="Bm_Url3" name="Bm_Url3" />
+          <input type="hidden" value="资讯详情页-动态订阅" id="Bm_Title2" name="Bm_Title3" />
+          <div class="h_kfdz_num">
+            <input class="h_input" name="Bm_Phone3" id="Bm_Phone3"  type="text" placeholder="输入您的手机号">
+          </div>
+          <div class="h_kfdz_sub"><a href="javascript:void(0);" value="立即报名" onclick="Getperation('KftBm',3);return false;">立即报名</a></div>
+        </div>
+        <div  style="height:1rem;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--为您挑选-->
+<div class="w100_2">
+  <div class="w94_2">
+    <div class="h_title" style="height: auto;">
+      <h3>为您<span>推荐</span></h3>
+      <div class="h_more"><a href="/house">更多楼盘 &gt;</a></div>
+    </div>
+        <div class="hx_list">
+      <ul class="Lplist">
+                
+          {volist name="$index['tjlp']" id="vo"}
+          <li>
+            <a href="/house/house_details/ids/{$vo.id}">
+              <div class="Lp_pic"><img src="{$vo.KP_Wjt}"><i style="display: none;">免费专车</i></div>
+              <div class="Lp_con">
+                <p class="Lp_title">{$vo.KP_LpName}<span> | {$vo.KP_Xszt==0?"在售":($vo.KP_Xszt==1?"待售":"售罄")}</span></p>
+                <p class="Lp_add">{$vo.CNAME}</p>
+                <p class="Lp_jiage"><em>{$vo.KP_Price}</em>{$vo.KP_Price_unit}</p>
+                <p class="Lp_tese">
+                    {volist name=":explode(',',$vo.KP_TsType)"   id="co"  length="4" }  
+                              <span >{$co} </span>
+                    {/volist}
+                  
+                </p>
+              </div>
+            </a>
+              <div class="tel_phone"><a href="tel:089865899610" class="tel_num"><img src="__CDN__/html/img/mobile/footer.png"></a></div>
+          </li>
+            {/volist}
+          
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+      $(function(argument) { 
+         $(".Lp_pic").eq(parseInt(3*Math.random())).find("i").css("display","block");
+      }) 
+    </script>
+
+ 

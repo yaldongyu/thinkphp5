@@ -1,0 +1,31 @@
+<link href="__CDN__/assets/css/index/video.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<div class="shoutu"></div>
+
+<!--选项-->
+<div class="subMian">
+  <div class="w1200">
+    <div class="subNav">
+      <ul> 
+        <li><a href="/video">视频看房</a></li>
+        <li  class="curr"><a href="/video/jing">景点视频</a></li>
+      </ul>
+      <span class="subline"></span> </div>
+  </div>
+</div>
+
+<!--内容-->
+	<div class="center_w1200_j">
+		<ul>
+			{volist name="$index['list']" id="vo"}
+			<li>  
+				<div class="vi_tu"><a href="/video/detail/ids/{$vo.id}" target="_blank"><img src="{$vo.KP_PicUrl}"></a></div>
+				<div class="vi_txt">
+					<p><a href="video_show.html" target="_blank">{$vo.KP_Title}</a></p>
+				</div>
+			</li>
+			{/volist} 
+		</ul>
+	</div>
+
+ 

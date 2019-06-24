@@ -1,0 +1,1470 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>豪宅别墅-旅游地产-阅房旅居</title>
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/header.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/footer.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/layer.css" rel="stylesheet" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/nivo-slider.css" type="text/css" rel="Stylesheet" media="screen" />
+<link rel="stylesheet" href="Styles/nivo_slider/light/light.css" type="text/css" media="screen" />
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="Scripts/Kaipie.js?skin=default" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/unslider.min.js"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+<script type="text/javascript" src="Scripts/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+    //豪宅别墅看房报名
+    function Bs_Submit() {
+        var T_KftName = $.trim($("#Bs_Name").val());
+        var T_KftPhone = $.trim($("#Bs_Phone").val());
+        var T_Title = "豪宅别墅页-帮你找房报名";
+        var T_Message = "PC端-豪宅别墅页"; //来源
+        var T_LpID = '0'; //楼盘ID
+        var T_PageUrl = document.location.href;  //页面地址
+
+        if (T_KftName == "") {
+            tishi_layer("请输入您的姓名!");
+            return false;
+        }
+        if (!tel_validate(T_KftPhone)) {
+            return false;
+        }
+        $.post('/Baoming.aspx',
+	    {
+	        sType: 'KftBm',
+	        T_KftName: T_KftName,
+	        T_KftPhone: T_KftPhone,
+	        T_Title: T_Title,
+	        T_Message: T_Message,
+	        T_LpID: T_LpID,
+	        T_PageUrl: T_PageUrl
+	    },
+	    function (data) {
+	        if (data.info != 'Yes') {
+	            return false;
+	        } else {
+	            clear_form("#Bs_Name");
+	            clear_form("#Bs_Phone");
+	            setTimeout(function () {
+	                tishi_layer("恭喜报名成功！阅房旅居置业顾问将会联系您，请稍后片刻！");
+	                return false;
+	            }, 100);
+	        }
+	    }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+</script>
+</head>
+<body>
+<!--顶栏欢迎词-->
+<div class="Top_ColumnCont"> 
+    <div class="width_1200 Top_Column">
+        您好，欢迎您访问【阅房旅居】-旅游地产导购平台,购房放心又省钱！
+        <a class="SearchMap" href="/map/" target="_blank">地图找房</a>
+        <a class="Mobile" href="http://m.3yayue.com/" target="_blank">手机版</a>
+        <a class="Erweima" href="javascript:;">二维码<span><img src="Images/wx_dyh.jpg" alt="阅房网旅居" /></span></a>
+    </div>
+</div>
+<!--logo与搜索栏-->
+<div class="width_1200 Top_Module">
+    <div class="Top_Module_Left">
+        <a href=""><img src="images/Logo.png" alt="" width="279" height="90" /></a>
+    </div>
+<!--
+    <div class="LeftMid_City">
+        <a class="Jdf_City_Btn" href="javascript:;">海南
+            <span>切换城市</span>
+        </a>
+        <div class="Jdf_CitySelect">
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                        <a href="javascript:;">南部</a>
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://sy.3yayue.com">三亚</a>
+                        <a href="http://ls.3yayue.com">陵水</a>
+                        <a href="http://ld.3yayue.com">乐东</a>
+                        <a href="http://bt.3yayue.com">保亭</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                        <a href="javascript:;">北部</a>
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://hk.3yayue.com">海口</a>
+                        <a href="http://cm.3yayue.com">澄迈</a>
+                        <a href="http://lg.3yayue.com">临高</a>
+                        <a href="http://wc.3yayue.com">文昌</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                        <a href="javascript:;">西部</a>
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://df.3yayue.com">东方</a>
+                        <a href="http://dz.3yayue.com">儋州</a>
+                        <a href="http://cj.3yayue.com">昌江</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                        <a href="javascript:;">东部</a>
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://wn.3yayue.com">万宁</a>
+                        <a href="http://qh.3yayue.com">琼海</a>
+                        <a href="http://da.3yayue.com">定安</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                        <a href="javascript:;">中部</a>
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://wzs.3yayue.com">五指山</a>
+                        <a href="http://bs.3yayue.com">白沙</a>
+                        <a href="http://tc.3yayue.com">屯昌</a>
+                        <a href="http://qz.3yayue.com">琼中</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                        <a href="javascript:;">广西</a>
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://bh.3yayue.com">北海</a>
+                        <a href="http://nn.3yayue.com">南宁</a>
+                        <a href="http://fcg.3yayue.com">防城港</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Jdf_CityIten">
+                    <div class="Jdf_CityItenHead">
+                                        
+                    </div>
+                    <div class="Jdf_CityItenMain">
+                        <a href="http://www.3yayue.com/" class="AllCity">全海南>></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+    </div>
+-->
+    <div class="Top_Module_Mid">
+        <div class="TopSearch">
+            <input type="text" id="Sokey" placeholder="请输入楼盘名称.." />
+            <a href="javascript:;" onclick="SearchClick()">搜索</a>
+            <div class="clear"></div>
+        </div>
+        <div class="HotSearchList">
+            <a href="http://www.3yayue.com/house/838.html" target="_blank">中海神州半岛</a>
+            <a href="http://www.3yayue.com/house/1871.html" target="_blank">万达西双版纳国际度假区</a>
+            <a href="http://www.3yayue.com/house/1876.html" target="_blank">告庄西双景</a>
+            <a href="http://www.3yayue.com/house/414.html" target="_blank">石梅山庄</a>
+            <a href="http://www.3yayue.com/house/1957.html" target="_blank">勐巴拉雨林小镇</a>
+            <!--<a href="http://www.3yayue.com/house/41.html" target="_blank">清凤海棠长滩</a>-->
+        </div>
+    </div>
+    <div class="Top_Module_Right">
+        <img src="Images/tel.jpg" alt="" />
+    </div>
+    <div class="clear"></div>
+</div>
+<!--导航栏-->
+<div class="NavigationCont">
+    <div class="width_1200 Navigation">
+        <div class="QuicklyNavigation OtherQuicklyNavigation">快速导航
+            <!--条件筛选start-->
+            <div class="Other_FilterCont">
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed City">
+                    区域
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                <a href="/house/?City=21" target="_blank">海南</a>
+                <a href="/house/?City=19" target="_blank"><span style="color:blue;">广东</span></a>
+                <a href="/house/?City=20" target="_blank"><span style="color:blue;">广西</span></a>
+                <a href="/house/?City=25" target="_blank"><span style="color:blue;">云南</span></a>
+                <a href="/house/?City=12" target="_blank">安徽</a>
+                <a href="/house/?City=18" target="_blank">湖南</a>
+                <a href="/house/?City=27" target="_blank">陕西</a>
+                <a href="/house/?City=35" target="_blank">海外</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部区域</div>
+                        <div class="Main">
+                    <a href="/house/?City=324" target="_blank">海口</a>
+                    <a href="/house/?City=3272" target="_blank">三亚</a>
+                    <a href="/house/?City=3281" target="_blank">澄迈</a>
+                    <a href="/house/?City=3282" target="_blank">临高</a>
+                    <a href="/house/?City=3286" target="_blank">陵水</a>
+                    <a href="/house/?City=292" target="_blank">珠海</a>
+                    <a href="/house/?City=3145" target="_blank">中山</a>
+                    <a href="/house/?City=296" target="_blank">湛江</a>
+                    <a href="/house/?City=303" target="_blank">阳江</a>
+                    <a href="/house/?City=299" target="_blank">惠州</a>
+                    <a href="/house/?City=297" target="_blank">茂名</a>
+                    <a href="/house/?City=3086" target="_blank">吴川</a>
+                    <a href="/house/?City=3089" target="_blank">徐闻</a>
+                    <a href="/house/?City=3091" target="_blank">遂溪</a>
+                    <a href="/house/?City=3092" target="_blank">雷州</a>
+                    <a href="/house/?City=45174" target="_blank"><span style="color:red;">南宁</span></a>
+                    <a href="/house/?City=45104" target="_blank"><span style="color:red;">北海</span></a>
+                    <a href="/house/?City=312" target="_blank"><span style="color:red;">桂林</span></a>
+                    <a href="/house/?City=45141" target="_blank"><span style="color:red;">防城港</span></a>
+                    <a href="/house/?City=316" target="_blank">钦州</a>
+                    <a href="/house/?City=322" target="_blank">来宾</a>
+                    <a href="/house/?City=311" target="_blank">柳州</a>
+                    <a href="/house/?City=317" target="_blank">贵港</a>
+                    <a href="/house/?City=313" target="_blank">梧州</a>
+                    <a href="/house/?City=320" target="_blank">贺州</a>
+                    <a href="/house/?City=415" target="_blank"><span style="color:red;">昆明</span></a>
+                    <a href="/house/?City=426" target="_blank"><span style="color:red;">西双版纳</span></a>
+                    <a href="/house/?City=427" target="_blank"><span style="color:red;">大理</span></a>
+                    <a href="/house/?City=45310" target="_blank">腾冲</a>
+                    <a href="/house/?City=417" target="_blank">玉溪</a>
+                    <a href="/house/?City=186" target="_blank">合肥</a>
+                    <a href="/house/?City=275" target="_blank">长沙</a>
+                    <a href="/house/?City=438" target="_blank">西安</a>
+                    <a href="/house/?City=558" target="_blank"><span style="color:red;">马来西亚</span></a>
+                    <a href="/house/?City=560" target="_blank">泰国</a>
+                    <a href="/house/?City=45311" target="_blank">柬埔寨</a>
+                    <a href="/house/?City=537" target="_blank">澳大利亚</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed Price">
+                    价格
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="/house/?Price=0_5000" target="_blank">5000元以下</a>
+                        <a href="/house/?Price=5000_10000" target="_blank">5000-10000元</a>
+                        <a href="/house/?Price=10000_15000" target="_blank">10000-15000元</a>
+                        <a href="/house/?Price=15000_20000" target="_blank">1.5-2万元</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部价格</div>
+                        <div class="Main">
+                            <a href="/house/?Price=0_5000" target="_blank">5000元以下</a>
+                            <a href="/house/?Price=5000_10000" target="_blank">5000-10000元</a>
+                            <a href="/house/?Price=10000_15000" target="_blank">10000-15000元</a>
+                            <a href="/house/?Price=15000_20000" target="_blank">15000-20000元</a>
+                            <a href="/house/?Price=20000_25000" target="_blank">20000-25000元</a>
+                            <a href="/house/?Price=25000_30000" target="_blank">25000-30000元</a>
+                            <a href="/house/?Price=30000_40000" target="_blank">30000-40000元</a>
+                            <a href="/house/?Price=40000_0" target="_blank">40000元以上</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed Special">
+                    类型
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","别墅")'>别墅</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","公寓")'>公寓</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","住宅")'>住宅</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","商铺")'>商铺</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","酒店式公寓")'>酒店式公寓</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","写字楼")'>写字楼</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部类型</div>
+                        <div class="Main">
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","别墅")'>别墅</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","公寓")'>公寓</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","住宅")'>住宅</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","酒店式公寓")'>酒店式公寓</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","商铺")'>商铺</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","写字楼")'>写字楼</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","商住楼")'>商住楼</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","洋房")'>洋房</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","产权式酒店")'>产权式酒店</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed Tese">
+                    特色
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","旅游地产")'>旅游地产</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","宜居生态地产")'>宜居生态地产</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","海景地产")'>海景地产</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","投资地产")'>投资地产</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部特色</div>
+                        <div class="Main">
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","旅游地产")'>旅游地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","宜居生态地产")'>宜居生态地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","海景地产")'>海景地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","投资地产")'>投资地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","江景地产")'>江景地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","低密居所")'>低密居所</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","豪华住宅区")'>豪华住宅区</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","小户型")'>小户型</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","刚需盘")'>刚需盘</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","学区房")'>学区房</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--条件筛选end-->
+        </div>
+        <ul>
+			<li>
+				<a href="/" class="Title">首页</a>
+			</li>
+			<li>
+				<a href="/house/" class="Title">新房</a>
+			</li>
+			<li onmousemove="NavigationSelect_Show(this)">
+                <a href="/news/" class="Title">资讯<span></span></a>
+                <p>
+                    <a href="/news/" target="_blank">全部</a>
+					<a href="/newsindex/2.html" target="_blank">楼盘热点</a>
+					<a href="/newsindex/5.html" target="_blank">楼盘导购</a>
+					<a href="/newsindex/7.html" target="_blank">楼盘速递</a>
+                    <a href="/newsindex/10.html" target="_blank">看房记</a>
+					<a href="/newsindex/3.html" target="_blank">优惠信息</a>
+					<a href="/newsindex/1.html" target="_blank">海南资讯</a>
+				</p>
+            </li>
+			<li><a href="/bieshu/" class="Title Select">豪宅别墅</a></li>
+			<li onmousemove="NavigationSelect_Show(this)">
+				<a href="/video/" class="Title">视频看房<span></span></a>
+				<p>
+					<a href="/videolist/0.html" target="_blank">楼盘视频</a>
+					<a href="/videolist/1.html" target="_blank">海南风情</a>
+					<a href="/videolist/2.html" target="_blank">海南美食汇</a>
+				</p>
+			</li>
+			<li><a href="/tuangou/" class="Title">团购</a></li>
+			<li><a href="/houseunion/" class="Title">购房联盟</a></li>
+			<li><a href="/html/zhuanti/" class="Title">专题</a></li>
+		</ul>
+    </div>
+</div>
+<!--banner-->
+<div class="BannerCont">
+    <img src="Images/banner01.jpg">
+    <div class="Banner">
+       
+        <!--<ul>
+            <li>
+                <a href="" target="_blank" title="" style=" background:url(Images/banner1.jpg)no-repeat; background-size:auto 100%; background-position:center center;"></a>
+            </li>
+        </ul>-->
+        <div class="clear"></div>
+       <!-- <a href="javascript:void(0);" class="unslider-arrow04 prev"><img class="arrow" id="al" src="Images/arrowl.png" alt="prev" width="20" height="35" /></a>
+        <a href="javascript:void(0);" class="unslider-arrow04 next"><img class="arrow" id="ar" src="Images/arrowr.png" alt="next" width="20" height="37" /></a>-->
+    </div>
+</div>
+<!--购房流程-->
+<div class="BuyProcess_Cont">
+    <div class="width_1200 BuyProcess">
+        <a class="process1" target="_blank">
+            <span>报名看房</span>
+            <small>在线报名 订制看房行程</small>
+        </a>
+        <font></font>
+        <a class="process2" target="_blank">
+            <span>24小时接送机</span>
+            <small>提前预约 即时安排车辆接送</small>
+        </a>
+        <font></font>
+        <a class="process3" target="_blank">
+            <span>看房专车</span>
+            <small>专车环岛看房</small>
+        </a>
+        <font></font>
+        <a class="process4" target="_blank">
+            <span>一对一专业服务</span>
+            <small>专业团队一对一解答</small>
+        </a>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--品牌项目-->
+<div class="f_width_1200 BrandMain">
+    <div class="company">
+        三亚
+    </div>
+    <div class="BrandTop">
+        <div class="BrandTop_Img">
+            <img src="Images/b1.jpg" alt="" />
+            <!--<div class="BrandInfo">
+                <div class="HouseLogo">
+                    <a href="/bslist/#fuli" target="_blank">
+                        <img src="Images/logo-fuli.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="HouseText">
+                    <div class="name">
+                        <a href="/bslist/#fuli" target="_blank">富力地产</a>
+                    </div>
+                    <div class="count">
+                        项目总数：4
+                    </div>
+                    <div class="info">
+                    给您一个五星级的家
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="BrandTop_Text">
+        三亚位于海南岛的最南端，是旅游度假的胜地，北纬18°被誉为地球上神奇，是一个适合度假的区域。所以，三亚不仅是具有热带海滨风景特色的国际旅游城市，还曾被人称为“东方夏威夷”。海湾是三亚美丽的风景，风光旖旎，滨海资源环境，所以来海南必去三亚。阳光、沙滩、白云、椰树相映成趣，生活在这里的人们生活状态相对慵懒，置身其中你会感觉完全抛开了生活的束缚。如果你想感受这份惬意，这份闲适，你一定要来一次三亚。
+        </div>
+    </div>
+    <div class="BrandBottom">
+        <div class="hd">
+            <a class="prev" href="javascript:;"></a>
+            <a class="next" href="javascript:;"></a>
+        </div>
+        <div class="bd">
+            <ul>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/2789.html" target="_blank"><img src="Images/p1.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/2789.html" target="_blank" class="Title">国广海棠湾<small>海南三亚</small><font>34800</font><small>元/m²</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                舒享惬意度假生活
+                                </div>
+                                <div class="TextDesc">
+                                      国广海棠湾项目位于三亚市海棠区海棠北路（椰州路），建筑面积约8.2万㎡，荟萃一个生态的文创圈层社区。项目交通便利，共规划104栋，洋房10栋。规划产品有：1、新亚洲新中式独栋别墅，2、洋房。
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>黄秀</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/2789-11583.html" target="_blank">
+                                    <img src="Images/ad1.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2789-11584.html" target="_blank">
+                                    <img src="Images/ad2.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2789-11585.html" target="_blank">
+                                    <img src="Images/ad3.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/41.html" target="_blank"><img src="Images/p2.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/41.html" target="_blank" class="Title">清凤海棠长滩<small>海南三亚</small><font>50000</font><small>元/m²</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                “将花园搬到水上去”
+                                </div>
+                                <div class="TextDesc">
+                                清凤海棠长滩位于海棠湾土福出口处，项目占地约500亩，整个地块采用退台式设计，保证户户看海。项目园林以水为元素搭配各种热带植被，浓郁的现代新亚洲风情主题，注重园林的细节打造，让你充分亲近自然，享受滨海度假的氛围。
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>廖燕</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/41-81.html" target="_blank">
+                                    <img src="Images/ad4.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/41-82.html" target="_blank">
+                                    <img src="Images/ad5.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/41-80.html" target="_blank">
+                                    <img src="Images/ad6.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/876.html" target="_blank"><img src="Images/p3.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/876.html" target="_blank" class="Title">恒大御府<small>海南三亚</small><font>26800</font><small>元/㎡</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                唯美欧式风情园林
+                                </div>
+                                <div class="TextDesc">
+                                三亚恒大御府首期总占地129亩，总建筑面积约26万方，3.0容积率，项目位于海南省三亚市迎宾大道与学院路交汇处，近邻三亚宋城千古情景，成大高尔夫球场等旅游资源配套。  
+                                <br />
+                                <br />
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>李小霞</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/876-3231.html" target="_blank">
+                                    <img src="Images/ad7.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/876-3232.html" target="_blank">
+                                    <img src="Images/ad8.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/876-3233.html" target="_blank">
+                                    <img src="Images/ad9.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/2142.html" target="_blank"><img src="Images/p4.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/2142.html" target="_blank" class="Title">保利海棠湾<small>海南三亚</small><font>53000</font><small>元/m²</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                “建筑融合自然”
+                                </div>
+                                <div class="TextDesc">
+                                项目总占地面积48公顷，总建面约50万㎡，项目分四期开发，集会展、商业、住宅、休闲康乐于一体。建筑设计采用现代东南亚风格，充分考虑到海南热带阳光强烈雨水充沛的气候因素，将东南亚建筑中轻松舒适的度假元素植入建筑中。
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>罗明标</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/2142-9028.html" target="_blank">
+                                    <img src="Images/ad10.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2142-9029.html" target="_blank">
+                                    <img src="Images/ad11.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2142-9030.html" target="_blank">
+                                    <img src="Images/ad12.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--品牌项目-->
+<div class="f_width_1200 BrandMain">
+    <div class="company">
+        三亚周边
+    </div>
+    <div class="BrandTop">
+        <div class="BrandTop_Img" style="height: 559px;">
+            <img src="Images/b2.jpg" alt="" />
+            <!--<div class="BrandInfo">
+                <div class="HouseLogo">
+                    <a href="/bslist/#rongchuang" target="_blank">
+                        <img src="Images/logo-rongchuang.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="HouseText">
+                    <div class="name">
+                        <a href="/bslist/#rongchuang" target="_blank">融创地产</a>
+                    </div>
+                    <div class="count">
+                        项目总数：5
+                    </div>
+                    <div class="info">
+                    至臻，致远
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="BrandTop_Text">
+        近几年，随着“大三亚旅游圈”的不断发展，万宁、陵水、乐东等这三市县在大三亚旅游圈的带动下，这些区域的楼盘渐渐进入买房者的视野。充分发挥丰富的热带资源优势和山、海、民族等地方特色，承接、分散三亚的其他功能，做到优势互补、差异发展、百花盛开、各具特色。
+        </div>
+    </div>
+    <div class="BrandBottom">
+        <div class="hd">
+            <a class="prev" href="javascript:;"></a>
+            <a class="next" href="javascript:;"></a>
+        </div>
+        <div class="bd">
+            <ul>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/2.html" target="_blank"><img src="Images/p5.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/2.html" target="_blank" class="Title">碧桂园珊瑚宫殿<small>海南陵水</small><font>25000</font><small>元/m²</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                海上繁华公园大城 
+                                </div>
+                                <div class="TextDesc">
+                                碧桂园·珊瑚宫殿位于海南清水湾赤岭风景区内，藏于海棠湾和清水湾两大海湾的中间私密地带，碧桂园22年度假地产专家，将品质生活带到清水湾，力求打造出一个集休闲、度假、旅游为一体的海岛生活社区。
+                                <br />
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>沈欢迎</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/2-222.html" target="_blank">
+                                    <img src="Images/ad13.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2-211.html" target="_blank">
+                                    <img src="Images/ad14.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2-227.html" target="_blank">
+                                    <img src="Images/ad15.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/1957.html" target="_blank"><img src="Images/p6.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/1957.html" target="_blank" class="Title">富力湾<small>海南陵水</small><font>35000</font><small>元/m²</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                “亲海、玩海”的丰富度假生活体验
+                                </div>
+                                <div class="TextDesc">
+                                  项目位于陵水香水湾旅游渡假区，3200亩恢弘倾力打造，海南滨海休闲度假区，依托海岸资源，三面环山，独面看海，打造热带海的亲海旅居大盘。自项目诞生以来一直是香水湾山海大盘， 丰富度假配套；为度假人群提供“亲海、玩海”的丰富度假生活体验。
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>李曼</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/1957-8210.html" target="_blank">
+                                    <img src="Images/ad16.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/1957-8209.html" target="_blank">
+                                    <img src="Images/ad17.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/1957-8208.html" target="_blank">
+                                    <img src="Images/ad18.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/838.html" target="_blank"><img src="Images/p7.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/838.html" target="_blank" class="Title">中海神州半岛<small>海南万宁</small><font>22000</font><small>元/m²</small></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                临河瞰海，望岛观山
+                                </div>
+                                <div class="TextDesc">
+                                中海神州半岛位于享有“世界长寿之乡”美誉的万宁市，约10000亩版图。佣有内外双海美景，外海浩渺壮阔，内海又称老爷海，安宁静谧。完善的度假生活配套：滨海高尔夫球场、神州半岛沙滩俱乐部、风情商业街及约500亩中央公园。
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>陈浩刚</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/838-3083.html" target="_blank">
+                                    <img src="Images/ad19.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/838-3084.html" target="_blank">
+                                    <img src="Images/ad20.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/838-3085.html" target="_blank">
+                                    <img src="Images/ad21.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="HouseItem">
+                        <div class="Images">
+                            <a href="http://www.3yayue.com/house/2760.html" target="_blank"><img src="Images/p8.jpg" alt="" /></a>
+                            <a href="http://www.3yayue.com/house/2760.html" target="_blank" class="Title">椰林阳光<small>海南乐东</small><font>待定</font><!--<small>万元/套</small>--></a>
+                        </div>
+                        <div class="Detail">
+                            <div class="Text">
+                                <div class="TextTitle">
+                                森林康养、绿色田园
+                                </div>
+                                <div class="TextDesc">
+                                椰林阳光项目总建筑面积为79534.33㎡，最大建筑高度13层，机动车停车位381个，非机动车位910个（10%车位安装充电桩，其余车位预留充电桩），由8栋13F、3栋10F高层住宅和一个地下车库组成。是宜居养生度假的项目，打造森林康养、绿色田园城镇。	
+                                </div>
+                                <!--头像-->
+                                <div class="portrait">
+                                    <img src="Images/men1.jpg" alt="" />
+                                    <!--<p>钟江辉</p>-->
+                                    <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" target="_blank">点击咨询</a>
+                                </div>
+                            </div>
+                            <div class="Img">
+                                <a href="http://www.3yayue.com/Housealbum/2760-11485.html" target="_blank">
+                                    <img src="Images/ad22.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2760-11486.html" target="_blank">
+                                    <img src="Images/ad23.jpg" alt="" />
+                                </a>
+                                <a href="http://www.3yayue.com/Housealbum/2760-11487.html" target="_blank">
+                                    <img src="Images/ad24.jpg" alt="" />
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--更多品牌别墅-->
+<div class="s_width_1200 bieshu_more">
+    <p>
+        <a href="/bslist/" target="_blank">更多品牌别墅</a>
+    </p>
+</div>
+<!--精品别墅-->
+<div class="Jp_Bieshu_Cont">
+    <div class="width_1200 Jp_Bieshu_Head">
+    </div>
+    <div class="s_width_1200 Jp_Bieshu_Main">
+        <div class="AreaList">
+            <a href="javascript:;" class="Select">海口</a>
+            <a href="javascript:;">三亚</a>
+            <a href="javascript:;">陵水</a>
+            <a href="javascript:;">万宁</a>
+            <a href="javascript:;">文昌</a>
+            <a href="javascript:;">澄迈</a>
+            <a href="javascript:;">保亭</a>
+            <a href="/house/?Wy=别墅" target="_blank">更多区域</a>
+        </div>
+        <div class="BieshuItem_Main">
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/741.html" target="_blank">
+                            <img src="Images/01.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/741.html" target="_blank">融创观澜湖公园壹号<small>[海口]</small></a>
+                        <span><font>17000</font>元/㎡</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/491.html" target="_blank">
+                            <img src="Images/02.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/491.html" target="_blank">观澜湖观墅<small>[海口]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/253.html" target="_blank">
+                            <img src="Images/03.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/253.html" target="_blank">南国威尼斯城<small>[海口]</small></a>
+                        <span><font>20000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/257.html" target="_blank">
+                            <img src="Images/04.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/257.html" target="_blank">富力盈溪谷<small>[海口]</small></a>
+                        <span><font>40000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/423.html" target="_blank">
+                            <img src="Images/05.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/423.html" target="_blank">绿城桃李春风<small>[海口]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/565.html" target="_blank">
+                            <img src="Images/06.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/565.html" target="_blank">海口玉湾<small>[海口]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/912.html" target="_blank">
+                            <img src="Images/07.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/912.html" target="_blank">融创海棠湾<small>[三亚]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/875.html" target="_blank">
+                            <img src="Images/08.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/875.html" target="_blank">晋园<small>[三亚]</small></a>
+                        <span><font>4998</font>万元/套</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/867.html" target="_blank">
+                            <img src="Images/09.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/867.html" target="_blank">海棠花开<small>[三亚]</small></a>
+                        <span><font>37000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/41.html" target="_blank">
+                            <img src="Images/10.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/41.html" target="_blank">清凤海棠长滩<small>[三亚]</small></a>
+                        <span><font>50000</font>元/㎡</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/357.html" target="_blank">
+                            <img src="Images/11.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/357.html" target="_blank">金中海蓝钻<small>[三亚]</small></a>
+                        <span><font>45000</font>元/㎡</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/320.html" target="_blank">
+                            <img src="Images/12.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/320.html" target="_blank">半山半岛<small>[三亚]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/351.html" target="_blank">
+                            <img src="Images/13.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/351.html" target="_blank">富力湾<small>[陵水]</small></a>
+                        <span><font>35000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/197.html" target="_blank">
+                            <img src="Images/14.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/197.html" target="_blank">融创钻石海岸<small>[陵水]</small></a>
+                        <span><font>40000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/2.html" target="_blank">
+                            <img src="Images/15.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/2.html" target="_blank">碧桂园珊瑚宫殿<small>[陵水]</small></a>
+                        <span><font>25000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/849.html" target="_blank">
+                            <img src="Images/16.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/849.html" target="_blank">清凤椰林湾<small>[陵水]</small></a>
+                        <span><font>价格待定</font><!--万/套--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/201.html" target="_blank">
+                            <img src="Images/17.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/201.html" target="_blank">香水湾1号<small>[陵水]</small></a>
+                        <span><font>10600</font>万元/套</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/163.html" target="_blank">
+                            <img src="Images/18.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/163.html" target="_blank">万科香水君澜<small>[陵水]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/95.html" target="_blank">
+                            <img src="Images/19.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/95.html" target="_blank">融创日月湾<small>[万宁]</small></a>
+                        <span><font>价格待定</font><!--万元/套--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/9.html" target="_blank">
+                            <img src="Images/20.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/9.html" target="_blank">中南芭提雅<small>[万宁]</small></a>
+                        <span><font>25000</font>元/㎡</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/838.html" target="_blank">
+                            <img src="Images/21.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/838.html" target="_blank">中海神州半岛<small>[万宁]</small></a>
+                        <span><font>22000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/642.html" target="_blank">
+                            <img src="Images/22.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/642.html" target="_blank">金泰南燕湾<small>[万宁]</small></a>
+                        <span><font>24000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/708.html" target="_blank">
+                            <img src="Images/23.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/708.html" target="_blank">绿中海秘密花园<small>[万宁]</small></a>
+                        <span><font>24000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/656.html" target="_blank">
+                            <img src="Images/24.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/656.html" target="_blank">首创芭蕾雨逸景<small>[万宁]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/499.html" target="_blank">
+                            <img src="Images/25.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/499.html" target="_blank">富力月亮湾<small>[文昌]</small></a>
+                        <span><font>17000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/375.html" target="_blank">
+                            <img src="Images/26.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/375.html" target="_blank">清澜半岛<small>[文昌]</small></a>
+                        <span><font>22000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/371.html" target="_blank">
+                            <img src="Images/27.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/371.html" target="_blank">鲁能山海天<small>[文昌]</small></a>
+                        <span><font>30000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/503.html" target="_blank">
+                            <img src="Images/28.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/503.html" target="_blank">宏图高龙湾1号<small>[文昌]</small></a>
+                        <span><font>35000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/608.html" target="_blank">
+                            <img src="Images/29.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/608.html" target="_blank">碧桂园椰城<small>[文昌]</small></a>
+                        <span><font>8000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/501.html" target="_blank">
+                            <img src="Images/30.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/501.html" target="_blank">荣昱月亮湾<small>[文昌]</small></a>
+                        <span><font>13000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/854.html" target="_blank">
+                            <img src="Images/31.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/854.html" target="_blank">海鹏比邻湾<small>[澄迈]</small></a>
+                        <span><font>21000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/497.html" target="_blank">
+                            <img src="Images/32.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/497.html" target="_blank">半岛壹号<small>[澄迈]</small></a>
+                        <span><font>680</font>万元/套</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/340.html" target="_blank">
+                            <img src="Images/33.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/340.html" target="_blank">皇玛花园<small>[澄迈]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/319.html" target="_blank">
+                            <img src="Images/34.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/319.html" target="_blank">碧桂园美浪湾<small>[澄迈]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/31.html" target="_blank">
+                            <img src="Images/35.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/31.html" target="_blank">富力红树湾<small>[澄迈]</small></a>
+                        <span><font>17000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/302.html" target="_blank">
+                            <img src="Images/36.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/302.html" target="_blank">银海天诚<small>[澄迈]</small></a>
+                        <span><font>19000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="BieshuItem_Cont">
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/775.html" target="_blank">
+                            <img src="Images/37.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/775.html" target="_blank">七仙清泉温泉养生别墅<small>[保亭]</small></a>
+                        <span><font>价格待定</font><!--万元/套--></span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/774.html" target="_blank">
+                            <img src="Images/38.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/774.html" target="_blank">七仙伴月<small>[保亭]</small></a>
+                        <span><font>55000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/667.html" target="_blank">
+                            <img src="Images/39.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/667.html" target="_blank">庄园丽都<small>[保亭]</small></a>
+                        <span><font>21000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/663.html" target="_blank">
+                            <img src="Images/40.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/663.html" target="_blank">龙湾雨林谷<small>[保亭]</small></a>
+                        <span><font>40000</font>元/㎡</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/664.html" target="_blank">
+                            <img src="Images/41.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/664.html" target="_blank">那香山<small>[保亭]</small></a>
+                        <span><font>45000</font>元/m²</span>
+                    </div>
+                </div>
+                <div class="BieshuItem">
+                    <div class="Img">
+                        <a href="http://www.3yayue.com/house/672.html" target="_blank">
+                            <img src="Images/42.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="Text">
+                        <a href="http://www.3yayue.com/house/672.html" target="_blank">天惠仙嶺郡<small>[保亭]</small></a>
+                        <span><font>价格待定</font><!--元/m²--></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!--更多品牌别墅2-->
+    <div class="s_width_1200 bieshu_more2">
+        <p>
+            <a href="/bslist/" target="_blank">更多品牌别墅</a>
+        </p>
+    </div>
+</div>
+<!--报名看房-->
+<div class="Bieshu_BmCont">
+    <div class="width_1200 Bieshu_Bm">
+        <div class="Bieshu_Bm_Left">
+            <div class="MaxText" style="color: #fff; width: 135px; text-align: center">
+                阅房旅居
+            </div>
+            <div class="MinText">
+                为您找一个舒心的家
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick='Kftbm_Form("豪宅别墅-看房报名","PC端",0,"http://www.3yayue.com/bieshu/")'>报名看房</a>
+            </div>
+        </div>
+        <div class="Bieshu_Bm_Mid">
+        </div>
+        <div class="Bieshu_Bm_Right">
+            <div class="Title">
+            帮您找房
+            </div>
+            <div class="Name">
+                <span style="color: #fff">姓名：</span>
+                <input type="text" id="Bs_Name" placeholder="请输入您的姓名" />
+            </div>
+            <div class="Phone">
+                <span style="color: #fff">电话：</span>
+                <input type="text" id="Bs_Phone" placeholder="请输入您的手机号码" />
+            </div>
+            <div class="Btn">
+                <a href="javascript:;" onclick="Bs_Submit()">
+                    提交报名
+                </a>
+            </div>
+        </div>
+        <div class="claer"></div>
+    </div>
+</div>
+<!--声明-->
+<div class="Announce_Cont">
+    <div class="width_1200 Announce">
+    免责声明：楼盘信息由开发商提供，最终以政府部门登记备案为准，请谨慎核查。本站所有房源均为“一房一价”。如该楼盘信息有误，您可以联系我们修正。
+    </div>
+</div>
+<!--footer-->
+<div class="Xyf_Footer_Cont">
+    <div class="width_1200 Xyf_Footer">
+<!--
+        <div class="Xyf_CityList">
+            <div class="Head">热门城市：</div>
+            <div class="Main">
+                <a href="http://www.3yayue.com" target="_blank">海南房产</a>
+                <a href="http://sy.3yayue.com" target="_blank">三亚房产</a>
+                <a href="http://ls.3yayue.com" target="_blank">陵水房产</a>
+                <a href="http://ld.3yayue.com" target="_blank">乐东房产</a>
+                <a href="http://bt.3yayue.com" target="_blank">保亭房产</a>
+                <a href="http://hk.3yayue.com" target="_blank">海口房产</a>
+                <a href="http://cm.3yayue.com" target="_blank">澄迈房产</a>
+                <a href="http://lg.3yayue.com" target="_blank">临高房产</a>
+                <a href="http://wc.3yayue.com" target="_blank">文昌房产</a>
+                <a href="http://df.3yayue.com" target="_blank">东方房产</a>
+                <a href="http://dz.3yayue.com" target="_blank">儋州房产</a>
+                <a href="http://cj.3yayue.com" target="_blank">昌江房产</a>
+                <a href="http://wn.3yayue.com" target="_blank">万宁房产</a>
+                <a href="http://qh.3yayue.com" target="_blank">琼海房产</a>
+                <a href="http://da.3yayue.com" target="_blank">定安房产</a>
+                <a href="http://bs.3yayue.com" target="_blank">白沙房产</a>
+                <a href="http://tc.3yayue.com" target="_blank">屯昌房产</a>
+                <a href="http://qz.3yayue.com" target="_blank">琼中房产</a>
+                <a href="http://wzs.3yayue.com" target="_blank">五指山房产</a>
+                <a href="http://bh.3yayue.com" target="_blank">北海房产</a>
+                <a href="http://nn.3yayue.com" target="_blank">南宁房产</a>
+                <a href="http://fcg.3yayue.com" target="_blank">防城港房产</a>
+            </div>
+-->
+            <div class="clear"></div>
+        </div>
+        <!--二维码区域-->
+        <div class="Xyf_BottomEwm">
+            <div class="Xyf_BottomEwm_Item">
+                <div class="EwmImage">
+                    <img src="Images/mobile_ewm.png" alt="阅房网手机版" />
+                </div>
+                <div class="EwmText">
+                    <h6 class="mobile">三亚阅房网手机版</h6>
+                    <p>使用手机浏览器或者微信</p>
+                    <p>轻松扫一扫即可手机浏览</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="Xyf_BottomEwm_Item">
+                <div class="EwmImage">
+                    <img src="Images/wx_dyh.jpg" alt="阅房网手机版" />
+                </div>
+                <div class="EwmText">
+                    <h6>阅房网微信订阅号</h6>
+                    <p>微信扫一扫关注</p>
+                    <p>我们给您定时推送最新资讯</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="Xyf_BottomEwm_Item">
+                <div class="EwmImage">
+                    <img src="Images/wx_fwh.jpg" alt="阅房网手机版" />
+                </div>
+                <div class="EwmText">
+                    <h6>阅房网微信服务号</h6>
+                    <p>微信扫一扫关注</p>
+                    <p>欢迎关注</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--关于我们链接-->
+        <div class="Xyf_AboutLink">
+            <a href="/about/1.html" target="_blank">关于我们</a>|
+            <a href="/about/2.html" target="_blank">联系我们</a>|
+            <a href="/about/3.html" target="_blank">版权声明</a>|
+            <a href="/about/4.html" target="_blank">服务协议</a>|
+        </div>
+        <div class="Xyf_FooterInfo">
+            <p>版权声明&copy; 海口鑫阅房房地产营销策划有限公司 ICP备案号：琼ICP备13002332号 技术支持：<a href="http://www.kaipie.com/" target="_blank" rel="nofollow">开派科技</a></p>
+        </div>
+    </div>
+</div>
+<!--在线客服-->
+<div id="top"></div>
+<!--在线客服End-->
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+<script type="text/javascript">
+    //unslide.js图片轮播
+    $(document).ready(function (e) {
+        var unslider04 = $('.Banner').unslider({
+            speed: 500,               //  滚动速度
+            delay: 4000,              //  滑块停留时间
+            complete: function () { ; },  //每个滑块动画完成时调用的方法
+            keys: true,               //  键盘切换
+            dots: true,               //  圆点指示
+            fluid: true               //  开启响应式
+        }),
+	    data04 = unslider04.data('unslider');
+
+        $('.unslider-arrow04').click(function () {
+            var fn = this.className.split(' ')[1];
+            data04[fn]();
+        });
+    });
+
+    //楼盘滚动
+    jQuery(".BrandBottom").slide({ titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 2, trigger: "click" });
+
+    //精品别墅切换
+    function DivToggle(a, b, c) {
+        $(a).mousemove(function () {
+            var ListCount = 7;
+
+            var list_index = 0;
+            var list_index = $(this).index();
+            if (list_index < ListCount) {
+                $(c).css("display", "none");
+                $(c).eq(list_index).css("display", "block");
+
+                $(this).parent().find(b).removeClass("Select");
+                $(this).addClass("Select");
+            }
+            
+        })
+    };
+    //执行函数
+    $(function () {
+        DivToggle(".AreaList a", "a", ".BieshuItem_Cont"); //精品别墅
+    });
+</script>
+<!--商务通201709-->
+<script language="javascript" src="http://swt.3yayue.com/JS/LsJS.aspx?siteid=MLI82332512&float=1&lng=cn"></script>
+
+</body>
+</html>

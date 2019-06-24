@@ -1,0 +1,38 @@
+ {include file='common/head2' /}
+<link href="__CDN__/assets/css/index/video.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>{$row.typename}</span></div>
+  
+<!--正文-->
+  <div class="w1200">
+  
+     <!--我要提问-->
+      <div class="vi_left">
+    <h3>{$row.KP_Title}</h3>
+    <div class="vi_center">
+    <iframe height="510" width="760" src='{$row["KP_VideoUrl"]}' frameborder=0 'allowfullscreen' scrolling="no" allowfullscreen="true" allowtransparency="true"></iframe>
+    </div>
+      </div>
+
+    <div class="kftuan">
+      <div class="kftuan_c">
+        <h3>免费报名参团</h3>
+        <p>可享低折优惠+免费接机+安排行程+全程陪同看房</p>
+        <div class="kftuan_from">
+        <input type="text" id="lp_Name" placeholder="请输入您的姓名" />
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码" />
+        <a href="javascript:void(0);" onclick="lp_Submit()" class="btn">我要报名</a> 
+        </div>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  
+  
+</div><!--w1200 end-->
+
+ 
+
+ 

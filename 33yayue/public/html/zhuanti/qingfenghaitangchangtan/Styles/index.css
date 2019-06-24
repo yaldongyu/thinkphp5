@@ -1,0 +1,78 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #00064a; border-bottom: solid 1px #00064a;}
+/*banner*/
+.banner{ position: relative; background: url(../img/banner01.jpg) no-repeat center center; width: 100%; height: 685px;}
+.xiangqing{ width: 130px; height: 198px; position: absolute; left: 50%; margin-top: 430px; margin-left: -65px;}
+/*正文*/
+.center{ width: 100%; padding-top: 25px; padding-bottom: 50px;}
+.tab01{ width:1200px; height: 138px; margin: 0 auto;}
+.text01{ width:1200px; height: 230px; margin: 0 auto; background: url(../img/text1.jpg) no-repeat;}
+.lunbo_box{ overflow:hidden; position:relative; max-width:1000px; height:502px; margin: 0 auto; margin-bottom: 25px;}
+.lunbo{ position:absolute; width:1000px;}
+.lunbo_box img{float: left;}
+/*洋房*/
+.huxing_box,.huxing{ width: 1200px; height: 1076px; margin: 0 auto; overflow: hidden; position: relative; margin-bottom: 25px;}
+.huxing_img{ height: 1076px; width: 8400px; position: relative; left: -1200px;}
+.huxing_img .img{ float: left;}
+.arrow{ background: url(../img/arrow_r.png) no-repeat 100%; width: 80px; height: 80px; position: absolute; right: 0; top: 50%; margin-top: -40px; cursor: pointer;}
+.huxing_box .arrow_l{ left: 0; background: url(../img/arrow_l.png) no-repeat;}
+.huxing_box a{ width: 150px; background: #00064a; position: absolute; left: 300px; top: 600px; color: #fff; font-size: 16px; text-align: center; line-height: 34px;}
+.huxing_box a:hover{ color: #FF6600;}
+/*别墅*/
+.bieshu_box{ position: relative; width: 1200px; margin: 0 auto;}
+.bg1,.bg2{ background: url(../img/bs01.jpg) no-repeat; width: 1200px; height: 745px; margin: 0 auto;}
+.bieshu_box .bg2{ background: url(../img/bs02.jpg) no-repeat;}
+.bieshu_box img{ float: left;}
+.bieshu_box a{ width: 150px; background: #00064a; position: absolute; right: 33px; color: #fff; font-size: 16px; text-align: center; line-height: 34px;}
+.a1{ top: 100px;}
+.a2{ top: 850px;}
+.bieshu_box{ margin-bottom: 25px;}
+.bieshu_box a:hover{ color: #FF8E00;}
+/*区位*/
+.quwei{ width: 1200px; height: 401px; margin: 0 auto; background: url(../img/quwei.jpg) no-repeat; margin-bottom: 25px;}
+/*海岸*/
+.haian{ width: 1200px; height: 520px; margin: 0 auto; background: url( ../img/haian.jpg) no-repeat;}
+/*底部*/
+.bottom{ width: 100%; height: 260px; background: #00064a; margin-bottom: 80px;}
+.bottom_text{ text-align: center; position: relative;}
+.bottom_text h1{ color: #fff; font-size: 30px; letter-spacing:5px; padding-top: 30px;}
+.bottom_text h2{ color: #fff; font-size: 16px; letter-spacing:3px; line-height: 30px;}
+.bottom_text a{ background: #ffa42f; color: #00064a; font-size: 18px; line-height: 50px; width: 324px; position: absolute; margin-left: -162px; margin-top: 20px;}
+.bottom_text a:hover{ color: #fff;}
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

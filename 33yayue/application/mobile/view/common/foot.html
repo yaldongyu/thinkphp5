@@ -1,0 +1,161 @@
+<!-- 补一个oldhouse的div -->
+</div> 
+<!-- 公共底部 -->
+<div class="blank10"></div>
+
+  
+
+<div class="bot_menu"> <a href="/">首页</a> <a href="/house/">新房</a> <a href="/news/">资讯</a> <a href="/tuangou/">团购</a> <a href="/news/index/typeid/10">看房记</a> <a href="/news/index/typeid/3">优惠信息</a> </div>
+<div class="footer">
+    <a href="/about/index/ids/1">关于我们</a>|
+    <a href="/about/index/ids/3">版权声明</a>|
+    <a href="/about/index/ids/2">联系我们</a>
+    <p></p>
+    <span>
+                    {if condition="$domain=='lvfang66.com'"}
+                        "版权声明© 广西阅房网科技有限公司 ICP备案号：桂ICP备18008566号"
+                    {else /}
+                        {$Think.config.site.beian}
+                    {/if}
+     </span>
+</div>
+<br />
+<br />
+<!-- <div id="fixed">
+    <div class="table">
+             
+        <div class="td ttd"> <a href="tel:{$Think.config.site.tel}"><img src="/assets/img/mobile/tel.gif"></a> </div>
+        <div class="td">
+            <a href="javascript:void(0);" class="red_btn bg_orange" id="lmbmBtn"><ins class="icon-23"></ins>预约看房</a>
+        </div>
+        <div class="lmbmBox sFix" id="lmbmBox">
+            <div class="lmbmForm">
+               <a class="close" href="javascript:void(0);" onclick="hide()"></a> 
+                <h3>预约看房</h3>
+                    <span><ins class="icon-25"></ins><input name="Bm_Name" id="Bm_Name" required type="text" class="itext" placeholder="请填写姓名/称呼" /></span>
+                    <span><ins class="icon-43"></ins><input name="Bm_Phone" id="Bm_Phone" required type="text" class="itext" placeholder="请填写手机" /></span>
+                    <textarea class="itext" placeholder="其他备注或说明" name="Bm_Message" id="Bm_Message"></textarea>
+                    <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation('GlablBM','');return false;">提交报名</a></p>
+            </div>
+            <div class="fixMask"></div>
+        
+        </div>
+        <div class="td">
+            <a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="red_btn" id="group_sub"><ins class="icon-5"></ins>在线咨询</a>
+        </div>  
+    </div>
+</div> -->
+<div class="y_puicfoot">
+  <div class="footer-nav-tr">
+        <div class="footer-nav-zx"><a href="javascript:void(0);" onclick="openZoosUrl('chatwin');"><i class=".footer-list-icon"><img src="__CDN__/assets/img/mobile/foot_zx.png"></i><p>在线咨询</p></a></div>
+        <div class="footer-nav-tel"><a href="tel:{$Think.config.site.tel}"></a><img src="__CDN__/assets/img/mobile/ico_callfootbg.png"></div>
+        <div class="footer-nav-dz"><a class="popup" class="lmbmBtn"  id="lmbmBtn" data-name="看房定制" data-text="24小时接机，免费报名看房，享折扣优惠" data-id="0" data-module="mobile_index_kfdz" href="javascript:;"><i class="footer-list-icon"><img src="__CDN__/assets/img/mobile/foot_bm.png"></i><p>看房报名</p></a></div>  
+        <div class="lmbmBox sFix" id="lmbmBox">
+            <div class="lmbmForm">
+               <a class="close" href="javascript:void(0);" onclick="hide()"></a> 
+                <h3>预约看房</h3>
+                    <span><ins class="icon-25"></ins><input name="Bm_Name" id="Bm_Name1" required type="text" class="itext" placeholder="请填写姓名/称呼" /></span>
+                    <span><ins class="icon-43"></ins><input name="Bm_Phone" id="Bm_Phone1" required type="text" class="itext" placeholder="请填写手机" /></span>
+                    <textarea class="itext" placeholder="其他备注或说明" name="Bm_Message" id="Bm_Message1"></textarea>
+                    <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation('GlablBM','1');return false;">提交报名</a></p>
+            </div>
+            <div class="fixMask"></div>
+        
+        </div>
+    </div>
+  </div>
+<div class="Tip_Info"></div>
+<a id="backtop" style="position: fixed; height: 37px; width: 37px; right: 8px; bottom: 65px; z-index: 99; display:none; background: url(/assets/img/mobile/backtop.png) 50% 50% / 37px 37px no-repeat;">&nbsp;
+</a> 
+
+<script src="/assets/js/frontend/mobile/jquery.lazyload.js?Fv=1.9.0" type="text/javascript"></script> 
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $("img").lazyload({
+            effect: "fadeIn"
+        });
+    });
+</script> 
+<script type="text/javascript" language="javascript">
+
+//提示框弹层
+function Tip_Control(info, time) {
+    $(".Tip_Info").css("display", "block");
+    $(".Tip_Info").text(info);
+    setTimeout(function () { $(".Tip_Info").css("display", "none"); }, time);
+};
+
+
+
+$(function () {
+    //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+    $(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 1000) {
+                $("#backtop").fadeIn(1500);
+            }
+            else {
+                $("#backtop").fadeOut(1500);
+            }
+        });
+        //当点击跳转链接后，回到页面顶部位置
+        $("#backtop").click(function () {
+            $('body,html').animate({ scrollTop: 0 }, 1000); //1000代表1秒时间回到顶点
+            return false;
+        });
+    });
+});
+ 
+ 
+
+
+
+    $(function () {
+        $("#show_redrict").click(function () {
+            $("#menu").toggle();
+        });
+    });
+  </script>
+<div class="menu" id="menu" style="position:fixed; top:52px; z-index:999; width:100%;display: none;">
+  <div class="newNav" id="nav" style="z-index: 100;">
+    <section class="mBox nav-box">
+      <div class="mTitle2 nav-tit">
+        <h2>频道导航</h2>
+      </div>
+      <div>
+        <div class="nav-icons"> 
+          <a href="/" class="n11"><i></i>
+          <p>首页</p>
+          </a> <a href="/house/" class="n1"><i></i>
+          <p>楼盘</p>
+          </a> <a href="/tuangou/" class="n2"><i></i>
+          <p>团购</p>
+          </a> <a href="/news/" class="n3"><i></i>
+          <p>资讯</p>
+          </a> <a href="/news/index/typeid/10" class="n4"><i></i>
+          <p>看房记</p>
+          </a> <a href="/Houseunion/" class="n5"><i></i>
+          <p>购房联盟</p>
+          </a> <a href="/news/index/typeid/3/" class="n6"><i></i>
+          <p>优惠信息</p>
+          </a> <a href="/bieshu/" class="n7"><i></i>
+          <p>推荐楼盘</p>
+          </a> <a href="/video" class="n8"><i></i>
+          <p>视频看房</p>
+          </a> </div>
+      </div>
+    </section>
+  </div>
+</div>
+<script type="text/javascript">
+  var prov={$prov};
+
+  if( "全国"=="{$CityName?$CityName:'全国'}" && location.host.split(".")[0]!="m" ){
+     var url="http://m" + location.host.substring(location.host.indexOf(".")) + location.pathname;
+       location.href=url;
+  }
+</script>
+  <!--商务通201709-->
+ {$Think.config.site.onlinekefu} 
+
+  

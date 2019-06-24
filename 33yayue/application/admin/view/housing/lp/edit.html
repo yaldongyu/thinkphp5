@@ -1,0 +1,334 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_lpname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_LpName" data-rule="required" class="form-control" name="row[KP_LpName]" type="text" value="{$row.KP_LpName}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_lppinyin')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Lppinyin" class="form-control" name="row[KP_Lppinyin]" type="text" value="{$row.KP_Lppinyin}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_lppinyins')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Lppinyins" class="form-control" name="row[KP_Lppinyins]" type="text" value="{$row.KP_Lppinyins}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_city')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-KP_City" data-rule="required" class="form-control" data-toggle="city-picker" type="text" value="{$row.KP_City_text}">
+            <input id="c-Cityid" class="form-control" name="row[KP_City]" type="hidden" value="{$row.KP_City}"></div>
+            <input id="c-prov" class="form-control" name="row[KP_Provice]"  type="hidden" value="{$row.KP_Provice}">
+            <input id="c-city" class="form-control" name="row[KP_Citys]" type="hidden" value="{$row.KP_Citys}">
+            <input id="c-dist" class="form-control" name="row[KP_District]"  type="hidden" value="{$row.KP_District}">
+            <input id="c-county" class="form-control" name="row[KP_County]" type="hidden" value="{$row.KP_County}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">住宅类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Wylx" data-rule="required" data-source="housing/Ywtype/selectpage" data-params='{"custom[KP_Type]":"0"}' data-pagination='false' data-multiple="true" class="form-control selectpage" name="row[KP_Wylx]" type="text" value="{$row.KP_Wylx}" data-max-select-limit='5' data-primary-key='KP_Name' data-field='KP_Name'>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_jzlx')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Jzlx" data-source="housing/Ywtype/selectpage" data-params='{"custom[KP_Type]":"3"}' data-pagination='false' data-multiple="true" class="form-control selectpage" name="row[KP_Jzlx]" type="text" value="{$row.KP_Jzlx}" data-max-select-limit='5' data-primary-key='KP_Name' data-field='KP_Name'>
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_kfs')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Kfs" class="form-control" name="row[KP_Kfs]" type="text" value="{$row.KP_Kfs}">
+        </div>
+    </div>
+
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_ysxkz')}:</label>
+        <div class="col-xs-12 col-sm-5">
+            <input id="c-KP_Ysxkz" class="form-control" name="row[KP_Ysxkz]" type="text" value="{$row.KP_Ysxkz}">
+        </div>
+        <label class="control-label" style="float: left;">{:__('Kp_cqnx')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Cqnx" class="form-control" name="row[KP_Cqnx]" type="number" value="{$row.KP_Cqnx}">
+        </div>
+    </div> -->
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_lpdz')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Lpdz" data-rule="required" class="form-control" name="row[KP_Lpdz]" type="text" value="{$row.KP_Lpdz}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_sldz')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Sldz" class="form-control" name="row[KP_Sldz]" type="text" value="{$row.KP_Sldz}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_tel')}:</label>
+        <div class="col-xs-12 col-sm-5">
+            <input id="c-KP_Tel" class="form-control" name="row[KP_Tel]" type="text" value="{$row.KP_Tel}">
+        </div>
+        <label class="control-label" style="float: left;">转</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Fjh" class="form-control" name="row[KP_Fjh]" type="text" value="{$row.KP_Fjh}">
+        </div>
+        <label class="control-label" style="float: left;color: #999">{:__('Kp_fjh')}</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_zlhx')}:</label>
+        <div class="col-xs-12 col-sm-5">
+            <input id="c-KP_Zlhx" class="form-control" name="row[KP_Zlhx]" placeholder="如：三居（建面120m²）" type="text" value="{$row.KP_Zlhx}">
+        </div>
+        <label class="control-label" style="float: left;">套价</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_TaoJia" class="form-control" name="row[KP_TaoJia]" type="number" value="{$row.KP_TaoJia}">
+        </div>
+        <label class="control-label" style="float: left;color: #222">万/套</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_zxqk')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-KP_Zxqk" data-rule="required" class="form-control selectpicker" name="row[KP_Zxqk]">
+                {foreach name="typeList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.KP_Zxqk"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_youhui')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_YouHui" class="form-control" name="row[KP_YouHui]" type="text" value="{$row.KP_YouHui}">
+        </div>
+    </div> -->
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_youhui')}:</label>
+        <div class="col-xs-12 col-sm-5">
+            <input id="c-KP_YouHui" class="form-control" name="row[KP_YouHui]" type="text" value="{$row.KP_YouHui}">
+        </div>
+        <label class="control-label" style="float: left;">{:__('Kp_cqnx')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Cqnx" class="form-control" name="row[KP_Cqnx]" type="number" value="{$row.KP_Cqnx}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_kptime')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_KpTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_KpTime]" type="datetime" value="{$row.KP_KpTime}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_rztime')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_RzTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_RzTime]" type="datetime" value="{$row.KP_RzTime}">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_wygs')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Wygs" class="form-control" name="row[KP_Wygs]" type="text" value="{$row.KP_Wygs}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_wyf')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Wyf" class="form-control" name="row[KP_Wyf]" type="text" value="{$row.KP_Wyf}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_rjl')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Rjl" class="form-control" name="row[KP_Rjl]" type="text" value="{$row.KP_Rjl}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_lhl')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Lhl" class="form-control" name="row[KP_Lhl]" type="text" value="{$row.KP_Lhl}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_gharea')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Gharea" class="form-control" name="row[KP_Gharea]" type="text" value="{$row.KP_Gharea}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_jzarea')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Jzarea" class="form-control" name="row[KP_Jzarea]" type="text" value="{$row.KP_Jzarea}">
+        </div>
+    </div>
+
+     <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_ghhs')}:</label>
+        <div class="col-xs-12 col-sm-5">
+            <input id="c-KP_Ghhs" class="form-control" name="row[KP_Ghhs]" type="text" value="{$row.KP_Ghhs}">
+        </div>
+        <label class="control-label" style="float: left;">{:__('Kp_zds')}</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Zds" class="form-control" name="row[KP_Zds]" type="number" value="{$row.KP_Zds}">
+        </div>
+        <label class="control-label" style="float: left;color: #222">栋</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_gjlx')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Gjlx" class="form-control" name="row[KP_Gjlx]" type="text" value="{$row.KP_Gjlx}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_mapzb')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_Mapzb" class="form-control" name="row[KP_Mapzb]" data-toggle="addresspicker" type="text" value="{$row.KP_Mapzb}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_wjt')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-KP_Wjt" data-rule="required" class="form-control" size="50" name="row[KP_Wjt]" type="text" value="{$row.KP_Wjt}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_Wjt" class="btn btn-danger plupload" data-input-id="c-KP_Wjt" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-url="ajax/uploadnosy" data-multiple="false" data-preview-id="p-KP_Wjt"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_Wjt" class="btn btn-primary fachoose" data-input-id="c-KP_Wjt" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_Wjt"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_Wjt"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_logo')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-KP_Logo" data-rule="required" class="form-control" size="50" name="row[KP_Logo]" type="text" value="{$row.KP_Logo}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_Logo" class="btn btn-danger plupload" data-input-id="c-KP_Logo" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-url="ajax/uploadnosy" data-multiple="false" data-preview-id="p-KP_Logo"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_Logo" class="btn btn-primary fachoose" data-input-id="c-KP_Logo" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_Logo"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_Logo"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('楼盘音频')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-KP_YpUrl" class="form-control" size="50" name="row[KP_YpUrl]" type="text"  value="{$row.KP_YpUrl}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_YpUrl" class="btn btn-danger plupload" data-input-id="c-KP_YpUrl" data-mimetype="mp3" data-url="ajax/uploadfile" data-multiple="false" data-preview-id="p-KP_YpUrl"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_YpUrl"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_YpUrl"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('全景地址')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_AllViewUrl" class="form-control" name="row[KP_AllViewUrl]" type="text" value="{$row.KP_AllViewUrl}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('客服人员')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-KP_KfID" data-source="housing/Gflmkf/selectpage" data-multiple='true' data-field="KP_Name" data-primary-key="id" class="form-control selectpage" name="row[KP_KfID]" type="text" value='{$row.KP_KfID}'>
+            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_parking')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Parking" class="form-control" name="row[KP_Parking]" type="text" value="{$row.KP_Parking}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-1">{:__('Kp_cs')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Cs" class="form-control" name="row[KP_Cs]" type="number" value="{$row.KP_Cs}">
+        </div>
+        <label class="control-label col-xs-12 col-sm-1">{:__('收听量')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="c-KP_Yynum" class="form-control" name="row[KP_Yynum]" type="number" value="{$row.KP_Yynum}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">特色类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_TsType" data-rule="required" data-source="housing/Ywtype/selectpage" data-pagination='false' data-multiple="true" class="form-control selectpage" name="row[KP_TsType]"  type="text" value="{$row.KP_TsType}"  data-params='{"custom[KP_Type]":"1"}' data-max-select-limit='5' data-primary-key='KP_Name' data-field='KP_Name'>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_jz')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            {:build_radios('row[KP_Jz]', ['0'=>'否', '1'=>'是'], $row['KP_Jz'])}
+            <!-- <div class="radio">
+            <label for="row[KP_Jz]-0"><input id="row[KP_Jz]-0" name="row[KP_Jz]" type="radio" value="0" checked /> 否</label> 
+            <label for="row[KP_Jz]-1"><input id="row[KP_Jz]-1" name="row[KP_Jz]" type="radio" value="1" /> 是</label>
+            </div> -->
+        </div>
+
+        <label class="control-label col-xs-12 col-sm-2" style="width: 100px;">{:__('Kp_jjlp')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            {:build_radios('row[KP_Jjlp]', ['0'=>'否', '1'=>'是'], $row['KP_Jjlp'])}
+        </div>
+
+        <label class="control-label col-xs-12 col-sm-2" style="width: 100px;">{:__('Kp_gflm')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            {:build_radios('row[KP_Gflm]', ['0'=>'否', '1'=>'是'], $row['KP_Gflm'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_tj')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            {:build_radios('row[KP_Tj]', ['0'=>'否', '1'=>'是'], $row['KP_Tj'])}
+        </div>
+
+        <label class="control-label col-xs-12 col-sm-2" style="width: 100px;">{:__('Kp_yhz')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            {:build_radios('row[KP_Yhz]', ['0'=>'否', '1'=>'是'], $row['KP_Yhz'])}
+        </div>
+
+        <label class="control-label col-xs-12 col-sm-2" style="width: 100px;">{:__('Kp_xszt')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            {:build_radios('row[KP_Xszt]', ['0'=>'在售', '1'=>'待售','2'=>'售罄'], $row['KP_Xszt'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input disabled="" class="form-control" type="text" value="{$row.KP_AddUser}({$row.KP_AddTime})">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">最后编辑人:</label>
+        <div class="col-xs-12 col-sm-2">
+            <input disabled="" class="form-control" type="text" value="{$row.KP_EditUser}">
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-KP_EditTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_EditTime]" type="text" value="{$row.KP_EditTime}">
+        </div>
+    </div>
+   
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

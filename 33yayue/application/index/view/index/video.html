@@ -1,0 +1,116 @@
+<link href="__CDN__/assets/css/index/video.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<div class="shoutu"></div>
+
+<!--选项-->
+<div class="subMian">
+  <div class="w1200">
+    <div class="subNav">
+      <ul>
+        <li class="curr"><a href="/video">视频看房</a></li>
+        <li><a href="/video/jing">景点视频</a></li>
+      </ul>
+      <span class="subline"></span> </div>
+  </div>
+</div>
+
+<!--内容-->
+    <div class="center_w1200">
+        <ul> 
+           {volist name="$index['list']" id="vo" length="9"}
+            <li>
+                <div class="vi_tu"><a href="/video/detail/ids/{$vo.id}" target="_blank"><img src="{$vo.KP_PicUrl}"></a></div>
+                <div class="vi_button">
+                    <a href="/video/detail/ids/{$vo['id']}" target="">视频看房</a>
+                    <a href="{$vo.KP_OverallUrl?$vo.KP_OverallUrl:"javascript:void(0);"}" target="" style="{$vo.KP_OverallUrl==""?"background: #9E9E9E":""}">VR全景</a>
+                </div>
+                <div class="vi_txt">
+                    <p><a href="/video/detail/ids/{$vo.id}" target="">{$vo.KP_Title}</a></p>
+                    <p class="vi_txt_jg">{$vo.KP_Juprice?'均价：':($vo.KP_TaoJia?'总价：':'')}<span>{$vo.KP_Juprice?$vo.KP_Juprice.'元/㎡':($vo.KP_TaoJia?$vo.KP_TaoJia.'万元/套':'待售')}</span></p>
+                    <p>地址：{$vo.KP_Lpdz}</p>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+ 
+             <!--分页-->
+            <div class="page" maxshowpageitem="10" pagelistcount="9"  id="page"></div>
+                
+            </div>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+ var Vdata = {
+                  "page":"1", 
+                  "pagesize":"9",  
+                  "type":"" 
+                };
+ 
+   
+  function getajaxdata(Vdata) {
+     $.post("video/videopage", Vdata, function(data,status){
+        if(status=="success"){
+          for (var i = 0; i < data.list.length; i++) {
+            // console.log(data.list[i]);
+            var da=data.list[i];
+            var dt = $(".center_w1200 >ul >li").eq(i);
+            dt.find("a").attr("href","/video/detail/ids/"+da.id) ;
+            dt.find("img").attr("src", da.KP_PicUrl) ;
+            if(da.KP_OverallUrl==null){
+              dt.find(".vi_button a").eq(1).attr("href", "javascript:void(0);").attr("style","background: #9E9E9E") ;
+            }else{
+              dt.find(".vi_button a").eq(1).attr("href", da.KP_OverallUrl).attr("style","") ;
+            }
+            dt.find(".vi_txt a").html( da.KP_Title) ;
+
+            
+            if(da.KP_Juprice>0){
+               dt.find(".vi_txt_jg").html("均价：<span>" +  da.KP_Juprice + "元/㎡</span>" ) ;
+             }else{
+              if(da.KP_TaoJia!=""){
+               dt.find(".vi_txt_jg").html("总价：<span>" +  da.KP_TaoJia + "万元/套</span>" ) ;
+              }else{
+                dt.find(".vi_txt_jg").html("<span>待售</span>") ;
+              }
+             }
+
+           
+            dt.find(".vi_txt p").eq(2).html("地址：" +da.KP_Lpdz) ;
+            }
+        }
+     
+            
+      });
+    
+  }
+
+
+
+
+var GG = {"kk":function(pageno){
+        if(GG.ff!=0){ 
+          Vdata.page=pageno;
+           getajaxdata(Vdata); 
+         }
+        GG.ff=1;
+      },"ff":0}  
+  
+  setTimeout(function() {
+     var totalpage = parseInt({$index['total']})/Vdata.pagesize ;
+      totalpage =  parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+      console.log(totalpage);
+           
+            
+            $("#page").initPage({$index['total']},1,GG.kk);
+          },0);
+
+             
+</script>
+
+ 

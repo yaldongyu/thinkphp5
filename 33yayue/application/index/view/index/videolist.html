@@ -1,0 +1,88 @@
+ <link href="__CDN__/assets/css/index/css/VideoList.css?v={$Think.config.site.version}" rel="stylesheet"> 
+ 
+ <div class="f_width_1200 Xyf_Bread">
+    <span><a href="/">首页</a></span>/
+    <span><a href="/video/">视频看房</a></span>/
+    <span>{$id==0  ? "楼盘视频" : ($id==1 ? "海南风情" : ($id==2 ? "海南美食汇" : "全部视频" )) }</span>
+</div>
+<!--主块-->
+<div class="f_width_1200 HouseVideo">
+    <div class="HouseVideo_Left">
+        <!--近期视频-->
+        <div class="RecentVideo"> 
+            <div class="Head">
+                {$id==0  ? "楼盘视频" : ($id==1 ? "海南风情" : ($id==2 ? "海南美食汇" : "全部视频" )) }
+            </div>
+             <div align="center" id='loading'  style="margin-top: 20px;"><div><img src='/assets/img/throbber.gif' style="display:inline-flex;align-items: center;text-align: center;vertical-align:middle; " > 正在加载...</div></div>
+             <div class="Main" id="RecentVideotype"  style="display: none;">
+                
+                <div class="RecentVideo_Item" 
+                onmouseleave=' $(this).find(".Shadow").css("display", "none");' 
+                onmousemove='$(this).find(".Shadow").css("display","block");'   v-for='item in data'>
+              
+ 
+                    <div class="Images">
+                        <a :href="detailurl(item.id)"    target="_blank">
+                            <img   :src="valf(item.KP_PicUrl)"    alt="" />
+                        </a>
+                        <a class="Text" :href="detailurl(item.id)" target="_blank">
+                          {{item.KP_Title}}
+                        </a>
+                        <span class="Look">{{item.KP_Cs}}   </span>
+                        <a class="Shadow" :href="detailurl(item.id)" target="_blank"  >
+                        </a>
+                    </div>
+                </div>
+                         
+                          
+                 
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+         <!--分页-->
+      <div id="Lpdata" style="display: none;"></div> 
+      <div id="total" style="display: none;"></div>
+      <input type="hidden"  id="typeid" value="{$id}">
+
+      <div id="AspNetPager1" class="pagination" style="text-align:left;width:100%;">
+        <div class="pagination" align="right" style="width:10%;float:left;font-size:12px;"> </div>
+        <div align="left" class="pagination" style="width:90%;float:left;">
+          
+        </div>
+      </div>
+          <!--分页-->
+    </div>
+    <div class="HouseVideo_Right">
+        <!--报名-->
+        <div class="Baoming">
+            <div class="Head">
+            报名看房
+            </div>
+            <div class="Main">
+                <div class="Name">
+                    <span>您的姓名：</span>
+                    <input type="text" id="Video_Name" placeholder="请输入您的姓名" />
+                </div>
+                <div class="Phone">
+                    <span>电话号码：</span>
+                    <input type="text" id="Video_Phone" placeholder="请输入您的手机号码" />
+                </div>
+                <div class="Btn">
+                    <a href="javascript:void(0);" onclick="Video_Submit()">我要报名</a>
+                </div>
+                <div class="Info">
+                    <p>免费享受以下服务：</p>
+                    <ul>
+                        <li>免费接机服务</li>
+                        <li>提前预定酒店</li>
+                        <li>专车接送看房</li>
+                        <li>全程协助服务</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+

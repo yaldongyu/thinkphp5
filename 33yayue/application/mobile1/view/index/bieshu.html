@@ -1,0 +1,25 @@
+ <div style="height:42px;" class="h42"></div>
+  
+  <div class="box" style="margin-top:10px;">
+
+                                  
+    
+{volist name="$index['hzlist']" id="vo"}                                   
+    <div class="list-img"> <a href="/house/house_details/ids/{$vo.KP_LpID}"><img data-original="{$vo.KP_PicUrl}" src="Images/errorpic.jpg" alt="{$vo.KP_LpName}" style="display: inline;" /></a>
+      <div class="hz-box">
+        <div class="hz-con" >
+          <a href="/house/house_details/ids/{$vo.KP_LpID}"><h1>{$vo.KP_LpName}<span></span></h1>
+          <p>{$vo.KP_Ms}</p></a>
+        </div>
+        <div class="hz-user">    
+          <div class="hz-user-img"> <img data-original="{$vo.KP_LpName}" src="{$vo.KP_Logo}" alt="{$vo.KP_Name}" width="60px" height="60px"　　　　/> </div>
+          <div class="hz-user-name">豪宅顾问：{$vo.KP_Name}</div>
+          <div class="hz-user-year">房产经验：{$vo.KP_Fcyear}年</div>
+          <div class="hz-user-btn green btn"> <a href="tel:{$vo.KP_Tel}">点击咨询</a> </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+{/volist}
+</div>
+    

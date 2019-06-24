@@ -1,0 +1,80 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%; position: relative;}
+.banner img{ width: 100%; height: auto;}
+
+
+.quyu_kuang{ width: 1000px; margin: 0 auto;}
+.diqu_kuang{ float: left; width: 100%; margin: 0 auto;}
+.diqu{ float: left; width: 1000px; height: 130px; text-align: center;}
+.quyu .a1{ font-size: 18px; font-weight: bold; color: #0e98a5; line-height: 130px; padding-bottom: 18px; cursor: pointer; margin: 0 100px 0 100px;}
+.quyu .a2{ font-size: 18px; font-weight: bold; color: #0e98a5; line-height: 130px; padding-bottom: 18px; cursor: pointer; margin: 0 50px 0 50px;}
+
+.quyu .aa1{ border-bottom: #0e98a5 solid 2px;}
+.quyu .aa3{ border-bottom: #0e98a5 solid 2px;}
+.aa5{ display: block;}
+.loupan{ display: none; text-align: center;}
+
+.jieshao{ display: none; position: relative;}
+
+.jieshao img{ display: block; float: left; position: absolute; left: 50%; margin-left: -960px; top: 0; padding-bottom: 200px;}
+
+.jieshao01{ height: 2366px;}
+.jieshao02{ height: 2090px;}
+.jieshao03{ height: 4958px;}
+.jieshao04{ height: 2955px;}
+.jieshao05{ height: 3602px;}
+.jieshao06{ height: 2181px;}
+.jieshao07{ height: 3674px;}
+.jieshao08{ height: 4616px;}
+.jieshao09{ height: 4515px;}
+
+
+.jieshao a{ position: absolute; bottom: -50px; right: 50%; margin-right: -600px; font-size: 20px; font-weight: bold;}
+
+
+.aa2{ display: block;}
+
+.bottom{ width: 1200px; height: 347px; margin: 0 auto; padding-top: 55px;}
+.bottom a{ font-size: 30px; color: #fff;}
+.bottom p{ margin-top: 30px; font-size: 18px; color: #fff; line-height: 30px;}
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

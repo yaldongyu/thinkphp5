@@ -1,0 +1,89 @@
+ 
+<link href="__CDN__/assets/css/index/css/global_house.css?v={$Think.config.site.version}" rel="stylesheet"> 
+
+ 
+<div class="f_width_1200 Xyf_Bread">
+    <span><a href="/">首页</a></span>/
+    <span><a href="/house/">新房</a></span>/
+    <span>{$index['lpinfo']['KP_LpName']}</span>
+    <div style="display: none;">
+    <input type=text id="lpids" value="{$index['lpinfo']['id']}"/>
+    <input type=text id="lpxy" value="{$index['lpinfo']['KP_Mapzb']}"/>  
+  </div>
+</div>
+  <!--楼盘内容开始--> 
+  <!--楼盘标题--> 
+  <!--楼盘标题-->
+<div class=" f_width_1200 HouseHead">
+    <div class="HouseHead_Left">
+        <div class="Img" id="qrcode"> 
+           
+        </div>
+        <script type="text/javascript">
+           $(function () {
+                  jQuery('#qrcode').qrcode({ width: 75, height: 75, text: "http://m" + location.host.substring(location.host.indexOf("."))+"/house/house_details/ids/{$index['lpinfo']['id']}" });
+              })
+        </script>
+         
+        <div class="Title_Tag">
+            <div class="Title">
+                <a href="#"><span>{$index['lpinfo']['KP_LpName']}</span></a>
+                  {if condition=" $index['lpinfo']['KP_Xszt']==0 "}<font>在售</font>
+                          {elseif condition=" $index['lpinfo']['KP_Xszt']==1 "} <font class=\"daishou\">待售</font>
+                          {else /} <font class=\"shouqing\">售罄</font>
+                          {/if}  
+            </div>
+            <div class="Tag"  >
+               
+               {volist name=":explode(',',$index['lpinfo']['KP_TsType'])"   id="co"   }  
+                                         <a href="javascript:void(0);"   onclick="Yhz_SearchEncode('Ts','{$co}');"><span class="t{$i-1}">{$co} </span></a>
+                                      {/volist}
+           
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="HouseHead_Right">
+        <div class="Tel"  >
+         
+        {$index['lpinfo']['KP_Tel']} 
+           {notempty name="$index['lpinfo']['KP_Fjh']"}<small>&nbsp;转&nbsp;{$index['lpinfo']['KP_Fjh']}</small>{/notempty}
+        </div>
+        <div class="Info">
+            <a class="Count" href="/house/lpdp/ids/{$index['lpinfo']['id']}">点评({$index['lpcommentnum']})</a>|
+            <a class="Count" href="/house/lpwd/ids/{$index['lpinfo']['id']}">问答({$index['lpwdnum']})</a>|
+            <a class="Count" href="javascript:void(0);">访问人数({$index['lpinfo']['KP_Cs']})</a>
+            <span><a href="javascript:void(0);" onclick='HouseLikeAjax({$index['lpinfo']['id']},$(this),"Like" )' title="喜欢">喜欢(<font>{$index['lpinfo']['KP_Zycs']}</font>)</a></span>
+            <span>累计<font>{$index['bmnum']}</font>人次报名</span>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+  
+   
+  <!--优惠活动报名-->
+  <div class='f_width_1200 HouseYouHui'>
+    <div class='HouseYouHui_Left'>
+      <dl>
+        <dt>
+          <p>{$index['lpinfo']['KP_YouHui']} </p>
+        </dt>
+      </dl>
+    </div>
+    <div class='HouseYouHui_Right'><a href='javascript:void(0);' onclick='Kftbm_Form("Sqyh","{$index['lpinfo']['KP_LpName']}-申请优惠","PC端",{$index['lpinfo']['id']},"/house/house_details/ids/{$index['lpinfo']['id']}","1")'>申请优惠</a></div>
+    <div class='clear'></div>
+  </div>
+  
+ <div class="HouseColumn_Cont">
+    <div class="f_width_1200 HouseColumn">
+        <a href="/house/house_details/ids/{$index['lpinfo']['id']}"  >楼盘首页</a>
+        <a href="/house/LpDetail/ids/{$index['lpinfo']['id']}" >详细信息</a>
+        <a href="/house/LpHx/ids/{$index['lpinfo']['id']}">户型</a>
+        <a href="/house/LpXc/ids/{$index['lpinfo']['id']}">楼盘相册</a>
+        <a href="/house/LpDt/ids/{$index['lpinfo']['id']}">楼盘动态</a>
+        <a href="/house/LpDp/ids/{$index['lpinfo']['id']}">楼盘点评</a>
+        <a href="/house/LpWd/ids/{$index['lpinfo']['id']}">问答</a>
+    </div>
+</div>
+

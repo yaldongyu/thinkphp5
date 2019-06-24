@@ -1,0 +1,102 @@
+  
+
+  <div style="height:42px;" class="h42"></div>
+ 
+  <!--头部开始-->
+  <div class="box">
+    <div class="wraper"> 
+      <!--主页导航：开始-->
+      <div class="VpageNav_zx"> 
+        <span  class="menuItem active" ><a href="/news/index/typeid/2">楼盘动态</a></span> 
+        <span  class="menuItem" ><a href="/news/index/typeid/3">优惠信息</a></span> 
+        <span  class="menuItem" ><a href="/news/index/typeid/10">看房记</a></span> 
+        <span  class="menuItem" ><a href="/news/index/typeid/9">户型/样板</a></span> 
+        <span class="menuItem"><a href="javascript:void" id="newsmore"  >更多&gt;&gt;</a></span> 
+<script type="text/javascript">
+  
+    $(function () {
+        $("#newsmore").click(function () {
+            $("#menu_newsmore").toggle();
+            $(".newm").toggle();
+        });
+      
+    });
+
+    
+    $(".menuItem").attr("class","menuItem");
+    $('[href="'+ location.pathname.toLocaleLowerCase() +'"]').parent().attr("class","menuItem active");  
+</script>
+        
+      </div>
+      <!--主页导航：结束-->
+      <div class="newsdata" style="display: none;">
+            [       {volist name="index['list']" id="vo" key="k"  }
+                       {$vo} ,
+                    {/volist}
+            ]
+       </div>
+      <div class="wraper">
+        <div class="newm mn2"  >
+ 
+        {volist name="index['list']" id="vo"}
+          <div class="news_list">
+            <div> <a href="/news/detail/ids/{$vo.id}" title="{$vo.KP_Title}">
+              <div class="picx"><img data-original="{$vo.KP_PicUrl}" src="/assets/img/mobile/errorpic.jpg" width="100" height="70"/></div>
+              <div class="txtx">
+                <div class="t"> {$vo.KP_Title} </div>
+                <p>{:mb_substr($vo.KP_Description,0,30)    }...<i class="remen">{$vo.KP_AddTime}</i></p>
+              </div>
+              </a> </div>
+            <div class="clear"></div>
+          </div>
+         {/volist}
+
+          <div class="wf-page">
+            <div id="AspNetPager1" class="pagination" align="left">
+              <div class="pagination" align="right" style="font-size:12px;"> </div>
+              <div align="left" class="pagination">
+                 
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+ 
+ <div class="menu" id="menu_newsmore" style="position:fixed; top:52px; z-index:999; width:100%;display: none;">
+    <div class="newNav" id="nav" style="z-index: 100;">
+            
+      <section class="mBox nav-box">
+        <div class="mTitle2 nav-tit">
+          <h2>资讯导航</h2>
+        </div>
+        <div class="new_li">
+          <ul>
+
+                <li><a href="/news/index/typeid/2" title="楼盘热点">楼盘热点</a></li>
+                <li><a href="/news/index/typeid/5" title="楼盘导购">楼盘导购</a></li>
+                <li><a href="/news/index/typeid/7" title="楼盘速递">楼盘速递</a></li>
+                <li><a href="/news/index/typeid/10" title="看房记">看房记</a></li>
+                <li><a href="/news/index/typeid/3" title="折扣优惠">折扣优惠</a></li>
+                <li><a href="/news/index/typeid/1" title="海南资讯">海南资讯</a></li>
+                <li><a href="/news/index/typeid/11" title="海南楼市">海南楼市</a></li>
+                <li><a href="/news/index/typeid/4" title="工程进度">工程进度</a></li>
+                <li><a href="/news/index/typeid/12" title="论道楼市">论道楼市</a></li>
+                <li><a href="/news/index/typeid/9" title="户型/样板间鉴赏">户型/样板</a></li>
+                <li><a href="/news/index/typeid/13" title="城市画报">城市画报</a></li>
+                <li><a href="/news/index/typeid/8" title="风土人情">风土人情</a></li>
+                <li><a href="/news/index/typeid/6" title="成交记录">成交记录</a></li>
+                <li><a href="/news/index/typeid/14" title="购房指南">购房指南</a></li>
+
+          </ul>
+          <div class="blank10">
+          </div>
+        </div>
+      </section>
+                
+    </div>
+  </div>

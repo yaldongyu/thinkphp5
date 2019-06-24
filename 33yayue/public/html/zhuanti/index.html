@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>楼盘专题-旅游地产-阅房旅居</title>
+<link href="Styles/global.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/header.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/footer.css" rel="Stylesheet" type="text/css" />
+<link href="Styles/bieshu.css" rel="Stylesheet" type="text/css" />
+
+<script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="Scripts/Kaipie.js?skin=default" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/global.js"></script>
+</head>
+<body>
+<!--顶栏欢迎词-->
+<div class="Top_ColumnCont"> 
+    <div class="width_1200 Top_Column">
+        您好，欢迎您访问【阅房旅居】-旅游地产导购平台,购房放心又省钱！
+        <a class="SearchMap" href="/map/" target="_blank">地图找房</a>
+        <a class="Mobile" href="http://m.3yayue.com/" target="_blank">手机版</a>
+        <a class="Erweima" href="javascript:;">二维码<span><img src="Images/wx_dyh.jpg" alt="阅房旅居" /></span></a>
+    </div>
+</div>
+<!--logo与搜索栏-->
+<div class="width_1200 Top_Module">
+    <div class="Top_Module_Left">
+        <a href=""><img src="images/Logo.png" alt="" width="279" height="90" /></a>
+    </div>
+    
+    <div class="Top_Module_Mid">
+        <div class="TopSearch">
+            <input type="text" id="Sokey" placeholder="请输入楼盘名称.." />
+            <a href="javascript:;" onclick="SearchClick()">搜索</a>
+            <div class="clear"></div>
+        </div>
+        <div class="HotSearchList">
+            <a href="http://www.3yayue.com/house/838.html" target="_blank">中海神州半岛</a>
+            <a href="http://www.3yayue.com/house/1871.html" target="_blank">万达西双版纳国际度假区</a>
+            <a href="http://www.3yayue.com/house/1876.html" target="_blank">告庄西双景</a>
+            <a href="http://www.3yayue.com/house/414.html" target="_blank">石梅山庄</a>
+            <a href="http://www.3yayue.com/house/1957.html" target="_blank">勐巴拉雨林小镇</a>
+            
+        </div>
+    </div>
+    <div class="Top_Module_Right">
+        <img src="Images/tel.jpg" alt="" />
+    </div>
+    <div class="clear"></div>
+</div>
+<!--导航栏-->
+<div class="NavigationCont">
+    <div class="width_1200 Navigation">
+        <div class="QuicklyNavigation OtherQuicklyNavigation">快速导航
+            <!--条件筛选start-->
+            <div class="Other_FilterCont">
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed City">
+                    区域
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="/house/?City=324" target="_blank">海口</a>
+                        <a href="/house/?City=3272" target="_blank">三亚</a>
+                        <a href="/house/?City=3281" target="_blank">澄迈</a>
+                        <a href="/house/?City=3286" target="_blank">陵水</a>
+                        <a href="/house/?City=3276" target="_blank">文昌</a>
+                        <a href="/house/?City=3277" target="_blank">万宁</a>
+                        <a href="/house/?City=3274" target="_blank">琼海</a>
+                        <a href="/house/?City=3282" target="_blank">临高</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部区域</div>
+                        <div class="Main">
+                            <a href="/house/?City=324" target="_blank">海口</a>
+                            <a href="/house/?City=3272" target="_blank">三亚</a>
+                            <a href="/house/?City=3281" target="_blank">澄迈</a>
+                            <a href="/house/?City=3286" target="_blank">陵水</a>
+                            <a href="/house/?City=3276" target="_blank">文昌</a>
+                            <a href="/house/?City=3277" target="_blank">万宁</a>
+                            <a href="/house/?City=3274" target="_blank">琼海</a>
+                            <a href="/house/?City=31948" target="_blank">博鳌</a>
+                            <a href="/house/?City=3278" target="_blank">乐东</a>
+                            <a href="/house/?City=3275" target="_blank">儋州</a>
+                            <a href="/house/?City=3287" target="_blank">保亭</a>
+                            <a href="/house/?City=3278" target="_blank">东方</a>
+                            <a href="/house/?City=3282" target="_blank">临高</a>
+                            <a href="/house/?City=3273" target="_blank">五指山</a>
+                            <a href="/house/?City=3280" target="_blank">屯昌</a>
+                            <a href="/house/?City=3279" target="_blank">定安</a>
+                            <a href="/house/?City=3288" target="_blank">琼中</a>
+                            <a href="/house/?City=3284" target="_blank">昌江</a>
+                            <a href="/house/?City=3283" target="_blank">白沙</a>
+                            <a href="/house/?City=314" target="_blank">北海</a>
+                            <a href="/house/?City=310" target="_blank">南宁</a>
+                            <a href="/house/?City=310" target="_blank">防城港</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed Price">
+                    价格
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="/house/?Price=0_5000" target="_blank">5000元以下</a>
+                        <a href="/house/?Price=5000_10000" target="_blank">5000-10000元</a>
+                        <a href="/house/?Price=10000_15000" target="_blank">10000-15000元</a>
+                        <a href="/house/?Price=15000_20000" target="_blank">1.5-2万元</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部价格</div>
+                        <div class="Main">
+                            <a href="/house/?Price=0_5000" target="_blank">5000元以下</a>
+                            <a href="/house/?Price=5000_10000" target="_blank">5000-10000元</a>
+                            <a href="/house/?Price=10000_15000" target="_blank">10000-15000元</a>
+                            <a href="/house/?Price=15000_20000" target="_blank">15000-20000元</a>
+                            <a href="/house/?Price=20000_25000" target="_blank">20000-25000元</a>
+                            <a href="/house/?Price=25000_30000" target="_blank">25000-30000元</a>
+                            <a href="/house/?Price=30000_40000" target="_blank">30000-40000元</a>
+                            <a href="/house/?Price=40000_0" target="_blank">40000元以上</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed Special">
+                    类型
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","别墅")'>别墅</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","公寓")'>公寓</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","住宅")'>住宅</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","商铺")'>商铺</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","酒店式公寓")'>酒店式公寓</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","写字楼")'>写字楼</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部类型</div>
+                        <div class="Main">
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","别墅")'>别墅</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","公寓")'>公寓</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","住宅")'>住宅</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","酒店式公寓")'>酒店式公寓</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","商铺")'>商铺</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","写字楼")'>写字楼</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","商住楼")'>商住楼</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","洋房")'>洋房</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Wy","产权式酒店")'>产权式酒店</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Other_FilterItem">
+                    <div class="Other_FilterItem_Haed Tese">
+                    特色
+                    </div>
+                    <div class="Other_FilterItem_Main">
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","旅游地产")'>旅游地产</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","宜居生态地产")'>宜居生态地产</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","海景地产")'>海景地产</a>
+                        <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","投资地产")'>投资地产</a>
+                    </div>
+                    <!--展示更多-->
+                    <div class="Other_MoreFilter">
+                        <div class="Head">全部特色</div>
+                        <div class="Main">
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","旅游地产")'>旅游地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","宜居生态地产")'>宜居生态地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","海景地产")'>海景地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","投资地产")'>投资地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","江景地产")'>江景地产</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","低密居所")'>低密居所</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","豪华住宅区")'>豪华住宅区</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","小户型")'>小户型</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","刚需盘")'>刚需盘</a>
+                            <a href="javascript:;" onclick='Yhz_SearchEncode("Ts","学区房")'>学区房</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--条件筛选end-->
+        </div>
+        <ul>
+			<li>
+				<a href="/" class="Title">首页</a>
+			</li>
+			<li>
+				<a href="/house/" class="Title">新房</a>
+			</li>
+			<li onmousemove="NavigationSelect_Show(this)">
+                <a href="/news/" class="Title">资讯<span></span></a>
+                <p>
+                    <a href="/news/" target="_blank">全部</a>
+					<a href="/newsindex/2.html" target="_blank">楼盘热点</a>
+					<a href="/newsindex/5.html" target="_blank">楼盘导购</a>
+					<a href="/newsindex/7.html" target="_blank">楼盘速递</a>
+                    <a href="/newsindex/10.html" target="_blank">看房记</a>
+					<a href="/newsindex/3.html" target="_blank">优惠信息</a>
+					<a href="/newsindex/1.html" target="_blank">海南资讯</a>
+				</p>
+            </li>
+			<li><a href="/bieshu/" class="Title">豪宅别墅</a></li>
+			<li onmousemove="NavigationSelect_Show(this)">
+				<a href="/video/" class="Title">视频看房<span></span></a>
+				<p>
+					<a href="/videolist/0.html" target="_blank">楼盘视频</a>
+					<a href="/videolist/1.html" target="_blank">海南风情</a>
+					<a href="/videolist/2.html" target="_blank">海南美食汇</a>
+				</p>
+			</li>
+			<li><a href="/tuangou/" class="Title">团购</a></li>
+			<li><a href="/houseunion/" class="Title">购房联盟</a></li>
+			<li><a href="/html/zhuanti/" class="Title Select">专题</a></li>
+		</ul>
+    </div>
+</div>
+<!--专题图-->
+<div class="center">
+	<div class="zhuanti">
+		<ul>
+			<li><a href="http://www.3yayue.com/html/zhuanti/liucheng/" target="_blank"><img src="Images/img07.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/biguiyuan/" target="_blank"><img src="Images/img14.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/bhfcg/" target="_blank"><img src="Images/img12.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/yunnan/" target="_blank"><img src="Images/img13.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/gudian/" target="_blank"><img src="Images/img18.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/shangpu/" target="_blank"><img src="Images/img15.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/qionghai/" target="_blank"><img src="Images/img16.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/erhai/" target="_blank"><img src="Images/img17.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/shimeishanzhuang/" target="_blank"><img src="Images/img01.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/qingfenghaitangchangtan/" target="_blank"><img src="Images/img03.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/biguiyuanjinshatan/" target="_blank"><img src="Images/img02.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/rongchuangriyuewan/" target="_blank"><img src="Images/img04.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/fuliwan/" target="_blank"><img src="Images/img06.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/fulihongshuwan/" target="_blank"><img src="Images/img08.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/guanlanhu/" target="_blank"><img src="Images/img09.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/qinglanbandao/" target="_blank"><img src="Images/img10.jpg" alt=""></a></li>
+			<li><a href="http://www.3yayue.com/html/zhuanti/rongchuangboaojinwan/" target="_blank"><img src="Images/img11.jpg" alt=""></a></li>
+			
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>
+
+
+<!--声明-->
+<div class="Announce_Cont">
+    <div class="width_1200 Announce">
+    免责声明：楼盘信息由开发商提供，最终以政府部门登记备案为准，请谨慎核查。本站所有房源均为“一房一价”。如该楼盘信息有误，您可以联系我们修正。
+    </div>
+</div>
+<!--footer-->
+<div class="Xyf_Footer_Cont">
+    <div class="width_1200 Xyf_Footer">
+        <div class="Xyf_CityList">
+            <div class="Head">热门城市：</div>
+            <div class="Main">
+                <a href="http://www.3yayue.com" target="_blank">海南房产</a>
+                <a href="http://sy.3yayue.com" target="_blank">三亚房产</a>
+                <a href="http://ls.3yayue.com" target="_blank">陵水房产</a>
+                <a href="http://ld.3yayue.com" target="_blank">乐东房产</a>
+                <a href="http://bt.3yayue.com" target="_blank">保亭房产</a>
+                <a href="http://hk.3yayue.com" target="_blank">海口房产</a>
+                <a href="http://cm.3yayue.com" target="_blank">澄迈房产</a>
+                <a href="http://lg.3yayue.com" target="_blank">临高房产</a>
+                <a href="http://wc.3yayue.com" target="_blank">文昌房产</a>
+                <a href="http://df.3yayue.com" target="_blank">东方房产</a>
+                <a href="http://dz.3yayue.com" target="_blank">儋州房产</a>
+                <a href="http://cj.3yayue.com" target="_blank">昌江房产</a>
+                <a href="http://wn.3yayue.com" target="_blank">万宁房产</a>
+                <a href="http://qh.3yayue.com" target="_blank">琼海房产</a>
+                <a href="http://da.3yayue.com" target="_blank">定安房产</a>
+                <a href="http://bs.3yayue.com" target="_blank">白沙房产</a>
+                <a href="http://tc.3yayue.com" target="_blank">屯昌房产</a>
+                <a href="http://qz.3yayue.com" target="_blank">琼中房产</a>
+                <a href="http://wzs.3yayue.com" target="_blank">五指山房产</a>
+                <a href="http://bh.3yayue.com" target="_blank">北海房产</a>
+                <a href="http://nn.3yayue.com" target="_blank">南宁房产</a>
+                <a href="http://fcg.3yayue.com" target="_blank">防城港房产</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--二维码区域-->
+        <div class="Xyf_BottomEwm">
+            <div class="Xyf_BottomEwm_Item">
+                <div class="EwmImage">
+                    <img src="Images/mobile_ewm.png" alt="阅房网手机版" />
+                </div>
+                <div class="EwmText">
+                    <h6 class="mobile">阅房旅居手机版</h6>
+                    <p>使用手机浏览器或者微信</p>
+                    <p>轻松扫一扫即可手机浏览</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="Xyf_BottomEwm_Item">
+                <div class="EwmImage">
+                    <img src="Images/wx_dyh.jpg" alt="阅房网手机版" />
+                </div>
+                <div class="EwmText">
+                    <h6>阅房网微信订阅号</h6>
+                    <p>微信扫一扫关注</p>
+                    <p>我们给您定时推送最新资讯</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="Xyf_BottomEwm_Item">
+                <div class="EwmImage">
+                    <img src="Images/wx_fwh.jpg" alt="阅房网手机版" />
+                </div>
+                <div class="EwmText">
+                    <h6>阅房网微信服务号</h6>
+                    <p>微信扫一扫关注</p>
+                    <p>欢迎关注</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--关于我们链接-->
+        <div class="Xyf_AboutLink">
+            <a href="/about/1.html" target="_blank">关于我们</a>|
+            <a href="/about/2.html" target="_blank">联系我们</a>|
+            <a href="/about/3.html" target="_blank">版权声明</a>|
+            <a href="/about/4.html" target="_blank">服务协议</a>|
+        </div>
+        <div class="Xyf_FooterInfo">
+            <p>版权声明&copy; 海口鑫阅房房地产营销策划有限公司 ICP备案号：琼ICP备13002332号</p>
+        </div>
+    </div>
+</div>
+<!--在线客服-->
+<div id="top"></div>
+<!--在线客服End-->
+<script src="Scripts/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/bm_form.js"></script>
+
+<!--商务通201709-->
+<script language="javascript" src="http://swt.3yayue.com/JS/LsJS.aspx?siteid=MLI82332512&amp;float=1&amp;lng=cn"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Name" class="form-control" name="row[KP_Name]" type="text" value="{$row.KP_Name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_logo')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <div class="input-group">
+                <input id="c-KP_Logo" data-rule="required" class="form-control" size="50" name="row[KP_Logo]" type="text" value="{$row.KP_Logo}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-KP_Logo" class="btn btn-danger plupload" data-input-id="c-KP_Logo" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-url="ajax/uploadnosy" data-multiple="false" data-preview-id="p-KP_Logo"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-KP_Logo" class="btn btn-primary fachoose" data-input-id="c-KP_Logo" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-KP_Logo"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-KP_Logo"></ul>
+        </div>
+        <label class="control-label" style="color:#888888;">大小：220 x 220</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_brand')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Brand" data-source="housing/lp/selectpage"  data-multiple="true" class="form-control selectpage" name="row[KP_Brand]" type="text" value="{$row.KP_Brand}" data-primary-key='id' data-max-select-limit='6' data-field='KP_LpName'>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">所属区域:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-KP_City" class="form-control" data-toggle="city-picker" type="text" value="{$row.KP_City}"></div>
+            <input id="c-prov" class="form-control" name="row[KP_Provice]"  type="hidden" value="{$row.KP_Provice}">
+            <input id="c-city" class="form-control" name="row[KP_Citys]" type="hidden" value="{$row.KP_Citys}">
+            <input id="c-dist" class="form-control" name="row[KP_District]"  type="hidden" value="{$row.KP_District}">
+            <input id="c-county" class="form-control" name="row[KP_County]" type="hidden" value="{$row.KP_County}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">状态:</label>
+        <div class="col-xs-12 col-sm-2">
+            {:build_radios('row[KP_Status]', ['0'=>'隐藏', '1'=>'显示'], $row['KP_Status'])}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_adduser')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input disabled="" class="form-control" type="text" value="{$row.KP_AddUser}({$row.KP_AddTime})">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">最后编辑:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input  disabled="" class="form-control" type="text" value="{$row.KP_EditUser}({$row.KP_EditTime})">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

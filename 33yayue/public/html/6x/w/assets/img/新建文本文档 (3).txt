@@ -1,0 +1,6 @@
+<p style="font-size: 16px">(此价格已<em style="color: #ff3333">11</em>天没有变动)</p>
+
+<div class="detail_jj_r   bm_trigger"><img style="margin-top: 20px; width: 30px;" src="../../../assets/img/loupanZixun1.png">关注 </div>
+
+
+.detail_jj_r{float: right;margin-right: 25px;font-size: 14px;height: 90px; line-height: 25px;}

@@ -1,0 +1,174 @@
+<link href="__CDN__/assets/css/index/tejia.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+   
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>特价专区</span></div>
+    
+    <!--正文-->
+    <div class="w1200_k">
+        <div class="tu_left"><img src="{$index['content']['KP_PicUrl']}"></div>
+        <div class="tu_right">
+            <div class="tu_right_top">
+                <h3 style="display: inline-block;white-space: nowrap;width: 100%;overflow: hidden;text-overflow:ellipsis;">{$index['content']['KP_Title']}</h3>
+                <p>{$index['content']['KP_Yhby2']}</p>
+            </div>
+            <div class="tuan_zhong">
+            <div class="tuan_jia_show">
+                <p>{$index['Lpinfo']['pricetxt']}</p>
+                <p>{$index['Lpinfo']['KP_Juprice']}</p>
+            </div>
+            <div class="tuan_jia_show">
+                <p>主推户型</p>
+                {if condition="strlen($index['Lpinfo']['KP_Zlhx'])<19"}
+                    <p >{$index['Lpinfo']['KP_Zlhx']}</p >
+                {else/}
+                <marquee width="160px" direction="left" scrollamount="5" align="middle" title="{$index['Lpinfo']['KP_Zlhx']}"><p >{$index['Lpinfo']['KP_Zlhx']}</p ></marquee>
+                {/if}
+                
+            </div>
+            <div class="tuan_num_show"><span>{$index['Lpinfo']['bmnum']}</span>人报名</div>
+            </div>
+            <div class="clear"></div>
+            <div class="dao_time"><i></i><span>团购结束倒计时：<b id="day_show">0</b>天<b id="hour_show">0</b>时<b id="minute_show">0</b>分<b id="second_show">0</b>秒</span></div>
+            <div class="dao_time_1">楼盘地址：<span>{$index['Lpinfo']['KP_Lpdz']}</span></div>
+            <div class="dao_time_1">楼盘特色：<span>{$index['Lpinfo']['KP_TsType']}</span></div>
+            <div class="tuan_canyu" style="margin-top: 20px;width: 530px;">
+                <div class="tuan_canyu_l"><img src="/html/images/tuan_call.png"><span>{$index['Lpinfo']['KP_Tel']}</span></div>
+                <div class="tuan_canyu_r"><a href="javascript:;"  class="tc_youhui">立即参团</a></div>
+            </div>  
+        </div>
+        <div class="clear"></div>
+        <!--项目详情-->
+        
+        <div class="tg_detail">
+            <div class="tg_detail_title">
+                <h3>项目<span>详情</span></h3>
+            <a href="javascript:;" onclick="TuangouShow()"><i></i>团购声明</a>
+            </div>
+            
+            <div class="xiangmu_center">{$index['content']['KP_Htnr']}</div>
+        </div>
+        
+        <div class="tg_detail_right">
+            <div class="server">
+                <div class="server_1">
+                    <p>团购服务中心</p>
+                    <p><img src="/html/images/server.png"></p>
+                </div>
+                <p class="tuan_tix">*团购提醒，助您第一时间参加团购！</p>
+                <div class="tuan_input">
+                    <input type="text" id="SendPhone" placeholder="请输入手机号码">
+                      <input type="hidden" id="Send_Title" value="团购提醒" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['Lpinfo']['KP_LpName']}-一键开启团购" >
+                
+                    <a href="javascript:;" onclick="SendToPhone_Submitdivname('tuan_input')">一键开启</a> 
+                </div>
+            </div>
+            
+            <div class="remen_tuijian">
+                <h3>热门<span>推荐</span></h3>
+                <div class="remen_lp">
+                <ul>
+                    {volist name="$index['rmlp']" id="vo"}
+                    <li>
+                        <a href="/house/house_details/ids/{$vo['id']}" target="_blank">
+                            <div class="remen_lp_tu"><img src="{$vo['KP_Wjt']}"></div>
+                            <div class="remen_lp_title">
+                                <p>{$vo['KP_LpName']}</p>
+                                <p>{$vo['KP_Juprice']}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div> <!--w1200 end-->
+    
+<!--固定定位弹层-->
+<div class="StatementShow">
+  <div class="Title"> 团购声明 </div>
+  <div class="Content">
+    <p>亲爱的 {$site.name}访客，您好！欢迎您参加 {$site.name}的网上购房团购活动。请您在团购过程中遵守一切适用于互联网的相关法律、法规及条例，并同时遵从下列管理规定：</p>
+    <p>一、 {$site.name}团购活动本着自愿原则，商家与团购者之间的交易依托国家法律和房地产开发商进行组织活动和协调工作，提供网上信息交易平台的建设。</p>
+    <p>二、在团购过程中，任何开发商、个人所提供资料应保证真实有效，{$site.name}不能确保本网站以外任何单位或个人发布信息的有效性，并且不负责{$site.name}以外的单位或个人所发布信息引起的一切纠纷，请网友认真选择，并对自己的行为负责。</p>
+    <p>三、在团购活动中，由开发商产品方面构成的问题、引起的纠纷以及售后服务都由原开发商负责协调、处理，{$site.name}不负责以上问题的解决。</p>
+    <p>四、如果成为{$site.name}的团购用户需同意服务协议所规定的各项条款（以下内容中购房者均称为用户）：</p>
+    <p>1、因为我们所提供的服务是基于您所填的个人信息内容，所以请提供详尽、准确的个人资料；</p>
+    <p>2、{$site.name}认为在必要时有权更改此协议的内容，并会采取适当的形式及时通知客户；</p>
+    <p>3、{$site.name}有权根据客户的要求或与开发商（销售商）达成的协议内容制订团购方案，客户有权选择接受或不接受；</p>
+    <p>4、{$site.name}尊重个人的隐私权，承诺对客户所提供的个人资料和信息保密，但下列情况除外；</p>
+    <p>（1）客户要求或同意公开个人资料和信息的；</p>
+    <p>（2）违反国家法律法规及相关行政条例所要求的内容；</p>
+    <p>5、{$site.name}宗旨是为客户提供增值服务。我们将尽力做好每一项工作，以满足客户的要求，但不保证每一项服务一定成功或能满足客户的要求，对服务的及时性、安全性及可能服务中断的情况不作保证，也不对任何商品（服务）或交易活动提供担保，但会帮助客户处理相关事宜；</p>
+  </div>
+  <a class="Close" href="javascript:;" onclick="TuangouHide()"></a> </div>
+  <div class="All_Shadow" style="display: none;"></div>
+
+<!--优惠弹窗-->
+<div class="yh_shenqing">
+  <div class="yh_container">
+    <div class="tc_title">团购看房团</div>
+    <div class="tc_x">免费接机，预定酒店住宿；专车全程接送看房，买房获取额外优惠</div>
+    <div class="tc_center">
+      <div class="tc_center_left">
+        <input type="text" id="lp_Name" placeholder="请输入您的姓名" />
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码" />
+        <input type="hidden" id="T_LpID" value="{$index['Lpinfo']['id']}" />
+        <input type="hidden" id="T_TgID" value="{$index['content']['id']}" />
+        <input type="hidden" id="T_Title" value="PC-团购展示页报名" /> 
+       <input type="hidden" id="T_Message" value="PC-团购展示页报名" />
+ 
+
+
+        <a href="javascript:void(0);"   class="btn">立即提交</a> </div>
+      <div class="tc_center_right"> <span>{$index['Lpinfo']['KP_LpName']}</span>
+        <div class="tc_lptu"><img src="{$index['Lpinfo']['KP_Wjt']}"></div>
+      </div>
+    </div>
+    <a href="#0" class="yh_close"><img src="/html/images/tc_close.png"></a> </div>
+</div>
+
+
+    <script>
+            //团购声明弹层
+    function TuangouShow() {
+        $(".StatementShow").css("display", "block");
+        $(".All_Shadow").css("display", "block");
+    }
+    function TuangouHide() {
+        $(".StatementShow").css("display", "none");
+        $(".All_Shadow").css("display", "none");
+    }
+        
+        
+        //倒计时
+    var intDiff = {$index['content']['KP_EditTime']}; //倒计时总秒数量
+    function timer(intDiff) {
+        window.setInterval(function () {
+        var day = 0,
+        hour = 0,
+        minute = 0,
+        second = 0; //时间默认值        
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('#day_show').html(day);
+            $('#hour_show').html(hour);
+            $('#minute_show').html(minute);
+            $('#second_show').html(second);
+            intDiff--;
+        }, 1000);
+    }
+    $(function () {
+        timer(intDiff);
+    });
+    </script>
+ 

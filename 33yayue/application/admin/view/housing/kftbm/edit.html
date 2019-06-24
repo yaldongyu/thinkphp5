@@ -1,0 +1,64 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_Type" data-rule="required" class="form-control" name="row[KP_Type]" type="number" value="{$row.KP_Type}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Name" class="form-control " rows="5" name="row[KP_Name]" cols="50">{$row.KP_Name}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Phone" class="form-control " rows="5" name="row[KP_Phone]" cols="50">{$row.KP_Phone}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_message')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Message" class="form-control " rows="5" name="row[KP_Message]" cols="50">{$row.KP_Message}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_houseid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_HouseID" class="form-control" name="row[KP_HouseID]" type="number" value="{$row.KP_HouseID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_tgid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_TgID" class="form-control" name="row[KP_TgID]" type="number" value="{$row.KP_TgID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Url" class="form-control " rows="5" name="row[KP_Url]" cols="50">{$row.KP_Url}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-KP_Title" class="form-control " rows="5" name="row[KP_Title]" cols="50">{$row.KP_Title}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kp_bmtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-KP_BmTime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[KP_BmTime]" type="text" value="{$row.KP_BmTime}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

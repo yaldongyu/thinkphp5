@@ -1,0 +1,124 @@
+ 
+    <div class="content" style="margin-bottom:20px;"> 
+      <!--楼盘详情页头：开始-->
+      
+
+
+       <div class="pageHead">
+        <div class="phPic"> 
+          <span><a href="/house/house_details/ids/{$index["LpInfo"]["id"]}"><img src="{$index["LpInfo"]["KP_Logo"]}" alt="{$index["LpInfo"]["KP_LpName"]}" /></a>
+          </span> 
+        </div>
+
+        <div class="phData">  
+        <span>起价：{$index["lpjg"]["KP_Qiprice"]==0 ? ($index["LpInfo"]["KP_TaoJia"]==0 ? "<b>待定</b>" : "<b>".$index["LpInfo"]["KP_TaoJia"]."</b>万元/套") : "<b>".$index["lpjg"]["KP_Qiprice"]."</b>元/m²"}&nbsp;&nbsp; <em class="t0">{$index["LpInfo"]["KP_Xszt"]==0?"在售":($index["LpInfo"]["KP_Xszt"]==1?"待售":"售罄")}</em></span>   
+          <span><ins class="icon-37"></ins>{$index["LpInfo"]["KP_Wylx"]} </span> 
+          <span><ins class="icon-24"></ins> {$index["LpInfo"]["KP_Lpdz"]} </span> 
+        </div>
+        <div class="phSide"> 
+          <span> </span> 
+        </div>
+      </div>
+      <!--楼盘详情统计：开始-->
+      <div class="pageStat"> <span><a href="javascript:void(0)" id="tjBtn1"><ins class="icon-63"></ins> 降价通知</a></span> <span><a href="javascript:void(0);"  id="tjBtn2"><ins class="icon-60"></ins> 认筹通知</a></span> 
+         
+      </div>
+
+
+      
+      <!--楼盘详情统计：结束--> 
+      <!--销售电话：开始-->
+      <div class="lpitem"> <a data-tag="1" href="tel:{$index["LpInfo"]["KP_Tel"]}" class="lptel pad10" id="lptel">
+        <p class="telinfo"> <span class="num">{$index["LpInfo"]["KP_Tel"]}</span>最新政策，更多优惠详情，请致电售楼处 </p>
+        <p class="phone"></p>
+        </a> </div>
+      <!--销售电话：结束--> 
+      <!--楼盘详情页头：结束--> 
+      <!--楼盘详情页头：结束-->
+      <div class="pagePanel">
+        <div class="iv_main"> <br />
+          <center>
+            <iframe src="{$index['content']['KP_VideoUrl']}" width="280" height="210" frameborder="0" scrolling="no" allowfullscreen="true" allowtransparency="true"></iframe>
+          </center>
+          <br />
+          <h1 class="iv_Name">{$index["LpInfo"]["KP_Wylx"]}</h1>
+          <div class="iv_info">发布时间：{$index['content']['KP_AddTime']} &nbsp;&nbsp;播放:{$index['content']['KP_Cs']}次</div>
+
+ 
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--降价通知：开始-->
+  <div class="tjBox sFix" id="tjBox">
+    <div class="tjForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+      <h3>降价通知</h3>
+      <em>将楼盘最新数据信息以及最新降价、优惠活动信息第一时间通知您！</em> <span><ins class="icon-43"></ins>
+      <input name="Bm_Phone2" id="Bm_Phone2" required type="text" class="itext" placeholder="请填写联系方式" />
+      </span>
+      <input type="hidden" name="Bm_Name2" id="Bm_Name2" value="游客"/>
+      <input type="hidden" value="{$index["LpInfo"]["KP_LpName"]}视频详情-降价通知[Moblie]" id="Bm_Message2" name="Bm_Message2" />
+      <input type="hidden" value="{$index["LpInfo"]["id"]}" id="Bm_HouseID2" name="Bm_HouseID2" />
+      <input type="hidden" value="/video/{$index["LpInfo"]["id"]}" id="Bm_Url2" name="Bm_Url2" />
+      <input type="hidden" value="{$index["LpInfo"]["KP_LpName"]}视频详情-降价通知" id="Bm_Title2" name="Bm_Title2" />
+      <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation2();return false;">提交</a></p>
+    </div>
+    <div class="fixMask"></div>
+  </div>
+  <!--降价通知：结束--> 
+  <!--领取优惠：开始-->
+  <div class="lqyhBox sFix" id="lqyhBox">
+    <div class="lqyhForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+      <h3>领取优惠</h3>
+      <em>专人致电，领取优惠</em> <span><ins class="icon-43"></ins>
+      <input name="Bm_Phone4" id="Bm_Phone4" required type="text" class="itext" placeholder="请填写联系方式" />
+      </span>
+      <input type="hidden" name="Bm_Name4" id="Bm_Name4" value="游客"/>
+      <input type="hidden" value="{$index["LpInfo"]["KP_LpName"]}视频详情-领取优惠[Moblie]" id="Bm_Message4" name="Bm_Message4" />
+      <input type="hidden" value="{$index["LpInfo"]["id"]}" id="Bm_HouseID4" name="Bm_HouseID4" />
+      <input type="hidden" value="/house/{$index["LpInfo"]["KP_LpName"]}/video/{$index["LpInfo"]["KP_LpName"]}.html" id="Bm_Url4" name="Bm_Url4" />
+      <input type="hidden" value="{$index["LpInfo"]["KP_LpName"]}视频详情-领取优惠" id="Bm_Title4" name="Bm_Title4" />
+      <div class="subscribe-protocol" style="display: block;">报名即表示您同意<a href="/subscribe.html">《阅房网用户服务协议》</a></div>
+      <p><a href="javascript:void(0);" class="btn blue" onclick="Getperation4();return false;">提交</a></p>
+    </div>
+    <div class="fixMask"></div>
+  </div>
+  <!--领取优惠：结束--> 
+  <!--底部导航：开始-->
+  <div class="photoNav" style="position:fixed ;left:0;right:0; bottom:46px; width:100%; margin:0 auto; z-index:888;"> <span class="menuItem"><a href="/house/{$index["LpInfo"]["KP_LpName"]}.html">返回详情页</a></span> <span class="menuItem"><a href="javascript:void(0);" id="lmbmBtn">预约看房</a></span> <span class="menuItem"><a href="javascript:void(0);" id="lqyhBtn"><ins class="icon-34"></ins>领取优惠</a></span>
+    <div class="lmbmBox sFix" id="lmbmBox">
+      <div class="lmbmForm"> <a class="close" href="javascript:void(0);" onclick="hide()"></a>
+        <h3>预约看房</h3>
+        <span><ins class="icon-25"></ins>
+        <input name="Yy_Name" id="Yy_Name" required type="text" class="itext" placeholder="请填写姓名/称呼" />
+        </span> <span><ins class="icon-43"></ins>
+        <input name="Yy_Pone" id="Yy_Phone" required type="text" class="itext" placeholder="请填写手机" />
+        </span>
+        <textarea class="itext" placeholder="其他备注或说明" name="Yy_Message" id="Yy_Message"></textarea>
+        <p><a href="javascript:void(0);" class="btn blue" onclick="Yybm();return false;">提交报名</a></p>
+      </div>
+      <div class="fixMask"></div>
+    </div>
+  </div>
+  <!--底部导航：结束-->
+<div id="footer" class="pageMemu">
+    <ul>
+      <li style="width:20%"><a href="/house/lphx/ids/{$index["LpInfo"]["id"]}"><ins class="icon-9"></ins>户&nbsp;型&nbsp;图</a></li>
+      <li style="width:20%"><a href="/house/lpxc/ids/{$index["LpInfo"]["id"]}"><ins class="icon-17"></ins>楼盘相册</a></li>
+      <li style="width:30%"><a href="tel:{$Think.config.site.tel}" class="pageTel"><ins class="icon-18"></ins>免费通话</a></li>
+      <li style="width:30%"><a href="javascript:void(0);" onclick="openZoosUrl('chatwin');" class="pageWeixin"><ins class="icon-53"></ins>在线客服</a></li>
+    </ul>
+  </div>
+  <div id="fade" class="black_overlay"></div>
+
+  <script type="text/javascript">
+    setTimeout(function function_name(argument) {
+      // body...
+    $($(".bot_menu")[1]).css("display","none") ;
+     $(".footer").css("display","none") ;
+  },0);
+
+  </script>
+ 
+ 

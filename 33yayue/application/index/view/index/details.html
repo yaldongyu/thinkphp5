@@ -1,0 +1,290 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+<!--正文-->
+ <div class="w1200">
+          {include file='common/head_house' /}
+        
+  
+
+        
+
+
+
+        <div class="badi">
+          <div class="dt_titlehd">
+              <h3>基本信息</h3>
+          </div>
+           <table class="lpm-section4-table" style="border-collapse:separate;" cellpadding="0" cellspacing="0">
+                       <tbody>
+                        <tr>
+                          <td class="lpm-table-1">楼盘名称</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_LpName']}</td>
+                          
+                          <td class="lpm-table-1">项目单价</td>
+                          <td class="lpm-table-3"><span style="color: #ff4a00">{$index['KP_Price']} <i style="font-size: 13px;color: #b2b2b2"> {$index['KP_DqTime']} </i></span></td>
+
+                       </tr>  
+                       <tr>
+                          <td class="lpm-table-1">建筑类型</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Jzlx']}</td>
+                          
+                          <td class="lpm-table-1">所属区域</td>
+                          <td class="lpm-table-3"> {$index['lpinfo']['CNAME']}</td>
+                       </tr>
+                       <tr>
+                          <td class="lpm-table-1">装修状况</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Zxqk']}</td>
+                          
+                          <td class="lpm-table-1">产权年限</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Cqnx']}年</td>
+
+                       </tr>
+                         <tr>
+                          <td class="lpm-table-1">总栋数</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Zds']}栋</td>
+                          
+                          <td class="lpm-table-1">总户数</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Ghhs']}</td>
+                       </tr>
+                       <tr>
+                          <td class="lpm-table-1">开发商</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Kfs']}</td>
+                          
+                          <td class="lpm-table-1">楼盘地址</td>
+                          <td class="lpm-table-3">{$index['lpinfo']['KP_Lpdz']}</td>
+                         
+                       </tr>
+                  </tbody>
+                  </table>
+         </div>
+         <div class="clear"></div>
+
+
+         <div class="badi">
+            <div class="dt_titlehd">
+                <h3>销售信息</h3>
+            </div>
+            <table class="lpm-section4-table" style="border-collapse:separate;" cellpadding="0" cellspacing="0">
+                         <tbody>
+                          <tr>
+                            <td class="lpm-table-1">销售状态</td>
+                            <td class="lpm-table-3">
+                                   {if condition=" $index['lpinfo']['KP_Xszt']==0 "}
+                                        在售 
+                                     {elseif condition=" $index['lpinfo']['KP_Xszt']==1 "}
+                                        待售 
+                                     {else /}
+                                        售罄 
+                                     {/if} 
+                            </td>
+                            
+                            <td class="lpm-table-1">楼盘优惠</td>
+                            <td class="lpm-table-3"><span style="color: #ff4a00">{$index['lpinfo']['KP_YouHui']}</span></td>
+
+          
+
+                         </tr>
+                         <tr>
+                            <td class="lpm-table-1">开盘时间</td>
+                            <td class="lpm-table-3">{$index['lpinfo']['KP_KpTime']}</td>
+                            
+                            <td class="lpm-table-1">交房时间</td>
+                            <td class="lpm-table-3">{$index['lpinfo']['KP_RzTime']}</td>
+                         </tr>
+                         <tr>
+                            <td class="lpm-table-1">主力户型</td>
+                            <td class="lpm-table-3">{$index['lpinfo']['KP_Zlhx']}</td>
+                            
+                            <td class="lpm-table-1">咨询电话</td>
+                            <td class="lpm-table-3"><span style="color: #ff4a00">{$index['lpinfo']['KP_Tel']}</span></td>
+
+                         </tr>
+                    </tbody>
+                    </table>
+                 <div class="clear"></div>
+                    <div class="y_lpysz">
+                            <p class="y_lpysz_h"> </p>
+                            <div class="y_lpysz_table">
+                                
+                                    <table style="width: 1160px;" cellpadding="0" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th class="y_ind2">预售许可证</th>
+                                            <th class="y_ind">发证时间</th>
+                                            <th class="y_ind">绑定楼栋 </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+ 
+                                        {volist name="index['ysxkz']" id="vo"}
+                                            <tr>
+                                                <td>{$vo.KP_Name} </td>
+                                                <td>{$vo.KP_Time?date("Y-m-d",$vo.KP_Time):''}</td>
+                                                <td>{$vo.KP_Bdld} </td>
+                                            </tr>
+
+                                        {/volist}
+                                          
+
+                                        
+                                        </tbody>
+                                    </table>
+                                    <div class="y_lpyszsq">
+                                        <a href="javascript:;"><span>展开</span><i><img src="/assets/img/jt_down.png" alt=""></i></a>
+                                    </div> 
+                            </div>
+                        </div>
+                    
+           </div>
+           <div class="clear"></div>
+
+
+             <!--正文开始-->
+        <div class="dingzhi">
+            <div class="dingzhi_bm">
+                <input type="text" id="SendPhone" placeholder="请输入手机号码">
+                <input type="hidden" id="Send_Title" value="定制好房一分钟回复" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-回电" >
+                
+                <a href="javascript:;" onclick="SendToPhone_Submitdivname('dingzhi_bm')">一键定制</a>
+            </div>
+        </div>
+
+
+
+           <div class="badi">
+              <div class="dt_titlehd">
+                  <h3>规划信息</h3>
+              </div>
+               <table class="lpm-section4-table" style="border-collapse:separate;" cellpadding="0" cellspacing="0">
+                           <tbody>
+                            <tr>
+                              <td class="lpm-table-1">占地面积</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Gharea']}</td>
+                              
+                              <td class="lpm-table-1">建筑面积</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Jzarea']}</td>
+
+                           </tr>
+                           <tr>
+                              <td class="lpm-table-1">容积率</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Rjl']}</td>
+                              
+                              <td class="lpm-table-1">绿化率</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Lhl']}</td>
+                           </tr>
+                           <tr>
+                              <td class="lpm-table-1">停车位</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Parking']}</td>
+                              
+                              <td class="lpm-table-1">楼栋总数</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Zds']}栋</td>
+
+                           </tr>
+                             <tr>
+                              <td class="lpm-table-1">总户数</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Ghhs']}</td>
+                              
+                              <td class="lpm-table-1">物业公司</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Wygs']}</td>
+                           </tr>
+                           <tr>
+                              <td class="lpm-table-1">物业费</td>
+                              <td class="lpm-table-3">{$index['lpinfo']['KP_Wyf']}</td>
+                              
+                              <td class="lpm-table-1"></td>
+                              <td class="lpm-table-3"></td>
+                             
+                           </tr>
+
+                      </tbody>
+                      </table>
+             </div>
+             <div class="clear"></div> 
+ 
+              <div class="badi">
+                  <div class="dt_titlehd">
+                      <h3>项目介绍</h3>
+                  </div>
+                  <div class="xm_jieshao">
+                       <div style="text-align:justify;">
+                        <span style="font-size:16px;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;">{$index['xmjs']['KP_Lpnr'] }</span>
+                      </div>    
+                 </div>
+               </div>
+
+
+                <div class="badi">
+                    <div class="dt_titlehd">
+                        <h3>周边配套</h3>
+                    </div>
+                    <div class="loupan_info2">
+                        {$index['zbpt']['KP_Lpnr'] }
+                    </div>
+                </div>
+      
+    
+      
+    
+    
+  
+ 
+    
+          <!--猜你喜欢-->
+    <div class="dt_titlehd">
+        <h3>为您<span>推荐</span></h3>
+      <a href="/house" target="_blank">更多+</a> </div>
+    <div class="cai_zhanshi">
+      <ul>
+          {volist name="index['wntj']" id="vo"}
+          <li>
+                <a href="/house/house_details/ids/{$vo['id']}" target="_blank">
+                <img src="{$vo['KP_Wjt']}">
+                <span>{$vo['KP_LpName']}</span></a>
+              <div class="hx_txt">
+                  <p class="cn_jia">{$vo['KP_Price']}</p>
+                  <p>{$vo['CNAME']}</p>
+              </div>
+        </li>
+        {/volist}
+      </ul>
+    </div> 
+ </div><!--w1200 end-->
+    
+   
+ 
+
+
+ 
+<script>
+     function show_l(name1,name2){
+  $(name2).each(function(){
+      if ($(this).index()>2) {
+          $(this).hide();
+      };
+  });
+  var index=1;
+  $(name1).on('click',function(){
+    if (index == 1) {
+      $(this).find('span').text('收起');
+      $(name2).each(function(){
+          $(this).show();
+      });
+      $(this).addClass('on');
+      index=2;
+    }else if(index == 2){
+      $(this).find('span').text('展开');
+      $(name2).each(function(){
+          if ($(this).index()>2) {
+              $(this).hide();
+          };
+      });
+      $(this).removeClass('on');
+      index=1;
+    }
+  })
+}
+show_l('.y_lpyszsq a','.y_lpysz_table tbody tr');
+   </script>

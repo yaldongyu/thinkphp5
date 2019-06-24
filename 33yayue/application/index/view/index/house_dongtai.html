@@ -1,0 +1,107 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+<!--正文-->
+  <div class="w1200">
+    {include file='common/head_house' /}
+    
+
+  
+  <!--主体-->
+    <div class="center_k">
+    <div class="dt_title">
+    <h3>楼盘<span>动态</span></h3></div>
+    
+    <div class="center_left">
+      <div class="center_tix">
+        <span><img src="/html/images/dt_tx.png">设置楼盘动态提醒，加推开盘早知道!</span>
+        <span>
+          <input type="text" id="SendPhone" placeholder="请输入手机号码">
+            <input type="hidden" id="Send_Title" value="楼盘动态订阅" >
+                <input type="hidden" id="Send_Ly_Message"  value="{$index['lpinfo']['KP_LpName']}-订阅" >
+                
+              <a href="javascript:;" onclick="SendToPhone_Submitdivname('center_tix')">一键订阅</a>
+        </span>
+      </div>
+      <div class="center_info">
+        <ul>
+          {volist name="index['lpdt']" id="vo"}
+              <li>
+                  <a href="/news/detail/ids/{$vo['id']}" target="_blank"><div class="title_tu"><img src="{$vo['KP_PicUrl']}"></div></a>
+                  <div class="title_tim">
+                    <a href="/news/detail/ids/{$vo['id']}" target="_blank"  ><span>{$vo['KP_Title']}</span></a>
+                    <p>{$vo['KP_Description']}</p>
+                  </div>
+                <div class="title_time">
+                  <p>{$vo['KP_Day']}</p>
+                  <p>{$vo['KP_Time']}</p>
+                </div>
+                
+              </li>
+          {/volist}
+        </ul>
+      </div>
+    </div>
+    
+      <!--右侧热销-->
+  <div class="lp_list_right">
+    <h3>热销楼盘</h3>
+    <div class="right_lp">
+      <ul>
+        {volist name="$index['rxlp']" id="vo"}
+        <li class="right_lp_li {$i==1?"on":""}">
+          <div class="right_lptitle  {:explode(',','four,one,two,three,four,four,four,four,four,four,four,four,four,four')[$i]}"><span><i>{$i}</i>{$vo.KP_LpName}</span> <span class="right_jiage">| {$vo.CNAME}<em>{$vo['KP_Price']}</em></span> </div>
+          <ul class="right_lp_li_down">
+            <div><a href="/house/house_details/ids/{$vo.id}"><img src="{$vo.KP_Wjt}"></a></div>
+          </ul>
+        </li>
+        {/volist}
+      </ul>
+    </div>
+    <!--看房报名-->
+    <div class="right_bm">
+      <div class="right_bm_1">
+        <div class="right_bm_title">看房报名</div>
+        <span>资深置业顾问一对一服务</span>
+        <span>24小时接机，专车全程接送看房</span>
+        <span>提供专项购房优惠</span>
+        <div class="right_bm_kuang">
+        <input type="text" id="lp_Name" placeholder="请输入您的姓名" />
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码" />
+        <a href="javascript:void(0);" onclick="lp_Submit()" class="btn">立即提交</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    </div>
+    
+  </div><!--w1200 end-->
+  
+ 
+
+  
+ 
+  
+  <script>
+  
+  /*右侧楼盘*/
+            $(function(){
+        $(".right_lp .right_lp_li .right_lptitle").click(function(){
+            if($(this).parent(".right_lp_li").hasClass("on")){
+                //当前状态展开的时候，继续点击无效
+            }else{
+                $(this).parents("ul").find(".right_lp_li_down").slideUp(300,function(){
+                    $(this).parents("ul").find(".right_lp_li").removeClass("on");
+                });
+                $(this).next(".right_lp_li_down").slideDown(300,function(){
+                    $(this).parent(".right_lp_li").addClass("on");
+                });
+            }
+        })
+    })
+  
+  </script>
+  
+ 

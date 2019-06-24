@@ -1,0 +1,167 @@
+//phpcode
+//avoid namespace
+(function(){
+    try{
+
+        var Device = {
+            isIphone:function() {
+                return /(iPhone|iPod)/i.test(navigator.userAgent);
+            },
+            isAndroid:function() {
+                return /(Android)/i.test(navigator.userAgent);
+            },
+            isMobile:function(){
+
+                //phpcode 
+                //checkmetaviewport
+
+                var documentHeader = document.head || document.getElementsByTagName("head")[0];
+
+                var metaList = documentHeader.getElementsByTagName('meta');
+                var isWap = false;
+                for(var i=0;i<metaList.length;i++) {
+                    if(metaList[i].name=='viewport' && (metaList[i].content.indexOf('initial-scale=1')!=-1 || metaList[i].content.indexOf('width=device-width')!=-1)) {
+                        isWap = true;
+                    }
+                }
+                return isWap && ( this.isIphone() || this.isAndroid());
+            }
+        };
+
+
+
+
+        var trustedHtml = '<div id="trusted_container"';
+
+        var trustedHeight = 91;
+        var trustedControlBtnHeight = 0;
+
+        if(Device.isMobile()) {
+            trustedHeight = screen.availWidth/1080*(132+120);
+
+        }
+
+        trustedHtml += 'style="width: 100%;height:'+trustedHeight+'px;';
+
+
+        //php code 
+
+
+        trustedHtml += 'left: 0;top: 0;z-index: 100000000; overflow:hidden">';
+        trustedHtml += '<iframe' +
+            ' id="trusted_iframe" ' +
+            'style="width: 100%; height:0px; overflow:hidden;' +
+            'height: '+trustedHeight+'px;" ' +
+            'src="//trusted.shuidi.cn/?did=2965&jump=0&mobile='+(Device.isMobile()?1:0)+'"' +
+        ' frameborder="false"></iframe></div>';
+
+
+        //is real mobile
+
+        //phpcode 
+        if(!Device.isMobile()) {
+
+            var trustedPcControlBtnRight =  0;
+
+
+            trustedHtml += '<div style="'
+
+            //php code 
+            trustedHtml += 'position:absolute;';
+
+            //php code 
+            trustedHtml +=   'top: 0;right: '+trustedPcControlBtnRight+'px;z-index: 100000001;">';
+
+            trustedHtml += '<img id="trusted_hide_image" onclick="hideTrustedFrame(this);" style="width:38px;height:79px;" src="//static.pacra.cn/shuidi/images/trusted-web3_01.png">';
+            trustedHtml += '<img id="trusted_show_image" onclick="showTrustedFrame(this);" style="display: none;width:38px;height:40px;" src="//static.pacra.cn/shuidi/images/trusted-web4_01.png">' +
+            '</div>';
+
+
+
+        } else {
+
+            trustedControlBtnTop = screen.availWidth/1080*132;
+
+            trustedControlBtnHeight = screen.availWidth/1080*88;
+            trustedControlBtnWidth = screen.availWidth/1080*88;
+
+            var trustedControlBtnLeft = 0;
+
+            //first mobile button
+            trustedHtml += '<img style="'+
+                'width:'+trustedControlBtnWidth+'px;'+
+                'height:'+trustedControlBtnHeight+'px;';
+
+
+            //php code 
+            trustedHtml += 'position: absolute;';
+            //php code 
+            trustedHtml += 'top: '+trustedControlBtnTop+'px;left:'+trustedControlBtnLeft+'px;z-index: 100000002;" id="trusted_hide_image" onclick="hideTrustedFrame(this);"  src="//static.pacra.cn/shuidi/images/trusted-mobile-hide.png">';
+
+            //second button
+            trustedHtml += '<img style="'+
+                'width:'+trustedControlBtnWidth+'px;'+
+                'height:'+trustedControlBtnHeight+'px;';
+            //php code 
+            trustedHtml += 'position: absolute;';
+            //php code 
+
+
+            trustedHtml += 'top: 0;left:'+trustedControlBtnLeft+'px;z-index: 100000003; display:none;" id="trusted_show_image" onclick="showTrustedFrame(this);"  src="//static.pacra.cn/shuidi/images/trusted-mobile-show.png">';
+        }
+
+        //phpcode 
+
+            var trustedSuperContainer = document.createElement('div');
+            trustedSuperContainer.style.width = "100%";
+            //trustedSuperContainer.style.display = "none";
+            //trustedSuperContainer.style.height = trustedHeight+"px";
+            trustedSuperContainer.style.fontSize = "14px";
+            trustedSuperContainer.innerHTML = trustedHtml;
+
+            var checkBodyHandler = 0;
+
+            var addToHandler = function(){
+                if(document.body &&document.body.childNodes.length>=1) {
+                    window.clearInterval(checkBodyHandler);
+
+
+                    document.body.insertBefore(trustedSuperContainer,document.body.childNodes[0]);
+
+
+
+                    document.getElementById("trusted_iframe").onload = function(){
+                        //alert('loaded');
+                        trustedSuperContainer.style.display = "";
+                    };
+
+                    //document.body.appendChild(trustedSuperContainer);
+
+                    //outside
+                    window.hideTrustedFrame = function(image) {
+                        image.style.display = 'none';
+                        document.getElementById('trusted_show_image').style.display = '';
+                        document.getElementById('trusted_container').style.display = 'none';
+                    };
+
+                    //outside
+                    window.showTrustedFrame = function(image) {
+                        image.style.display = 'none';
+                        document.getElementById('trusted_hide_image').style.display = '';
+                        document.getElementById('trusted_container').style.display = '';
+                    };
+
+                    //phpcode
+                }
+            };
+            if(document.body && document.body.childNodes.length>=1) {
+                addToHandler();
+            } else {
+                checkBodyHandler = window.setInterval(addToHandler, 100);
+            }
+        //phpcode 
+    } catch(e) {
+        //console.log(e);
+    }
+})();
+//phpcode

@@ -1,0 +1,320 @@
+ <link href="__CDN__/assets/css/index/css/HouseUnion.css?v={$Think.config.site.version}" rel="stylesheet"> 
+<!--主块-->
+<div class="f_width_1200 PageMain">
+    <div class="PageLeft">
+        <!--联盟介绍-->
+        <div class="UnionDes">
+            <div class="UnionDes_Head">
+                <ul>
+                    <li class="Select">购房联盟活动简介</li>
+                    <li>购房联盟系列服务</li>
+                    <li>购房联盟优势</li>
+                </ul>
+            </div>
+            <div class="UnionDes_Main">
+                <!--购房联盟简介-->  
+                <div class="UnionDes_Item Select">
+                    <div class="UnionDes_Info">
+                        <div class="UnionDes_Info_Left">
+                            <p>购房联盟是{$Think.config.site.name}携手各大房企推出的服务性活动，提供24小时接送机、全程接送看房、专业置业顾问答疑解惑等服务，
+                            是岛外人士在海南看房、买房的首选途径。报名购房联盟，购房者不仅能够更高效看房，还能够享受{$Think.config.site.name}与开发商协议的独家优惠。</p>
+
+                            <p>自成立之日起，购房联盟至今已服务逾万组客户，为数十万购房者节约购房成本，优质、专业、高效的服务得到岛内外购房者的一致认可。</p>
+                        </div>
+                        <div class="UnionDes_Info_Right">
+                            <div class="Title1">
+                            联盟宗旨
+                            </div>
+                            <div class="Title2">
+                            因客户而存在，因客户而发展
+                            </div>
+                            <div class="Title3">
+                            真诚服务每一位客户！
+                            </div>
+                            <div class="Tel">
+                            免费咨询热线
+                            </div>
+                            <div class="Number">
+                             {$Think.config.site.tel} 
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <!--系列服务-->
+                <div class="UnionDes_Item">
+                    <div class="UnionDes_Service">
+                        <div class="Title1">
+                        省心省力得实惠
+                        </div>
+                        <div class="Title2">
+                        {$Think.config.site.name}购房联盟24小时全程系列服务
+                        </div>
+                        <div class="List">
+                            <ul>
+                                <li>联盟成员可免费入住星级酒店两天</li>
+                                <li>免费享受24小时专车机场接送、看房接送服务</li>
+                                <li>专业置业顾问陪同看房，提供全程参谋式优质服务</li>
+                                <li>购房选择余地更大，近千个优质楼盘供您甄选</li>
+                                <li>联盟成员独享优惠团购折扣价格，大幅度降低购房成本</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--优势-->
+                <div class="UnionDes_Item">
+                    <div class="UnionDes_Advantage">
+                        <div class="TextItem">
+                            <div class="Title">
+                            集结：让团购更有力量
+                            </div>
+                            <div class="Text">
+                            人多力量大，报名购房联盟的会员越多，开发商给予的优惠就更大，联盟会员享受的优惠就更大。
+                            </div>
+                        </div>
+                        <div class="TextItem">
+                            <div class="Title">
+                            便捷：看房不用满城跑
+                            </div>
+                            <div class="Text">
+                            根据会员购房需求，置业顾问将为其提供有针对性的选择方案，并且公正、客观地告之“所提供项目的优势和不足之处”，
+                            使购房者在选房中得到更全面的信息，比在每个售楼处只能听到“一面之词”更有参考性，购房者选房心里更有数，更有底。
+                            </div>
+                        </div>
+                        <div class="TextItem">
+                            <div class="Title">
+                            看房：全程服务均免费
+                            </div>
+                            <div class="Text">
+                            购房联盟会员享有机场接送机、车接车送看房、专业置业顾问全程陪同、游玩知名景点、入住星级酒店等一站式优质服务，全程免费，对异地置业的购房者而言，这无疑是“雪中送炭”之举。
+                            </div>
+                        </div>
+                        <div class="TextItem">
+                            <div class="Title">
+                            专业：让购房者更省心
+                            </div>
+                            <div class="Text">
+                            购房未成功，如果会员需要，购房联盟将会针对会员置业需求，提供后续的房产优惠提醒、推
+                            荐等服务；购房成功，购房联盟会提供购房后续过程中涉及的“合同咨询、验房服务、装修咨询”等一系列服务。让专业的人，为购房者做专业服务。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--联盟楼盘-->
+        <div class="UnionHouse">
+            <div class="UnionHouse_Head">
+                联盟楼盘
+                <a href="/house/" target="_blank">更多楼盘</a>
+            </div>
+            <div class="UnionHouse_Main">
+                    {volist name="index['lmlp']" id="vo"}
+                <div class="HouseItem">
+                    <div class="Images">
+                        <a href="/house/house_details/ids/{$vo.id}" target="_blank">
+                            <img src="{$vo.KP_Wjt}" alt="{$vo.KP_LpName}" />
+                        </a>
+                        <a class="Title" href="/house/house_details/ids/{$vo.id}" target="_blank">{$vo.KP_LpName}</a>
+                        <a class="Map" href="/house/house_details/ids/{$vo.id}#house-map" target="_blank">地图</a>
+                    </div>
+                    <div class="Information">
+                        <div class="Name">
+                            <a href="/house/house_details/ids/{$vo.id}" target="_blank">{$vo.KP_LpName}<span>[{$vo.CNAME}]</span></a>
+                        </div>
+                        <div class="Price">
+                            <span>起售价：<font>{$vo.KP_Qiprice==0 ? ($vo.KP_TaoJia==0 ? "待定" : $vo.KP_TaoJia."万元/套") : $vo.KP_Qiprice."元/m²"}</font></span>
+                            <span>均价：<font>{$vo.KP_Juprice==0  ? "待定" : $vo.KP_Juprice ."元/m²"}</font></span>
+
+                        </div>
+                        <div class="Telephone">
+                            {$vo.KP_Tel}{$vo.KP_Fjh==''?'':"&nbsp;转&nbsp;".$vo.KP_Fjh}
+                        </div>
+                    </div> 
+                    <div class="Tool">
+                        <a href="/house/house_details/ids/{$vo.id}" class="Read" title="浏览" target="_blank">{$vo.KP_Cs}</a>
+                        <a href="javascript:void(0);" class="Love" onclick='HouseLikeAjax({$vo.id},$(this),"Like" )' title="喜欢"><font>{$vo.KP_Zycs}</font></a>
+                        <a href="/house/LpDp/ids/{$vo.id}" class="Comment" title="评论" target="_blank">{$vo.dpnum}</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                {/volist}
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--购房联盟客服-->
+        <div class="CustomerService">
+            <div class="CsHead">
+                购房联盟客服
+            </div>
+            <div class="CsMain">
+                    {volist name="index['gflmkf']" id="vo"}
+                <div class="CsItem">
+                    <div class="CsItem_Left">
+                        <img src="{$vo.KP_Pic}" alt="" />
+                    </div>
+                    <div class="CsItem_Right">
+                        <div class="Name">
+                            {$vo.KP_Name}
+                        </div>
+                        <div class="Origin">
+                            籍贯:{$vo.KP_Area}
+                        </div>
+                        <div class="Tel">
+                            电话：<span>{$vo.KP_Tel}</span>
+                        </div>
+                        <div class="Understand">
+                            <span>擅长区域：</span>{$vo.KP_Qy}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                {/volist}
+                <div class="clear"></div>
+            </div>  
+
+        </div>
+        <!--点评咨询-->
+        <div class="CommentAsk" id="CommentAsk">
+            <div class="CommentAsk_Head">
+            点评咨询
+            </div>
+            <div class="CommentAsk_Main">
+                <!--点评输入-->
+                <div class="AskMain"> 
+                    <div class="AskMain_Left">
+                        <img src="__CDN__/assets/css/index/img/icon-custom.png" alt="" />
+                    </div>
+                    <div class="AskMain_Right">
+                        <div class="Name">
+                            <input type="text" id="T_KhName" placeholder="请填写您的称呼" />
+                            <input type="text" id="T_KhPhone" placeholder="请填写您手机号码（选填）" />
+                        </div>
+                        <div class="Info">
+                            <textarea rows="4" cols="80" id="T_Content" placeholder="请填写您需求或者疑问"></textarea>
+                           <a href="javascript:void(0);" onclick="UnionComment_Submit()">提交</a>
+                        </div> 
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--评论列表-->
+                <div class="CommentList">
+                    {volist name="index['list']" id="vo"  length="6" }
+                    <div class="CommentList_Item">
+                        <div class="ListItem_Left">
+                            <img src="__CDN__/assets/css/index/img/icon-custom.png" alt="" />
+                        </div>
+                        <div class="ListItem_Right">
+                            <div class="City_Time">
+                                <span>{$vo.KP_KhName}</span>
+                                <small>{$vo.KP_Time}</small>
+                            </div>
+                            <div class="Content">
+                            {$vo.KP_Content}
+                            </div>
+                            <div class="Answer">
+                                <div class="Answer_Left">
+                                    <img src="__CDN__/assets/css/index/img/User.png" alt="" />
+                                </div>
+                                <div class="Answer_Right">
+                                    <div class="People">
+                                        <span>{$Think.config.site.name}房产顾问</span>
+                                        <small>{$vo.KP_ServiceName}</small>
+                                        <small>咨询电话：{$vo.KP_ServiceTel}</small>
+                                    </div>
+                                    <div class="Text">
+                                    {$vo.KP_Reply}
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    {/volist}
+                </div>
+                 <!--评论列表-->
+                <div class="CommentListajax" id="CommentListajax" style="display: none;">
+                     
+                    <div class="CommentList_Item" v-for="lp in lps">
+                        <div class="ListItem_Left">
+                            <img src="__CDN__/assets/css/index/img/icon-custom.png" alt="" />
+                        </div>
+                        <div class="ListItem_Right">
+                            <div class="City_Time">
+                                <span>{{lp.KP_KhName}}</span>
+                                <small>{{lp.KP_Time}}</small>
+                            </div>
+                            <div class="Content">
+                            {{lp.KP_Content}}
+                            </div>
+                            <div class="Answer">
+                                <div class="Answer_Left">
+                                    <img src="__CDN__/assets/css/index/img/User.png" alt="" />
+                                </div>
+                                <div class="Answer_Right">
+                                    <div class="People">
+                                        <span>房产顾问</span>
+                                        <small>{{lp.KP_ServiceName}}</small>
+                                        <small>咨询电话：{{lp.KP_ServiceTel}}</small>
+                                    </div>
+                                    <div class="Text">
+                                    {{lp.KP_Reply}}
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                     
+                </div>
+                 <div class="f_width_1200_pagenav">
+                    <div id="Lpdata" style="display: none;"></div> 
+                    <div id="total" style="display: none;">{$index['total']}</div>
+                     <div id="AspNetPager1" class="pagination" style="text-align:left;width:100%;">
+                        <div class="pagination" align="right" style="width:10%;float:left;font-size:12px;">   </div>
+                         <div align="left" id="pagenav" class="pagination" style="width:90%;float:left;"  > </div>
+                       </div>   
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="PageRight">
+        <!--报名-->
+        <div class="Apply">
+            <div class="ApplyHead">
+            我要报名
+            </div>
+            <div class="ApplyMian">
+                <div class="Name">
+                    <input type="text" id="Union_Name" placeholder="您的姓名" />
+                </div>
+                <div class="Phone">
+                    <input type="text" id="Union_Phone" placeholder="您的手机号码" />
+                </div>
+                <div class="Words">
+                    <textarea cols="33" rows="3" id="Union_Title" placeholder="您可以在此处留言(选填)" ></textarea>
+                </div>
+                <div class="Btn">
+                    <a href="javascript:void(0);" onclick="Union_Submit()">立即报名</a>
+                </div>
+            </div>
+        </div>
+        <!--联盟动态-->
+        <div class="UnionNews">
+            <div class="UnionNews_Head">
+                联盟动态
+                <a href="/newsindex/14.html" target="_blank">更多>></a>
+            </div>
+            <div class="UnionNews_Main">
+
+                {volist name="index['lmdt']" id="vo" key="k"}
+                <a href="/news/detail/ids/{$vo.id}" target="_blank"><span>{$k}</span>{$vo.KP_Title}</a>
+                {/volist}
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

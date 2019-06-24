@@ -1,0 +1,112 @@
+ 
+<style type="text/css">
+button,input{font-family: "Microsoft Yahei",Tahoma,"SimSun"; border:none; background:#fff}
+header{ height:50px; background:#ff3300;padding:0 2%; position:relative;}
+.f-left{ float:left}
+.f-right{ float:right}
+.mt20{ margin-top:10px}
+.backfff{ background:#fff}
+/*title*/
+.title{ height:40px;border-top:1px solid #d2d2d2;border-bottom:1px solid #d2d2d2; line-height:40px; font-size:18px;padding:0 2%; font-weight:normal; position:relative }
+.title a{ display:block; width:100%;color:#333}
+.tb_hot_search{ height:30px; border-radius:4px; padding:0 2% 0 8%; background:#fff url(/assets/img/mobile/search_ico.png) no-repeat 6px center;background-size:15px;width:70%; margin:10px 0 0}
+.So_ico{ display:inline-block;width:13%; text-align:center; height:50px; line-height:50px; color:#fff; font-size:16px}
+.cancel_ico{ display:inline-block;width:13%; text-align:center; height:50px; line-height:50px; color:#fff; font-size:16px;}
+.hot_search{width:98%;margin:0 auto;margin-top:6px;padding-bottom:10px}
+.hot_search ul li{ float:left; margin:10px 0 0;width:50%; text-align:center;}
+.hot_search ul li a{ display:block; width:90%; border:1px solid #00AEB9; border-radius:3px; height:40px; line-height:40px; margin:0 auto; overflow:hidden; color:#00AEB9}
+.history_search ul li{padding:0 2%; height:40px; line-height:40px;border-bottom:1px solid #ccc;}
+.history_search ul li a{ display:block;color:#333; font-size:16px}
+.history_search ul li em{ float:right; font-size:14px; color:#818181; font-style:normal}
+</style>
+<link rel="stylesheet" href="http://lxbjs.baidu.com/float/asset/mobile.css" type="text/css" charset="utf-8"></head>
+<body>
+<!--header-->
+<header>
+    <form onsubmit="return false;">
+    <input type="search" class="tb_hot_search f-left" id="Sokey" name="Sokey" autocomplete="off" placeholder="请输入楼盘名">
+        <a href="javascript:void(0);" class="f-left So_ico" onclick="SearchClick();return false;">搜索</a>
+        <a href="javascript:history.back();" class="f-left cancel_ico">取消</a>
+    </form>
+    <div class="clear"></div>
+</header>
+<!--header end-->
+<!--hot_search-->
+<section class="hot_search backfff mt20">
+    <h3 class="title">最近热搜</h3>
+    <ul>
+        	{volist name="$head['rmso']" id="vo"}
+			    <li><a href="{$vo.KP_MobileUrl}">{$vo.KP_Key}</a></li>
+        	{/volist}
+         
+                
+            
+    </ul>
+    <div class="clear"></div>
+</section>
+<!--hot_search end-->
+<!--keyword_search-->
+<section class="history_search backfff mt20" id="keyword_search" style="display:none;">
+    <ul id="searchlist">
+    
+    
+
+    </ul>
+    <div class="clear"></div>
+</section>
+ 
+<script type="text/javascript">
+    $(".tb_hot_search").focus();
+    $('.tb_hot_search').val('');
+    $('.bot_menu').css("display","none");
+    
+    function bindSearch() {
+        $('.tb_hot_search').on('keyup', function () {
+            if ($('.tb_hot_search').val() != '') {
+                $('.hot_search').hide();
+                $('.history_search').hide();
+                $('#keyword_search').show();
+                $.post('/index/getLpData',
+                { keyword: $('.tb_hot_search').val()},
+                function (data) {
+                	var obj = JSON.parse(data)
+                	var str="";
+                	for(let k in obj) {  
+					   // console.log(k,obj[k]);  
+					    str+="<li><a href='/house/house_details/ids/"+obj[k].id+"'>"+obj[k].KP_LpName+"<em>"+obj[k].KP_City+"</em></a></li> "
+					}  
+                    $("#searchlist").html(str);
+                }, "html").error(function () { alert("数据加载失败！"); return false; });
+            } else {
+                $('.hot_search').show();
+                $('.history_search').show();
+                $('#keyword_search').hide();
+            }
+        })
+    }
+
+    function SearchClick() {
+        //formCkvtip();
+        var Key = $.trim($("#Sokey").val());
+        if (Key == '') {
+            $.inputError($("#Sokey"), "input_err", 3);
+            return false;
+        }
+        window.open("/house/?Sokey=" + encodeURIComponent(Key), "_self");
+    }
+
+    $(document).ready(function () {
+    	
+    	
+        bindSearch();
+        $(document).onkeydown(function (event) {
+            if (event.keyCode == 13) {
+                if ($('.tb_hot_search').val()) {
+                    window.location.href = "/index/search/";
+                } else {
+                    bindSearch();
+                }
+            }
+        });
+    });
+</script> 

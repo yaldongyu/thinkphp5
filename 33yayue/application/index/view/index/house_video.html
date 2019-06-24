@@ -1,0 +1,115 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript" src="__CDN__/assets/js/frontend/index/house/watch3D.min.js?v={$site.version}"></script> <!--全景--> 
+ 
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span> > <span>新房详情</span></div>
+	
+<!--正文-->
+	<div class="w1200">
+ 		 {include file='common/head_house' /}
+  <!--正文-->
+  <div class="zhuti">
+		<!--全景--> 
+		<div style="width: 100%; height: 10px;"></div>
+		<div class="quanjing">
+			<div class="layer">
+				<div class="layer-text">
+        		图片加载中,请稍后.......
+    			</div>
+			</div>
+			<div class="wrapper"></div>
+			<div class="jinru"><a href="{$index['lpinfo']['KP_AllViewUrl']}" target="_blank"><img src="/html/images/jinru.gif" width="100" height="50"></a></div>
+		</div>
+		<!--全景-->
+		
+		<div class="xiao">
+		<div class="xiaoqu"><a href="" target="_blank">
+		{volist name="$index['videoinfo']" id="vo"  }	
+			<img src="{$vo.KP_PicUrl}">
+		{/volist}
+		<div class="show">
+			<span class="imgArea">
+				
+				<img src="/html/images/video.png">
+				
+			</span>
+		 </div>
+		
+			<span class="xiao-title">项目视频</span></a>
+		</div>
+		<div class="ybj selBox" style="cursor:pointer">
+		<img src="/html/images/ybj.jpg">
+		<span class="xiao-title">项目样板间</span>
+		</div>
+		
+		<!--展开收缩-->
+		<div class="selCity">
+        <div id="optionbox" class="optionbox" style="display: none;">
+          <div>
+			  <ul class="hxfl">
+			  	 {volist name="$index['hxview']" id="vo"} 
+            		<li><a href="{$vo['KP_AllViewUrl']}" target="_blank">
+				  		<img src="{$vo['KP_PicUrl']}">
+					  <span>{$vo['KP_Area']}-{$vo['KP_Hx']}</span></a>
+				 	</li>
+          		{/volist}
+				  
+				  
+			  </ul>
+          </div>
+        </div>
+        <input type="hidden" id="selValue">
+      </div>
+		
+		</div>
+	</div>
+  
+  
+	</div><!--w1200 end-->
+	
+ 
+ 
+
+
+	<script>
+		//全景
+	let layer = document.querySelector(".layer");
+    let w3d = new watch3D({
+    wrapper : ".wrapper",
+	auto:true,
+    autoplay : true,
+    width: 10000,
+    height : 5000,
+    num : 10,
+    maxY : 30,
+	reverse :true,
+    resource : "/html/images/8.jpg",
+    loadstart : function(){
+        layer.style.display = "block";
+    },
+    loadend : function(data){
+        layer.style.display = "none";
+    }
+});
+	//展开收缩
+	$(document).ready(function() {
+    $(".selBox").click(function() {
+        $(".optionbox").slideToggle(300)
+    });
+    $(".optionbox ins").click(function() {
+        $(".optionbox").slideUp(300)
+    });
+    $(document).hover(function(n) {
+        var t = $(n.target);
+        $(".selectBox").is(":visible") && t.attr("class") != "optionbox" && !t.parent(".optionbox").length && $(".optionbox").slideUp(300)
+    });
+    $(".optionbox span").click(function() {
+        var n = $(this).text();
+        $(".optionbox").slideUp(300);
+        $(".selTxt span").text(n);
+        $("#selValue").val(n)
+    })
+});
+</script>
+ 

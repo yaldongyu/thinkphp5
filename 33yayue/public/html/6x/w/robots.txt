@@ -1,0 +1,51 @@
+.house_top_tel{position: absolute;top: 24px;right: 80px;}
+.house_top_tel .house_top_tel_pic{float: left;margin-right: 15px;margin-top: 12px;}
+.house_top_tel .house_top_tel_pic img{width: 55px;background: #ff3333;border-radius: 50%;}
+.house_top_tel .house_top_tel_txt{float: left;font-size: 20px;}
+.house_top_tel .house_top_tel_txt p{font-size: 40px; font-weight: 600;color: #ff3333;}
+
+.house_picture{float: left;margin-top: 20px;width: 700px;position:relative;}
+.HouseImg_Max{ width:700px;height:430px; position:relative;}
+.HouseImg_Max ul li{ width:700px;height:430px; position:absolute; top:0; left:0; display:none;}
+.HouseImg_Max ul li img{ width:700px; height:430px;}
+.HouseImg_Min{ width:700px; height:85px;margin-top: 10px;}
+.HouseImg_Min ul li{ display:inline-block; width:138px; height:88px; margin-right: 1px; position:relative;border:2px solid #fff;}
+.HouseImg_Min ul li img{ width:138px; height:88px;}
+
+.house_detail{float: right;width: 460px;height: 300px;margin-top: 20px;margin-right:10px;}
+
+.detail_jj{width: 450px; height: 90px;/*background: #183453;*/vertical-align: middle;padding-left: 10px;background: url(../../img/house_bg.png)no-repeat;}
+
+.detail_canshu ul li .top_zhe_txt{display: inline-block; width: 290px;vertical-align: text-bottom; font-size: 16px;color: #ff3333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+.detail_canshu{margin-top: 40px; font-size: 16px; color: #777;}
+
+.detail_canshu ul li .d_add{width: 240px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block; vertical-align: bottom;}
+
+.detail_canshu ul li .d_hx{background: url(../../../html/images/hux.png) 1px center no-repeat;display: inline-block;padding-left: 20px;color: #598cf1;}
+.detail_canshu ul li .d_map{    background: url(../../../html/images/detail_map.png) 4px center no-repeat;display: inline-block;padding-left: 30px;color: #598cf1;}
+
+
+.h_kefu_btn a:nth-child(1){background: #598cf1;}
+.h_kefu_btn a:nth-child(2){background: #01765b;}
+.h_kefu_btn a:nth-child(3){background: #ff5833;margin-right: 0}
+.h_kefu_btn{margin-top: 15px}
+.h_kefu_btn a{width: 140px;height: 40px;text-align: center;line-height: 40px; margin-right: 10px; font-size: 16px;display: inline-block;color: #fff;transition: .6s;}
+.h_kefu_btn a img{width: 25px;height: 25px;margin-right: 5px;vertical-align: middle;display: inline-block;}
+
+.h_kefu_phone{font-size: 14px;color: #999;margin: 20px 0}
+
+
+
+
+      <!--楼盘栏目-->
+  <div style="margin-top: 50px;margin-left: -10px">
+    <div class="HouseColumn" style="border-bottom: 1px solid #ececec"> <a href="">楼盘首页</a> <a href="" class="Select">楼盘动态</a> <a href="l">详情信息</a> <a href="">楼盘户型</a> <a href="">楼盘相册</a> <a href="">视频看房</a> <a href="">点评问答</a> </div>
+  </div>
+
+
+
+ <div class="detail_contact">
+          <div class="h_kefu_phone"> <span class="h_kefu_telpic"><img src="../../../assets/img/Talbum.gif"></span> <span class="h_kefu_num">售楼热线：400-6606-870</span> </div>
+			<div class="h_kefu_btn"> <a href="3426.html"><img src="../../../assets/img/zx.png">在线咨询</a><a href="3426.html"><img src="../../../assets/img/jj.png">变价通知</a> <a href="3426.html" class="free_tel"><img src="../../../assets/img/dh.png">免费通话</a> </div>
+        </div>

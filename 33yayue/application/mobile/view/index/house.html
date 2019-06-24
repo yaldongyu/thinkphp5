@@ -1,0 +1,446 @@
+
+    
+    <div style="height:42px;" class="h42"></div>
+    <div class="wraper box">
+      <section id="header" class="homeSearch flexbox">
+        <div><a class="input" href="/index/search/" style="color:#ccc;">请输入楼盘名称</a></div>
+      </section>
+      <section class="tabSX">
+        <div class="lbTab">
+          <ul class="flexbox">
+            <li class="" id="place"><a><i><span>{$areatext?$areatext:'区域'}</span></i></a></li>
+            <li class="" id="price"><a><i><span>价格</span></i></a></li>
+            <li class="" id="fit"><a><i><span>物业</span></i></a></li>
+            <li class="" id="more"><a><i><span>特色</span></i></a></li>
+            <li class="" id="lplx"><a><i><span>类型</span></i></a></li>
+          </ul>
+         
+          <!--位置-->
+          <div class="whereChioce cont flexbox" style="display:none;" id="city">
+            <section id="whereChioce">
+              <dl>
+                <dd class="active" tag="ct0"  style="display: none;"><a href="javascript:void(0);" tag="ct0" onclick="setParmsValue('ct','')" value="">不限</a></dd>
+              </dl>
+              <!--开始-->
+              <div class="Z_con2_2">
+                <div class="F_wd_top_con2">
+                  <div class="F_wd_top_con2_l" id="wrapper">
+                    <div>
+                      <ul class="sy">
+                         {volist name='index["sxqy"]' id='vo' }    
+                             <li class="{$i==1?"current":""} ">{$vo.name} ></li>
+                          {/volist}
+                           
+                               <li tag="ct0" value="ct=" onclick="setParmsValue('ct','')" href="javascript:void(0);" >全国 ></li>
+                             
+                      </ul>
+                    </div>
+                  </div> 
+                  <div class="F_wd_top_con2_r" id="wrapper1">
+                 {volist name='index["sxqy"]' id='vo' }  
+                 
+                    <div class="content"  style="padding:0px;display:  block ;">
+                      <div class="by"  style="display: {$i==1?'block':'none';}" >
+                        <div class="F_wd_top_con2_r_borb1">  
+                            <a tag="ct{$vo.areaid}" value="ct={$vo.areaid}" onclick="setParmsValue('ct','{$vo.areaid}')" href="javascript:void(0);">{$vo.name}</a> 
+                           
+                            {volist name='$vo["quyu"]' id='co' }    
+                            <a tag="ct{$co.areaid}" value="ct={$co.areaid}" onclick="setParmsValue('ct','{$co.areaid}')" href="javascript:void(0);">{$co.name}</a> 
+                            {/volist}
+           
+                          </div>
+                      </div>
+                    </div> 
+                 
+                    {/volist}
+                   </div>
+
+
+                </div>
+              </div>
+            </section>
+            <!-- end --> 
+          </div>
+          <!--价格-->
+          <div class="cont flexbox priceChioce" style="display:none;" id="PRI">
+            <section id="priceChioceDj" style="display:block;">
+              <dl style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+                <dd class="active" tag="tp0"><a href="javascript:void(0);" onclick="setParmsValue('tp','')" value="">不限</a></dd>
+             
+              </dl>
+              <div class="F_wd_top_con2_r_borb1" style="margin-top: 15px;"> 
+
+                {volist name='index["sxjg"]' id='vo' }    
+                    <a tag="tp{$vo.KP_Content}"   href="javascript:void(0);" onclick="setParmsValue('tp','{$vo.KP_Content}')" value="tp={$vo.KP_Content}">{$vo.KP_Name}</a>  
+                 {/volist}
+                    
+             
+          
+       
+             
+
+             </div>
+            </section>
+          </div>
+          <!--户型begin-->
+          <div id="wapxfsy_D02_34" class="characterChioce cont flexbox" style="display: none;">
+            <section id="characterChioce">
+              <dl style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+                <dd class="active" tag="hx0"><a href="javascript:void(0);" onclick="setParmsValue('hx','')" value="">不限</a></dd>
+                
+              </dl>
+              <div class="F_wd_top_con2_r_borb1" style="margin-top: 15px;"> 
+                  {volist name='index["sxlx"]' id='vo' }    
+             
+                   <a tag="hx{$vo.KP_Name}" href="javascript:void(0);" onclick="setParmsValue('hx','{$vo.KP_Name}')" value="hx={$vo.KP_Name}">{$vo.KP_Name}</a>  
+                
+                  {/volist}
+               </div>
+            </section>
+          </div>
+          <!-- 户型end --> 
+          <!--特色-->
+          <div class="characterChioce cont flexbox " id="wapxfsy_D02_04" style="display:none;">
+
+
+            
+
+
+
+            <section id="TsChioce">
+              <dl style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+                <dd class="active" tag="ts0"><a href="javascript:void(0);" onclick="setParmsValue('ts','')" value="">不限</a></dd>
+               
+              </dl>
+              <div class="F_wd_top_con2_r_borb1" style="margin-top: 15px;"> 
+                
+             
+         
+             {volist name='index["sxts"]' id='vo' }    
+             
+                  <a tag="ts{$vo.KP_Name}" href="javascript:void(0);" onclick="setParmsValue('ts','{$vo.KP_Name}')" value="ts={$vo.KP_Name}">{$vo.KP_Name}</a> 
+             {/volist}
+                         
+                         
+              
+                  </div>
+            </section>
+          </div>
+          <!--类型-->
+          <div class="characterChioce cont flexbox " id="wapxfsy_D02_06" style="display:none;">
+            <section id="lxChioce">
+              <dl style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+                <dd class="active" tag="lx0"><a href="javascript:void(0);" onclick="setParmsValue('lx','')" value="">不限</a></dd>
+                
+              </dl>
+              <div class="F_wd_top_con2_r_borb1" style="margin-top: 15px;"> 
+                 <a tag="lx1" href="javascript:void(0);" onclick="setParmsValue('lx','1')" value="lx=1">热销楼盘</a>  
+                 <a tag="lx2" href="javascript:void(0);" onclick="setParmsValue('lx','2')" value="lx=2">降价楼盘</a>  
+                 <a tag="lx3" href="javascript:void(0);" onclick="setParmsValue('lx','3')" value="lx=3">购房联盟楼盘</a>  
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <div class="w_barrier"></div>
+      <div class="houseList w3" >  
+        <ul   id="mhouseList"  >
+
+          {volist name="index['list']" id="vo"} 
+              <li class="caiNiXiHuanListvolist">
+                 <a  href="/house/house_details/ids/{$vo.id}"  >
+                    <div class="img"> 
+                      <img class="likeLazyload" data-original="{$vo.KP_Wjt}" src="/assets/img/mobile/errorpic.jpg" style="display: inline;" alt=" {$vo.KP_LpName} "> 
+                    </div>
+                <div class="txt">
+                  <h3>{$vo.KP_LpName}</h3>
+                  <p> 
+                            <span class="new"> 
+                            {$vo.KP_Juprice==0 ? ($vo.KP_TaoJia==0 ? "待定" : $vo.KP_TaoJia."万元/套") : $vo.KP_Juprice."元/m²"}
+                           </span> <br> 
+                           <span>[{$vo.CNAME}]</span> 
+                           <span style=" font-size:10px; color:#aaa;">有效期:{$vo.KP_ValidityStart}-{$vo.KP_ValidityEnd}</span> 
+                  </p>
+                  <p>{$vo.KP_Lpdz}</p>
+                  <div class="stag" >
+                    {volist name=":explode(',',$vo.KP_TsType)"   id="co"  length="3" }  
+                      <span class="t{$i}">{$co} </span>
+                    {/volist}
+                  </div> 
+                </div>
+                </a> <a class="tellx" href="tel:{$vo.Kp_tel}"></a> 
+              </li>
+          {/volist}
+          <li class="caiNiXiHuanList" style="display: none;" v-for="lp in lps"> 
+            <a :href="houseurl(lp.id)"  >
+            <div class="img"> <img class="likeLazyload" :data-original="valf(lp.KP_Wjt)" src="/assets/img/mobile/errorpic.jpg" style="display: inline;" :alt="valf(lp.KP_LpName)"> </div>
+            <div class="txt">
+              <h3>{{lp.KP_LpName}}</h3>
+              <p> <span class="new">
+
+              <span v-if="lp.KP_Juprice==0 && lp.KP_TaoJia=='' ">待定</span> 
+                                <span v-else-if="lp.KP_TaoJia!=''">{{ lp.KP_TaoJia }}<font>万元/套</font></span> 
+                                <span v-else-if="lp.KP_Juprice!=0">{{ lp.KP_Juprice }} <font>元/m²</font></span> 
+              </span> 
+              <br>
+              <span>[{{lp.CNAME}}]</span> <span style=" font-size:10px; color:#aaa;">有效期:{{lp.KP_ValidityStart}}-{{lp.KP_ValidityEnd}}</span> </p>
+              <p>{{lp.KP_Lpdz}}</p>
+              <div class="stag" v-html=GetTsLable(lp.KP_TsType) > </div> 
+            </div>
+            </a> <a class="tellx" :href="valf('tel:' + lp.Kp_tel)"></a> 
+          </li>
+          
+        </ul>
+        <div class="homeOption flexbox">
+          <div id="AspNetPager1" class="pagination" align="left">
+            <div class="pagination" align="right" style="font-size:16px;"> </div>
+            <div align="left" class="pagination">
+               
+            </div>
+          </div>
+        </div>
+       
+      </div>
+   
+    </div>
+  </div>
+ 
+ <div id="urls" style="display: none;"></div>
+ <div id="tip" style="display: none;"></div>
+ <div   class="total" style="display: none;"></div>
+ 
+ 
+<script type="text/javascript">
+var Lpdata = {"page":"1","pagesize":"20","City":"","Price":"","Ts":"","Wy":"","Jzlx":"","KpTime":"","Zxqk":"","Xszt":"","KpTimeDown":"","Sokey":""};
+var app4 ; 
+app4 = new Vue({
+          el: '#mhouseList',
+          data: {lps:"msg"} ,
+          methods:{
+              valf:function(value){return  value   ;},
+              houseurl:function(value){return "/house/house_details/ids/" + value + ""; }, 
+              housemapurl:function(value){return "/house/house_details/ids/" + value + "#house-map"; }, 
+              dongtaiurl:function(value){return "/news/" + value + ""; }, 
+              albumurl:function(value){return "/housealbum/" + value + ".html"; }, 
+              lpdongtaiurl:function(value){return "/housedt/" + value + ".html"; }, 
+              ttemurl:function(value){return "/HouseHuxing/" + value + ".html"; } ,
+              GetTsLable:function(value){
+                                            //var str="<a href='javascript:void(0)'  onclick=\"setParmsValue('Ts','口碑房源')\"><span class='t0'>口碑房源</span></a>";
+                                            var str="";
+                                            (value || "").split(",").forEach(function(v,index,array){
+                                                if(v!="待定"){ str+="<span class='t"+(index+0)+"'>"+v+"</span> ";}
+                　　　　                        
+                                               }); 
+                                              return  str   ;
+                                        }
+               
+          }
+        });
+$("#urls").text(location.search.substring(1));
+
+ $(".pagination").html(PageStr(Lpdata.pagesize ,{$index['total']},Lpdata.page ));
+                
+  $.each($('.pagination  a'), function(i,val){ if(val.innerHTML==Lpdata.page){   val.parentNode.innerHTML="<span class='active'>" +Lpdata.page+"</span>";} });
+
+$(function function_name(argument) {
+    $("html, body").animate({"scroll-top": 1}, "fast");
+});
+
+//setParmsValue("page","1");
+
+
+    //设置URL参数的方法  
+    function setParmsValue(parms, parmsValue) {
+        //var urlstrings = document.URL;
+        var urlstrings = updateParms(parms, parmsValue);
+        var args = GetUrlParms();
+        var values = args[parms];
+        var urls="";
+        //如果参数不存在，则添加参数
+        if (values == undefined) {
+            //var query = location.search.substring(1); //获取查询串
+            var query = ($("#urls").text().replace(/\s+/g,"")=="");
+            //如果Url中已经有参数，则附加参数
+            if (!query  ) {
+                if (urlstrings.indexOf('=') != -1) {
+                    urlstrings += ("&" + parms + "=" +  (parmsValue));
+                } else {
+                    urlstrings += (parms + "=" +  (parmsValue));
+                }
+            }
+            else {
+                urlstrings += ("" + parms + "=" +  (parmsValue));  //向Url中添加第一个参数  
+            }
+            urls = urlstrings;
+        }
+        else {
+            urls = updateParms(parms, parmsValue);  //修改参数  
+        }
+        $("#urls").text(urls);
+        updateselect();
+        doSeach(parms, parmsValue);
+        $("body").removeClass("open");
+        $(".w_barrier").hide();
+
+    }
+
+
+
+    function doSeach(parms, parmsValue) {
+     
+
+        Lpdata["page"] = unescape(1);
+        Lpdata[parms] = unescape(parmsValue);
+       // console.log(Lpdata);
+       // var inx = layer.load(0);
+       // $("#loading").css('display','block');
+         $.post("/house/indexapi", Lpdata, function(data,status){
+            
+              
+              console.log( data.list  );
+
+               app4.$data.lps=data.list;
+                $(".caiNiXiHuanListvolist").css("display","none");
+                setTimeout(function (argument) {
+                  $(".caiNiXiHuanList").css("display","block");
+                  $("img").lazyload({effect:"fadeIn"});
+                },100);
+
+                $(".total").text(data.total);
+                if (data.total<1) {
+                  $("#tip").text('暂无数据');
+                }else{
+                  $("#tip").text('');
+                }
+                  
+                $(".pagination").html(PageStr(Lpdata.pagesize ,data.total,Lpdata.page ));
+                $("body,html").scrollTop(1);
+                $.each($('.pagination  a'), function(i,val){ if(val.innerHTML==Lpdata.page){   val.parentNode.innerHTML="<span class='active'>" +Lpdata.page+"</span>";} });
+                setTimeout(function (argument) {
+                  $("body,html").scrollTop(1);
+                },100);
+                //layer.close(inx);
+               // $("#loading").css('display','none');
+            });
+
+    }
+
+ 
+
+    //修改URL参数，parms：参数名，parmsValue：参数值，return：修改后的URL  
+    function updateParms(parms, parmsValue) {
+        var newUrlParms = "";
+        //var newUrlBase = location.href.substring(0, location.href.indexOf("?") + 1); //截取查询字符串前面的url  
+        //var query = location.search.substring(1); //获取查询串  
+        var query = $("#urls").text(); //获取查询串  
+        var pairs = query.split("&"); //在逗号处断开     
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('='); //查找name=value     
+            if (pos == -1) continue; //如果没有找到就跳过     
+            var argname = pairs[i].substring(0, pos); //提取name  
+            var value = pairs[i].substring(pos + 1); //提取value   
+            //如果找到了要修改的参数
+            if (!findText(argname, 'page') && !findText(argname, 'Sokey')) {
+                if (findText(argname, parms)) {
+                    newUrlParms = newUrlParms + (argname + "=" +  (parmsValue) + "&");
+                }
+                else {
+                    newUrlParms += (argname + "=" + value + "&");
+                }
+            }
+        }
+        return   newUrlParms.substring(0, newUrlParms.length - 1);
+    }
+
+    //辅助方法  
+    function findText(urlString, keyWord) {
+        return urlString.toLowerCase().indexOf(keyWord.toLowerCase()) != -1 ? true : false;
+    }
+
+    //得到查询字符串参数集合  
+    function GetUrlParms() {
+        var args = new Object();
+        //var query = location.search.substring(1); //获取查询串  $("#urls").text(urls);    
+        var query =   $("#urls").text();    
+        var pairs = query.split("&"); //在逗号处断开     
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('='); //查找name=value     
+            if (pos == -1) continue; //如果没有找到就跳过     
+            var argname = pairs[i].substring(0, pos); //提取name     
+            var value = pairs[i].substring(pos + 1); //提取value
+            args[argname] = unescape(value); //存为属性   
+        }
+        return args;
+    }
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = $("#urls").text().match(reg);
+        if (r != null) return  (unescape(r[2])); return null;
+    }
+
+    function updateselect(){
+        if (GetQueryString("ct") != null && GetQueryString("ct") != "") {
+            $('#place span:first').text($('#whereChioce').find('a[tag=ct' + GetQueryString("ct") + ']').text());
+        } else {
+            $('#place span:first').text();
+        }
+        if (GetQueryString("tp") != null && GetQueryString("tp") != "") {
+            $('#price span:first').text($('#priceChioceDj').parent().find('a[tag=tp' + GetQueryString("tp") + ']').text());
+        } else {
+            $('#price span:first').text();
+        }
+        if (GetQueryString("hx") != null && GetQueryString("hx") != "") {
+            $('#fit span:first').text($('#characterChioce').parent().find('a[tag=hx' + GetQueryString("hx") + ']').text());
+        } else {
+            $('#fit span:first').text();
+        }
+        if (GetQueryString("ts") != null && GetQueryString("ts") != "") {
+            $('#more span:first').text($('#TsChioce').parent().find('a[tag=ts' + GetQueryString("ts") + ']').text());
+        } else {
+            $('#more span:first').text();
+        }
+        if (GetQueryString("lx") != null && GetQueryString("lx") != "") {
+            $('#lplx span:first').text($('#lxChioce').parent().find('a[tag=lx' + GetQueryString("lx") + ']').text());
+        } else {
+            $('#lplx span:first').text();
+        }
+    }
+
+
+
+   
+</script> 
+ 
+  <script type="text/javascript">
+             function getCookie(c_name) {
+                  if (document.cookie.length > 0) {
+                      c_start = document.cookie.indexOf(c_name + "=")
+                      if (c_start != -1) {
+                          c_start = c_start + c_name.length + 1
+                          c_end = document.cookie.indexOf(";", c_start)
+                          if (c_end == -1) c_end = document.cookie.length
+                          return unescape(document.cookie.substring(c_start, c_end))
+                      }
+                  }
+                  return ""
+              }
+            var ck = "{$selectkey}";
+            var val = getCookie(ck);
+            $(function(argument) {
+            if(ck=="City"){
+              $('#place span:first').text($('#whereChioce').find('a[tag=ct' + val + ']').text());
+               }
+            if(ck=="Price"){
+               $('#price span:first').text($('#priceChioceDj').parent().find('a[tag=tp' + val + ']').text());
+              }
+            if(ck=="Wy"){  
+              $('#fit span:first').text($('#characterChioce').parent().find('a[tag=hx' + val + ']').text());
+              }
+            if(ck=="Ts"){ 
+              $('#more span:first').text($('#TsChioce').parent().find('a[tag=ts' + val + ']').text());
+              }
+            })
+          
+            
+          </script>

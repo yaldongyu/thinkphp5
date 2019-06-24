@@ -1,0 +1,115 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%; position: relative;}
+.banner{ position: relative; background: url(../img/banner01.jpg) no-repeat center center; width: 100%; height: 600px;}
+.a01{ position: absolute; top: 50%; left: 50%; margin-left: -490px; margin-top: -195px;}
+.a02{ position: absolute; top: 50%; left: 50%; margin-left: -586px; margin-top: 80px;}
+.a03{ position: absolute; top: 50%; left: 50%; margin-left: -340px; margin-top: 160px;}
+.a04{ position: absolute; top: 50%; left: 50%; margin-left: -290px; margin-top: -260px;}
+.a05{ position: absolute; top: 50%; left: 50%; margin-left: -340px; margin-top: -40px;}
+.a06{ position: absolute; top: 50%; left: 50%; margin-left: 150px; margin-top: -290px;}
+.a07{ position: absolute; top: 50%; left: 50%; margin-left: 340px; margin-top: -250px;}
+.a08{ position: absolute; top: 50%; left: 50%; margin-left: 290px; margin-top: -10px;}
+.a09{ position: absolute; top: 50%; left: 50%; margin-left: 440px; margin-top: 60px;}
+.a10{ position: absolute; top: 50%; left: 50%; margin-left: 410px; margin-top: 170px;}
+
+
+
+.tab01{ background: url(../img/tab01.jpg) no-repeat center center; width: 100%; height: 784px;}
+.ad1{ background: url(../img/ad01.jpg) no-repeat center center; width: 100%; height: 749px; position: relative;}
+.ad2{ background: url(../img/ad02.jpg) no-repeat center center; width: 100%; height: 1029px; position: relative;}
+.ad3{ background: url(../img/ad03.jpg) no-repeat center center; width: 100%; height: 1007px; position: relative;}
+.ad4{ background: url(../img/ad04.jpg) no-repeat center center; width: 100%; height: 832px; position: relative;}
+
+.loupan01{ width: 1000px; margin: 0 auto;}
+.lp01{ padding-top: 85px; position: relative; width: 454px;}
+.lp01 img{ border: #036466 solid 2px; padding: 8px;}
+.touming{ width: 454px; height: 120px; background: rgba(0,0,0,0.5); position: absolute; bottom: 10px; left: 10px; padding: 13px 26px 0 26px;}
+.touming a{ font-size: 24px; color: #fff; font-weight: bold;}
+.touming span{ font-size: 22px; color: #fff; float: right;}
+.touming p{ font-size: 16px; color: #fff; margin-top: 6px;}
+
+.lp02{ float: right; margin-top: -200px;}
+
+.loupan02{ width: 1050px; margin: 0 auto; position: relative;}
+
+.lp03{ padding-top: 50px; position: relative; width: 396px;}
+.lp03 .touming{ width: 396px; height: 170px;}
+.lp03 p{ margin-top: 30px;}
+
+.lp04{ position: absolute; top: 50px; left: 448px; width: 600px; height: 276px; border: #036466 solid 2px; padding: 6px;}
+
+.right{ width: 188px; position: absolute; top: 26px; right: -4px;}
+.right a{ font-size: 24px; color: #024500; font-weight: bold;}
+.right span{ font-size: 22px; color: #ff4e17; line-height: 50px;}
+.right p{ font-size: 16px; color: #333;}
+
+.lp05{ position: absolute; top: 334px; left: 448px;}
+.lp05 .right a{ margin-right: 60px;}
+
+.loupan03{ width: 1000px; margin: 0 auto; position: relative;}
+.lp06{ width: 600px; height: 276px; border: #036466 solid 2px; padding: 6px; position: absolute; margin-top: 64px;}
+.left{ width: 188px; position: absolute; top: 26px; right: 0;}
+.left a{ font-size: 24px; color: #024500; font-weight: bold;}
+.left span{ font-size: 22px; color: #ff4e17; line-height: 50px;}
+.left p{ font-size: 16px; color: #333;}
+.lp07{ top: 317px;}
+.lp08{ top: 634px;}
+.lp06 .left a{ margin-right: 70px;}
+.lp07 .left a{ margin-right: 0;}
+.lp08 .left a{ margin-right: 0;}
+
+.loupan04{ width: 1000px; margin: 0 auto; position: relative;}
+
+.lp09{ position: absolute; top: 106px; left: 0;}
+.lp09 img{ border: #036466 solid 2px; padding: 8px;}
+
+.lp10{ position: absolute; top: 106px; right: -10px;}
+.lp10 img{ border: #036466 solid 2px; padding: 8px;}
+
+.touming01{height: 140px;}
+
+.bottom_box{ width: 1200px; height: 347px; margin: 0 auto; padding-top: 55px;}
+.bottom{ float: right;}
+.bottom a{ font-size: 30px; color: #05395e; }
+.bottom p{ margin-top: 30px; font-size: 18px; color: #666; line-height: 30px;}
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

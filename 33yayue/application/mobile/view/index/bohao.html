@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+<title>拨打电话</title>
+<meta name="description" content="拨打电话">
+<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">
+<style type="text/css">
+*{padding: 0;margin: 0;}
+body{background-color: #ddd;}
+input[type="button"], input[type="submit"]{-webkit-appearance: none;}
+.dial-box{width: 640px;height: auto;border-radius: 30px;background-color: #fff;position: absolute;top:50%;left: 50%;-webkit-transform:translate(-50%,-50%);}
+.dial-box .img{width:100%;height: 370px;border-radius: 30px 30px 0 0;}
+.dial-box .name{color: #333;font-size: 38px;text-align: center;margin-top: 25px;}
+.dial-box .name1{color: #333;font-size: 30px;text-align: center;margin-top: 25px;color: #ff4a00}
+.dial-box .tel{color: #999;font-size: 30px;text-align: center;margin-top: 15px;}
+.dial-box .tel-btn{width: 480px;height: 90px;border-radius: 45px;background-color: #ff4a00;text-align: center;line-height: 90px;color: #fff;font-size: 38px;display: block;margin: 40px auto 20px;text-decoration: none;}
+.dial-box .tip{color: #ccc;font-size: 24px;text-align: center;}
+.h10{height: 10px;}
+</style>
+<script type="text/javascript">  
+  var phoneWidth = parseInt(window.screen.width);  
+  var phoneScale = phoneWidth / 750;  
+  var ua = navigator.userAgent;  
+  if (/Android (\d+\.\d+)/.test(ua)) {  
+    var version = parseFloat(RegExp.$1);  
+    if (version > 2.3) {  
+      document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');  
+    } else {  
+      document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');  
+    }  
+  } else {  
+    document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');  
+  }
+</script>
+</head>
+<body>  
+  {if condition="$index['id']==0"}
+     <div class="dial-box" id="dial-box">
+      <img src="/html/img/haij.jpg" alt="" class="img">  
+      <p class="name1" alt="{$Think.config.site.tel}">只需简单的一次点击，帮您选择心中的房子</p>
+      <p class="tel" style="font-size: 4rem;color: #ff4a00">{$Think.config.site.tel}</p>
+      <a href="tel:{$Think.config.site.tel}" class="tel-btn">拨打电话</a>
+      <!-- <p class="tip">温馨提示：个别安卓手机，需手动输入分机号</p> -->
+      <div class="h10"></div>
+    </div>
+   {else/}
+      <div class="dial-box" id="dial-box">
+        <img src="{$index['row']['KP_Wjt']}" alt="{$index['row']['KP_LpName']}" class="img">
+        <p class="name" align="">{$index['row']['KP_LpName']}</p> 
+        <p class="tel">售楼处：{$index['row']['KP_Tel']}</p>
+          <p class="name1">{$index['row']['KP_YouHui']}</p>
+        <a href="tel:{$index['row']['KP_Tel']}" class="tel-btn">拨打电话</a>
+        <!-- <p class="tip">温馨提示：个别安卓手机，需手动输入分机号</p> -->
+        <div class="h10"></div>
+      </div>
+  {/if}
+<script type="text/javascript">
+var phoneHeight = parseInt(window.screen.height);
+if(phoneHeight<=355){
+	document.getElementById("dial-box").style.cssText="top:0;-webkit-transform:translate(-50%,0)";
+}
+
+
+ 
+</script> 
+</body>
+</html>

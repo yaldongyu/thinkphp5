@@ -1,0 +1,80 @@
+/*全局基础样式*/
+*{ box-sizing:border-box; border:0; padding:0; margin:0; font-size:14px; color:#333; font-family:Microsoft YaHei;}
+body{ background:#fff;}
+a{ text-decoration:none;}
+a:hover{ color:#ff6600;}
+li{ list-style-type:none;}
+img{ display:block;}
+h1,h2,h3,h4,h5{ font-weight: normal;}
+.clear{ clear:both;}
+.width_1200{ width:1200px; margin:0 auto;}
+
+/*导航*/
+.head{ width: 1200px; margin: 0 auto;}
+.head img{ float: left; margin-left: 33px;}
+.head ul{ float: right; margin-right: 33px;}
+.head li{ float: left;}
+.head li a{ line-height: 50px; color: #666; font-size: 16px; margin-left: 30px;}
+.head a:hover{ color: #D7903E; border-bottom: solid 1px #D7903E;}
+
+/*正文*/
+.center{ width: 100%; position: relative;}
+.banner{ position: relative; background: url(../img/banner01.jpg) no-repeat center center; width: 100%; height: 849px;}
+
+.banner .d1{ width: 197px; height: 208px; position: absolute; top: 50%; left: 50%;
+margin: -280px 0 0 -340px;}
+.banner .d2{ width: 293px; height: 208px; position: absolute; top: 50%; left: 50%;
+margin: -280px 0 0 140px;}
+.tab01{ background: url(../img/tab01.jpg) no-repeat center center; width: 100%; height: 724px;}
+.ad1{ background: url(../img/ad01.jpg) no-repeat center center; width: 100%; height: 886px; position: relative;}
+.ad2{ background: url(../img/ad02.jpg) no-repeat center center; width: 100%; height: 892px; position: relative;}
+.ad3{ background: url(../img/ad03.jpg) no-repeat center center; width: 100%; height: 929px; position: relative;}
+.ad4{ background: url(../img/ad04.jpg) no-repeat center center; width: 100%; height: 957px; position: relative;}
+.tab02{ background: url(../img/tab02.jpg) no-repeat center center; width: 100%; height: 999px;}
+.ad5{ background: url(../img/ad05.jpg) no-repeat center center; width: 100%; height: 778px; position: relative;}
+.ad6{ background: url(../img/ad06.jpg) no-repeat center center; width: 100%; height: 899px; position: relative;}
+.ad7{ background: url(../img/ad07.jpg) no-repeat center center; width: 100%; height: 921px; position: relative;}
+.ad8{ background: url(../img/ad08.jpg) no-repeat center center; width: 100%; height: 1109px; position: relative;}
+
+
+.ad9 img{ position: absolute; width: 398px; height: 398px; top: 50%; left: 50%; margin: -150px 0 0 -580px;}
+.aa{ width: 412px; height: 570px; position: absolute; top: 50%; left: 50%; margin: -200px 0 0 80px;}
+.bb{ text-align: center; width: 412px;}
+.bb a{ width: 412px; height: 570px; font-size: 48px; color: #333; }
+.aa p{ color: #333; font-size: 24px; line-height: 50px;}
+.aa .p1{ font-size: 18px; line-height: 30px;}
+.aa .p2{ font-size: 18px; line-height: 30px; text-indent: 36px;}
+
+.ad0 img{ position: absolute; width: 398px; height: 398px; top: 50%; left: 50%; margin: -150px 0 0 180px;}
+.aa2{ width: 412px; height: 570px; position: absolute; top: 50%; left: 50%; margin: -200px 0 0 -510px;}
+
+
+
+
+
+.bottom_box{ width: 1200px; height: 347px; margin: 0 auto; padding-top: 55px;}
+.bottom{ float: right;}
+.bottom a{ font-size: 30px; color: #05395e; }
+.bottom p{ margin-top: 30px; font-size: 18px; color: #666; line-height: 30px;}
+
+/*返回顶部*/
+.top{ position: absolute; right: -175px; top: -125px; display: none;}
+.top img{cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

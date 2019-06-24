@@ -1,0 +1,529 @@
+<link href="__CDN__/assets/css/index/house.css?v={$site.version}" rel="Stylesheet" type="text/css" />
+<style type="text/css">
+                  .lplist_youhui .yhtime{right: 10px; top: -2px}
+                .jjia{color: #01765b;font-size: 14px;font-weight: 700; border: 1px solid #01765b;margin-left: 10px;width: 85px;display: inline-block;text-align: center;border-radius: 5px;vertical-align: super; cursor: pointer}
+                .jjia img{display: inline-block;width: 20px;height: 20px;vertical-align: middle;margin-right: 1px}
+                .lplist_title,.lplist_youhui,.lplist_huxing,.lplist_dizhi{line-height: normal}
+            
+                .dianhua{font-size: 24px;font-weight: 550;color: #ff3333;}
+                .dianhua img{display: inline-block;margin-right: 12px;width: 40px; height: 40px; vertical-align: middle;background: #ff3333;border-radius: 50%}
+                .dianhua span{display: inline-block;vertical-align:sub}
+                .lplist_tese{position: absolute;bottom: -37px;}
+                .lplist_dt{margin-top: 30px}
+                .gwpic2 {height: 103px;padding: 5px 10px;position: absolute;right: 90px;bottom: 0px;}
+                .gwpic2 img{width: 90px; height: 90px;border-radius: 50%;border: 2px solid #dd2446;}
+                .gwpic2 a{position: absolute;/*background: rgba(0,0,0,.6);*/background: url(/html/images/hf.png)no-repeat;width: 90px;height: 35px; color: #fff;font-size: 12px;padding: 1px 8px;border-radius: 2px;text-align: center;top: 75px;left: 13px;}
+                
+                .lplist_huxing .down_button{margin-right: 37px;margin-top: -10px;border: 1px solid #5c7596;background: #fff;width: 75px;}
+                .lplist_huxing .down_button a{color: #ff9a35;}
+                .gwpic2 img{border: 2px solid #ff5833}
+                 .down_button{position: absolute;bottom: -35px;right: 148px; border: 1px solid #ff5833;width: 120px;text-align: center;height: 25px;line-height: 25px;border-radius: 5px;}
+ 
+                .down_button a{color:#ff5833;font-size: 15px;font-weight: 600;}
+</style>
+
+<!--面包屑-->
+<div class="mianbao">您的位置：<span>首页</span> > <span>新房</span>
+    <a href="{$index['dbgg']['KP_Link']}">
+        <img  src="{$index['dbgg']['KP_PicUrl'] }">
+    </a>
+</div>
+ 
+<!--筛选栏-->
+<div class="Hchoice">
+  <div class="cation-middle">
+    <dl class="cation-list-qy">
+      <dt>区域</dt> 
+      <dd> <a href="javascript:void(0);" onclick="setParmsValue('City','')" value="City=" rel="" name="sheng" class="all {$index["cookie"]|strpos="ity="?"default":"on" }" style="border: 0;">全部</a>
+        <div class="sideMenu">
+          <ul> 
+          {volist name='index["sxqy"]' id='vo'}
+            <li class="nLi"> <span>{$vo.name}<i></i></span>
+               <ul class="sub on" style="margin-left: {$i==1?0:(-90*($i-1))}px;">
+                <li><a href="javascript:void(0);"  onclick="setParmsValue('City','{$vo.areaid}')" value="City={$vo.areaid}" rel="{$vo.name}" name="sheng" class="{$index["cookie"]=="City=".$vo.areaid?"on":"default"}">{$vo.name}</a></li>
+                {volist name='vo.quyu' id='co' key='k'}
+                <li><a href="javascript:void(0);"  onclick="setParmsValue('City','{$co.areaid}')" value="City={$co.areaid}" rel="{$co.name}" name="sheng" class="{$index["cookie"]=="City=".$co.areaid?"on":"default"}">{$co.name}</a></li>
+                {/volist}
+              </ul>
+            </li>
+          {/volist}
+           
+          </ul>
+        </div>
+      </dd>
+    </dl>
+    <dl class="cation-list">
+      <dt>价格</dt>
+      <dd> 
+        <a href="javascript:void(0);" onclick="setParmsValue('Price','')" value="Price=" rel="" name="jiage" class="all {$index["cookie"]|strpos="rice="?"default":"on" }">全部</a> 
+        {volist name="$index['sxjg']" id="vo"}
+        <a href="javascript:void(0);" onclick="setParmsValue('Price','{$vo.KP_Content}')" value="Price={$vo.KP_Content}" rel="{$vo.KP_Content}" name="jiage" class="{$index["cookie"]=="Price=".$vo.KP_Content?"on":"default"}">{$vo.KP_Name}</a> 
+        {/volist}
+      </dd>
+    </dl>
+    <dl class="cation-list">
+      <dt>户型</dt>
+      <dd> <a href="javascript:void(0);" onclick="setParmsValue('Hx','')" value="Hx=" rel="" name="huxing" class="all {$index["cookie"]|strpos="x="?"default":"on" }">全部</a> 
+         {volist name="$index['sxhx']" id="vo"}
+            <a href="javascript:void(0);" onclick="setParmsValue('Hx','{$vo.KP_Content}')" value="Hx={$vo.KP_Content}" rel="{$vo.KP_Content}" name="huxing" class="{$index["cookie"]=="Hx=".$vo.KP_Content?"on":"default"}">{$vo.KP_Name}</a> 
+         {/volist}  
+      </dd>
+    </dl> 
+    <dl class="cation-list">
+      <dt>特色</dt>
+      <dd> 
+        <a href="javascript:void(0);" onclick="setParmsValue('Ts','')" value="Ts=" rel="" name="tese" class="all {$index["cookie"]|strpos="s="?"default":"on" }">全部</a> 
+        
+        {volist name="$index['sxts']" id="vo"}
+            <a href="javascript:void(0);" onclick="setParmsValue('Ts','{$vo.KP_Name}')" value="Ts={$vo.KP_Name}" rel="{$vo.KP_Name}" name="tese" class="{$index["cookie"]=="Ts=".$vo.KP_Name?"on":"default"}">{$vo.KP_Name}</a> 
+        {/volist} 
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<!--房源筛选条-->
+<div class="lp_shai">
+  <ul>
+    <li name="default" value="1" class="jiaodian" onclick="gotoall()" >全部楼盘</li>
+    <li name="youhui" value="1" onclick="gotoyouhui()" style="display: none;">优惠楼盘</li>
+    <li name="jiage" class="jg_down"><span class="down_text">价格排序</span>
+      <div class="jg_down_center"> <span name="jiage" value="1"  >低到高</span> <span name="jiage" value="2" >高到低</span> </div>
+    </li>
+  </ul>
+  <span class="lp_shu">共找到 <i>{$index['total']}</i> 个楼盘</span> </div>
+
+<!--房源列表-->
+    
+ 
+ 
+    <style>
+    	.smbh{font-size: 15px; color: #666;margin-left: 10px;display: inline-block;vertical-align: middle; cursor: pointer;position: relative;margin-top: 2px}
+		.smbh:hover .smbo_cx{display: block}
+		.smbh img{width: 13px;height: 14px;background-color: #fff;margin-right: 5px;border-radius: 0;vertical-align: middle;display: inline-block}
+		.smbo_cx{display: none;position: absolute;width: 130px;border: 1px solid #ddd;background: #FFF;padding: 7px 0;line-height: 18px;text-align: center;bottom: -72px;left: 90px;z-index: 99;margin: 0 auto;-moz-box-shadow: 0px 3px 5px #e1e1e1;box-shadow: 0px 3px 5px #e1e1e1;border-radius: 3px;}
+		.smbo_cx img{width: 110px;height: 110px;margin: 0 auto;}
+		.sm_span{font-size: 15px;vertical-align: middle;}
+		.smbo_cx span{font-size: 14px;color: #999;display: block;margin-bottom: 7px;}
+		.smbo_tb{position: absolute;right: 130px;top: 65px;width: 10px;height: 9px;margin-left: 4px;background: url(/html/img/icon-top.png) no-repeat;z-index: 100;} 
+  </style>
+ 
+    
+           
+            
+          
+     
+   
+
+<div class="lp_list">
+  <div class="lp_list_left">
+    <ul>
+      {volist name="$index['list']" id="vo"}
+      <li>
+        <div class="lplist_img"> <a href="/house/house_details/ids/{$vo.id}"><img src="{$vo.KP_Wjt}"></a> 
+          {if condition="$vo.KP_Tj>0"}
+            <span style="">推荐</span> 
+          {elseif condition="$vo.KP_Yhz>0"} 
+            <span style="background: #ff0000">热门</span>  
+          {else /}   
+            <span style="display: none"></span>
+          {/if}
+        </div>
+        <div class="lplist_center"  style="position: relative">
+          <div class="lplist_title"><a href="/house/house_details/ids/{$vo.id}" target="_blank">{$vo.KP_LpName}</a> 
+            <span>
+              {empty name="$vo['KP_Juprice']"}
+                {empty name="$vo['KP_TaoJia']"}
+                  <i>待定</i><font></font>
+                {else/}
+                  <i>{$vo['KP_TaoJia']}</i><font>万元/套</font>
+                {/empty}
+              {else/}
+                <i>{$vo['KP_Juprice']}</i><font>元/m²</font>  
+              {/empty}
+              <em class="bm_trigger_lpgz" lpname="{$vo.KP_LpName}" lpid="{$vo.id}" lppic="{$vo.KP_Wjt}"><img style="margin-top: 6px;width: 25px;float: right;margin-left: 15px;margin-right: -11px;" src="/assets/img/heart.png"></em>
+               <em class="jjia bm_trigger" style="display: none" lpname="{$vo.KP_LpName}" lpid="{$vo.id}" lppic="{$vo.KP_Wjt}">变价通知<img src="/html/images/down.png"></em>
+            </span> 
+          </div> 
+            <div class="lplist_youhui"> <i></i><span title="{$vo.KP_YouHui}">{$vo.KP_YouHui}</span> <span class="yhtime">有效期：{$vo.KP_ValidityStart}-{$vo.KP_ValidityEnd}</span> </div>
+            <div class="lplist_huxing"> <i></i><span>主力户型（建筑面积）：{$vo.KP_Zlhx}</span>
+            
+            </div>
+            <div class="lplist_dizhi">
+              <div class="lplist_diq"><i></i><span>{$vo.KP_Lpdz}</span></div>
+              <div class="lplist_map"><img src="/html/images/lplist_map.png"><a href="">查看地图</a></div>
+           
+            </div>
+            <div class="dianhua">
+              <img src="/html/images/house_tell.gif">
+              <span>{$vo.KP_Tel}</span> 
+                <div class="smbh">
+                  <img src="/html/img/sm.gif"><em class="sm_span">扫码拨号</em>
+               
+                <div class="smbo_cx">
+                  <span>扫码拨号<br/>让您购房更简单</span>
+                  <i class="smbo_codeimg" id="smbo_codeimg{$vo.id}" path="/index/bohao/ids/{$vo.id}"></i>
+                  <div class="smbo_tb"></div>
+                </div> 
+              </div>
+
+            </div>
+            
+            
+           
+               
+            <div class="lplist_tese"> 
+              {switch name="$vo.KP_Xszt"}
+                  {case value="0"}<i>在售</i>{/case}
+                  {case value="1"}<i style="background: #ffeeea; color: #ff552e;">待售</i>{/case}
+                  {case value="2"}<i style="background: #999; color: #fff;">售罄</i>{/case}
+                  {default /}<i></i>
+              {/switch} 
+            
+              {volist name=":explode(',',$vo.KP_TsType)"   id="co" length="2"   }  
+                                  <i>{$co}</i>         
+              {/volist} 
+           
+            </div>
+
+            <div class="gwpic2"> <img src="{$vo.KP_Kefu}"><a href=""><!--金牌客服--></a></div>
+            <div class="down_button"><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"   class="ask"  ><i></i>向Ta咨询</a></div>
+            <div class="down_button" style="right: 21px;border: 1px solid #08c499;"><a href="javascript:void(0);"     class="ask"  style="color: #08c499;" ><i style="color: #33ffb5;"></i><em class="bm_trigger" lpname="{$vo.KP_LpName}" lpid="{$vo.id}" lppic="{$vo.KP_Wjt}">变价通知</em></a></div>
+
+ 
+
+
+
+        </div>
+        <div class="clear"></div>        
+        <div class="lplist_dt"><span>【最新动态】</span>
+          {volist name="vo.dtone" id="co"}
+            <a href="/news/detail/ids/{$co.id}">{$co.KP_Title}</a>
+          {/volist}
+           
+        </div>
+      </li>
+      {/volist}
+    
+       
+        
+
+   
+       {for start="0" end="(10-$index['total'])"}
+ 
+      <li style="display: none;">
+        <div class="lplist_img"> <a href="/house/house_details/ids/2908"><img src=""></a> 
+             
+            <span style="display: none"></span>
+                  </div>
+        <div class="lplist_center" style="position: relative">
+          <div class="lplist_title"><a href="/house/house_details/ids/2908" target="_blank"></a> 
+            <span>
+                              <i></i><font>元/m²</font>  
+                             <em class="jjia bm_trigger">变价通知<img src="/html/images/down.png"></em>
+            </span> 
+          </div> 
+            <div class="lplist_youhui"> <i></i><span></span> <span class="yhtime">有效期：2019年04月01日-2019年04月30日</span> </div>
+            <div class="lplist_huxing"> <i></i><span>主力户型（建筑面积）：一居(3) 二居(6</span>
+            
+            </div>
+            <div class="lplist_dizhi">
+              <div class="lplist_diq"><i></i><span>三亚市凤凰路凯丰大酒店对面</span></div>
+              <div class="lplist_map"><img src="/html/images/lplist_map.png"><a href="">查看地图</a></div>
+           
+            </div>
+            <div class="dianhua"><img src="/html/images/house_tell.gif"><span>0898-88253260</span></div>
+            <div class="lplist_tese"> 
+              <i>在售</i>  
+                                  <i>旅游地产</i>         
+               
+           
+            </div>
+
+            <div class="gwpic2"> <img src="/html/images/kefu.jpg"><a href=""><!--金牌客服--></a></div>
+            <div class="down_button"><a href="javascript:void(0);" onclick="openZoosUrlx('chatwin');"   class="ask"><i></i>向Ta咨询</a></div>
+        </div>
+        <div class="clear"></div>        
+        <div class="lplist_dt"><span>【最新动态】</span>
+                      <a href="/news/detail/ids/26980">三亚景园城目前在售A#、E#楼 均价32500元/平米</a>
+                     
+        </div>
+      </li>
+
+       {/for}
+
+    </ul>
+    
+    <!--分页-->
+    <ul class="page" maxshowpageitem="10" pagelistcount="1"  id="page">
+    </ul>
+  </div>
+  
+  <!--右侧热销-->
+  <div class="lp_list_right">
+    <h3>热销楼盘</h3>
+    <div class="right_lp">
+      <ul> 
+        {volist name="$index['tjlp']" id="vo"}
+        <li class="right_lp_li {$i==1?"on":""}">
+          <div class="right_lptitle  {:explode(',','four,one,two,three,four,four,four,four,four,four,four,four,four,four')[$i]}"><span><i>{$i}</i>{$vo.KP_LpName}</span> <span class="right_jiage">| {$vo.CNAME}<em>
+             {empty name="$vo['KP_Juprice']"}
+                {empty name="$vo['KP_TaoJia']"}
+                  待定 
+                {else/}
+                  {$vo['KP_TaoJia']}  万元/套  
+                {/empty}
+              {else/}
+                {$vo['KP_Juprice']}  元/m²  
+              {/empty}</em></span> </div>
+          <ul class="right_lp_li_down">
+            <div><a href="/house/house_details/ids/{$vo.id}"><img src="{$vo.KP_Wjt}"></a></div>
+          </ul>
+        </li>
+        {/volist}
+      </ul>
+    </div>
+    <!--看房报名-->
+    <div class="right_bm">
+      <div class="right_bm_1">
+        <div class="right_bm_title">看房报名</div>
+        <span>资深置业顾问一对一服务</span>
+        <span>24小时接机，专车全程接送看房</span>
+        <span>提供专项购房优惠</span>
+        <div class="right_bm_kuang">
+        <input type="text" id="lp_Name" placeholder="请输入您的姓名" />
+        <input type="text" id="lp_Phone" placeholder="请输入手机号码" />
+        <a href="javascript:void(0);" onclick="lp_Submit()" class="btn">立即提交</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+ 
+
+
+ 
+<script type="text/javascript">
+  var Lpdata = {
+                  "page":"1", 
+                  "pagesize":"10",  
+                  "City":"",  
+                  "Price":"",
+                  "Priceorder":"", 
+                  "Ts":"",    
+                  "Hx":"",          
+                  "Jjlp":"",   
+                  "KpTime":"",
+                  "Zxqk":"",  
+                  "Xszt":"",        
+                  "KpTimeDown":"" ,
+                  "Sokey":""
+               };
+ 
+
+  function getajaxdata(Lpdata) {
+     $.post("/house/indexapi", Lpdata, function(data,status){
+               //$(".lp_list_left >ul").eq(0).find("li").length;
+              if(status=="success"){
+                $(".lp_shu >i").html(data.total); 
+                        $(".Tip_Info").css("width","500px");
+                        if(Lpdata.page==1){Tip_Control("", 2500);}
+                        $(".Tip_Info").html("为您搜索到<i style='color: #fff902;font-weight: 600;font-size: larger;'> "+data.total+" </i>个楼盘!");
+                var totalpage = parseInt(data.total)/Lpdata.pagesize ;
+                totalpage =  parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+
+                // js动态异步加载js
+                var scripts = [  "__CDN__/assets/js/frontend/index/page.js" ,"__CDN__/assets/js/frontend/index/house/jquery.qrcode.min.js" ];
+  
+                
+ 
+        
+
+                var datalist = data.list;
+                var tb = $(".lp_list_left >ul").eq(0).find("li") ;  
+                for (var i = 0; i < datalist.length; i++) {
+                   var v=tb[i];
+                   $(v).css("display","block");
+                    // a 外景图
+                        $(v).find(".lplist_img >a").attr("href","/house/house_details/ids/"+ datalist[i].id);
+                        $(v).find(".lplist_img >a >img").attr("src",  "" + datalist[i].KP_Wjt);
+                    // KP_Yhz: 0 // KP_Tj: 1
+                        if(datalist[i].KP_Tj>0){
+                          $(v).find(".lplist_img >span").attr("style","").html("推荐");
+                        }else if(datalist[i].KP_Yhz>0){
+                          $(v).find(".lplist_img >span").attr("style","background: #ff0000").html("热门");
+                        }else{
+                          $(v).find(".lplist_img >span").attr("style","display: none").html(""); 
+                        }
+                    //中间区域   
+                    $(v).find(".lplist_title >a").attr("href","/house/house_details/ids/"+ datalist[i].id).html(datalist[i].KP_LpName);
+                    $(v).find(".lplist_title .bm_trigger").attr("lpname",  datalist[i].KP_LpName);
+                   $(v).find(".lplist_title .bm_trigger").attr("lpid",  datalist[i].id);
+                   $(v).find(".lplist_title .bm_trigger").attr("lppic",  datalist[i].KP_Wjt);
+                   
+                    // KP_Qiprice: 24000// KP_TaoJia: ""
+                        if(datalist[i].KP_Juprice==0){
+                           if(datalist[i].KP_TaoJia==""){ 
+                              $(v).find(".lplist_title >span >i").html("待定");
+                            }else{
+                              $(v).find(".lplist_title >span >i").html( datalist[i].KP_TaoJia );
+                              $(v).find(".lplist_title >span >font").html("万元/套");
+                              
+                            } 
+                        }else{
+                           $(v).find(".lplist_title >span >i").html( datalist[i].KP_Juprice );
+                           $(v).find(".lplist_title >span >font").html("元/m²");
+                          
+                        }
+                    
+                    //优惠
+                    $(v).find(".lplist_youhui >span").eq(0).html(datalist[i].KP_YouHui);
+                    $(v).find(".lplist_youhui >span").eq(0).attr("title",datalist[i].KP_YouHui);
+                    $(v).find(".yhtime").eq(0).html("有效期：" + datalist[i].KP_ValidityStart + "-" +datalist[i].KP_ValidityEnd );
+                    $(v).find(".lplist_huxing >span").html("主力户型（建筑面积）：" + datalist[i].KP_Zlhx);
+                    $(v).find(".down_button >a").attr("lpid",datalist[i].id).attr("lpname",datalist[i].KP_LpName);
+                    $(v).find(".lplist_diq >span").html("<em>"+datalist[i].CNAME+"|</em>"+datalist[i].KP_Lpdz );
+                    
+                    //在售
+                    var zaisouhtml ="";
+                    if(datalist[i].KP_Xszt==0){zaisouhtml += "<i>在售</i>";}
+                    if(datalist[i].KP_Xszt==1){zaisouhtml += "<i style='background: #ffeeea; color: #ff552e;'>待售</i>"; }
+                    if(datalist[i].KP_Xszt==2){zaisouhtml += "<i style='background: #999; color: #fff;'>售罄</i>"; }
+                    
+                    var teshehtml = "";
+                    var teshe =datalist[i].KP_TsType.split(",");
+                    for (var j = 0; j < (teshe.length>1?2:teshe.length) ; j++) {
+                      teshehtml += "<i>" + teshe[j] + "</i>";
+                    }
+                   
+                    // var phonehtml = '<div class="lplist_phone"><img src="/html/images/lplist_phone.png">'+ datalist[i].Kp_tel +'</div>' ;
+                    $(v).find(".lplist_tese").html(zaisouhtml+teshehtml  );
+                    $(v).find(".dianhua span").eq(0).html(datalist[i].Kp_tel);
+                    //扫码拨号
+                    $(v).find(".smbo_codeimg").html("");
+                    $(v).find(".smbo_codeimg").attr("id","smbo_codeimg" + datalist[i].id ).attr("path","/index/bohao/ids/" + datalist[i].id );
+                    var dtid=datalist[i].id;
+                     
+                     
+                        // jQuery('#smbo_codeimg' + dtid + '').qrcode({ width: 90, height: 90, text: "http://m" + location.hostname.replace("www","") +  "/index/bohao/ids/" + dtid });
+                     
+                    
+                     
+
+                    
+                    //金牌客户
+                    $(v).find(".gwpic2 img").attr("src", datalist[i].KP_Kefu );
+                    
+                    //动态
+                    if(datalist[i].dtone){
+                      var dt =datalist[i].dtone;
+                      $(v).find(".lplist_dt").html("<span>【最新动态】</span>" + '<a href="/news/detail/ids/'+ dt.id +'">'+dt.KP_Title+'</a>');
+                    }
+                    //结束
+                }
+
+                
+                tb.each(function(i,v) { 
+                  if ( i>datalist.length-1 )   {
+                    $(v).css("display","none"); 
+                  }    
+                });  
+                $("body,html").scrollTop(200); 
+                parallelLoadScripts(scripts,function(){ 
+                   GG.ff=0;
+                  $("#page").initPage(totalpage,Lpdata.page,GG.kk); 
+                  $(".smbo_codeimg").each(function(i,t) {
+                           jQuery('#' + $(t).attr("id") + '').qrcode({ width: 90, height: 90, text: "http://m" + location.hostname.replace("www","") +  $(t).attr("path")  }); 
+                  })
+                   
+                });
+
+              } //end if success
+        }); //end post
+  }
+
+  function setParmsValue(parms,value) {
+    console.log(parms + value);
+    if(parms=="Hx"){Lpdata.Hx=value ; }
+    if(parms=="Ts"){Lpdata.Ts=value ; }
+    if(parms=="Price"){Lpdata.Price=value ; }
+    if(parms=="City"){Lpdata.City=value ; }
+    Lpdata.page=1;
+    getajaxdata(Lpdata); 
+  }
+
+  function gotopriceorder(txt) {   
+      $('.cation-list').each(function(i,v){$(v).find("a").eq(0).attr("class","on").siblings().attr("class","default");});   
+      var sort=""   ;
+      if(txt=="低到高"){sort="ASC";}
+      if(txt=="高到低"){sort="DESC";} 
+      Lpdata.Priceorder = sort ;
+      getajaxdata(Lpdata);
+  }  
+  
+  function gotopage(pageno) {        
+        Lpdata.page = pageno ;
+        Lpdata.Sokey = "{$index['Sokey']}"
+        getajaxdata(Lpdata);
+  } //end function gotopage
+  
+  //优惠降价楼盘
+  function gotoyouhui() {
+    Lpdata.Jjlp = 1 ;
+    Lpdata.page = 1 ; 
+    getajaxdata(Lpdata);
+  }
+  //全部楼盘
+  function gotoall() {
+    Lpdata.Jjlp = "" ;
+    Lpdata.page = 1 ; 
+    Lpdata.Priceorder = "" ;
+    getajaxdata(Lpdata);
+  }  
+
+  var GG = {"kk":function(pageno){
+    if(GG.ff!=0){ gotopage(pageno) ; }
+    GG.ff=1;
+  },"ff":0}
+  setTimeout(function() {
+      var totalpage = parseInt({$index['total']})/Lpdata.pagesize ;
+      totalpage =  parseInt(totalpage)<totalpage ?  parseInt(totalpage)+1 :  parseInt(totalpage) ;
+                $(".Tip_Info").css("width","500px");
+                if(Lpdata.page==1){Tip_Control("", 2500);}
+                $(".Tip_Info").html("为您搜索到<i style='color: #fff902;font-weight: 600;font-size: larger;'>  {$index['total']}  </i>个楼盘!");
+            $("#page").initPage(totalpage,1,GG.kk); // body...
+          },0);
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+$(function(argument) {
+       $(".smbo_codeimg").each(function(i,t) {
+           jQuery('#' + $(t).attr("id") + '').qrcode({ width: 90, height: 90, text: "http://m" + location.hostname.replace("www","") +  $(t).attr("path")  }); 
+    })
+})
+ 
+</script>
+
+
+ 
+
+
+
+
+ 

@@ -1,0 +1,91 @@
+<!--底部-->
+<div class="footer_w100">
+    <ul class="footer">
+      <li><a href="/about/index/ids/1">关于我们</a></li>
+      <li><a href="/about/index/ids/2">版权声明</a></li>
+      <li><a href="/about/index/ids/3">联系我们</a></li>
+    </ul>
+  <p>{$Think.config.site.beian}</p>
+</div>
+    
+<!--底部固定-->
+<div class="y_puicfoot">
+  <div class="footer-nav-tr">
+        <div class="footer-nav-zx">
+          <a href=""><i class=".footer-list-icon"><img src="__CDN__/html/img/mobile/foot_zx.png"></i><p>在线咨询</p></a>
+        </div>
+        <div class="footer-nav-tel"><a href="tel:4008239868"></a><img src="__CDN__/html/img/mobile/ico_callfootbg.png"></div>
+        <div class="footer-nav-dz"><a class="popup" data-name="看房定制" data-text="24小时接机，免费报名看房，享折扣优惠" data-id="0" data-module="mobile_index_kfdz" href="javascript:;"><i class="footer-list-icon"><img src="__CDN__/html/img/mobile/foot_bm.png"></i><p>看房报名</p></a></div>
+  </div>
+</div> 
+
+
+
+
+
+ <!--问答提示框弹层-->
+<div class="Tip_Info"> </div>
+
+
+
+<script>
+/*优惠领取*/
+function Getperation(type,index) {
+        var Bm_Name = $.trim($("#Bm_Name"+ index).val());
+        var Bm_Phone = $.trim($("#Bm_Phone"+ index).val());
+        var Bm_Message = $.trim($("#Bm_Message"+ index).val());
+        var Bm_HouseID = $.trim($("#Bm_HouseID"+ index).val());
+        var Bm_Url = $.trim($("#Bm_Url"+ index).val());
+        var Bm_Title = $.trim($("#Bm_Title"+ index).val());
+        var T_Url = document.location.href; //页面地址
+        // if (Bm_Name == '') {
+        //     alert("请填写姓名");
+        //     return false;
+        // }
+        if (Bm_Phone == ''   ) {
+             alert("请填写正确的手机号码");
+            return false;
+        }
+
+        $.post('/ajax/LpBaoming',
+        {
+            sType: type,
+              T_KftName: Bm_Name,
+          T_KftPhone: Bm_Phone,
+          T_Message: Bm_Message,
+          T_LpID: Bm_HouseID,
+          T_PageUrl: T_Url,
+          T_Title: Bm_Title
+        },
+        function (data) {
+            
+            if (data.info != 'Yes') {
+                Tip_Control(data.info,1500);  
+                return false;
+            } else {
+
+                 if(type=="Yybbbmkf"){
+                    wid_close3(); 
+                    $("#timers").html(10000) ;
+                    $("#yuyinzz").css("display","none");
+                }
+                Tip_Control('领取成功！我们的置业顾问会尽快联系您！',1500);
+                setTimeout(function () {
+                   $("#Bm_Message"+ index).val("") ;
+                   $("#Bm_Phone"+ index).val("")
+                   $("#Bm_Name"+ index).val("")
+                }, 200);
+
+
+            }
+        }, "json").error(function () { alert("数据加载失败，请检查后再操作！"); return false; });
+    }
+  
+/*问答提示框*/
+function Tip_Control(info, time) {
+    $(".Tip_Info").css("display", "block");
+    $(".Tip_Info").text(info);
+    setTimeout(function () { $(".Tip_Info").css("display", "none"); }, time);
+};
+
+</script>
